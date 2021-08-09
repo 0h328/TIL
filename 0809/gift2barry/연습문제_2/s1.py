@@ -8,7 +8,7 @@ print(N, M)
 
 # 2차원 리스트 받기
 arr = [list(map(int, input().split())) for _ in range(N)]
-# print(arr)
+print(arr)
 
 
 # 1. 행 우선 순회

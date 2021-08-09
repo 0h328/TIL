@@ -11,29 +11,33 @@ sys.stdin = open('input.txt')
 # 문제점:
 # 답은 맞게 나오는데, input.txt 에서 전체 값들 불러오질 못함
 
-N = int(input())
-nums = list(map(int, input().split()))
-jeonmang = 0
 
-for i in range(N):
-    # 앞&뒤 두개 인덱스가 현재 인덱스보다 작을때
-    if nums[i] > nums[i-1] and nums[i] > nums[i-2] and nums[i] > nums[i+1] and nums[i] > nums[i+2]: #
-        # 네개의 인덱스값중에 가장 큰 값을 찾아서
-        # 패작 코드 ↓
-        # temp = [nums[i-1], nums[i-2], nums[i+1], nums[i+2]]
-        # for j in range(len(temp)):
-        #     if temp[j] > temp[j+1]:
-        #         temp[j], temp[j+1] = temp[j+1], temp[j]
-        # highest_num = temp[len(temp)]
-        # 성공작 ↓
-        highest_num = max(nums[i - 1], nums[i - 2], nums[i + 1], nums[i + 2])
-        # 현재 인덱스값에서 빼준다 = 전망 값.
-        room = nums[i] - highest_num
-        # 인덱싱으로 돌아가면서 모든 전망값을 jeonmang 에 축적
-        jeonmang += room
+def init():
+    for idx in range(1, 11):
+        N = int(input())
+        nums = list(map(int, input().split()))
+        jeonmang = 0
 
-print(jeonmang)
+        for i in range(N):
+            # 앞&뒤 두개 인덱스가 현재 인덱스보다 작을때
+            if nums[i] > nums[i-1] and nums[i] > nums[i-2] and nums[i] > nums[i+1] and nums[i] > nums[i+2]:
+                # 네개의 인덱스값중에 가장 큰 값을 찾아서
+                # 패작 코드 ↓
+                # temp = [nums[i-1], nums[i-2], nums[i+1], nums[i+2]]
+                # for j in range(len(temp)):
+                #     if temp[j] > temp[j+1]:
+                #         temp[j], temp[j+1] = temp[j+1], temp[j]
+                # highest_num = temp[len(temp)]
+                # 치트키.. ↓
+                highest_num = max(nums[i - 1], nums[i - 2], nums[i + 1], nums[i + 2])
+                # 현재 인덱스값에서 빼준다 = 전망 값.
+                room = nums[i] - highest_num
+                # 인덱싱으로 돌아가면서 모든 전망값을 jeonmang 에 축적
+                jeonmang += room
 
+        print('#{} {}'.format(idx, jeonmang))
+
+init()
 
 
 
