@@ -16,5 +16,5 @@ for test in range(T):
                 cnt += 1
         result.append(cnt)
 
-    print(max(result))
+    print('#{} {}'.format(test+1, max(result)))
 
