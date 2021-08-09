@@ -7,25 +7,14 @@ for test in range(T):
 
     numbers = list(map(int,input().split()))
 
-    result = [[0]*N for _ in range(N)]
+    result = []
 
-    for i in range(N):
-        for j in range(numbers[i]):
-            if numbers[i] == 0:
-                result[i][j] = 0
-            else:
-                result[i][j] = 1
-
-
-    cntlist = []
-    for j in range(N):
+    for i in range(len(numbers)):
         cnt = 0
-        for i in range(N):
-            if result[i][j] == 1:
-                for h in range(N-i):
-                    if result[i+h][j] == 0:
-                        cnt+=1
-        cntlist.append(cnt)
+        for j in range(i,len(numbers)):
+            if numbers[i] > numbers[j]:
+                cnt += 1
+        result.append(cnt)
 
-    print(max(cntlist))
+    print(max(result))
 
