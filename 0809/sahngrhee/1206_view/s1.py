@@ -18,3 +18,5 @@ for test_case in range(1, 11):
             my_view = tmp - tmp2
             total += my_view
     print('#{} {}'.format(test_case, total))
+
+# 테스트 케이스 1번만 맞고 나머지는 값이 다르게 나오는데 아직 이유를 파악하지 못했다.

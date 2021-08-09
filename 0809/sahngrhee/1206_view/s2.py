@@ -14,3 +14,5 @@ for test_case in range(1, 11):
                     second_max = my_list[i+idx]
             total += my_list[i] - second_max
     print('#{} {}'.format(test_case, total))
+
+# 1번 풀이에서 답이 안나와서 세세하게 분해해서 다시 풀어봤는데 이번에는 결과값이 잘 나온다.
