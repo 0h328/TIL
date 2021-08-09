@@ -15,5 +15,7 @@ for T in range(int(input())):
                 max_gravity-=1
                 if max_gravity < result:
                     break
-        result = max(result, max_gravity)
+        else:
+            result = max(result, max_gravity)
+
     print(result)
