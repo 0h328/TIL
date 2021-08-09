@@ -5,10 +5,7 @@ num = int(input())
 print(num)
 
 nums = list(map(int, input().split()))
-
-for num in nums :
-    print(num)
-
+print(nums)
 
 N = int(input())
 #
