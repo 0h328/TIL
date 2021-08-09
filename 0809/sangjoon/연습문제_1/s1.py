@@ -3,7 +3,6 @@ import sys
 sys.stdin = open("input.txt")
 
 num1 = int(input())
-
 lst1 = map(int, input().split())
 
 num2 = int(input())
