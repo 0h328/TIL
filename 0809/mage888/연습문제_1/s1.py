@@ -7,16 +7,16 @@ num = int(input())
 print('#{}'.format(num))
 
 #2. 리스트
-# print(input())
-# print(input().split())
-# print(list(map(int,input().split())))
+print(input())
+print(input().split())
+print(list(map(int,input().split())))
 nums = list(map(int,input().split()))
 
 for num in nums:
     print(num)
 
 #3. 이차원 리스트
-N = int(input())
+# N = int(input())
 
 # my_nums = []
 # for _ in range(N):
@@ -26,5 +26,5 @@ N = int(input())
 # print(my_nums)
 
 #조금 더 심플한 버전
-numbers = [list(map(int,input().split())) for _ in range(N)]
-print(numbers)
+# numbers = [list(map(int,input().split())) for _ in range(N)]
+# print(numbers)
