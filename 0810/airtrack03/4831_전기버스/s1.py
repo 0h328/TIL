@@ -32,12 +32,10 @@ for tc in range(1, T+1):
                     ans += 1        # 충전 횟수 1 증가
                 gas_idx += 1        # 주유소 지나가므로 idx 증가
         else:   # 현 위치가 gas station 아닐 때
-            if charged >= N - i:    # 충전량으로 남은 거리 다 갈 수 있는 경우
+            # 현재 충전량으로 남은 거리를 다 갈 수 없는 경우나 다음 주유소를 못 가는 경우는 이미 주유소인 경우에서 고려됨
+            if charged == 0:   # 다음 충전소를 못 가거나 충전량 0이 된 경우
+                ans = 0
                 break
-            else:
-                if charged < gas_stations[0] - i or charged == 0:   # 다음 충전소를 못 가거나 충전량 0이 된 경우
-                    ans = 0
-                    break
 
     print('#{} {}'.format(tc, ans))
 
