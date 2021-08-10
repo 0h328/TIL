@@ -13,19 +13,19 @@ sys.stdin = open('input.txt')
 
 # A = 인풋 리스트
 A = list(map(int, input().split(', ')))
-# B = 카운트 리스트
-B = [0 for _ in range(len(A))]
+# B = 카운트 리스트 생성
+B = [0 for _ in range(len(A))]  # or B = [0] * len(A)
 
 for i in A:                             # 카운트 리스트에 카운트 값 저장
     B[i] += 1
 print(B)
 
-for i in range(len(B)-1):               # 이유 불문 카운트 리스트 누적합 구한다
+for i in range(len(B)-1):               # 카운트 리스트 누적합 구한다
     B[i+1] += B[i]
 print(B)
 
-for i in range(len(A)-1, -1, -1):       # 정렬된 B 를 거꾸로 순회하면서 정렬된 배열 C에 넣어준다
-    B[]
+for i in reverse(A):
+
 
 
 # 정석적인 코드
