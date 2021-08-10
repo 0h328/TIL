@@ -4,15 +4,14 @@ sys.stdin = open('input.txt')
 T = int(input())
 
 def min_max(a):
-    max_num = a[0]
-    min_num = a[0]
-    for num in a:
+    max_num = min_num = a[0]            # 초기값은 리스트의 첫번째 값으로 할당
+    for num in a:                       # 최댓값 저장
         if num > max_num:
             max_num = num
-    for num in a:
-        if num < min_num:
+
+        if num < min_num:               # 최솟값 저장
             min_num = num
-    diff = max_num - min_num
+    diff = max_num - min_num            # 차이 저장
     return diff
 
 for tc in range(1, T+1):
