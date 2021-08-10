@@ -11,5 +11,9 @@ counter = [0] * (max_num - min_num + 1)
 for num in nums:
     counter[num - min_num] += 1
 
+ans = []
 for idx in range(len(counter)):
-    print("{} ".format(idx + min_num) * counter[idx], end="")
+    # print("{} ".format(idx + min_num) * counter[idx], end="")
+    ans += [idx + min_num] * counter[idx]
+
+print(ans)
