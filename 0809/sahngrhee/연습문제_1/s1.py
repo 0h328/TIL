@@ -10,7 +10,7 @@ print('#{}'.format(num))
 #2. 리스트
 # print(input())
 # print(input().split())
-print(list(map(int, input().split())))
+# print(list(map(int, input().split())))
 
 nums = list(map(int, input().split()))
 for num in nums:
