@@ -23,11 +23,12 @@ for tc in range(1, test_case+1):
 
     bus_idx = 0                                                     # 버스의 현재 위치 인덱스 값
     while bus_idx < destination - charge_move:                      # 버스가 한번에 목적지에 도착가능한 인덱스 범위내에 도달하기 전까지 반복
-        for i in range(bus_idx+charge_move, bus_idx, -1):           # 버스가 이동 가능한 먼 거리부터 충전소가 있는지 탐색
+        for i in range(bus_idx + charge_move, bus_idx, -1):         # 버스가 이동 가능한 먼 거리부터 충전소가 있는지 탐색
             if station_list[i] == 1:                                # 충전소 있으면 버스 현재 위치를 옮김
                 bus_idx = i
                 answer += 1
                 break
+
         if bus_idx != i:                                            # 버스가 움직일수있는 범위내에 충전소 없다면, 반복문 종료
             answer = 0
             break

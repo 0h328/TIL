@@ -11,6 +11,7 @@ def counting_sort(li):
     sorted_list = [0] * len(li)                     # 정렬된 리스트를 담을 변수
     max_value = li[0]                               # 리스트에서 최고값을 찾음
     min_value = li[0]                               # 리스트에서 최솟값을 찾음
+
     for n in li:
         if max_value < n:
             max_value = n
