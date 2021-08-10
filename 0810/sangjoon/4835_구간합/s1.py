@@ -8,7 +8,7 @@ for test in range(1, test_case + 1):
     nums = list(map(int, input().split()))
     max_sum, min_sum = 0, 10000 * m
 
-    # 구간합 사용
+    # 구간합 생성
     prefix = [0]
     ans = 0
 
