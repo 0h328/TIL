@@ -14,16 +14,15 @@ for test in range(T):
     for i in Mlist:
         charge[i] = 1                               # 충전소 초기화
 
-    i = K
-    # for i in range(start, len(charge), K):  # 갈수 있는 거리로 나누고
-    while i < N:
+    position = K
+    while position < N:
 
         check = 0
 
         for j in range(K):
-            if charge[i - j] == 1:                   # 뒤로가면서 충전소가 등장한다면 체크를 하나올리고 탈출
+            if charge[position - j] == 1:                   # 뒤로가면서 충전소가 등장한다면 체크를 하나올리고 탈출
                 check += 1
-                i = i - j + K
+                position = position - j + K
                 break
         if check == 1:
             cnt += 1

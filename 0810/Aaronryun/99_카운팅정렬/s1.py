@@ -4,7 +4,7 @@ sys.stdin = open('input.txt')
 
 a = list(map(int, input().split()))
 
-
+# 음수는???
 def CountingSort(a):
     cnt = [0] * (max(a) + 1)      # 들어온 리스트에서 가장 큰 수만큼 리스트 초기화
     for i in a:                   # 특정 수만큼 채워넣음
