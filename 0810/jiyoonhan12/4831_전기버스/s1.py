@@ -12,21 +12,23 @@ for t in range(1, T+1):
 
     for m in range(M):
         if m != M-1: # 마지막 충전소 아닐 때
-            if charger[m] > position + K:
+            if charger[m] > position + K: # 충전소가 step보다 멀리 있으면 실패
                 charge_cnt = 0
                 break
-            elif charger[m] <= position + K < charger[m + 1]:
-                position = charger[m]
-                charge_cnt += 1
-            else:
-                continue
+            elif charger[m] <= position + K < charger[m + 1]: # 충전소 하나만 지날 수 있으면
+                position = charger[m] # 위치를 그 충전소로 옮기고
+                charge_cnt += 1 # cnt는 1 증가
+            else: # 충전소 2개 이상 지날 수 있으면
+                continue # 일단 다음 m으로 넘어가서 판단해보기
 
-        else:
-            if position + K >= N:
+        else: # index가 마지막 충전소일 때
+            if position + K >= N: # 마지막 충전소 안 가도 골인할 수 있으면 그냥 나가기
                 break
-            elif charger[m] <= position + K:
+            elif charger[m] <= position + K: # 아니면 충전소 한 번 더 들르기
                 position = charger[m]
                 charge_cnt += 1
+            else: # 골인 못하면 0
+                charge_cnt = 0
 
 
     print('#{} {}'.format(t, charge_cnt))
