@@ -1,6 +1,7 @@
 import sys
 sys.stdin = open('input.txt')
 
+# 패작1
 # Though process:
 # 가로 빈칸 = 낙차
 # bubble sort 로 가장 높은 세로값 찾고,
@@ -9,23 +10,23 @@ sys.stdin = open('input.txt')
 # 해당 값들을 하나의 리스트에 저장.
 # 모든 값들이 모이면, 해당 리스트에서 가장 높은 숫자를 반환
 
-def init():
-    N = int(input())
-
-    for _ in range(N):
-        field_width = int(input())
-        nums = list(map(int, input().split()))
-        temp = []
-        highest_block = max(nums)
-
-        for height in range(highest_block):
-            filled_block = 0
-            for block in nums:
-                if height <= block:
-                    filled_block += 1
-            empty_block = field_width - filled_block
-            temp.append(empty_block)
-        print(max(temp))
+# def init():
+#     N = int(input())
+#
+#     for _ in range(N):
+#         field_width = int(input())
+#         nums = list(map(int, input().split()))
+#         temp = []
+#         highest_block = max(nums)
+#
+#         for height in range(highest_block):
+#             filled_block = 0
+#             for block in nums:
+#                 if height <= block:
+#                     filled_block += 1
+#             empty_block = field_width - filled_block
+#             temp.append(empty_block)
+#         print(max(temp))
 
             # bubble sort 실패..
             # for j in range(field_width):
@@ -35,4 +36,7 @@ def init():
             # highest = nums[len(nums)]
             # print(highest)
 
-init()
+# init()
+
+
+Thought process:
