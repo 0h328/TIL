@@ -1,14 +1,19 @@
 import sys
 sys.stdin = open('input.txt')
 
-N = int(input())
-numbers = [list(map(int,input().split())) for _ in range(N)]
+for idx in range(1, 11):
+    N = int(input())
+    num = list(map(int, input().split()))
+
+    result = 0
+    for j in range(2, len(num)-2):
+        max_num = max(num[j+1], num[j+2], num[j-1], num[j-2])
+        if (num[j] < max_num):
+            continue
+        else:
+           result += (num[j]-max_num)
+
+    print('#{0} {1}'.format(idx, result))
 
 
-for num in numbers:
-    for j in range(2,len(numbers)-2):
-        if (num[j]>num[j+1]) and (num[j]>num[j+2]):
-            if (num[j+1]>num[j+2]):
-                cp1 = num[j+2]-num[j]
-            else:
-                cp2 = num[j+1]-num[j]
+
