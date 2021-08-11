@@ -8,7 +8,7 @@ for T in range(int(input())):
     result = 0
     # 마지막 -1 까지만 돈다.
     for i in range(len(boxes)-1):
-        # 현대 index에서 최대 낙차
+        # 현재 index에서 최대 낙차
         max_gravity = N-(i+1)
         # 현재 result보다 작으면 더이상 판단할 필요없음
         if max_gravity < result:
