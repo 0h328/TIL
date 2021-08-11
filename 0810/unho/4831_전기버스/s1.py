@@ -29,7 +29,7 @@ for tc in range(1, test_case+1):
                 answer += 1
                 break
 
-        if bus_idx != i:                                            # 버스가 움직일수있는 범위내에 충전소 없다면, 반복문 종료
+        else:                                            # 버스가 움직일수있는 범위내에 충전소 없다면, 반복문 종료
             answer = 0
             break
 
