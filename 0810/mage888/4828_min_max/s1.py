@@ -9,7 +9,7 @@ for test_case in range(1, T+1):                    # 자료받은 개수를 테�
 
     max_value = numbers[0]
     min_value = numbers[0]
-    # max_value = min_value = numbers[0]
+    # max_value = min_value = numbers[0]           # 같은 주소 참조하기 때문에 가능
                                                    # 구하고자하는 가장 큰 수, 가장 작은 수를 list 내 임의 요소로 초기화
     result = 0                                     # result는 최댓값과 최솟값의 차이를 구하기 위해 0으로 초기화하여 설정
     for number in numbers:                         # numbers list를 순환하기 위해 for문 작성
