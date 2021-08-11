@@ -33,7 +33,7 @@ for _ in range(T):
     for i in range(len(arr)):
         total_3 = 0
         for j in range(len(arr)):
-            if i == j:
+            if i == j:                      # -대각선에 위치한 i와 j는 항상 동일
                 total_3 += arr[i][j]
         maxV.append(total_3)
 
