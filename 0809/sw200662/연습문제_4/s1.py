@@ -18,13 +18,15 @@ for i in range(N):
             count[check] -= 3
             triplet += 1
             continue;
-        if count[check] >=1 and count[check+1] >= 1 and count[check+2] >=1:
-            count[check] -=1
-            count[check+1] -=1
-            count[check+2] -=1
+
+        if count[check] >= 1 and count[check+1] >= 1 and count[check+2] >= 1:
+            count[check] -= 1
+            count[check+1] -= 1
+            count[check+2] -= 1
             run += 1
             continue;
-        check +=1
+
+        check += 1
     if triplet + run == 2:
         print('#{} 1'.format(i+1))
     else:
