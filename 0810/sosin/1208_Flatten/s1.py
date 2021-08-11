@@ -1,5 +1,5 @@
-import sys
-sys.stdin = open('input.txt')
+import pathlib, sys
+sys.stdin = open(str(pathlib.Path(__file__).parent.absolute()) + '/input.txt')
 
 for T in range(10):
     dumps = int(input())
@@ -16,6 +16,7 @@ for T in range(10):
         counting_list[max_idx-1]+=1
         counting_list[min_idx]-=1
         counting_list[min_idx+1]+=1
+
         if counting_list[max_idx] == 0:
             max_idx-=1
         if counting_list[min_idx] == 0:

@@ -27,7 +27,7 @@ for t in range(1, T+1):
             elif charger[m] <= position + K: # 아니면 충전소 한 번 더 들르기
                 position = charger[m]
                 charge_cnt += 1
-            else: # 골인 못하면 0
+            else: # 골인 못하면 0 (근데 사실 이 부분 코드 없어도 통과하긴 했음... 왜?!)
                 charge_cnt = 0
 
 
@@ -36,7 +36,4 @@ for t in range(1, T+1):
     # 0에서 N까지 가는데 정류장은 charger에 정해져 있고
     # 루프 돌 거 (0, 남은정류장개수)
     # 정류장i < 현재위치 + K < 정류장i+1 이면 정류장i로 이동
-
-
-
-    # 만약에 현재위치 + K < 현재 가장 가까운 정류장i 면 바로 0 출력
+    # 만약에 현재위치 + K < 현재 가장 가까운 정류장 면 바로 0 출력

@@ -9,7 +9,7 @@ def charging(arr, K, N, M):
             break # 충전 안하고 도착하므로 그대로 while문 벗어남
 
         for i in range(K, 0, -1): # K ~ 1까지(0은 포함하면 안됨)
-            if (state+i) in arr: # state+이동칸의 값이 arr에 있는 경우
+            if (state+i) in arr: # state+이동칸의 값이 arr(충전소)에 있는 경우
                 state += i # 이동
                 result += 1 # 충천 횟수 +1
                 break # 더 이상 돌 필요 없음(+갈 곳 없는 경우 else문 실행시켜야 함)

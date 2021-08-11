@@ -10,7 +10,6 @@ for idx in range(1, T + 1):
     stops = [0] * (N + 1)                                               # 충전소 위치를 표시할 리스트
     for charge in charges:                                              # 충전소가 있는 곳을 1로 지정
         stops[charge] = 1
-
     p = 0                                                               # 현재 위치
     s = K
     cnt = 0                                                             # 충전 횟수
