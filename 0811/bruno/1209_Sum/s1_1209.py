@@ -23,4 +23,3 @@ for _ in range(10):
             max_sum_c = sum_c
 
     print('#{} {}'.format(tc, max(max_sum_r, max_sum_c, sum_d1, sum_d2)))
-    break
