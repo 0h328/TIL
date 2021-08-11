@@ -21,11 +21,13 @@ for test_case in range(1, T+1):
 
 # ------- 열 우선 순회 -------- #
 
+    i = 0                                               # NameError 방지를 위해 i값 초기화
     for i in range(len(numbers[i])):
         sum_col = 0                                     # 하나의 열을 합했으니, 다른 열을 합하기 위해 열 위치에 초기화 변수 설정
         for j in range(len(numbers)):
             sum_col += numbers[j][i]
         total_list.append(sum_col)                      # total_list에 하나의 열을 합한 값 추가
+        i += 1
 
 # ------- 정방향 대각 우선 순회 ------- #
 
