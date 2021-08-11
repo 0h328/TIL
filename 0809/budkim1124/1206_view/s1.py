@@ -21,6 +21,7 @@ for number in range(1, A+1):
 
             if b_height[idx+1] > b_height[idx+2]:
                 b = b_height[idx+1]
+
             else:
                 b = b_height[idx+2]
 
