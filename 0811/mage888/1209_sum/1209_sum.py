@@ -1,7 +1,7 @@
 import sys
 sys.stdin = open('input.txt')
 
-N = M = 100
+N = 100
 T = 10
 for test_case in range(1, T+1):
     tc = int(input())
@@ -22,26 +22,22 @@ for test_case in range(1, T+1):
 # ------- 열 우선 순회 -------- #
 
     i = 0                                               # NameError 방지를 위해 i값 초기화
-    for i in range(len(numbers[i])):
+    for k in range(len(numbers[i])):
         sum_col = 0                                     # 하나의 열을 합했으니, 다른 열을 합하기 위해 열 위치에 초기화 변수 설정
         for j in range(len(numbers)):
-            sum_col += numbers[j][i]
+            sum_col += numbers[j][k]
         total_list.append(sum_col)                      # total_list에 하나의 열을 합한 값 추가
         i += 1
 
-# ------- 정방향 대각 우선 순회 ------- #
+# ------- 정방향, 역방향 대각 우선 순회 ------- #
 
-    sum_op_angle = 0                                    # 정방향 대각선은 하나뿐이므로, 단일 for문 앞에 초기화 변수 설정
-    for i in range(len(numbers)):                       # 정방향 대각선은 하나뿐이므로, 이중 for문 설정할 필요 없음
-        sum_op_angle += numbers[i][i]                   # 위에 주석에 대한 설명은 해당 줄로 설명 가능
-    total_list.append(sum_op_angle)                     # total_list에 정방향 대각선을 합한 값 추가
-
-# ------- 역방향 대각 우선 순회 ------- #
-
-    sum_rvop_angle = 0                                  # 역방향 대각선은 하나뿐이므로, 단일 for문 앞에 초기화 변수 설정
-    for i in range(len(numbers)):                       # 역방향 대각선은 하나뿐이므로, 이중 for문 설정할 필요 없음
-        sum_rvop_angle += numbers[i][len(numbers)-1-i]  # 아래부터 역방향(/) 위치로 더하기 위해 index 설정
-    total_list.append(sum_rvop_angle)                   # total_list에 역방향 대각선을 합한 값 추가
+    sum_op_angle = 0                                    # 정방향과 대각선은 하나뿐이므로, 단일 for문 앞에 초기화 변수 설정
+    sum_rvop_angle = 0
+    for i in range(len(numbers)):
+        sum_op_angle += numbers[i][i]                   # 설정한 각 변수에 대각선과 역방향 대각선에 해당하는 값을 더해줌
+        sum_rvop_angle += numbers[i][len(numbers) - 1 - i]
+    total_list.append(sum_op_angle)                     # total_list에 정방향, 역방향 대각선을 합한 값 추가
+    total_list.append(sum_rvop_angle)
 
     max_value = total_list[0]                           # 동일한 최댓값일 경우, 하나의 값만 출력하므로 임의 요소로 설정 무관
     for k in total_list:                                # 모든 줄에 합산된 값이 모인 list를 for문을 통해 순환시킴
