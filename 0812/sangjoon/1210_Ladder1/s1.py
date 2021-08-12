@@ -15,7 +15,7 @@ for test in range(10):
 
         mp[r][c] = 0  # 방문 표시
 
-        for i in range(2):  # 좌우로 길이 있을때 이동
+        for i in range(3):  # 좌우부터 이동가능 확인 이후 위로 이동
             nc = c + dx[i]
             nr = r + dy[i]
 
@@ -23,9 +23,5 @@ for test in range(10):
                 if mp[nr][nc]:  # 방문 확인
                     r, c = nr, nc
                     break
-
-        else:  # 위로 이동
-            r += dy[2]
-            c += dx[2]
 
     print("#{} {}".format(test, c))
