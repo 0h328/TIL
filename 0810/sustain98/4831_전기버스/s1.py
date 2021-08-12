@@ -15,7 +15,7 @@ for idx in range(1,t+1):
         elif loc < charge[i]:                               #더이상 나아갈 수 없는 경우 break
             cnt = 0
             break
-        else: 
+        else:
             continue
 
         if loc >= n:

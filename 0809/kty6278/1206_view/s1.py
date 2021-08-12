@@ -20,4 +20,3 @@ for i in range(10):
             cnt += height[j] - max_height
     # i+1을 통해 조망권 보장되는 세대 수를 출력해준다.
     print('#{} {}'.format(i+1, cnt))
-    이어폰찾아보겠습니다^^
