@@ -18,6 +18,7 @@ def binary_search(p: int, target: int):
             s = m
         else:
             e = m
+
     return p
 
 

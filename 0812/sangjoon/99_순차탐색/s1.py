@@ -4,9 +4,12 @@ sys.stdin = open(str(pathlib.Path(__file__).parent.absolute()) + "/input.txt")
 
 
 def ordered_sequential_search(numbers, target):
-    for i in range(len(numbers)):
-        if target == numbers[i]:
+    for num in numbers:
+        if target == num:
             return True
+
+        if target > num:
+            return False
     return False
 
     # if target in numbers:
