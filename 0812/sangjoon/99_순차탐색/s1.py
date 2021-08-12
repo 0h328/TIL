@@ -2,8 +2,18 @@ import pathlib, sys
 
 sys.stdin = open(str(pathlib.Path(__file__).parent.absolute()) + "/input.txt")
 
-test_case = int(input())
 
-for test in range(1, test_case + 1):
-    ans = 0
-    print("#{} {}".format(test, ans))
+def ordered_sequential_search(numbers, target):
+    for i in range(len(numbers)):
+        if target == numbers[i]:
+            return True
+    return False
+
+    # if target in numbers:
+    #     return True
+    # return False
+
+
+numbers = list(map(int, input().split()))
+print(ordered_sequential_search(numbers, -9))  # True
+print(ordered_sequential_search(numbers, 94))  # False

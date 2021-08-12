@@ -5,24 +5,20 @@ sys.stdin = open(str(pathlib.Path(__file__).parent.absolute()) + "/input.txt")
 test_case = int(input())
 
 for test in range(1, test_case + 1):
-    ans = 0
-    r = 1
-    c = 1
+    n = int(input())
+    lst = [list(map(int, input().split())) for _ in range(n)]
     dr = [-1, 1, 0, 0]
     dc = [0, 0, -1, 1]
+    ans = 0
+    for i in range(n):
+        for j in range(n):
+            r, c = i, j
+            cur = lst[r][c]
+            for k in range(4):
+                nr = r + dr[k]
+                nc = c + dc[k]
 
-    # for i in range(4):
-    #     # print(dr[i], dc[i])
-
-    #     nr = r + dr[i]  # r로부터 dr만큼 이동한 새로운 nr
-    #     nc = c + dc[i]  # c로부터 dc만큼 이동한 새로운 nc
-
-    #     # 1. 벽 안으로 들어오는 경우만 수행
-    #     if (0 <= nr < N) and (0 <= nc < N):
-    #         print(data[nr][nc])
-
-    #     # 2. 벽 밖으로 나가면 그냥 continue
-    #     if nr < 0 or nr >= N or nc < 0 or nc >= N:
-    #         continue
+                if (0 <= nr < n) and (0 <= nc < n):
+                    ans += abs(cur - lst[nr][nc])
 
     print("#{} {}".format(test, ans))
