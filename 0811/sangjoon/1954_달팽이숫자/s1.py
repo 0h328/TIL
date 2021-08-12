@@ -1,6 +1,6 @@
-import sys
+import pathlib, sys
 
-sys.stdin = open("input.txt")
+sys.stdin = open(str(pathlib.Path(__file__).parent.absolute()) + "/input.txt")
 
 test_case = int(input())
 
@@ -27,7 +27,6 @@ for test in range(1, test_case + 1):
         check += 1
 
     print("#{}".format(test))
+
     for row in ans:
-        for num in row:
-            print(num, end=" ")
-        print()
+        print(" ".join(map(str, row)))
