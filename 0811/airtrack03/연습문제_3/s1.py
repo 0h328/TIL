@@ -8,7 +8,7 @@ data = list(map(int, input().split()))
 N = len(data)
 ans = []
 
-for i in range(N):
+for i in range(N+1):
     ans.extend(combinations(data, i))
 
 for combi in ans:
