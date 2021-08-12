@@ -5,6 +5,7 @@ sys.stdin = open('input2.txt')
 
 dr = [0, -1, 0, 1]
 dc = [1, 0, -1, 0]
+
 for T in range(int(input())):
     N = int(input())
     arr = [list(map(int, input().split())) for _ in range(N)]
@@ -18,6 +19,7 @@ for T in range(int(input())):
                     sum_val+=abs(arr[nr][nc] - arr[r][c])
 
     print('#{} {}'.format((T+1), sum_val))
+
 #1 2430
 #2 2244
 #3 0

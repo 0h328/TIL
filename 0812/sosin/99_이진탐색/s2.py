@@ -1,12 +1,15 @@
-# 이진 탐색 재귀
+import sys
+sys.stdin = open('input.txt')
 
+# 이진 탐색 재귀
 def recursive_binary_search(numbers, target):
     mid = len(numbers)//2
-    if len(numbers) == 0:
+    if not numbers:
         return False
+        
     if numbers[mid] == target:
         return True
-    elif numbers[mid] > target:
+    elif numbers[mid] < target:
         return recursive_binary_search(numbers[mid+1:], target)
     else:
         return recursive_binary_search(numbers[:mid], target)
