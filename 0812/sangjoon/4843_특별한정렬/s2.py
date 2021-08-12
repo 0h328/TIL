@@ -11,6 +11,7 @@ for test in range(1, test_case + 1):
     sorted_lst = sorted(lst)
     dq = deque(sorted_lst)
     ans = []
+
     while dq:
         right = dq.pop()
         ans.append(right)
