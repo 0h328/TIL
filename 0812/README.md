@@ -51,8 +51,8 @@ def ordered_sequential_search(numbers, target):
     pass
 
 numbers = list(map(int, input().split()))
-print(ordered_sequential_search(numbers, 9))  # True
-print(ordered_sequential_search(numbers, 94))  # False
+print(ordered_sequential_search(numbers, 9))  # False
+print(ordered_sequential_search(numbers, 94))  # True
 ```
 
 
@@ -70,8 +70,8 @@ def unordered_sequential_search(numbers, target):
     pass
 
 numbers = list(map(int, input().split()))
-print(unordered_sequential_search(numbers, -9))  # True
-print(unordered_sequential_search(numbers, 94))  # False
+print(unordered_sequential_search(numbers, -9))  # False
+print(unordered_sequential_search(numbers, 94))  # True
 ```
 
 
