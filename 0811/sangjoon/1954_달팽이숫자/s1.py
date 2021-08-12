@@ -9,11 +9,7 @@ for test in range(1, test_case + 1):
     ans = [[0] * n for _ in range(n)]
     dr = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 
-    num, cnt, check, = (
-        1,
-        n,
-        0,
-    )
+    num, cnt, check = 1, n, 0
     cnt = n
     x, y = -1, 0
 
