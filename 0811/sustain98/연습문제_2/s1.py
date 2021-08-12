@@ -2,7 +2,7 @@ import sys
 sys.stdin = open('input2.txt')
 
 t = int(input())
-for idx in range(1,t+1):
+for idx in range(1, t+1):
     n = int(input())
     l = [list(map(int, input().split())) for _ in range(n)]
     dx = [0, 1, 0, -1]
