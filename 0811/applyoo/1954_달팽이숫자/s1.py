@@ -3,11 +3,13 @@ sys.stdin = open('input.txt')
 
 def snail_number(num):
     arr = list(range(1, num + 1)) + list(range(1, num)) # 배열 만들기(각 방향에 규칙으로)
-    arr.sort(reverse=True) # 역순 정렬
+    arr.sort(reverse=True) # 역순 정렬 3 ==> 3 2 2 1 1
+    # arr의 인덱스%4 => 방향(0,1,2,3) // arr의 인덱스값 => 해당 방향의 숫자의 개수
     result = [[0] * num for _ in range(num)] # 결과를 저장할 2차원 리스트
+
     row, col, cnt = [0, -1, 0] # 행, 열, 입력값 초기화(열은 처음에 더해지므로 -1로 지정)
 
-    for i in range(len(arr)): # arr의 길이 반복(방향의 갯수를 의미)
+    for i in range(len(arr)): # arr의 길이 반복(방향의 갯수를 의미) 0 1 3 4 5
         for j in range(arr[i]): # arr의 요소만큼 반복(방향으로 몇 칸 나아가는지 의미)
             if i % 4 == 0: # 오른쪽인 경우
                 col += 1 # 첫번째 방향이므로 제일 처음 걸리는 조건임(따라서 col 초기값 -1)
