@@ -25,7 +25,7 @@ for _ in range(10):
     total2 = 0
     for i in range(len(num_list)):
         total1 += num_list[i][i]
-        total2 += num_list[i][len(num_list)-1]
+        total2 += num_list[i][len(num_list)-1-i]
         if total1 > max_value:
             max_value = total1
         if total2 > max_value:

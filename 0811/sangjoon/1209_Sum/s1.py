@@ -1,6 +1,7 @@
-import sys
+import pathlib, sys
 
-sys.stdin = open("input.txt")
+sys.stdin = open(str(pathlib.Path(__file__).parent.absolute()) + "/input.txt")
+# sys.stdin = open("input.txt")
 
 
 test_case = 10

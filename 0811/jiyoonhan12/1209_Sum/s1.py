@@ -1,7 +1,7 @@
 import sys
 sys.stdin = open('input.txt')
 
-for t in range(1, 11):
+for t in range(10):
     case = int(input())
 
     arr = [] # 2차원 배열 안에 숫자 채우기
@@ -33,7 +33,7 @@ for t in range(1, 11):
     diag_sum2 = 0 # 오른쪽 위로 올라가는 대각선
     for i in range(100):
         for j in range(100):
-            if i + j == 100:
+            if i + j == 99:
                 diag_sum2 += arr[i][j]
     compare_sum.append(diag_sum2)
 
