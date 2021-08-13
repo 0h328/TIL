@@ -20,15 +20,10 @@ for i in range(10):
                 if x < 99 and list1[y][x + 1] == 1:
                     while x < 99 and list1[y][x + 1] == 1:
                         x += 1
-                    else:
-                        y += 1
                 elif x > 0  and list1[y][x - 1] == 1:
-                    while x >0 and list1[y][x - 1] == 1:
+                    while x > 0 and list1[y][x - 1] == 1:
                         x -= 1
-                    else:
-                        y +=1
-                else:
-                    y +=1
+                y +=1
                 if y == 99:
                     break
         if list1[y][x] == 2:
