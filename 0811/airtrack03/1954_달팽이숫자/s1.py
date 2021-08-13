@@ -20,7 +20,7 @@ for tc in range(1, T+1):
     while True:
         nxt_x = x + dx[d]
         nxt_y = y + dy[d]
-
+        # 0보다 작은 조건은 0에서 -1해주면 인덱스가 -1인데 이 경우는 채워져있으므로 들어가지 않아도 통과
         if nxt_x >= N or nxt_y >= N or ans[nxt_y][nxt_x] != 0:
             d = (d+1) % 4
             continue

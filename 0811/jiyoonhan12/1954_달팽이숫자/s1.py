@@ -17,7 +17,7 @@ for t in range(1, T+1):
     while num <= n * n:
         ni = i + di[k]
         nj = j + dj[k]
-        valid = ni < n and nj < n
+        valid = 0 <= ni < n and 0 <= nj < n
         if valid and arr[ni][nj] == 0: # 구간 내, 아직 안 채워졌을 때
             arr[ni][nj] = num
             num += 1
