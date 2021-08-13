@@ -19,7 +19,7 @@ for test in range(10):
             nc = c + dx[i]
             nr = r + dy[i]
 
-            if 0 <= nc < 100 and 0 <= nr < 100 and mp[nr][nc]:  # 이동 가능 확인
+            if 0 <= nc < 100 and 0 <= nr < 100:  # 이동 가능 확인
                 if mp[nr][nc]:  # 방문 확인
                     r, c = nr, nc
                     break
