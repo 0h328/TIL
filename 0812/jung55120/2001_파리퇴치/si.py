@@ -12,6 +12,7 @@ for tc in range(1, TC+1):
     for r in range(M):
         for c in range(M):
             point.append((r,c))
+    print(point)
 
     for j in range(N):   # 0
         for k in range(N): # 0, 1, 2, 3
@@ -21,5 +22,6 @@ for tc in range(1, TC+1):
                     nj = j + point[l][0]
                     nk = k + point[l][1]
                     fly_catch.append(arr[nj][nk])
+                print(fly_catch)
                 result.append(sum(fly_catch))
     print('#{0} {1}'.format(tc, max(result)))
