@@ -3,13 +3,13 @@ sys.stdin = open('input.txt')
 
 def Sumlist(a):
     ansmax = sum(a[0]) # 맨 처음 초기화값
-    temp_max3 = 0 # i = k > 대각선
-    temp_max4 = 0 # i + k = 99 < 역대각선
+    temp_max3 = 0      # i = k > 대각선
+    temp_max4 = 0      # i + k = 99 < 역대각선
 
 
     for i in range(100):
         temp_max = sum(a[i]) #행의 합
-        temp_max2 = 0 #열의 값 초기화
+        temp_max2 = 0        #열의 값 초기화
         ans = []
 
 
@@ -20,7 +20,7 @@ def Sumlist(a):
             if i + k == 99:
                 temp_max4 += a[i][k]
         ans.extend([temp_max,temp_max2,temp_max3,temp_max4,ansmax])
-        ansmax = max(ans)
+        ansmax = max(ans)  # 매번 5개의 값을 비교하여 비교
     return(ansmax)
 
 for i in range(10):
