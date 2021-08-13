@@ -15,8 +15,8 @@ for k in length_A:
         max_value = k
 
 i = 0
-for i in range(max_value): #5 : 0~4
-    for j in range(len(A)): # i = 0 : 0~4 / i = 1 : 0~2 / i = 2 : 0~3 / i = 3 : 0~4 / i = 4 : 0~1
+for i in range(max_value):
+    for j in range(len(A)):
 
         try:
             print(A[j][i], end=' ')
@@ -24,11 +24,3 @@ for i in range(max_value): #5 : 0~4
             pass
     i += 1
 
-# print()
-# for i in range(len(A[4])): #5 : 0~4
-#     for j in range(len(A)): # i = 0 : 0~4 / i = 1 : 0~2 / i = 2 : 0~3 / i = 3 : 0~4 / i = 4 : 0~1
-#
-#         try:
-#             print(A[j][i], end=' ')
-#         except IndexError:
-#             pass
