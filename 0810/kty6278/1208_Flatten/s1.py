@@ -7,7 +7,7 @@ for i in range(10):                                          # 10개의 테스�
     box_height = list(map(int, input().split()))             # 각 상자의 높이값을 받아온다.
     # print(nums, box_height)
 
-    for num in range(nums):                                  # 덤프의 수 'nums'만큼 반복
+    for _ in range(nums):                                  # 덤프의 수 'nums'만큼 반복
         max_box = max(box_height)                            # 상자의 높이 중 최대값
         min_box = min(box_height)                            # 상자의 높이 중 최소값
         index_max_box = box_height.index(max_box)            # 같은 값이 존재하는 경우, index를 이용해 높은 상자 중 가장 앞에 위치한 상자

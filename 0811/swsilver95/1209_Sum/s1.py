@@ -11,27 +11,27 @@ for _ in range(1, 11):
         total = 0
         for j in range(100):
             total += arr[i][j]
-        if max_num <= total:
+        if max_num < total:
             max_num = total
 
     for j in range(100):            # 2. 세로합 살펴보기
         total = 0
         for i in range(100):
             total += arr[i][j]
-        if max_num <= total:
+        if max_num < total:
             max_num = total
 
     total = 0
     for i in range(100):            # 3. 왼쪽 위 - 오른쪽 아래 대각선 합
         total += arr[i][i]
-    if max_num <= total:
+    if max_num < total:
         max_num = total
 
 
     total = 0
     for i in range(100):            # 4. 오른쪽 위 - 왼쪽 아래 대각선 합
         total += arr[99 - i][i]
-    if max_num <= total:
+    if max_num < total:
         max_num = total
 
     print('#{} {}'.format(tc, max_num))

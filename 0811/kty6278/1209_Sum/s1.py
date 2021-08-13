@@ -39,4 +39,5 @@ for test in range(10):
                 second += box_list[i][j]
         sec_list.append(second)
     total_list.append(sum(sec_list))
+
     print('#{} {}'.format(test+1, max(total_list)))

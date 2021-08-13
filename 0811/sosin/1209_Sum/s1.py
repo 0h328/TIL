@@ -1,7 +1,6 @@
 import sys
 sys.stdin = open('input.txt')
 
-
 for T in range(10):
     input()
     
@@ -34,4 +33,4 @@ for T in range(10):
 #7 1703
 #8 1714
 #9 1727
-#10 1731
+#10 1000
