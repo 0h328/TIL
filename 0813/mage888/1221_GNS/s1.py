@@ -28,9 +28,10 @@ for tc in range(1, T+1):
             arr_list.append(8)
         elif i == 'NIN':
             arr_list.append(9)
+    # print(arr_list)
 
     arr_list.sort()
-
+    # print(arr_list)
     for i in range(len(arr_list)):
         if arr_list[i] == 0:
             arr_list[i] = 'ZRO'
