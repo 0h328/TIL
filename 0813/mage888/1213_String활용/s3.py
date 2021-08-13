@@ -7,3 +7,4 @@ for _ in range(10):
     t = input()
 
     print('#{} {}'.format(n, t.count(p)))
+

@@ -1,13 +1,7 @@
 import sys
 sys.stdin = open('input.txt', encoding='UTF-8')
 
-for _ in range(10):
-    n = int(input())
-    p = input()
-    t = input()
-
-    i = 0
-    cnt = 0
+def characteristics(i, cnt):
 
     while i < len(t):
         j = 0
@@ -27,7 +21,19 @@ for _ in range(10):
             # i == len(t)는 마지막 문자가 되었으므로
             cnt += 1
 
-    print('#{} {}'.format(n, cnt))
+    return cnt
+
+for _ in range(10):
+    n = int(input())
+    p = input()
+    t = input()
+
+    i = 0
+    cnt = 0
+
+    ans = characteristics(i, cnt)
+
+    print('#{} {}'.format(n, ans))
 
 
 
