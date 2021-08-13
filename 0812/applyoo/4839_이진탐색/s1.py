@@ -1,17 +1,17 @@
 import sys
 sys.stdin = open('input.txt')
 
-def binarySearch(start, end, cnt, find):
+def binarySearch(start, end, cnt, value):
     if start > end:
-        return 1001                                         # 답을 못 찾는 경우 최대값 반환
+        return 1001                                              # 답을 못 찾는 경우 최대값 반환
     div = (start+end)//2
-    if div == find:                                         # 답을 찾은 경우
+    if div == value:                                             # 답을 찾은 경우
         return cnt
-    else:                                                       # 못 찾은 경우
-        if div > find:                                          # div가 더 큰 경우(end를 div로 줄임)
-            return binarySearch(start, div, cnt + 1, find)
-        else: #                                             div가 작은 경우(start를 div로 높임)
-            return binarySearch(div, end, cnt+1, find)
+    else:                                                        # 못 찾은 경우
+        if div > value:                                          # div가 더 큰 경우(end를 div로 줄임)
+            return binarySearch(start, div, cnt + 1, value)
+        else:                                                    # div가 작은 경우(start를 div로 높임)
+            return binarySearch(div, end, cnt+1, value)
 
 T = int(input())
 for test in range(T):

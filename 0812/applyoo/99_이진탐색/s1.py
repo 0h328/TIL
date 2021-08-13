@@ -3,7 +3,8 @@ sys.stdin = open('input.txt')
 
 def binary_search(numbers, target):
     numbers.sort()
-    start, end = 0, len(numbers) - 1
+    start = 0
+    end = len(numbers) - 1
 
     while start <= end:
         div = (start + end) // 2
@@ -20,11 +21,14 @@ print('not recursion')
 print(binary_search(arr, 5))
 print(binary_search(arr, 10))
 
+
 def recursive_binary_search(numbers, target):
-    if len(numbers) == 1 and numbers[0] != target:
+    if len(numbers) == 0: # base case
         return False
+
     else:
-        start, end = 0, len(numbers) - 1
+        start = 0
+        end = len(numbers) - 1
         div = (start + end) // 2
         if numbers[div] == target:
             return True
