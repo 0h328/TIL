@@ -1,21 +1,19 @@
 # 08/12 List II - 문제풀이
 
-| No.  | Title     | Directory       |
-| ---- | --------- | --------------- |
-|  | 선택정렬 | `99_선택정렬` |
-|  | 순차탐색 | `99_순차탐색` |
-|  | 이진탐색 | `99_이진탐색` |
-| 4836 | 색칠하기 | `4836_색칠하기` |
-|  2001    | 파리퇴치          | `2001_파리퇴치`           |
-| 4837 | 부분집합의 합 | `4837_부분집합의합` |
-| 4839 | 이진탐색 | `4839_이진탐색` |
-| 4843 | 특별한 정렬 (선택정렬 연습) | `4843_특별한정렬` |
-| 1945 | 간단한 소인수분해 | `1945_간단한소인수분해` |
-| 1210 | Ladder1(HW) | `1210_Ladder1` |
+| No.  | Title                       | Directory               |
+| ---- | --------------------------- | ----------------------- |
+|      | 선택정렬                    | `99_선택정렬`           |
+|      | 순차탐색                    | `99_순차탐색`           |
+|      | 이진탐색                    | `99_이진탐색`           |
+| 4836 | 색칠하기                    | `4836_색칠하기`         |
+| 2001 | 파리퇴치                    | `2001_파리퇴치`         |
+| 4837 | 부분집합의 합               | `4837_부분집합의합`     |
+| 4839 | 이진탐색                    | `4839_이진탐색`         |
+| 4843 | 특별한 정렬 (선택정렬 연습) | `4843_특별한정렬`       |
+| 1945 | 간단한 소인수분해           | `1945_간단한소인수분해` |
+| 1210 | Ladder1(HW)                 | `1210_Ladder1`          |
 
-
-
-## 99_선택정렬
+## 99\_선택정렬
 
 ```
 input.txt
@@ -32,11 +30,7 @@ numbers = list(map(int, input().split()))
 print(numbers)
 ```
 
-
-
-
-
-## 99_순차탐색
+## 99\_순차탐색
 
 ```
 input.txt
@@ -55,8 +49,6 @@ print(ordered_sequential_search(numbers, -9))  # True
 print(ordered_sequential_search(numbers, 94))  # False
 ```
 
-
-
 ```
 input.txt
 
@@ -74,11 +66,7 @@ print(unordered_sequential_search(numbers, 9))  # True
 print(unordered_sequential_search(numbers, 94))  # False
 ```
 
-
-
-
-
-## 99_이진탐색
+## 99\_이진탐색
 
 ```
 input.txt
@@ -107,4 +95,3 @@ numbers = list(map(int, input().split()))
 print(recursive_binary_search(numbers, 5)) # True
 print(recursive_binary_search(numbers, 10)) # False
 ```
-
