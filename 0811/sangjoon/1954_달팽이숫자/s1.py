@@ -1,6 +1,6 @@
-import sys
+import pathlib, sys
 
-sys.stdin = open("input.txt")
+sys.stdin = open(str(pathlib.Path(__file__).parent.absolute()) + "/input.txt")
 
 test_case = int(input())
 
@@ -9,11 +9,7 @@ for test in range(1, test_case + 1):
     ans = [[0] * n for _ in range(n)]
     dr = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 
-    num, cnt, check, = (
-        1,
-        n,
-        0,
-    )
+    num, cnt, check = 1, n, 0
     cnt = n
     x, y = -1, 0
 
@@ -31,7 +27,6 @@ for test in range(1, test_case + 1):
         check += 1
 
     print("#{}".format(test))
+
     for row in ans:
-        for num in row:
-            print(num, end=" ")
-        print()
+        print(" ".join(map(str, row)))

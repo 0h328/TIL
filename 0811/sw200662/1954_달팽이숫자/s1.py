@@ -15,6 +15,7 @@ for z in range(T):
         for _ in range(a):
             c.append(value)
         b.append(c)
+
     cnt = 1
     i,j = 0,-1
     k = 0

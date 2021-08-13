@@ -16,18 +16,19 @@ for _ in range(1, 11):
     li = [list(map(int, input().split())) for _ in range(100)]
     max_sum = 0
 
+    left_diagonal = 0  # 왼쪽 대각선 합계
+    right_diagonal = 0  # 오른쪽 대각선 합계
+
     for i in range(100):
         row_sum1 = 0                # 행 합계
         col_sum2 = 0                # 열 합계
-        left_diagonal = 0           # 왼쪽 대각선 합계
-        right_diagonal = 0          # 오른쪽 대각선 합계
 
         for j in range(100):
             row_sum1 += li[i][j]
             col_sum2 += li[j][i]
 
         left_diagonal += li[i][i]
-        right_diagonal += li[i][-i-1]
+        right_diagonal += li[i][-1-i]
 
         if max_sum < row_sum1:
             max_sum = row_sum1
