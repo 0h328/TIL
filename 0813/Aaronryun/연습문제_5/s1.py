@@ -1,21 +1,25 @@
 def solve_while(target, pattern, N, M):
-    p = input()
-    t = input()
     i = 0
     j = 0
-    while j < len(p) and i < len(t):
-        if t[i] != p[j]:
+    while j < M and i <N:
+        if target[i] != pattern[j]:
             i = i - j
             j = -1
         i += 1
         j += 1
-    if j == len(p):
-        print('#{} {}'.format(test + 1, 1))
+    if j == M:
+        return i-j
     else:
-        print('#{} {}'.format(test + 1, 0))
+        return 0
 
 def solve_for(target, pattern, N, M):
-    pass
+    for i in range(N-M+1):
+        for j in range(M):
+            if target[i+j] != pattern[j]:
+                break
+            elif j==M-1:
+                return i
+
 
 
 import sys

@@ -6,24 +6,24 @@ T = int(input())
 
 for test in range(T):
     N = int(input())
-    data = list(map(int,input().split()))
+    data = list(map(int, input().split()))
 
-    for i in range(len(data)-1):
-        if not i&1:
-            maxi=i
-            for j in range(i+1,len(data)):
+    for i in range(len(data) - 1):
+        if not i & 1:
+            maxi = i
+            for j in range(i + 1, len(data)):
                 if data[j] > data[maxi]:
-                    maxi=j
-            data[i],data[maxi] = data[maxi],data[i]
+                    maxi = j
+            data[i], data[maxi] = data[maxi], data[i]
 
         else:
-            mini=i
-            for j in range(i+1,len(data)):
+            mini = i
+            for j in range(i + 1, len(data)):
                 if data[j] < data[mini]:
-                    mini=j
-            data[i],data[mini]=data[mini],data[i]
+                    mini = j
+            data[i], data[mini] = data[mini], data[i]
 
-    print('#{}'.format(test+1),end=' ')
+    print('#{}'.format(test + 1), end=' ')
     for i in range(10):
-        print(data[i] , end=' ')
+        print(data[i], end=' ')
     print()

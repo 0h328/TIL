@@ -20,13 +20,13 @@ for test in range(T):
         check = 0
 
         for j in range(K):
-            if charge[position - j] == 1:                   # 뒤로가면서 충전소가 등장한다면 체크를 하나올리고 탈출
+            if charge[position - j] == 1:          # 뒤로가면서 충전소가 등장한다면 체크를 하나올리고 탈출
                 check += 1
                 position = position - j + K
                 break
         if check == 1:
             cnt += 1
-        elif check == 0:                             # 체크가 되지 않았다면 멈췄으므로 cnt를 0으로 만들고 탈출
+        elif check == 0:                           # 체크가 되지 않았다면 멈췄으므로 cnt를 0으로 만들고 탈출
             cnt = 0
             break
 
