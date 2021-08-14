@@ -32,4 +32,3 @@ for t in range(1, 11):
         if diff < 2:
             break
     print('#{} {}'.format(t, diff))
-
