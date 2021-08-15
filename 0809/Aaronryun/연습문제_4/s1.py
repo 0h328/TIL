@@ -18,12 +18,14 @@ for test in range(T):
             result[i] -= 3
             tri += 1
             continue
+
         if result[i] >= 1 and result[i + 1] >= 1 and result[i + 2] >= 1:
             result[i] -= 1
             result[i + 1] -= 1
             result[i + 2] -= 1
             run += 1
             continue
+
         i += 1
     if run + tri == 2:
         print('#{} {}'.format(test + 1, 1))

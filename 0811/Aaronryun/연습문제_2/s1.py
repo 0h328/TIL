@@ -1,7 +1,7 @@
 import sys
 
 sys.stdin = open('input.txt')
-
+from pandas import DataFrame
 T = int(input())
 data = []
 for test in range(T):
@@ -17,4 +17,4 @@ for h in range(4):
     nx = x + dx[h]
     ny = y + dy[h]
 
-    print(data[nx][ny])
+    print(DataFrame(data))
