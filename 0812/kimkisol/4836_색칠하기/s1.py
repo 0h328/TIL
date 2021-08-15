@@ -3,34 +3,19 @@ sys.stdin = open('input.txt')
 input = sys.stdin.readline
 
 T = int(input())
-nums = []
 
 for t in range(1, T+1):
-    nums.append(list(map(int, input().split())))
+    N = int(input())
+    lst = [list([0]*10) for _ in range(10)]
+    result = 0
 
-print('행 우선 순회')
-for i in range(T):
-    for j in range(T):
-        print(nums[i][j], end='\t')
-    print()
+    for n in range(N):
+        x1, y1, x2, y2, color = map(int, input().split())
+        for x in range(x1, x2 + 1):
+            for y in range(y1, y2 + 1):
+                lst[x][y] += 1
 
-print('열 우선 순회')
-for i in range(T):
-    for j in range(T):
-        print(nums[j][i], end='\t')
-    print()
+    for i in range(10):
+        result += lst[i].count(2)
 
-print('지그재그 순회')
-for i in range(T):
-    for j in range(T):
-        print(nums[i][j + ((i%2) * (T-1-2*j))], end='\t')
-    print()
-
-print('전치행렬')
-nums2 = nums[:]
-for i in range(T):
-    for j in range(T):
-        if i < j:
-            nums2[i][j], nums2[j][i] = nums2[j][i], nums2[i][j]
-        print(nums[i][j], end='\t')
-    print()
+    print(result)
