@@ -2,7 +2,7 @@ import sys
 sys.stdin = open('input.txt')
 
 def painting():
-    paper = [[0]*10 for _ in range(10)] # 맵 구현?
+    paper = [[0]*10 for _ in range(10)]     # 맵 구현?
 
     for x1, y1, x2, y2, color  in arr:
         if color == 1:                      # 빨강인 경우(1: 빨강, 2: 파랑, 3: 보라)
