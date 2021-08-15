@@ -16,7 +16,7 @@ for test in range(10):
                     arrive -= 1
 
             elif (arrive+1) in range(len(arr)) and arr[j][arrive + 1]:
-                while (arrive-1) in range(len(arr)) and arr[j][arrive+1] > 0:
+                while (arrive+1) in range(len(arr)) and arr[j][arrive+1] > 0:
                     arrive += 1
 
 
