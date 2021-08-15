@@ -33,6 +33,7 @@ for Case in range(T):
 
     # print(red_point)
     # print(blue_point)
+
     cnt = 0
     for rep in blue_point:
         if rep in red_point:
