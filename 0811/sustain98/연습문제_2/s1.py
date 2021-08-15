@@ -17,5 +17,4 @@ for idx in range(1, t+1):
                 if -1 < ni < n and -1 < nj < n:
                     total += abs(l[i][j] - l[ni][nj])
 
-
     print('#{} {}'.format(idx, total))
