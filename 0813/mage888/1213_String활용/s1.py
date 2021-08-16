@@ -6,13 +6,13 @@ def characteristics(i, cnt):
     while i < len(t):
         j = 0
         while j < len(p):
-            if i == len(t):                 # 무한루프 방지 IndexError 방지
-                break
             if t[i] != p[j]:
                 i -= j
                 j = -1
             i += 1
             j += 1                          # j가 len(p)가 된 것은, p랑 t안에 p가 동일한 것을 찾았기 때문
+            if i == len(t):                 # 무한루프 방지 IndexError 방지
+                break
 
         if i != len(t):
             cnt += 1
