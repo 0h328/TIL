@@ -6,8 +6,6 @@ for tc in range(1, T+1):
     N, M = map(int, input().split())
     square = [list(input()) for _ in range(N)]
     zip_square = list(zip(*square))
-    print(zip_square)
-    break
     for i in range(N):
         for j in range(N - M + 1):
             # 행 기준 회문 찾기
