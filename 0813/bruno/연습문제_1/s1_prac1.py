@@ -3,6 +3,8 @@ def solve(my_str1, my_str2):
         return True
     return False
 
+
+
 import sys
 sys.stdin = open('input.txt')
 my_str1 = input()

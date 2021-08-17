@@ -1,7 +1,6 @@
-# 엣지케이스 포섭 필요.. 왜 9개만 정답??
 
 import sys
-sys.stdin = open('input.txt')
+sys.stdin = open('input.txt', encoding='UTF-8')
 
 for _ in range(10):
     T = int(input())
@@ -9,7 +8,7 @@ for _ in range(10):
     string = input()
     cnt = 0
 
-    for i in range(len(string) - len(search)):
+    for i in range(len(string) - len(search) + 1):
         if string[i:i+len(search)] == search:
             cnt += 1
     print('#{} {}'.format(T, cnt))
