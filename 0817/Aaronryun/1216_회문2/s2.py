@@ -1,20 +1,35 @@
-def check(str):
-    my_max = []
-    for i in range(len(str)):
-        for j in range(i + 1, len(str) + 1):
-            word = str[i:j]
-            if word == word[::-1]:
-                my_max.append(len(word))
-
-    return (my_max)
-
 
 import sys
 
 sys.stdin = open('input.txt')
-for test in range(10):
-    number = input()
 
+
+def get_solution(arr, m):
+    for word in arr:
+        for i in range(100 - m + 1):
+            for j in range(m // 2):
+                if word[i + j] != word[i + m - 1 - j]:
+                    break
+            else:
+                return m
+    return 0
+
+
+for _ in range(1, 11):
+
+    t = int(input())
     data = [input() for _ in range(100)]
+    trans = [''.join(i) for i in zip(*data)]
 
-    print(check(data[0]))
+    max_word = 1
+    for i in range(2, 101):
+        if i > max_word + 2: break # 회문은 앞 뒤로 두개씩 최대로 들어올 수 있다.
+        if max_word < get_solution(data, i): # 회문일 경우만 맥스로 초기화
+            max_word = i
+
+    for j in range(max_word + 1, 101):
+        if j > max_word + 2: break
+        if max_word < get_solution(trans, j):
+            max_word = j
+
+    print('#{} {}'.format(_, max_word))
