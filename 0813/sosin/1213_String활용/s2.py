@@ -7,9 +7,9 @@ for _ in range(10):
     words = input()
     result = 0
     word_length = len(words)
-    for i in range(word_length):
+    for i in range(word_length-len(search_word)+1):
         for j, sw in enumerate(search_word):
-            if i+j == word_length or words[i+j] != sw:
+            if words[i+j] != sw:
                 break
         else:
             result+=1
