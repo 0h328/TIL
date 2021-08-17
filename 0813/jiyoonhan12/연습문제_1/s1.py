@@ -9,8 +9,8 @@ def solve(my_str1, my_str2):
         for i in range(len(my_str1)): # 글자 하나하나 비교하다가
             if my_str1[i] != my_str2[i]: # 다르면 False
                 return False
-            else:
-                continue
+            # else:
+            #     continue
         return True # for문 끝까지 돌렸다면 True
 
 
