@@ -14,13 +14,13 @@ sys.stdin = open('input2.txt')
 # 찾으면 바로 리턴
 # 못찾고 원소값이 타깃 넘버보다 크면 바로 return False
 
-# def ordered_sequential_search(numbers, target):
-#     for i in range(len(numbers)):
-#         if target == numbers[i]:    # 찾으면 함수 끝
-#             return True
-#         elif numbers[i] > target:   # 원소값이 타깃값을 넘어버리면 함수 끝
-#             return False
-#     return False                    # 끝까지 못 찾으면 함수 끝
+def ordered_sequential_search(numbers, target):
+    for i in range(len(numbers)):
+        if target == numbers[i]:    # 찾으면 함수 끝
+            return True
+        elif numbers[i] > target:   # 원소값이 타깃값을 넘어버리면 함수 끝
+            return False
+    return False                    # 끝까지 못 찾으면 함수 끝
 
 
 # numbers = list(map(int, input().split()))

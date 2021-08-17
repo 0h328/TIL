@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('input.txt')
+sys.stdin = open('input2.txt')
 
 # thought process:
 # 가로줄 합
@@ -29,19 +29,19 @@ for _ in range(T):
             total_2 += arr[j][i]
         maxV.append(total_2)
 
-    #negative대각선 총 합
+    #negative대각선 총 합                        # for loop 한개로도 구현 가능!
     for i in range(len(arr)):
         total_3 = 0
         for j in range(len(arr)):
-            if i == j:                      # -대각선에 위치한 i와 j는 항상 동일
+            if i == j:                          # -대각선에 위치한 i와 j는 항상 동일
                 total_3 += arr[i][j]
         maxV.append(total_3)
 
-    #positive대각선 총 합
+    #positive대각선 총 합                        # for loop 한개로도 구현 가능!
     for i in range(len(arr)):
         total_4 = 0
         for j in range(len(arr)):
-            if i + j == len(arr):           # +대각선에 위치한 i와 j의 합은 항상 = N
+            if i + j == len(arr):               # +대각선에 위치한 i와 j의 합은 항상 = N
                 total_4 += arr[i][j]
         maxV.append(total_4)
 
