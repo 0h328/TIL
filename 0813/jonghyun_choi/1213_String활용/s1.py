@@ -6,7 +6,7 @@ for _ in range(10):
     search_word = input()
     search_list = input()
     cnt = 0
-    for i in range(len(search_list)):
+    for i in range(len(search_list)-len(search_word)+1):
         if search_list[i] == search_word[0]:
             if search_list[i:i+len(search_word)] == search_word:
                 cnt += 1
