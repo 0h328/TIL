@@ -7,7 +7,7 @@ T = int(input())
 
 def Bubble(data):
     for i in range(len(data)):
-        for j in range(i + 1,len(data)):
+        for j in range(i + 1, len(data)):
             if data[j] < data[j - 1]:
                 data[j], data[j - 1] = data[j - 1], data[j]
     return data
@@ -31,5 +31,5 @@ for test in range(T):
 
     result = Bubble(data)
     result2 = Select(data)
-    print('#{}'.format(test+1),*result)
+    print('#{}'.format(test + 1), *result)
     # print(Select(data))
