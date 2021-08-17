@@ -6,7 +6,7 @@ for t in range(1, 11):
     target = input()
     chars = input()
     result = 0
-    for idx in range(len(chars) - 1):
+    for idx in range(len(chars) - len(target) + 1):
         cnt = 0
         for idx2 in range(len(target)):
             if chars[idx + idx2] != target[idx2]:
