@@ -7,16 +7,49 @@ for _ in range(1, 11):
 
     row_str_list = [list(input()) for _ in range(n)]
     col_str_list = list(zip(*row_str_list))
-    # print(col_str_list)
+    #print(row_str_list)
 
-    result = 1 # 최소의 회문 값은 1
+    result = 0
 
-    palindrome_list = []
+    #  cnt = 1 :
+    #  length = 100, i = 0, y = 0
+    #  row_str_list[0][0:100] == row_str_list[0][0:100][::-1] # 리스트를 뒤집는다는 뜻
+    #  첫번째 행의 0~99까지의 원소들을 회문인지 판별
 
-    for i in range(0, n): # 0 ~ 100행까지 반복
-        for j in range(i + 1):
-            for k in range(n-j, n):
-                # if row_str_list[i][l:k+i//2] == row_str_list[i][l:k+i//2][::-1]:
-                #     print(True)
+    #  cnt = 2 :
+    #  length = 100, i = 0, y = 1
+    #  row_str_list[1][0:100] == row_str_list[1][0:100][::-1] # 리스트를 뒤집는다는 뜻
+    #  두번째 행의 0~99까지의 원소들을 회문인지 판별
+
+    #  cnt = n :
+    #  length = 57, i = 20, y = 1
+    #  row_str_list[1][20:77] == row_str_list[1][20:77][::-1] # 리스트를 뒤집는다는 뜻
+    #  n번째 행의 0~99까지의 원소들을 회문인지 판별
+
+    for length in range(n, 0, -1): #l = palindrom length # 회문의 길이를 기준으로
+        for i in range(n - length + 1): # 시작점의 위치를 한 칸씩 옮기기 위함(index error를 고려)
+            for y in range(n):  # index of row and col # 모든 행과 열을 다 체크한다.
+                if row_str_list[y][i: i + length] == row_str_list[y][i: i + length][::-1]:
+                    result = length
+                    break
+                elif col_str_list[y][i: i + length] == col_str_list[y][i: i + length][::-1]:
+                    result = length
+                    break
+            if result == True:
+                break
+        if result == True:
+            break
+    print('#{0} {1}'.format(tc, result))
+
+
+    # result = 1 # 최소의 회문 값은 1
+    #
+    # palindrome_list = []
+    #
+    # for i in range(0, n): # 0 ~ 100행까지 반복
+    #     for j in range(i + 1):
+    #         for k in range(n-j, n):
+    #             # if row_str_list[i][l:k+i//2] == row_str_list[i][l:k+i//2][::-1]:
+    #             #     print(True)
 
 
