@@ -4,7 +4,7 @@ sys.stdin = open('input.txt')
 
 T = int(input())
 
-for idx in range(T):
+for tc in range(1, T + 1):
     N, K = map(int, input().split())
     data = [[0 for _ in range(N+2)]]
 
@@ -34,5 +34,5 @@ for idx in range(T):
                 slot_ver.append(cnt)
                 cnt = 0
 
-    print(f'#{idx + 1}', end=' ')
+    print('#{}'.format(tc), end=' ')
     print(slot_hor.count(K) + slot_ver.count(K))
