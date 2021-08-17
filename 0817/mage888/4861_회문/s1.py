@@ -38,7 +38,8 @@ for tc in range(1, T+1):
             col_str += row_list[j][i]
         col_list.append(col_str)
 
+
     # print(col_list)
-    print('#{} {}'.format(tc, find_palindrome()))
+    # print('#{} {}'.format(tc, find_palindrome()))
 
 
