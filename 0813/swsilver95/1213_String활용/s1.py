@@ -16,5 +16,5 @@ for _ in range(10):
                 if tmp == len(pattern):                     # tmp가 패턴의 길이와 같으면 탐색 성공
                     cnt += 1                                # cnt에 +1
 
+
     print('#{} {}'.format(tc, cnt))
-            
