@@ -1,5 +1,5 @@
 def solve(word):
-    return ' '.join([w[::-1] for w in reversed(word.lower().split())])
+    return ' '.join([w for w in reversed(word.lower().split())])
 
 import sys
 sys.stdin = open('input.txt')
@@ -10,4 +10,4 @@ print(solve(word)) # edcba
 
 #2. pythonic (slicing)
 word2 = input()
-print(solve(word2)) # sgnirts siht esreve
+print(word2[::-1]) # sgnirts siht esreve
