@@ -1,39 +1,36 @@
 import sys
 sys.stdin = open('input.txt')
 
-T = int(input())
-
 def find_pal():
     # 모든 행에 대해서
-    for row in range(N):
-        for s in range(0, N - M + 1):
-            e = s + M - 1
-            for i in range(M // 2):
-                if arr[row][s + i] != arr[row][e - i]:
+    for row in range(100):
+        for i in range(100 - M + 1):
+            for j in range(M // 2):
+                if arr[row][i+j] != arr[row][i-j+M-1]:
                     break
 
             else:   # 회문인 경우
-                ret = ''
-                for i in range(s, e + 1):
-                    ret += arr[row][i]
-                return ret
+                result = ''
+                for k in range(i, i+M):
+                    result += arr[row][k]
+                return result
 
     # 모든 열에 대해서
-    for col in range(N):
-        for s in range(0, N - M + 1):
-            e = s + M - 1
-            for i in range(M // 2):
-                if arr[s + i][col] != arr[e - i][col]:
+    for col in range(100):
+        for i in range(100 - M + 1):
+            for j in range(M // 2):
+                if arr[i+j][col] != arr[i-j+M-1][col]:
                     break
 
             else:   # 회문인 경우
-                ret = ''
-                for i in range(s, e + 1):
-                    ret += arr[i][col]
-                return ret
+                result = ''
+                for k in range(i, i+M):
+                    result += arr[k][col]
+                return result
 
-for tc in range(1, T + 1):
-    N, M = map(int, input().split())
-    arr = [input() for _ in range(N)]
+for _ in range(1, 11):
+    T = int(input())
+    arr = [list(input()) for _ in range(100)]
+    arr2 = list(zip(*arr))
 
-    print('#{} {}'.format(tc, find_pal()))
+    print('#{} {}'.format(T, find_pal()))
