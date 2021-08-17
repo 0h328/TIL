@@ -1,9 +1,9 @@
 import sys
+sys.stdin = open('input.txt')
 
-sys.stdin = open('input.txt', 'rt', encoding='UTF8')
+T = int(input())
 
-for i in range(10):
-    try_num = int(input())
+for i in range(T):
     find_str = input()
     found_str = input()
     A = len(find_str)
@@ -18,4 +18,7 @@ for i in range(10):
                 cnt_test += 1 # 맞다면 한번 더해주고 다시 돌림
                 if cnt_test == (A): # 돌리다가 만약, 글자수와 같게된다면 cnt에 +1
                     cnt += 1
-    print('#{} {}'.format(i + 1, cnt))
+    if cnt >= 1:
+        print('#{} {}'.format(i + 1, cnt))
+    else:
+        print('#{} {}'.format(i + 1, cnt))
