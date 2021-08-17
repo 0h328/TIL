@@ -12,11 +12,11 @@ def find_palindrome(l):
                     if sub[idx] != sub[idx + inter]:
                         break
                     idx += 1
-                else:
-                    # print(sub[i:i+length])
-                    max_len = max(max_len, length)
+                else:                                       # max_len보다 길이가 긴 회문을 찾은 경우
+                    max_len = length
+                    # max_len = max(max_len, length)
+                    break
     return max_len
-
 
 for _ in range(10):
     idx = input()
