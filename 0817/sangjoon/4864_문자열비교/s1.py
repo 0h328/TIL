@@ -9,7 +9,7 @@ for test in range(1, test_case + 1):
     m = input()
     ans = 0
 
-    if n in m:
+    if n in m:  # 문자열 확인
         ans = 1
 
     print("#{} {}".format(test, ans))
