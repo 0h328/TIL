@@ -18,18 +18,12 @@ def init():
         nums = list(map(int, input().split()))
         jeonmang = 0
 
-        for i in range(N):
+        for i in range(2, N-2):
             # 앞&뒤 두개 인덱스가 현재 인덱스보다 작을때
-            if nums[i] > nums[i-1] and nums[i] > nums[i-2] and nums[i] > nums[i+1] and nums[i] > nums[i+2]:
-                # 네개의 인덱스값중에 가장 큰 값을 찾아서
-                # 패작 코드 ↓
-                # temp = [nums[i-1], nums[i-2], nums[i+1], nums[i+2]]
-                # for j in range(len(temp)):
-                #     if temp[j] > temp[j+1]:
-                #         temp[j], temp[j+1] = temp[j+1], temp[j]
-                # highest_num = temp[len(temp)]
-                # 치트키.. ↓
-                highest_num = max(nums[i - 1], nums[i - 2], nums[i + 1], nums[i + 2])
+            # 네개의 인덱스값중에 가장 큰 값을 찾아서 현재 위치 값과 비교
+            highest_num = max(nums[i - 1], nums[i - 2], nums[i + 1], nums[i + 2])
+            # 현재 위치값이 더 크면
+            if nums[i] > highest_num:
                 # 현재 인덱스값에서 빼준다 = 전망 값.
                 room = nums[i] - highest_num
                 # 인덱싱으로 돌아가면서 모든 전망값을 jeonmang 에 축적

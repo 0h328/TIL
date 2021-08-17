@@ -12,32 +12,38 @@ for tc in range(1, 11):
     # 사다리 불러오기
     ladder = [list(map(int, input().split())) for _ in range(100)]
 
-    col_idx = ladder[99].index(2)       #값이 2인 목표지점 찾기
+    start_point = ladder[99].index(2)       #값이 2인 도착지점 찾기
 
-    y = col_idx                         # y좌표 만들기
+    y = start_point                     # y좌표 초기화
 
-    x = 99                              # x 좌표 만들기
+    x = 99                              # x 좌표 초기화
 
-    right = left = 1                    # 좌 우측 값 1 할당
+    right = left = 1                    # 좌 우측 확인때 쓰일 값 1 할당
 
-    while x > 0:                        # 정답지점 찾기
+    while x > 0:                        # 정답지점 찾기 (맨 윗줄 도착 전 까지 올라감)
 
-        if ladder[x][y-1] == left or ladder[x][y+1] == right:   # 좌 or 우 에 길이 있으면
-            while ladder[x][y-1] == left:   # 좌측이 1 일때 계속 좌측이동
+        x -= 1                                      # 첫 스타트 이동, 이후 좌,우가 0 이면 위로 이동
+# 조건문 앞에서부터 순차적
+# 앞이 False면 뒤에 검사x..!!
+        if y > 0 and ladder[x][y-1] == left:       # 왼쪽칸이 있고, 1이면
+            while y > 0 and ladder[x][y-1] == left:   # 사다리를 벗어나거나, 0 이 나올때 까지
                 y -= 1
-                if ladder[x-1][y] == 1:     # 위에 길이 생기면 한칸 up
-                    x -= 1
-            while ladder[x][y+1] == right:  # 우측이 1 일때 계속 우측이동
-                y += 1
-                if ladder[x-1][y] == 1:   # 위에 길이 생기면 한칸 up
-                    x -= 1
-        else:                               # 좌 or 우 에 길 없으면 한칸 up
-            x -= 1
 
-    ans = y
+        elif y < 99 and ladder[x][y+1] == right:   # 우측칸이 있고, 1이면
+            while y < 99 and ladder[x][y+1] == right:  # 사다리를 벗어나거나, 0 이 나올때 까지
+                y += 1
+
+    ans = y                             # 맨 윗줄 도착 시, 열(출발지) 반환
     print('#{} {}'.format(tc, ans))
 
+# if ladder[x][y-1] == left or ladder[x][y+1] == right:   # 좌 or 우 에 길이 있으면
+#     while ladder[x][y-1] == left and y > 0:   # 좌측이 1 이고 사다리 안에 있을때 계속 좌측이동
+#         y -= 1
 
+#     while ladder[x][y+1] == right and y < 99:  # 우측이 1 이고 사다리 안에 있을때 계속 우측이동
+#         y += 1
+#
+# x -= 1                              # 좌 or 우 에 길 없으면 한칸 up
 
 
 # 패작1
