@@ -1,6 +1,7 @@
 import sys
 sys.stdin = open('input.txt', encoding='UTF8')
 
+
 def find_pattern(target, pattern):
     return target.count(pattern)
 
