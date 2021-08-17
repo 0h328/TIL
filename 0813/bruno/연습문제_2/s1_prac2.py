@@ -2,9 +2,7 @@ def solve(word):
     word_l = list(word)
     for i in range(len(word_l)//2):
         word_l[i], word_l[-1-i] = word_l[-1-i], word_l[i]
-    reverse_word = ''
-    for chrs in word_l:
-        reverse_word += chrs
+    reverse_word = ''.join(word_l)
     return reverse_word
 
 # def solve(word):
@@ -20,4 +18,4 @@ print(solve(word)) # edcba
 
 #2. pythonic (slicing)
 word2 = input()
-print(solve(word2)) # sgnirts siht esreve
+print(solve(word2)) # sgnirts siht esreveR
