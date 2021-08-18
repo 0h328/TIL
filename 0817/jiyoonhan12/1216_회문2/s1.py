@@ -16,7 +16,7 @@ for t in range(1, 11):
     for i in range(100):
         for j in range(100):
             wordlist1, wordlist2 = [], []
-            for k in range(100-j, -1, -1):
+            for k in range(100-j, -1, -1): # 회문 길이 (큰 수부터)
                 wordlist1 = arr[i][j:j+k]
                 wordlist2 = zip_arr[i][j:j+k]
                 if check(wordlist1) == True:
@@ -25,6 +25,7 @@ for t in range(1, 11):
                 if check(wordlist2) == True:
                     res2 = max(res2, len(wordlist2))
                     break
+                    #flag 써서 값 찾으면 빠져나오기
 
     res = max(res1, res2)
 
