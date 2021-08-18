@@ -4,11 +4,11 @@ sys.stdin = open('input.txt')
 
 T = 10
 
-def check_palindrome(data, N, M, idx):
+def check_palindrome(data, N, M, row):
     for i in range(N - M + 1):
         result = True
         for j in range(M//2):
-            if data[idx][i+j] != data[idx][i + M - 1 - j]:
+            if data[row][i + j] != data[row][i + M - 1 - j]:
                 result = False
                 break
         else:       # 안쪽 for문이 다 돌면 True 반환
@@ -19,7 +19,7 @@ def check_palindrome(data, N, M, idx):
 for _ in range(T):
     N = 100
     tc = int(input())
-    data = [list(input()) for _ in range(N)]
+    data = [tuple(input()) for _ in range(N)]
     data_reverse = list(zip(*data))         # 세로 방향 회문 체크할 전치행렬
 
     row = 0     # 체크할 row idx
