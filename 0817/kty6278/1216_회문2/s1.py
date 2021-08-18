@@ -23,6 +23,7 @@ for tc in range(10):
                 for k in range(word_length):
                     new_word.append(word[k+j][i])
                 # print(new_word)
+                # for k in zip(*word)
 
                 if new_word == new_word[::-1]:
                     final = ''.join(new_word)
