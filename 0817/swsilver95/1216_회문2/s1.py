@@ -4,7 +4,7 @@ sys.stdin = open('input.txt')
 
 for _ in range(10):
     tc = int(input())
-    data = [list(map(str, input())) for _ in range(100)]
+    data = [list(input()) for _ in range(100)]
 
     max_length = 0
     for k in range(100):
