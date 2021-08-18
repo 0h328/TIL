@@ -12,7 +12,6 @@ for t in range(1, 11):
     arr = [list(map(str, input())) for _ in range(8)]
     turn_arr = list(zip(*arr))
     cnt = 0
-    # 한 줄 당 확인해야 할 횟수는 8-length+1회
 
     for i in range(8):
         wordlist1, wordlist2 = [], []
