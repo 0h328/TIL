@@ -18,17 +18,17 @@ for test in range(10):
     M = int(input())
 
     data = [input() for _ in range(8)]
-
+    trans = [''.join(i) for i in zip(*data)]
     answer = 0
     for i in data:
         answer += check(i)
 
-    trans = []
-    for i in range(8):
-        string = ''
-        for j in range(8):
-            string += data[j][i]
-        trans.append(string)
+    # trans = []
+    # for i in range(8):
+    #     string = ''
+    #     for j in range(8):
+    #         string += data[j][i]
+    #     trans.append(string)
 
     for i in trans:
         answer += check(i)
