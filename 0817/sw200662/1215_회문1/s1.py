@@ -8,7 +8,6 @@ for c in range(10):
     ans = 0
     for k in range(8):
         for i in range(8-m+1):
-            test_word = ''
             A = list_word[k][i:i+m]
             B = A[::-1]
             if A == B:
