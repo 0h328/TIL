@@ -7,7 +7,7 @@ for tc in range(1, T+1):
     pascal = [[0] * i for i in range(1, N+1)]   # [[0], [0, 0], [0, 0, 0], [0, 0, 0, 0]]
     for i in range(N):
         pascal[i][0], pascal[i][-1] = 1, 1
-    for j in range(2, N):
+    for j in range(2, N):                           # 행 범위
         for k in range(1, len(pascal[j]) - 1):
             pascal[j][k] = pascal[j-1][k-1] + pascal[j-1][k]
     print('#{}'.format(tc))
