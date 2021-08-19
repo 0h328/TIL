@@ -11,12 +11,12 @@ def dfs(v):
 
     for w in range(V+1)
 
-    # if visited[v] == 0:
-    #     visited[v] = 1
-    #
-    # for w in range(1, V+1):
-    #     if G[v][w] == 1 and not visited[w]:
-    #         dfs(w)
+    if visited[v] == 0:
+        visited[v] = 1
+
+    for w in range(1, V+1):
+        if G[v][w] == 1 and not visited[w]:
+            dfs(w)
 
     # stack = [v] # 시작 정점을 stack에 넣어두고 가자!
     #
