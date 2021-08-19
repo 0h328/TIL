@@ -15,6 +15,7 @@ for tc in range(T):
             else:
                 case.append(new_list[i-1][j-1] + new_list[i-1][j])
         new_list.append(case)
+        # print(new_list)
 
     for new in new_list:
         print(*new)
