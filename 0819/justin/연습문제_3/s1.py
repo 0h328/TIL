@@ -11,7 +11,7 @@ def dfs(v):
                 if G[v][w] == 1 and not visited[w]:     # 해당의 인접 정점이고 아직 방문하지 않았다면
                     stack.append(w)                     # stack에 push
 
-# from pandas import DataFrame
+from pandas import DataFrame
 import sys
 sys.stdin = open('input.txt')
 
