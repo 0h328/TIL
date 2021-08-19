@@ -2,15 +2,14 @@ import sys
 
 
 def dfs(start, end):
+    visited[start] = True
 
     if start == end:
         return
 
     else:
-
         for edge in edges:
-            if edge[0] == start and visited[edge[1]] == False:
-                visited[edge[1]] = True
+            if edge[0] == start and not visited[edge[1]]:
                 dfs(edge[1], end)
 
 
@@ -28,7 +27,7 @@ while test_case <= T:
         edges.append(list(map(int, input().split())))
 
     S, G = map(int, input().split())
-    visited[S] = True
+    # visited[S] = True
     dfs(S, G)
 
     ans = 0
