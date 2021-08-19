@@ -2,12 +2,17 @@
 # 리스트 (가변크기)
 
 stack = []
+x = 1
 
 def push(item):
-    pass
+    stack.append(item)
 
 def pop():
-    pass
+    if len(stack) == 0:
+        return None
+    else:
+        return stack.pop()
+        # stack.pop(-1)
 
 print(stack) # []
 push(1)
