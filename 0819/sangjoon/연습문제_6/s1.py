@@ -1,36 +1,34 @@
-# 문제 푼 시간
-# 풀이법: 스택/딕셔너리로 구현
-import pathlib, sys
+## 연습문제 6 (결과 확인)
 
-sys.stdin = open(str(pathlib.Path(__file__).parent.absolute()) + "/input.txt")
+# dp - 또보나치
+def fibo_dp(num):
+    # 피보나치의 하위 -> 상위 결과값이 담길 리스트(테이블) 선언
+    result = [0 for _ in range(num + 1)]
+    # 0항과 1항 값 넣어놓기
+    result[0] = 0
+    result[1] = 1
 
+    # 두 번째 항부터 시작 (0항과 1항은 미리 계산)
+    for i in range(2, num + 1):
+        # 기존에 리스트에 저장된 값을 그대로 활용
+        result[i] = result[i - 2] + result[i - 1]
 
-def check_bracket(string: str):
-    stack = []
-    bracket_dict = {"(": ")", "{": "}"}  # 브라캣 짝연결
-
-    for i in range(len(string)):  # 모든 문자 순회
-        letter = string[i]
-        if letter in bracket_dict.keys():  # 여는 괄호일 경우
-            stack.append(letter)
-
-        elif letter in bracket_dict.values():  # 닫는 괄호일 경우
-            if not stack:  # 앞에 여는 괄호가 없을 경우
-                return 0
-
-            if bracket_dict[stack[-1]] == letter:  # 짝이 맞을 경우
-                stack.pop()
-            else:  # 선행되는 괄호 짝이 안 맞을 경우
-                return 0
-
-    if stack:  # 여는 괄호가 남았을 경우
-        return 0
-
-    return 1
+    # 마지막 항 반환
+    return result[num]
 
 
-test_case = int(input())
+print(fibo_dp(50))
 
-for test in range(1, test_case + 1):
-    string = input()
-    print("#{} {}".format(test, check_bracket(string)))
+# dp - 또토리얼
+def fact(num):
+    table[0] = 1
+
+    for i in range(1, num + 1):
+        table[i] = i * table[i - 1]
+
+    return table[num]
+
+
+n = 10
+table = [0] * (n + 1)
+print(fact(n))

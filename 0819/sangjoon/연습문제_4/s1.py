@@ -1,36 +1,132 @@
-# 문제 푼 시간
-# 풀이법: 스택/딕셔너리로 구현
-import pathlib, sys
+## 연습문제 4 (결과 확인)
 
-sys.stdin = open(str(pathlib.Path(__file__).parent.absolute()) + "/input.txt")
-
-
-def check_bracket(string: str):
-    stack = []
-    bracket_dict = {"(": ")", "{": "}"}  # 브라캣 짝연결
-
-    for i in range(len(string)):  # 모든 문자 순회
-        letter = string[i]
-        if letter in bracket_dict.keys():  # 여는 괄호일 경우
-            stack.append(letter)
-
-        elif letter in bracket_dict.values():  # 닫는 괄호일 경우
-            if not stack:  # 앞에 여는 괄호가 없을 경우
-                return 0
-
-            if bracket_dict[stack[-1]] == letter:  # 짝이 맞을 경우
-                stack.pop()
-            else:  # 선행되는 괄호 짝이 안 맞을 경우
-                return 0
-
-    if stack:  # 여는 괄호가 남았을 경우
-        return 0
-
-    return 1
+# > 재귀 함수 호출시에 Stack Frame이 어떻게 형성되는지 관찰!!
+# > 파이썬 튜터보단 디버거를 충분히 활용하도록 연습해주세요. 😄
+# 디버거를 통해 결과를 확인해보세요
+# print 결과는 디버거를 실행 시켰을 때 보이는 'Console'이라는 탭에서 확인 가능합니다.
 
 
-test_case = int(input())
+def func2():
+    print("함수 2 시작")
+    print("함수 2 종료")
 
-for test in range(1, test_case + 1):
-    string = input()
-    print("#{} {}".format(test, check_bracket(string)))
+
+def func1():
+    print("함수 1 시작")
+    func2()
+    print("함수 1 종료")
+
+
+print("메인시작")
+func1()
+print("메인끝")
+
+"""
+메인시작
+함수 1 시작
+함수 2 시작
+함수 2 종료
+함수 1 종료
+메인끝
+"""
+
+# global 영역부터 각 함수의 고유한 영역을 디버거에서 확인해보세요!
+
+n = 10
+
+
+def f1(a):
+    f2(a)
+
+
+def f2(b):
+    f3(b)
+
+
+def f3(c):
+    print(c ** 2)
+
+
+f1(n)  # 100
+
+# 반드시 디버거를 통해 결과를 확인해주세요!
+
+
+def factorial(n):
+    if n == 1:  # base case -> 종료 조건
+        return 1
+    return n * factorial(n - 1)  # 인자의 크기가 1씩 줄어감
+
+
+print(factorial(5))
+
+"""
+Step 1. 
+|  2 * factorial(1)  |
+|  3 * factorial(2)  |
+|  4 * factorial(3)  |
+|  5 * factorial(4)  |
+|  main  |
+
+Step2.
+2-1.
+|  2 * 1  |
+|  3 * factorial(2)  |
+|  4 * factorial(3)  |
+|  5 * factorial(4)  |
+|  main  |
+
+2-2.
+|    |
+|  3 * 2  |
+|  4 * factorial(3)  |
+|  5 * factorial(4)  |
+|  main  |
+
+2-3.
+|    |
+|    |
+|  4 * 6 |
+|  5 * factorial(4)  |
+|  main  |
+
+2-4.
+|    |
+|    |
+|    |
+|  5 * 24  |
+|  main  |
+
+2-5. 
+|    |
+|    |
+|    |
+|  120 반환 |
+|  main  |
+
+2-6. 끝
+|    |
+|    |
+|    |
+|    |
+|    |
+"""
+
+
+# 재귀로 배열의 각 요소 출력
+# 반드시 디버거를 활용하여 결과를 확인해주세요!!
+
+a = [1, 2, 3]
+N = len(a)
+
+
+def f(i, N, a):
+    if i == N:
+        return  # return None
+    # else:
+    print(a[i])
+    f(i + 1, N, a)
+    # return이 없으면? None을 return
+
+
+f(0, N, a)

@@ -1,36 +1,53 @@
-# 문제 푼 시간
-# 풀이법: 스택/딕셔너리로 구현
-import pathlib, sys
-
-sys.stdin = open(str(pathlib.Path(__file__).parent.absolute()) + "/input.txt")
+## 연습문제 5 (결과 확인)
 
 
-def check_bracket(string: str):
-    stack = []
-    bracket_dict = {"(": ")", "{": "}"}  # 브라캣 짝연결
-
-    for i in range(len(string)):  # 모든 문자 순회
-        letter = string[i]
-        if letter in bracket_dict.keys():  # 여는 괄호일 경우
-            stack.append(letter)
-
-        elif letter in bracket_dict.values():  # 닫는 괄호일 경우
-            if not stack:  # 앞에 여는 괄호가 없을 경우
-                return 0
-
-            if bracket_dict[stack[-1]] == letter:  # 짝이 맞을 경우
-                stack.pop()
-            else:  # 선행되는 괄호 짝이 안 맞을 경우
-                return 0
-
-    if stack:  # 여는 괄호가 남았을 경우
-        return 0
-
-    return 1
+# 재귀
+def fibo_recursion(num):
+    # nm <= 1:
+    if num == 0 or num == 1:
+        return num
+    return fibo_recursion(num - 1) + fibo_recursion(num - 2)
 
 
-test_case = int(input())
+# print(fibo_recursion(10))
+print(fibo_recursion(50))
 
-for test in range(1, test_case + 1):
-    string = input()
-    print("#{} {}".format(test, check_bracket(string)))
+# 저장 공간을 만들어 놓은 상태에서 저장 (길이를 직접 지정)
+def fibo(n):
+    global cnt
+    cnt += 1
+    if memo[n] == -1:  # 값을 아직 구하지 않은 경우
+        memo[n] = fibo(n - 1) + fibo(n - 2)
+    return memo[n]
+
+
+memo = [-1] * 51  # n의 크기보다 1 크게 생성
+memo[0] = 0
+memo[1] = 1
+cnt = 0
+
+# print(memo)
+print(fibo(50))
+print(cnt)
+
+import time
+
+start = time.time()
+
+# 저장 공간을 만들어 놓은 상태에서 저장 (길이를 직접 지정)
+def fibo2(n):
+    global cnt
+    cnt += 1
+    if n >= 2 and memo2[n] == 0:  # 아직 계산되지 않은 값이면
+        memo2[n] = fibo2(n - 1) + fibo2(n - 2)
+    return memo2[n]
+
+
+memo2 = [0] * 51
+memo2[0] = 0
+memo2[1] = 1
+cnt = 0
+
+# print(memo)
+print(fibo2(50))
+print(cnt)
