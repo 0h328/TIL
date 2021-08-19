@@ -12,16 +12,33 @@ a{b(c[d]e}) -> 괄호가 올바르게 매칭되지 않음
 """
 
 def push(item):
-    pass
+    stack.append(item)
 
-def pop():
-    pass
+def my_pop():
+    if len(stack) == 0:
+        return
+    else:
+        return stack.pop()
 
 def is_empty():
-    pass
+    if len(stack) == 0:
+        return True
+    return False
 
 def check_matching(data):           # 이 함수에서 push, pop, is_empty 활용
-    pass
+    for i in range(len(data)):      # 길이만큼 반복을 돌며
+        if data[i] == '(':          # 여는 괄호를 만나면
+            push(data[i])           # stack에 넣고
+        elif data[i] == ')':        # 닫는 괄호를 만났을 때
+            if is_empty():          # 스택이 비어있다면 매칭 x
+                return False
+            my_pop()                # 스택이 비어있지 않다면 꺼내자
+
+    if not is_empty():              # 만약 스택이 비어있지 않다면 -> 매칭 x
+        return False
+    else:                           # 비어있다면 성공!
+        return True
+
 
 import sys
 sys.stdin = open('input.txt')
