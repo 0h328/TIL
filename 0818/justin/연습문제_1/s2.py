@@ -4,14 +4,28 @@
 SIZE = 5             # 크기가 5인 배열을 생성하기 위한 변수 초기화
 top = -1             # top의 기본값
 stack = [0] * SIZE   # 5 크기의 배열 생성
+# deque
+# 재귀함수
 
 def push(item):
     global top, stack
-    pass
+    if top >= SIZE - 1:
+        print('Stack is full!!')
+        return
+    else:
+        top += 1
+        stack[top] = item
 
 def pop():
     global top, stack
-    pass
+    if top == -1:
+        print('Stack is empty!')
+        return
+    else:
+        ans = stack[top]
+        top -= 1
+        return ans
+
 
 print(stack)      # [0, 0, 0, 0, 0]
 push(1)
