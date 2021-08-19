@@ -36,5 +36,7 @@ for _ in range(10):
                     break
             if flagY: # 찾은 경우
                 break
+        if flagY:  # 찾은 경우
+            break
 
     print('#{} {}'.format(test, result))
