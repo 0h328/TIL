@@ -16,6 +16,6 @@ for test in range(int(input())):
         data.append(1)
         answer.append(data)
         print(*data)
-    #
+    # #
     # for i in answer:
     #     print(*i)
