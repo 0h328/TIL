@@ -3,7 +3,7 @@
 def dfs(v):
     stack = [v]                # 시작 정점 stack에 넣어놓고 시작
     while stack:               # stack이 빌때까지 while len(stack) 등도 가능
-        v = stack.pop()        # stack의 가장 위에서 정점을 꺼내
+        v = stack.pop()        # stack의 가장 위에서 정점을 꺼내 (stack의 가장 위에서 pop)
         if not visited[v]:     # 아직 방문하지 않았다면
             visited[v] = 1     # 방문 체크
             print('방문 정점: {}, 방문 체크: {}'.format(v, visited))
@@ -11,6 +11,7 @@ def dfs(v):
                 if G[v][w] == 1 and not visited[w]:     # 해당의 인접 정점이고 아직 방문하지 않았다면
                     stack.append(w)                     # stack에 push
 
+# from pandas import DataFrame
 import sys
 sys.stdin = open('input.txt')
 
@@ -30,3 +31,4 @@ for i in range(E):                                 # 무방향 그래프
     G[temp[i*2+1]][temp[i*2]] = 1
 
 dfs(1)                                             # 1번 정점부터 dfs 탐색 시작
+# print(DataFrame(G))
