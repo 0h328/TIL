@@ -26,9 +26,8 @@ for num in range(T):
         for i in range(1, n):
             arr[n][i] += (arr[n-1][i-1] + arr[n-1][i])
 
-    print("#{}".format(num+1), end="")
+    print("#{}".format(num+1))
     for n in range(N):
-        print("")
         for i in range(n+1):
             print(arr[n][i], end=" ")
-    print("")
+        print()
