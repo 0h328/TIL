@@ -1,8 +1,6 @@
 import sys
 sys.stdin = open('input.txt')
 
-import copy
-
 
 def arr_column(arr, column):  # 2중 리스트에서 컬럼을 반환하는 함수
     result = []  # column번째 열의 값들을 저장할 공간
@@ -26,11 +24,12 @@ def rotation(arr, degree):  # 90배수 각도의 회전한 2중 리스트를 반
         return rotation(new_arr, 90)  # 최종 반환된 new_arry에서 한번 더 90도 돌린 값을 반환해야 degree의 각도를 회전한 값이 됨
 
 
-T = int(input())
+import copy
 
+T = int(input())
 for test in range(T):
     N = int(input())
-    N_list = [[0] * N for _ in range(N)]  # 값을 입력받을 2중 리스트 생성(for문 이용!)
+    N_list = [[0] * N for _ in range(N)]  # 값을 입력받을 2중 리스트 생성(for문 이용)
     for i in range(N):
         N_list[i] = list(map(int, input().split()))
 
