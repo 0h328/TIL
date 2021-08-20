@@ -31,4 +31,4 @@ for i in range(E):                                 # 무방향 그래프
     G[temp[i*2+1]][temp[i*2]] = 1
 
 dfs(1)                                             # 1번 정점부터 dfs 탐색 시작
-print(DataFrame(G))
+# print(DataFrame(G))
