@@ -32,7 +32,7 @@ for tc in range(1, T+1):
     for i in range(E):
         start, end = map(int, input().split())
         G[start][end] = 1
- 
+
     # print(G)
 
     # 방문 표시 초기화
