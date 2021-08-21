@@ -5,7 +5,7 @@ T = int(input())
 
 for num in range(1, T+1):
     N = int(input())
-    arr = [[0]*N] *N
+    arr = []
     cnt = 1
 
     di = [0, 1, 0, -1]
@@ -15,8 +15,8 @@ for num in range(1, T+1):
     k = 0
     while cnt <= N * N:
         ni, nj = i + di[k], j + dj[k]
-        if () and arr[ni][nj] == 0:
-            arr[ni][nj] += cnt
+        if arr[ni][nj] and arr[ni][nj] == 0:
+            arr[ni][nj] = cnt
             cnt += 1
             i, j = ni, nj
         else:

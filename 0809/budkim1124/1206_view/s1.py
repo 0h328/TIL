@@ -19,11 +19,12 @@ for number in range(1, A+1):
             else:
                 a = b_height[idx-2]
 
+
             if b_height[idx+1] > b_height[idx+2]:
                 b = b_height[idx+1]
-
             else:
                 b = b_height[idx+2]
+
 
             if a > b:
                 cnt += b_height[idx] - a
