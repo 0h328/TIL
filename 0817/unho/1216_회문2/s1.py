@@ -1,18 +1,14 @@
-'''
-1. 4중 for??? - 시간이 너무 오래걸림
-2.
-'''
-
 import sys
 sys.stdin = open('input.txt')
 
 
 
 
-for _ in range(1):
+for _ in range(1, 11):
     tc = int(input())
     board = [input().strip() for _ in range(100)]
     board.extend(map(lambda x: ''.join(x), zip(*board)))        # 배열의 세로 부분 추가
+    print(board)
     answer = 0
 
     for e in board:                                             # 가로 / 세로 한줄의 문자열
