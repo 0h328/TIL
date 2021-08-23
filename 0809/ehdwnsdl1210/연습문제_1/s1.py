@@ -4,15 +4,14 @@ sys.stdin = open('input.txt')
 
 # 1. 숫자
 num = int(input())
-
-# print(num)
+print(num)
 # 예시 출력
-# print('#{}'.format(num))
+print('#{}'.format(num))
 
 # 2. 리스트
 # print(input())
 # print(input().split())
-# print(list(map(int, input().split())))
+print(list(map(int, input().split())))
 
 # 3. 2차원 리스트
 N = int(input())

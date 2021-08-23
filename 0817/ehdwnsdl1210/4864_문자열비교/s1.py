@@ -21,11 +21,8 @@ def find_letters(letters, pattern):
         for j in range(len(pattern)):
             if letters[i+j] != pattern[j]:
                 break
-            else:
-                tmp += 1
-                if tmp == len(pattern):
-                    return 1
-    return 0
+        else:
+            tmp += 1
 
 for tc in range(1, T + 1):
     pattern = input()
