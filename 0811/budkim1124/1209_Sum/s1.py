@@ -12,11 +12,13 @@ for num1 in range(1,11):
 
     tot_arr = []
 
+
     for i in range(len(arr)):  # 행의 합
         tot_row = 0
         for j in range(len(arr)):
             tot_row += arr[i][j]
         tot_arr.append(tot_row)
+
 
     for i in range(len(arr)): #  열의 합
         tot_col = 0

@@ -6,7 +6,10 @@ def push(item):
     stack.append(item)
 
 def pop():
-    return stack.pop()
+    if len(stack) == 0:
+        return None
+    else:
+        return stack.pop()
 
 print(stack) # []
 push(1)
