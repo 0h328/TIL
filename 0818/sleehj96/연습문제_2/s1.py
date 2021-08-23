@@ -17,7 +17,8 @@ def push(item):
 
 
 def pop():
-    return stack.pop()
+    if stack:
+        return stack.pop()
 
 
 def is_empty():
@@ -34,10 +35,15 @@ def check_matching(data):           # 이 함수에서 push, pop, is_empty 활�
         if d in bracket_list:
             push(d)
         else:
-            if data[-1] == d:
-                pop()
-            else:
+            if is_empty():
                 return False
+            else:
+                pop()
+
+    if not is_empty():
+        return False
+    else:
+        return True
 
     if is_empty():
         return True

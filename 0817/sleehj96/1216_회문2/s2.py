@@ -46,5 +46,5 @@ while case_num <= T:
         #     ans = max_len2
 
     print('#{0} {1}'.format(case_num, ans))
-    # break
+    break
     case_num += 1

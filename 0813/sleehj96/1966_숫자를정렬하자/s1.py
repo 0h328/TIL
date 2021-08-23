@@ -19,9 +19,10 @@ while test_case <= T:
         num_list[i], num_list[minIdx] = num_list[minIdx], num_list[i]
 
     # print(num_list)
-    print('#{}'.format(test_case), end = ' ')
-    for e in num_list:
-        print(e, end = ' ')
-    print()
+    print('#{}'.format(test_case), end=' ')
+    print(*num_list)
+    # for e in num_list:
+    #     print(e, end = ' ')
+    # print()
     # break
     test_case += 1
