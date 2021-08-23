@@ -6,7 +6,7 @@ for tc in range(1, T+1):
     N = int(input())
     data = input()
     stack = []
-    after = []
+    postfix = []
 
 #1. 중위 표현식 -> 후위 표현식
 
@@ -16,7 +16,7 @@ for tc in range(1, T+1):
         elif char == '*' and stack:
             if stack[-1] == '*':
                 while stack[-1] == '*':
-                    after.append(stack[-1])
+                    postfix.append(stack[-1])
                     stack.pop()
                     if not stack:
                         break
@@ -28,7 +28,7 @@ for tc in range(1, T+1):
         elif char == '+' and stack:
             if stack[-1] == '*' or stack[-1] == '+':
                 while stack[-1] == '*' or stack[-1] == '+':
-                    after.append(stack[-1])
+                    postfix.append(stack[-1])
                     stack.pop()
                     if not stack:
                         break
@@ -36,13 +36,13 @@ for tc in range(1, T+1):
             else:
                 stack.append(char)
         else:
-            after.append(char)
+            postfix.append(char)
     if stack:
         while stack:
-            after.append(stack[-1])
+            postfix.append(stack[-1])
             stack.pop()
 
-    for char in after:
+    for char in postfix:
         if char in '0123456789':
             stack.append(char)
         elif char == '+' and len(stack) >= 2:
