@@ -1,5 +1,28 @@
 # https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5Pq-OKAVYDFAUq&categoryId=AV5Pq-OKAVYDFAUq&categoryType=CODE&problemTitle=1961&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1
 
+import sys
+sys.stdin = open('input.txt')
+
+def rotate(key):
+    return list(zip(*key[::-1]))
+
+for T in range(int(input())):
+    N = int(input())
+    arr = [input().split() for _ in range(N)]
+    arr1 = rotate(arr)
+    arr2 = rotate(arr1)
+    arr3 = rotate(arr2)
+
+    result = [arr1, arr2, arr3]
+    print('#{}'.format(T+1))
+
+    for j in range(N):
+        for i in range(3):
+            print(*result[i][j], sep='', end=' ')
+
+        print()
+
+
 # #1
 # 741 987 369 
 # 852 654 258 
