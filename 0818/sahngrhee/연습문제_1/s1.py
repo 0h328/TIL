@@ -11,6 +11,7 @@ def pop():
         return
     else:
         return stack.pop()
+        # stack.pop(-1)
 
 print(stack) # []
 push(1)

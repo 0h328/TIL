@@ -22,13 +22,24 @@ def pop():
 
 def is_empty():
     return len(stack) == 0
-
+    # if len(stack) == 0:
+    #     return True
+    # else:
+    #     return False
 def check_matching(data):           # 이 함수에서 push, pop, is_empty 활용
     for i in range(len(data)):
         if data[i] == '(':
             push('(')
+            # push(i)
         elif data[i] == ')':
+            if is_empty():
+               return False
             pop()
+
+    # if not is_empty():
+    #     return False
+    # else:
+    #     return True
     return is_empty()
 
 
