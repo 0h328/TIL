@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open('input.txt')
 
 
@@ -26,6 +27,6 @@ for t in range(1, 11):
     visited = [0] * (100)
 
     for i in range(0, E * 2, 2):
-        G[routes[i]].append(routes[i+1])
+        G[routes[i]].append(routes[i + 1])
 
     print('#{} {}'.format(t, dfs()))
