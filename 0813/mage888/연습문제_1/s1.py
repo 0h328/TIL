@@ -1,9 +1,13 @@
 def solve(my_str1, my_str2):
-
-    if my_str1 is my_str2:
-        return True
-
-    return False
+    idx = 0
+    if len(my_str1) != len(my_str2):
+        return False
+    else:
+        while idx < len(my_str1) and idx < len(my_str2):
+            if my_str1[idx] != my_str2[idx]:
+                return False
+            idx += 1
+    return True
 
 import sys
 sys.stdin = open('input.txt')
