@@ -13,8 +13,8 @@ for num in range(10):
             tmp1 = []
             tmp2 = []
             if k+N <= 8:
-                tmp1 = list(words[i][k:k+N])
-                tmp2 = list(col_words[i][k:k+N])
+                tmp1 = words[i][k:k+N]
+                tmp2 = col_words[i][k:k+N]
                 if list(tmp1) == list(reversed(tmp1)): # 여기서 list() 를 안해주면 결과가 모두 0이 나옴
                 # if tmp1 == reversed(tmp1): 조건이 안맞음
                     cnt += 1

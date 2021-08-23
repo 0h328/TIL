@@ -10,8 +10,15 @@ print(N, M)
 arr = [list(map(int, input().split())) for _ in range(N)]
 print(arr)
 
-#1. 행 우선 순회
-arr_row = [list(map(int, input().split())) for _ in range(N)]
-print(arr_row)
+#1. 행 우선 선회
+for i in range(N):
+    for j in range(M):
+        print(arr[i][j], end=' ')
+    print()
 
-#2. 열 우선 순회
+print('\n', '2. 열 우선 선회', sep='')
+#2. 열 우선 선회
+for i in range(M):
+    for j in range(N):
+        print(arr[j][i], end=' ')
+    print()

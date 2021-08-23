@@ -1,13 +1,17 @@
-# s1.py
+# check.py
 # 리스트 (가변크기)
 
 stack = []
 
 def push(item):
+    stack.append(item)
     pass
 
 def pop():
-    pass
+    if len(stack) == 0:
+        return None
+    else:
+        stack.pop()
 
 print(stack) # []
 push(1)

@@ -6,8 +6,9 @@ stack = [0] * SIZE   # 5 크기의 배열 생성
 
 def push(item):
     global top, stack
-    if top == SIZE - 1:
+    if top >= SIZE - 1:
         print('Stack is Full!')
+        return
     else:
         top += 1
         stack[top] = item
@@ -16,6 +17,7 @@ def pop():
     global top, stack
     if top == -1:
         print('Stack is Empty!')
+        return
     else:
         top -= 1
         return stack[top+1]

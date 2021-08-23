@@ -15,19 +15,26 @@ def push(item):
     stack.append(item)
 
 def pop():
-    stack.pop()
+    if len(stack) == 0:
+        return
+    else:
+        return stack.pop()
 
 def is_empty():
-    if stack == []:
+    if len(stack) == 0:
         return True
+    return False
 
 def check_matching(data):           # 이 함수에서 push, pop, is_empty 활용
     for i in range(len(data)):
         if data[i] == '(':
             push(data[i])
         else:
+            if is_empty():
+                return Falsae
             pop()
-    if is_empty() == True:
+
+    if is_empty():
         return True
     else:
         return False

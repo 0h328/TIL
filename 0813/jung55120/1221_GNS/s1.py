@@ -21,7 +21,7 @@ for _ in range(1, TC + 1):
     print('{0}\n{1}'.format(tc, result))
 
 # 두번째 방법
-
+#
 # language = ['ZRO', 'ONE', 'TWO', 'THR', 'FOR', 'FIV', 'SIX', 'SVN', 'EGT', 'NIN']
 # TC = int(input())                              # 왜 얘가 더 오래 걸리지? 궁금
 # for _ in range(1, TC+1):
