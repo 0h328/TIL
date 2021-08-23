@@ -4,10 +4,14 @@
 stack = []
 
 def push(item):
-    pass
+    stack.append(item)
 
 def pop():
-    pass
+    if len(stack) == 0: # 조건 필수! 비어있으면?!?!?!
+        return None
+    else:
+        return stack.pop()
+        # return stack.pop(-1)
 
 print(stack) # []
 push(1)

@@ -8,30 +8,31 @@ for tc in range(10):        # Test Case 10번 반복
 
     max_value = 0       # 초기값 설정 (비교)
 
-    for i1 in range(len(L)):            #
-        my_row = []                     #
-        for i2 in range(len(L[i1])):    #
-            my_row.append(L[i1][i2])    #
-        if sum(my_row) > max_value:     #
-            max_value = sum(my_row)     #
+    for i1 in range(len(L)):            # 부모 리스트 길이
+        my_row = []
+        for i2 in range(len(L[i1])):    # 자식 리스트 길이
+            my_row.append(L[i1][i2])    # 자식 리스트 애들 다 넣음
+        if sum(my_row) > max_value:     # 다 더해서 크면
+            max_value = sum(my_row)     # 값으로
 
-    idx = 0                             # 정사각형이 아니라면?
-    for j1 in range(len(L[idx])):       # idx = 0, 1, 2 ...
-        my_col = []                     #
-        for j2 in range(len(L)):        #
-            my_col.append(L[j2][j1])    #
-        if sum(my_col) > max_value:     #
-            max_value = sum(my_col)     #
-        idx += 1                        # 정사각형이 아니라면?
 
-    my_llist = []                       #
-    for k in range(len(L)):
+    for j1 in range(len(L[0])):         # 자식 길이가 다 같으니 [0]
+        my_col = []
+        for j2 in range(len(L)):        # 부모 리스트 길이
+            my_col.append(L[j2][j1])    # 먼저 고정하는 것이 바깥 for문
+        if sum(my_col) > max_value:
+            max_value = sum(my_col)
+
+
+    my_llist = []
+    for k in range(len(L)):             # 좌 대각 길이 (초기화 필요X)
         my_llist.append(L[k][k])
     if sum(my_llist) > max_value:
         max_value = sum(my_llist)
 
-    my_rlist = []                       #
-    for l in range(len(L)):
+
+    my_rlist = []
+    for l in range(len(L)):             # 우 대각 길이 (초기화 필요X)
         my_rlist.append(L[l][len(L)-l-1])
     if sum(my_rlist) > max_value:
         max_value = sum(my_rlist)

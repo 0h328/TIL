@@ -11,7 +11,7 @@ for tc in range(T):
     d = 0
     e = 0
 
-    while N % 2 == 0: # 질문 있습니다. 왜 N???? 그대로 유지??
+    while N % 2 == 0:
         a += 1
         N = N // 2
 
