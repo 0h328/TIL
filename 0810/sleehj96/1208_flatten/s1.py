@@ -8,17 +8,17 @@ while i <= 10:
     box_list = list(map(int, input().split()))
     ans = 0
 
-    while dump > 0:
-        box_max = max(box_list)
-        box_min = min(box_list)
+    while dump > 0:         # 덤프 횟수 동안
+        box_max = max(box_list) # 최대 상자개수
+        box_min = min(box_list) # 최소 상자개수
 
-        if box_max - box_min <= 1:
-            ans = box_max - box_min
+        if box_max - box_min <= 1:  # 차이가 1이하 이면
+            ans = box_max - box_min # 그 값을 반환
             break
-        else:
-            box_list[box_list.index(box_max)] -= 1
-            box_list[box_list.index(box_min)] += 1
-            ans = max(box_list) - min(box_list)
+        else:       # 차이가 1보다 크면
+            box_list[box_list.index(box_max)] -= 1  # 가장 큰 상자에서 하나 빼고
+            box_list[box_list.index(box_min)] += 1  # 가장 작은 상자에서 하나 추가
+            ans = max(box_list) - min(box_list)     # 최대 상자 개수와 최소 상자 개수의 차이를 새로 계산
 
         dump -= 1
 

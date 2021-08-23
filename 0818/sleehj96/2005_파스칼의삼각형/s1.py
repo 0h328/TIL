@@ -1,5 +1,6 @@
 import sys
 
+
 def pascal_triangle(n):
     if n == 1:
         return [1]
