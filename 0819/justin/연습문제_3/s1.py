@@ -11,7 +11,7 @@ def dfs(v):
                 if G[v][w] == 1 and not visited[w]:     # 해당의 인접 정점이고 아직 방문하지 않았다면
                     stack.append(w)                     # stack에 push
 
-# from pandas import DataFrame
+from pandas import DataFrame
 import sys
 sys.stdin = open('input.txt')
 
@@ -31,4 +31,4 @@ for i in range(E):                                 # 무방향 그래프
     G[temp[i*2+1]][temp[i*2]] = 1
 
 dfs(1)                                             # 1번 정점부터 dfs 탐색 시작
-print(DataFrame(G))
+# print(DataFrame(G))

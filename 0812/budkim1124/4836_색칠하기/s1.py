@@ -14,7 +14,6 @@ for num1 in range(T):
         a = arr[4]
         del arr[-1]
 
-
         if a == 1:
             for i in range(arr[1], arr[-1]+1):
                 for j in range(arr[0], arr[2]+1):
@@ -28,6 +27,7 @@ for num1 in range(T):
                     point_list2.append((i, j))
                     point_set2 = set(point_list2)
                     point_list2 = list(point_set2)
+
 
     point_list1.extend(point_list2)
 

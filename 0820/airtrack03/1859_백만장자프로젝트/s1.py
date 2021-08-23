@@ -1,3 +1,8 @@
+'''
+마지막 날은 사고 팔아도 이득이 없으므로 고려 대상 X
+
+'''
+
 import sys
 sys.stdin = open('input.txt')
 
