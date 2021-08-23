@@ -3,7 +3,7 @@ sys.stdin = open('input.txt')
 
 def ordered_sequential_search(numbers, target):
     for i in range(len(numbers)):
-        if numbers[i] > target :
+        if numbers[i] > target:
             return False
 
         if numbers[i] == target:

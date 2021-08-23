@@ -1,7 +1,7 @@
 import sys
 sys.stdin = open('input.txt')
 
-def gravity() :
+def gravity():
     result = 0
 
     for i in range(length):
@@ -15,26 +15,9 @@ def gravity() :
     return result
 
 T = int(input())
-
-for a in range(T):
+for tc in range(1, T+1):
     length = int(input())
     arr = list(map(int, input().split()))
+    # print(arr)
 
-    print('#{0} {1}'.format(a+1, gravity()))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    print('#{} {}'.format(tc, gravity()))
