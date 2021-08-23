@@ -1,4 +1,4 @@
-# s1.py
+# check.py
 # 리스트 (가변크기)
 
 stack = []

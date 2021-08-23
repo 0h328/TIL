@@ -12,7 +12,6 @@
 ## 연습문제 1
 
 ```python
-# s1.py
 # 리스트 (가변크기)
 
 stack = []
@@ -77,7 +76,7 @@ print(item) # Stack is Empty!
 ```
 
 ```python
-# s3.py
+s2.py
 # 클래스로 stack 구현
 
 class Stack:
