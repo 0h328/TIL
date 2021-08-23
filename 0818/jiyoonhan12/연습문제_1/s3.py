@@ -5,10 +5,9 @@ class Stack:
         self.data = []
 
     def is_empty(self):                          # stack이 비어있는지 체크하는 메서드
-        if self.data == []:
+        if len(self.data) == 0:
             return True
-        else:
-            return False
+        return False
 
     def push(self, item):                        # stack에 push하는 메서드
         self.data.append(item)
