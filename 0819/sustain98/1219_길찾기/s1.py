@@ -24,7 +24,7 @@ def dfs(g):
 for idx in range(1,11):
     t, num = map(int, input().split())
     road = list(map(int, input().split()))
-    g  = [[] for _ in range(100)]
+    g = [[] for _ in range(100)]
     for i in range(0, 2*num, 2):
         g[road[i]].append(road[i+1])
 
