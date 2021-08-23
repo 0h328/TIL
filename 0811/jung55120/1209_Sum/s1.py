@@ -8,37 +8,30 @@ for _ in range(10) :
 
     max_num = 0
 
-    for n in range(100):
-        sum = 0
-        for m in range(100) :
+    for n in range(100):        # 행의 합
+        sum = 0                 # 행이 100개라서 100번 리셋해줘야 함
+        for m in range(100):    # rc
             sum += arr[n][m]
-            if sum > max_num :
-                max_num = sum
+            if sum > max_num:   # 만약 sum이 max_num 보다 크면
+                max_num = sum   # sum 값을 max_num에 저장
 
-    for n in range(100):
+    for n in range(100):        # 열의 합
         sum = 0
-        for m in range(100) :
+        for m in range(100):
             sum += arr[m][n]
-            if sum > max_num :
+            if sum > max_num:
                 max_num = sum
 
-    for n in range(100):
-        sum = 0
-        for m in range(100) :
-            if n == m :
-                sum += arr[n][m]
-                if sum > max_num :
-                    max_num = sum
+    sum = 0                     # 대각선은 합계가 1번만
+    for n in range(100):        # 대각선 1의 합
+        sum += arr[n][n]
+    if sum > max_num :          # 행,열과 다르게 1번만 sum 값을 체크해주면 됨
+        max_num = sum
 
-    for n in range(99,-1,-1) :
-        sum = 0
-        for m in range(99,-1,-1) :
-            if n == m :
-                sum += arr[m][n]
-                if sum > max_num :
-                    max_num = sum
+    sum = 0
+    for n in range(99,-1,-1) :  # 대각선 2의 합
+        sum += arr[n][99-n]
+    if sum > max_num :
+        max_num = sum
 
     print('#{0} {1}'.format(tc, max_num))
-
-
-

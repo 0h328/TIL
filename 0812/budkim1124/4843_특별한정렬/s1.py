@@ -16,8 +16,6 @@ for num in range(T):
             result.append(min(arr))
             arr.remove(min(arr))
 
-
-    ## 틀렸다가 맞음
     
     print('#{}'.format(num+1), end=' ')
     for i in range(10):

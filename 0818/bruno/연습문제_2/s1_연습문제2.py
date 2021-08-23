@@ -13,13 +13,12 @@ a{b(c[d]e}) -> 괄호가 올바르게 매칭되지 않음
 
 def push(item):
     stack.append(item)
-    pass
 
 def pop():
     if len(stack) == 0:
         return
     else:
-        return stack.pop(-1)
+        return stack.pop()
 
 def is_empty():
     if len(stack):
@@ -27,7 +26,18 @@ def is_empty():
     return True
 
 def check_matching(data):           # 이 함수에서 push, pop, is_empty 활용
-    pass
+    for i in range(len(data)):
+        if data[i] == '(':
+            push(data[i])
+        elif data[i] == ')':
+            if is_empty():
+                return False
+            pop()
+
+    if not is_empty():
+        return False
+    else:
+        return True
 
 import sys
 sys.stdin = open('input.txt')
