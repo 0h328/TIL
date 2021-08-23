@@ -10,8 +10,8 @@ for num in range(T):
     tmp_arr = [0] * len(arr)
     result_arr = []
 
-    for i in range(0,len(lan_list)):
-        for j in range(0,len(arr)):
+    for i in range(0, len(lan_list)):
+        for j in range(0, len(arr)):
             if arr[j] == lan_list[i]:
                 tmp_arr[j] += lan_list.index(arr[j])
 

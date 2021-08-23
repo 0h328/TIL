@@ -12,6 +12,6 @@ for idx in range(1, t+1):
         new_line.append(1)
         res.append(new_line)
     print('#{}'.format(idx))
-    print('\n'.join(map(lambda x: ' '.join(map(str,x)), res)))
+    print('\n'.join(map(lambda x: ' '.join(map(str, x)), res)))
 
 

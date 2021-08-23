@@ -6,7 +6,7 @@ def dfs(v):
     for w in G[v]:                                          # 정점 v의 인접 정점 w 중에서
         if not visited[w]:                                  # 아직 방문하지 않은 곳이 있다면
             dfs(w)                                          # 호출!
-
+n
 import sys
 sys.stdin = open('input.txt')
 

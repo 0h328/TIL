@@ -77,7 +77,7 @@ print(item) # Stack is Empty!
 ```
 
 ```python
-# s3.py
+s2.py
 # 클래스로 stack 구현
 
 class Stack:
