@@ -15,17 +15,18 @@ def BubbleSort(a):
 
 for test in range(T):
     N = int(input())
-    data = []
-    number = int(input())
+    number = input()
+    data = [int(i) for i in number]
 
-    while number > 0:  # 리스트의 형태로 인풋저장
-        data.append(number % 10)
-        number //= 10
+    # while number > 0:  # 리스트의 형태로 인풋저장
+    #     data.append(number % 10)
+    #     number //= 10
 
     check = [0] * 12
 
     for i in data:
         check[i] += 1               # 장수계산을 위해서 리스트에 저장
+
 
     real = check[:]                 # 리스트를 복사하고
     BubbleSort(check)               # 원래 리스트는 정렬해서 가장 큰 수 즉 제일 많았던 장수를 찾는다.
@@ -37,5 +38,7 @@ for test in range(T):
         if real[i] == check[-1]:
             max_num = check[-1]
             num = i
+
+
 
     print('#{} {} {}'.format(test + 1, num, max_num))

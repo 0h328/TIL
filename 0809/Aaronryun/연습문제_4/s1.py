@@ -6,7 +6,7 @@ T = int(input())
 
 for test in range(T):
     N = list(map(int,input()))
-    result = [0] * 12
+    result = [0] * 10
 
     for _ in range(len(N)):
         result[N[_]] += 1
@@ -27,7 +27,7 @@ for test in range(T):
             continue
 
         i += 1
-    if run + tri == 2:
+    if run + tri >= 2:
         print('#{} {}'.format(test + 1, 1))
     else:
         print('#{} {}'.format(test + 1, 0))

@@ -17,4 +17,4 @@ for h in range(4):
     nx = x + dx[h]
     ny = y + dy[h]
 
-    print(DataFrame(data))
+print(DataFrame(data))
