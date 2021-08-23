@@ -7,10 +7,13 @@ N, M = map(int, input().split())
 
 # 2차원 리스트 받기
 arr = [list(map(int, input().split())) for _ in range(N)]
-print(arr)
+# print(arr)
 
 #1. 행 우선 순위
-
+for i in arr:
+    for j in i:
+        print(j, end = ' ')
+    print()
 
 
 #2. 열 우선 순위

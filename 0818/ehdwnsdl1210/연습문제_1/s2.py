@@ -6,12 +6,23 @@ top = -1             # top의 기본값
 stack = [0] * SIZE   # 5 크기의 배열 생성
 
 def push(item):
-    global top, stack
-    pass
+    global top, stack   # 값을 참조할 땐 필요 X, 변경할 땐 필요!
+    if top >= SIZE -1:
+        print('Stack is full!!')
+        return
+    else:
+        top += 1
+        stack[top] = item
 
 def pop():
     global top, stack
-    pass
+    if top == -1:
+        print('Stack is empty!!')
+        return
+    else:
+        ans = stack[top]
+        top -= 1
+        return ans
 
 print(stack)      # [0, 0, 0, 0, 0]
 push(1)
