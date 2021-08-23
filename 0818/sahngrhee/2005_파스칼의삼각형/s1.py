@@ -3,7 +3,7 @@ Hint 없이 혼자서 생각해서 한번에 Pass !!!
 '''
 import sys
 sys.stdin = open('input.txt')
-# from pandas import DataFrame # 진짜 편리한 도구인 것 같다
+from pandas import DataFrame # 진짜 편리한 도구인 것 같다
 
 T = int(input())
 
@@ -20,7 +20,7 @@ for test_case in range(1, T+1):
             if A[r][c] == 0:
                 A[r][c] = A[r-1][c-1] + A[r-1][c]
 
-    # print(DataFrame(A)) # 출력해보면 대각선을 기준으로 윗 부분에도 이상한(?) 값들이 생기는데 어차피 잘라서 출력할거라 걱정 No
+    print(DataFrame(A)) # 출력해보면 대각선을 기준으로 윗 부분에도 이상한(?) 값들이 생기는데 어차피 잘라서 출력할거라 걱정 No
 
     print('#{}'.format(test_case)) # 테스트 번호 출력
     for r in range(N): # 행을 0부터 ~ N-1 까지
