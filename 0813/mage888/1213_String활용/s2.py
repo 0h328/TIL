@@ -2,13 +2,15 @@ import sys
 sys.stdin = open('input.txt', encoding='UTF-8')
 
 for _ in range(10):
-    n = int(input())
+    tc = int(input())
     p = input()
     t = input()
 
+    n, m = len(t), len(p)
+
     cnt = 0
-    for i in range(len(t)-1):
-        if t[i:len(p)+i] == p:
+    for i in range(n-m+1):
+        if t[i:i+m] == p:
             cnt += 1
 
-    print('#{} {}'.format(n, cnt))
+    print('#{} {}'.format(tc, cnt))

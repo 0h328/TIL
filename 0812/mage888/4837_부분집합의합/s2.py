@@ -10,6 +10,7 @@ for tc in range(1, T+1):
     N, K = map(int, input().split())
     ans = 0
     subsets = list(combinations(data, N))
+    print(subsets)
 
     for subset in subsets:
         if sum(subset) == K:
