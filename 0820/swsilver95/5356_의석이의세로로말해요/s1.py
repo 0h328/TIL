@@ -12,6 +12,6 @@ for tc in range(1, T + 1):
         for i in range(15):
             try:
                 print(data[i][j], end='')
-            except:
+            except IndexError:
                 pass
     print()
