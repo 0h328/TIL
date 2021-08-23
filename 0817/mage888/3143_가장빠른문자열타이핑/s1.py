@@ -18,4 +18,4 @@ for tc in range(1, T+1):
             i = i + m - 1
         i += 1
 
-    print(n - (cnt * m) + cnt)
+    print('#{} {}'.format(tc, n - (cnt * m) + cnt))
