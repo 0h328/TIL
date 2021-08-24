@@ -1,46 +1,34 @@
 import sys
 sys.stdin = open('input.txt')
 
+def dfs(r, c):
+    global ans
+
+    rc = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+    for dr, dc in rc:
+        nr = r + dr
+        nc = c + dc
+        if nr in range(N) and nc in range(N) and not visited[nr][nc] and not maze[nr][nc]:
+            visited[nr][nc] = 1
+            dfs(nr, nc)
+        elif nr in range(N) and nc in range(N) and maze[nr][nc] == 3:
+            ans = 1
+            return
+
 T = int(input())
 for tc in range(1, T+1):
     N = int(input())
     maze = [list(map(int, input())) for _ in range(N)]
     visited = [[0] * N for _ in range(N)]
-    # print(maze)
-    # print(visited)
+    ans = 0
 
-    start = 0
-    end = 0
     for r in range(N):
         for c in range(N):
-            if maze[r][c] == 3:
-                end = [r, c]
-            elif maze[r][c] == 2:
-                start = [r, c]
+            if maze[r][c] == 2:
+                dfs(r, c)
 
-    # print(start, end)
 
-    dr = [0, 1, 0, -1]
-    dc = [1, 0, -1, 0]
-
-    k = 0
-
-    while visited[nr][nc] == 1:
-        nr = start[0] + dr[k]
-        nc = start[1] + dc[k]
-
-        if nr in range(N) and nc in range(N):
-            if maze[nr][nc] == 0:
-                start[0] = nr
-                start[1] = nc
-                visited[nr][nc] = 1
-
-        k = (k + 1) % 4
-
-    if start == end:
-        print('#{} 1'.format(tc))
-    else:
-        print('#{} 0'.format(tc))
+    print('#{} {}'.format(tc, ans))
 
 
 
