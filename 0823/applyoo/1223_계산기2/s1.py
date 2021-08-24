@@ -22,6 +22,8 @@ for test in range(10):
     while stack:  # stack에 남아있는 것들 모두 추가
         temp += stack.pop()
 
+    print('###', temp)
+
     # 2. 후위 표현식 -> 계산
     for char in temp:
         if char == '*':  # '*'인 경우(숫자 2개 꺼내서 곱하고 다시 넣음)
