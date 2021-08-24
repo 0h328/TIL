@@ -3,9 +3,9 @@ sys.stdin = open('input.txt')
 
 for tc in range(10):
     N = input()
-    data = input() # 중위 표기식
+    data = input()
     stack = []
-    num = []
+    num = [] # 후위 표현식 저장 공간
 
     #1. 중위 표현식 -> 후위 표현식
     for char in data:
@@ -18,15 +18,14 @@ for tc in range(10):
             stack.append(char) # 스택이 존재하지 않는 경우 무조건 push
         else:
             num.append(char)
-    # print(num
-    # print(stack)
+
     while stack:
         num += stack.pop()
 
     # 2. 후위 표현식 -> 계산
     result = []
     for n in num:
-        # print(n)
+        # print(type(n))
         if n == '*':
             a = result.pop()
             b = result.pop()
