@@ -1,38 +1,37 @@
 import sys
 sys.stdin = open('input.txt')
+from pandas import DataFrame
 
-M = 3
 N = int(input())
 A = [list(map(int,input().split())) for _ in range(N)]
+# print(A)
+# print(DataFrame(A))
 
-# di = [0, 1, 0, -1]
-# dj = [1, 0, -1, 0]
+# index 위치에 따라 5의 위치가 (1,1)이므로
+r = 1
+c = 1
+
+# drc = [[-1, 0], [1, 0], [0, -1], [0, 1]]
 #
-# for i in range(N):
-#     for j in range(M):
-#         for k in range(3):
-#             ni = i + di[k]
-#             nj = j + dj[k]
-#             if 0 <= ni < N and 0 <= nj < M:
-#                 print(A[ni][nj], end= ' ')
+# for r, c in drc:
+#     print(r,c)
 
-di = [0] * (N + 1) # [0, 0, 0, 0]
-dj = [0] * (M + 1) # [0, 0, 0, 0]
+dr = [-1, 1, 0, 0]
+dc = [0, 0, -1, 1]
 
-# 현재 위치 지정하는 법?
+for i in range(4):
+    # print(dr[i], dc[i])
 
-for i in range(N):
-    for j in range(M):
-        if abs(i-j) == 1:
-            if j == 1:
-                print(A[i][j])
+    nr = r + dr[i] # r로부터 dr만큼 이동한 새로운 nr
+    nc = c + dc[i] # c로부터 dc만큼 이동한 새로운 nc
 
-for i in range(N):
-    for j in range(M):
-        if abs(i-j) == 1:
-            if i == 1:
-                print(A[i][j])
+    # 벽 안으로 들어오는 경우만 수행
+    if 0 <= nr < N and 0 <= nc < N:
+        print(A[nr][nc])
 
+    # 벽 밖으로 나가면 그냥 continue
+    if nr < 0 or nr >= N or nc < 0 or nc >= N:
+        continue
 
 
 

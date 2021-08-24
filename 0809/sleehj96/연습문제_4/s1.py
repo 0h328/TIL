@@ -36,7 +36,7 @@ i = 1
 while i <= n:
     cards_list = list(map(int, input()))
 
-    if is_baby_gin(cards_list):
+    if is_baby_gin( cards_list):
         ans = 1
     else:
         ans = 0

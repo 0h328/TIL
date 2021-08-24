@@ -9,6 +9,7 @@ def solve(word):
 
 
 sys.stdin = open('input.txt')
+my_var = 'justin'
 
 # 1. 반복문 활용
 word = input()

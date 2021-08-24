@@ -37,7 +37,7 @@ for i in range(len(arr)):
 
 print(arr_3)
 
-# 전치 함수
+# 전치 행렬
 arr_4 = [[0] * tc for _ in range(tc)]
 for i in range(len(arr)):
     for j in range(len(arr[i])):

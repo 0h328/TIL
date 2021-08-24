@@ -27,10 +27,6 @@ for z in range(T):
             i, j = ni, nj
         else:
             k = (k+1) % 4
-            if ni <= a-i:
-                ni -= 1
-            else:
-                nj -= 1
     print('#{}'.format(z+1))
     for width in range(a):
         for height in range(a):

@@ -12,6 +12,19 @@ def BubbleSort(a):  # 버블정렬
                 a[j], a[j + 1] = a[j + 1], a[j]
     return a
 
+def counting(a):
+    cnt = [0]*(max(a)+1)
+    for i in a:
+        cnt[i] +=1
+
+    for i in range(1,len(cnt)):
+        cnt[i] += cnt[i-1]
+    my_sort = [0]*len(a)
+    for i in range(len(a)-1,0,-1):
+        my_sort[cnt[a[i]]-1]=a[i]
+        cnt[a[i]] -=1
+    return my_sort
+
 
 for test in range(T):
     N, M = map(int, input().split())
@@ -23,7 +36,9 @@ for test in range(T):
             msum += data[i - j]
         result.append(msum)                  # 이값들로 리스트를 만든 후에
 
-    BubbleSort(result)                       # 정렬하고
+    BubbleSort(result)  # 정렬하고
+    # counting(result)
+    # print(result)
     answer = result[-1] - result[0]          # 가장 앞의 수와 뒤의 수를 뺀 차를
 
     print('#{} {}'.format(test + 1, answer)) # 프린트

@@ -11,7 +11,7 @@ def counting(arr):
     for i in range(len(cnt_list)-1):
         cnt_list[i+1] += cnt_list[i]
 
-    for i in range(len(arr) -1, -1, -1):
+    for i in range(len(arr)):
         sort_list[cnt_list[arr[i]] - 1] = arr[i]
         cnt_list[arr[i]] -= 1
 

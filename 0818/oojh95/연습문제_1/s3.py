@@ -4,24 +4,21 @@
 class Stack:
     def __init__(self):                          # 생성자 메서드
         self.data = []
-        self.top = -1
+
         pass
 
     def is_empty(self):                          # stack이 비어있는지 체크하는 메서드
-        if self.top == -1:
-            return True
-        else:
+        if len(self.data):
             return False
+        return True
 
     def push(self, item):                        # stack에 push하는 메서드
-        self.top += 1
         self.data.append(item)
 
     def pop(self):                              # stack에서 pop하는 메서드 (없는 경우 None)
-        if self.top == -1:
-            return
+        if self.is_empty():
+            return None
         else:
-            self.top -= 1
             return self.data.pop()
 
     def __str__(self):                          # stack 출력

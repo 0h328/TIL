@@ -10,7 +10,7 @@ def pop():
     if len(stack) == 0:
         return
     else:
-        return stack.pop(-1)
+        return stack.pop()
 
 print(stack) # []
 push(1)

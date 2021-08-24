@@ -17,7 +17,7 @@ while test_case <= T:
             stack.append(0)         # 스택에 추가
         else:                       # ')'이면
             stack.pop()             # 스택에서 뽑아냄
-            if brackets[idx-1] == brackets[idx]:    # )) 처럼 연속으로 나온거면
+            if brackets[idx-1] == brackets[idx]:    # )) 처럼 연속으로 나오면
                 cnt += 1            # 쇠막대 하나의 길이 끝 => +1
             else:                   # () 처럼 나오면 => 레이저
                 cnt += len(stack)   # 스택의 길이 = 쇠막대기 수 만큼 추가

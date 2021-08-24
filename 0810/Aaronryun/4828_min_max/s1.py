@@ -17,6 +17,17 @@ for test in range(T):
     N = int(input())
     args = list(map(int, input().split()))
 
-    BubbleSort(args)
+    # BubbleSort(args)
 
-    print('#{} {}'.format(test + 1, args[-1] - args[0]))
+    max_data = 0
+    for i in args:
+        if max_data<i:
+            max_data = i
+
+    min_data = args[0]
+    for i in args:
+        if min_data>i:
+            min_data=i
+
+    answer = max_data-min_data
+    print('#{} {}'.format(test + 1, answer))

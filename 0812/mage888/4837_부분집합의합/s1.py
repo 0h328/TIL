@@ -2,7 +2,7 @@ import sys
 sys.stdin = open('input.txt')
 
 T = int(input())
-a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+a = list(range(1, 13))
 n = len(a) # 12
 
 for test_case in range(1, T+1):

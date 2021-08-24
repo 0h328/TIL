@@ -13,7 +13,7 @@ class Stack:
 
     def pop(self):                              # stack에서 pop하는 메서드 (없는 경우 None)
         if self.is_empty():
-            raise Empty('Stack is empty')
+            return
         return self.data.pop()
 
     def __str__(self):                          # stack 출력

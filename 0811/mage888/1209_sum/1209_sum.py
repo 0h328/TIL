@@ -11,23 +11,17 @@ for test_case in range(1, T+1):
 
     total_list = []                                     # 행, 열, 대각선의 합 최댓값을 구하므로, 하나의 리스트에 모아도 무관
 
-# ------- 행 우선 순회 ------- #
+# ------- 행, 열 우선 순회 ------- #
 
     for i in range(len(numbers)):
-        sum_row = 0                                     # 하나의 행을 합했으니, 다른 행을 합하기 위해서 행 위치에 초기화 변수 설정
+        sum_row = 0                                     # 하나의 행과 열을 합했으니, 다른 행을 합하기 위해서 행 위치에 초기화 변수 설정
+        sum_col = 0
         for j in range(len(numbers[i])):
             sum_row += numbers[i][j]
+            sum_col += numbers[j][i]
         total_list.append(sum_row)                      # total_list에 하나의 행을 합한 값 추가
+        total_list.append(sum_col)
 
-# ------- 열 우선 순회 -------- #
-
-    i = 0                                               # NameError 방지를 위해 i값 초기화
-    for k in range(len(numbers[i])):
-        sum_col = 0                                     # 하나의 열을 합했으니, 다른 열을 합하기 위해 열 위치에 초기화 변수 설정
-        for j in range(len(numbers)):
-            sum_col += numbers[j][k]
-        total_list.append(sum_col)                      # total_list에 하나의 열을 합한 값 추가
-        i += 1
 
 # ------- 정방향, 역방향 대각 우선 순회 ------- #
 
