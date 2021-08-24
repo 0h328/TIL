@@ -1,7 +1,8 @@
 import sys
-sys.stdin = open('input2.txt')
 
-for test in range(1,11):
+sys.stdin = open('input.txt')
+
+for test in range(1, 11):
     N = int(input())
     data = input()
     stack = []
@@ -14,12 +15,12 @@ for test in range(1,11):
 
         elif i == '+':
             while stack:
-                if stack[-1] == '(': break # 예외로 설정
+                if stack[-1] == '(': break  # 예외로 설정
                 answer += stack.pop()
             stack.append(i)
 
         elif i == ')':
-            while stack[-1] !='(':
+            while stack[-1] != '(':
                 answer += stack.pop()
             stack.pop()
 
@@ -28,26 +29,24 @@ for test in range(1,11):
                 answer += stack.pop()
             stack.append(i)
 
-        else: # 나머지는 문자열에 더하고
-            answer+=i
+        else:  # 나머지는 문자열에 더하고
+            answer += i
 
-    while stack: # 남은 스택에 있는거 다 더한다
+    while stack:  # 남은 스택에 있는거 다 더한다
         answer += stack.pop()
 
-    print(answer)
-
     result = []
-    for i in answer: # 숫자는 다 더하고 *일때는 뽑아서 곱하고 +일떄는 뽑아서 더하고
+    for i in answer:  # 숫자는 다 더하고 *일때는 뽑아서 곱하고 +일떄는 뽑아서 더하고
         if i == '*':
-            a=result.pop()
-            b=result.pop()
-            c=a*b
+            a = result.pop()
+            b = result.pop()
+            c = a * b
             result.append(c)
 
-        elif i =='+':
-            a=result.pop()
-            b=result.pop()
-            c=a+b
+        elif i == '+':
+            a = result.pop()
+            b = result.pop()
+            c = a + b
             result.append(c)
 
         else:
