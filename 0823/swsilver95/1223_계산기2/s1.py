@@ -9,7 +9,7 @@ def infix_to_postfix(my_str):
     for i in range(n):
         if my_str[i] == '*':
             while stack and stack[-1] == '*':
-                postfix += stack.pop()
+                postfix += stack.pop()              # 연산자의 우선도에 따른 pop
             stack.append(my_str[i])
         elif my_str[i] == '+':
             while stack:
@@ -44,5 +44,5 @@ for tc in range(1, 11):
     n = int(input())
     text = input()
     postfix = infix_to_postfix(text)
-    # print(postfix, '--postfix')
+    print(postfix, '[postfix]')
     print('#{} {}'.format(tc, calculate_postfix(postfix)))

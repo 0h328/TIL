@@ -6,6 +6,7 @@ N = len(arr)
 sel = [0] * N
 results = []
 
+
 def powerset(idx):
     # 선택 미완료
     if idx < N:
@@ -21,5 +22,6 @@ def powerset(idx):
                 total.append(arr[i])
         if sum(total) == 10:
             print(*total)
+
 
 powerset(0)

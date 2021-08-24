@@ -7,11 +7,14 @@ def partition(arr, start, end):
     L, R = start, end
 
     while L < R:
-        while (arr[L]<arr[pivot] and L<R): L += 1
-        while (arr[R]>=arr[pivot] and L<R): R -= 1
+        while (arr[L]<arr[pivot] and L<R):
+            L += 1
+        while (arr[R]>=arr[pivot] and L<R):
+            R -= 1
 
         if L < R:
-            if L == pivot: pivot = R
+            if L == pivot:
+                pivot = R
             arr[L], arr[R] = arr[R], arr[L]
 
     arr[pivot], arr[R] = arr[R], arr[pivot]

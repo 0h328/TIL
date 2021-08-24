@@ -8,15 +8,17 @@ def solve():
         if char == '*':
             stack.append(char)
         elif char == '+':
-            if stack and stack[len(stack)-2] == '*':
-                while stack:
-                    data_num += stack.pop()
+            # if stack and stack[len(stack)-1] == '*':
+            while stack and stack[len(stack) - 1] == '*':
+                data_num += stack.pop()
             stack.append(char)
-            data_num += stack.pop()
+            # data_num += stack.pop()
         else:
             data_num += char
     while stack: # 스택에 남은 * 처리
         data_num += stack.pop()
+
+    #print(data_num)
 
     result = []
     for c in data_num:
@@ -31,7 +33,7 @@ def solve():
                 result.append(left + right)
         else:
             result.append(int(c))
-    return result[0] + result[1]
+    return result[0]
 
 
 for t in range(1, 11):
