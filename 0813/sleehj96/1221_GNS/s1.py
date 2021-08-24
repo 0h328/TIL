@@ -14,11 +14,12 @@ while case_num <= T:
 
     test_str = input().split()
     earth_num_list = []
+
     for e1 in test_str:
         earth_num_list.append(other_planet_num_list.index(e1))
+
     earth_num_list.sort()
     # print(earth_num_list)
-
 
     print('{}'.format(test_case))
     for e2 in earth_num_list:

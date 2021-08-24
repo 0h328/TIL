@@ -5,7 +5,7 @@ from pandas import DataFrame
 sys.stdin = open('input.txt')
 
 
-def dfs(start, end):
+def dfs(start):
     stack = [start]
 
     while stack:
@@ -36,7 +36,7 @@ while test_case <= T:
     # print(DataFrame(G))
 
     visited[0] = 1
-    dfs(0, 99)
+    dfs(0)
 
     print('#{0} {1}'.format(test_case, visited[99]))
     # break

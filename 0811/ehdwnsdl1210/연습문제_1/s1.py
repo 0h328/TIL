@@ -53,16 +53,16 @@ print(number)
 # for 안 : 찾고 옮기기
 # 인덱스가 1씩 증가
 # 최소값의 인덱스를 찾아라!
-# arr = [6, 5 ,3 ,8 ,1 ,7 ,4]
-# M = len(arr)
-#
-# for i in range(M-1):
-#     min_idx = i
-#     for j in range(i + 1, M):
-#         if arr[min_idx] > arr[j]:
-#             min_idx = j
-#     arr[i], arr[min_idx] = arr[min_idx], arr[i]
-# print(arr)
+arr = [6, 5 ,3 ,8 ,1 ,7 ,4]
+M = len(arr)
+
+for i in range(M-1):
+    min_idx = i
+    for j in range(i + 1, M):
+        if arr[min_idx] > arr[j]:
+            min_idx = j
+    arr[i], arr[min_idx] = arr[min_idx], arr[i]
+print(arr)
 
 # min_idx = 0
 # for i in range(1, M):

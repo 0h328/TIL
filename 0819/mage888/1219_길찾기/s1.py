@@ -8,8 +8,10 @@
 import sys
 sys.stdin = open('input.txt')
 
-def dfs(s, e):
+def dfs():
+    # global s            # 함수 내 s가 없음.
     stack = [s]
+    # stack = [0]
 
     while stack:
         s = stack.pop()
@@ -38,10 +40,10 @@ for tc in range(1, T+1):
 
     visited = [0 for _ in range(100)]
 
-    s = 0
+    s = 0       # global
     e = 99
 
-    print('#{} {}'.format(tc, dfs(s, e)))
+    print('#{} {}'.format(tc, dfs()))
 
 
 

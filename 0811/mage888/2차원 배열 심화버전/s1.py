@@ -3,11 +3,13 @@ sys.stdin = open("input.txt")
 
 N = int(input())
 A = [list(map(int,input().split())) for _ in range(N)]
+print(A)
 
 length_A = []
 
 for l in range(len(A)):
     length_A.append(len(A[l]))
+    print(length_A)
 
 max_value = length_A[0]
 for k in length_A:

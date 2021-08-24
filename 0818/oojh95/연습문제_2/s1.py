@@ -13,26 +13,26 @@ a{b(c[d]e}) -> 괄호가 올바르게 매칭되지 않음
 
 def push(item):
     stack.append(item)
-    pass
 
 def pop():
-    return stack.pop()
-    pass
+    if is_empty():
+        return
+    else:
+        return stack.pop()
 
 def is_empty():
     if len(stack) == 0:
         return True
     else:
         return False
-    pass
 
 def check_matching(data):           # 이 함수에서 push, pop, is_empty 활용
     for i in data:
         if i == '(':
             push(i)
-        elif is_empty():
-            return False
         else:
+            if is_empty():
+                return False
             pop()
     if is_empty():
         return True

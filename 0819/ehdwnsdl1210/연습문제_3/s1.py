@@ -24,6 +24,8 @@ def dfs(v):  # 재귀
         if G[v][w] == 1 and not visited[w]:
             dfs(w)
 
+
+
 from pandas import DataFrame
 import sys
 sys.stdin = open('input.txt')
