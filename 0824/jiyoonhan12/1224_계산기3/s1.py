@@ -1,22 +1,26 @@
 import sys
 sys.stdin = open('input.txt')
 
+
 def solve():
     stack = []
     data_num = ''
+
     for char in data:
         if char == '*':
             stack.append(char)
         elif char == '+':
-            # if stack and stack[len(stack)-1] == '*':
-            while stack and stack[len(stack) - 1] == '*':
+            while stack and stack[-1] != '(':
                 data_num += stack.pop()
             stack.append(char)
-            # data_num += stack.pop()
+        elif char == '(':
+            stack.append(char)
+        elif char == ')':
+            while stack and stack[-1] != '(':
+                data_num += stack.pop()
+            stack.pop()
         else:
             data_num += char
-    while stack: # 스택에 남은 * 처리
-        data_num += stack.pop()
 
     #print(data_num)
 
@@ -35,8 +39,7 @@ def solve():
             result.append(int(c))
     return result[0]
 
-
 for t in range(1, 11):
-    N = int(input())
-    data = input() # 중위 표기식
+    num = int(input()) # not used
+    data = input()
     print('#{} {}'.format(t, solve()))
