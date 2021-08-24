@@ -10,11 +10,11 @@ def get_postfix(prefix: str):
         if l.isdigit():
             ans += l
         else:
-            if "+":
-                while stack and stack[-1] == "*":  # 우선순위가 높은 것을 pop
+            if l == "+":
+                while stack:  # 우선순위가 높은 것을 pop
                     ans += stack.pop()
                 stack.append(l)
-            elif "*":  # 우선순위가 높은 연산자가 없으므로 그대로 append
+            elif l == "*":  # 우선순위가 높은 연산자가 없으므로 그대로 append
                 stack.append(l)
 
     while stack:  # 남은 연산자 추가
