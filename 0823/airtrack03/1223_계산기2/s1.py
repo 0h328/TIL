@@ -21,9 +21,8 @@ def change_experession(original):
                         if not stack or priority[original[i]] > priority[stack[-1]]:
                             stack.append(original[i])
                             break
-    if stack:
-        while stack:
-            result += stack.pop()
+    while stack:
+        result += stack.pop()
 
     return result
 
