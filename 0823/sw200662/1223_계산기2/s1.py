@@ -4,7 +4,6 @@ sys.stdin = open('input.txt')
 for i in range(10):
     N = int(input())
     exam = input()
-    list_1 = []
     list_2 = []
     str_ans = ''
 
@@ -19,6 +18,7 @@ for i in range(10):
             str_ans += z
     while list_2:
         str_ans += list_2.pop()
+    print(str_ans)
 
     result = []
     for z in str_ans:
