@@ -11,7 +11,7 @@ for tc in range(1, N + 1):                          # N개의 테스트 케이�
     try:
         for char in data:                               # num의 글자를 하나씩 빼서
 
-            if char == "." and len(stack) > 1:          # 중간에 . 나오는 경우
+            if char == "." and len(stack) > 0:          # 중간에 . 나오는 경우
                 num = "error"
                 break
 
