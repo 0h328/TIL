@@ -15,11 +15,16 @@ for tc in range(1, t + 1):
     for i in input().split():
         charge_list[int(i)] = 1     # 충전기가 설치된 주유소에 1을 채움
 
+    print(charge_list)
+
     while count <= n:
         if count > 0 and charge_list[count] == 1:
             result += 1
 
-        max_idx = count + k if (count + k <= n) else n
+        max_idx = count + k #if (count + k <= n) else n
+        if max_idx >= n:
+            break
+
         for j in range(max_idx, count - 1, -1):
             if j == count:
                 flag = 1
@@ -27,7 +32,7 @@ for tc in range(1, t + 1):
                 break
 
             if charge_list[j] == 1:
-                count = count + j - 1
+                count = count + j
                 result += 1
                 break
 
