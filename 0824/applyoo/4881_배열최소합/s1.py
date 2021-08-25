@@ -19,6 +19,7 @@ def dfs(depth):
             confirm_y[col] = False
     return
 
+
 T = int(input())
 for test in range(T):
     N = int(input())
