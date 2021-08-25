@@ -6,18 +6,6 @@ import sys
 sys.stdin = open('input.txt')
 
 
-'''
-def solution(idx, length):   # idx - 시작 인덱스 / length - 길이
-    #Base Case
-    if length == 2:
-        if n_list[idx] - n_list[idx+1] == -1 or n_list[idx] - n_list[idx+1] == 2:
-            return idx+1
-        return idx
-    elif length == 1:
-        return idx
-
-    solution(idx, length//2), solution(idx+length//2, length//2)
-'''
 
 def solution(arr):
     #Base Case
