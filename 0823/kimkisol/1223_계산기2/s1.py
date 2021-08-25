@@ -9,16 +9,15 @@ def Calculator(formula):
     for i in range(len(formula)):
         if formula[i] == '*':
             stack.append('*')
-            continue
         elif formula[i] == '+':
             stack.append('+')
         else:
             nums.append(int(formula[i]))
-            if len(stack) and stack[-1] == '*':
+            if stack and stack[-1] == '*':
                 nums.append(nums.pop() * nums.pop())
                 stack.pop()
 
-    while len(stack):
+    while stack:
         nums.append(nums.pop() + nums.pop())
         stack.pop()
 
