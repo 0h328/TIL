@@ -16,14 +16,4 @@ for tc in range(1, T+1):
 
     if pw[-1] < 0:
         pw[-1] = 0
-    print('#{}'.format(tc), end=' ')
-    print(*pw)
-
-
-
-
-
-
-
-
-
+    print('#{} {}'.format(tc, ' '.join(map(str, pw))))
