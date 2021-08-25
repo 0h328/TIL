@@ -1,24 +1,27 @@
+#1. sol
+
 import sys
 
 sys.stdin = open('input.txt')
 
 
 def Maze(map_list):
-    # 시작점 열 찾기
+    # 시작점 좌표 찾기
     for i in range(1, N + 1):
         for j in range(1, N + 1):
             if map_list[i][j] == 2:
                 row, col = i, j
                 break
+
     # 탐색하기
     visited = [[0] * (N + 2) for _ in range(N + 2)]  # 좌표 방문여부
     dr = [-1, 1, 0, 0]  # 상하좌우 행
     dc = [0, 0, -1, 1]  # 열
-    now = (row, col) # 현위치
-    stack = [now]  # 갔던 길
-    visited[now[0]][now[1]] = 1
+    stack = [(row, col)]  # 갔던 길
+    visited[row][col] = 1
+
     while stack:
-        now = stack[-1]
+        now = stack[-1] # 현재위치 = 마지막 스택 값
         for i in range(4):
             row, col = now[0] + dr[i], now[1] + dc[i]
             if map_list[row][col] == 3:
@@ -28,8 +31,10 @@ def Maze(map_list):
                 visited[row][col] = 1
                 break
         else:
-            stack.pop()
+            stack.pop() # 현재 위치 꺼내기(갔던길에서 뒤로 돌아가기)
+
     return 0
+
 
 T = int(input())
 

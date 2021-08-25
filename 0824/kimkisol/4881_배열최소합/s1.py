@@ -3,18 +3,27 @@ import sys
 sys.stdin = open('input.txt')
 
 
-def gen_permutation(n, depth, P):
-    result = []
-    if depth == n:
-        return [P]
-    else:
-        for i in range(N):
-            if chosen[i]:
-                continue
-            chosen[i] = True
-            result += gen_permutation(n, depth + 1, P + [i])
-            chosen[i] = False
-    return result
+# 순열 만들면서 계산
+def gen_permutation(N, depth):
+    global min_sum
+    global temp_sum
+
+    if temp_sum > min_sum:
+        return
+
+    if depth == N:
+        if temp_sum < min_sum:
+            min_sum = temp_sum
+        return
+
+    for i in range(N):
+        if chosen[i]:
+            continue
+        chosen[i] = True
+        temp_sum += nums[depth][i]
+        gen_permutation(N, depth + 1)
+        chosen[i] = False
+        temp_sum -= nums[depth][i]
 
 
 T = int(input())
@@ -25,17 +34,8 @@ for t in range(1, T + 1):
 
     # 순열 리스트 생성
     chosen = [False] * N
-    perms = gen_permutation(N, 0, [])
-
-    min_sum = 99999
-    for i in range(len(perms)):
-        result = 0
-        for j in range(N):
-            result += nums[perms[i][j]][j]
-            if result > min_sum:
-                break
-        else:
-            if result < min_sum:
-                min_sum = result
+    min_sum = 9 * N
+    temp_sum = 0 # 변수 생성 순서 중요! NameError
+    gen_permutation(N, 0)
 
     print('#{} {}'.format(t, min_sum))
