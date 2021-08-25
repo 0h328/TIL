@@ -15,5 +15,5 @@ print(solve(word)) # edcba
 
 #2. pythonic (slicing)
 word2 = input()
-print(word2) # sgnirts siht esreve
+print(word2) # sgnirts siht esreveR
 print(word2[::-1])
