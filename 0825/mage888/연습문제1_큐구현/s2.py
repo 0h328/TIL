@@ -11,38 +11,55 @@ class Queue:
         """
         인스턴스 생성 시에 새로운 Queue 생성
         """
-        pass
+        self.queue = []
 
     def is_empty(self):
         """
         Queue에 비어있는지 여부를 True / False로 반환
         """
-        pass
+        if not self.queue:
+            return True
 
-    def enqueue(self):
+        return False
+
+    def enqueue(self, data):
         """
         Queue에 원소 삽입
         """
-        pass
+        self.queue.append(data)
 
     def dequeue(self):
         """
         Queue에서 원소 삭제 후 반환
         """
-        pass
+        return self.queue.pop(0)
 
     def size(self):
         """
         Queue의 길이 반환
         """
-        pass
+        return len(self.queue)
 
 # 1. Queue 인스턴스 생성
+q = Queue()
 
 # 2. Queue가 비었는지 확인
+print(q.is_empty())
 
 # 3. 1, 2, 3 원소를 Queue 삽입
+q.enqueue(1)
+q.enqueue(2)
+q.enqueue(3)
 
 # 4. 원소가 정상적으로 삽입되었는지 확인 / 사이즈 확인 / 비었는지 여부 확인
 
+print(q.queue)
+print(q.size())
+print(q.is_empty())
+
 # 5. Queue에서 원소 삭제 후 반환 & 원소 확인 / 사이즈 확인
+
+print(q.dequeue())
+print(q.dequeue())
+print(q.dequeue())
+print(q.size())

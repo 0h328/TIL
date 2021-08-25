@@ -5,7 +5,6 @@ T = 10
 for tc in range(1, T+1):
     N = int(input())
     pw = list(map(int, input().split()))
-    M = len(pw)
 
     k = 0                               # 차감하기 위해 만든 변수
     while pw[-1] > 0:                   # pw의 마지막 idx가 0이 되면 종료
