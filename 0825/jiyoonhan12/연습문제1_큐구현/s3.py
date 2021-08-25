@@ -40,8 +40,8 @@ def enqueue(item):
     - rear를 뒤쪽으로 옮기고 (rear + 1)그 자리에 원소를 삽입
     """
     global rear
-    if rear == 4:
-        return 'Queue_Full'
+    if is_full():
+        print('Queue is Full!')
     else:
         rear += 1
         Q[rear] = item
@@ -54,10 +54,11 @@ def dequeue():
     """
     global front
     if is_empty():
-        return 'Queue_Empty'
+        print('Queue is Empty!')
     else:
         front += 1
-        return Q.pop(front-1)
+        popped = Q[front]
+        return popped
 
 # Qpeek
 def Qpeek():
@@ -67,7 +68,10 @@ def Qpeek():
     - 이때 중요한 것은 dequeue와 다르게 front의 값 자체를 '변경'하지 않는다는 점
      - front += 1은  front + 1과 다름
     """
-    return Q[front+1]
+    if not is_empty():
+        return Q[front+1]
+    else:
+        print('Queue is Empty!')
 
 
 #1. Queue 초기화 상태 확인

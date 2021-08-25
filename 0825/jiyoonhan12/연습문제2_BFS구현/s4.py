@@ -1,5 +1,5 @@
 """
-1. bfs - 인접 행렬 구현
+4. bfs - 1번 노드에서 가장 멀리 떨어진 노드 찾기 (거리에 대한 정보 담아 놓기)
 """
 
 def bfs(v):
@@ -8,11 +8,11 @@ def bfs(v):
     visited[v] = 1
     while queue:
         t = queue.pop(0)
-        for i in range(V+1):
+        for i in range(V + 1):
             if graph[t][i] == 1 and not visited[i]:
                 queue.append(i)
-                visited[i] = 1
-                print(i) # 어떤 순서로 탐색했는지
+                visited[i] = visited[t] + 1
+                print(i)  # 어떤 순서로 탐색했는지
 
 
 import sys
@@ -29,7 +29,6 @@ graph = [[0 for _ in range(V+1)] for _ in range(V+1)]
 for i in range(E):
     graph[temp[i*2]][temp[i*2+1]] = 1
     graph[temp[i*2+1]][temp[i*2]] = 1
-# print(graph)
 
 # 방문 표시 초기화
 visited = [0] * (V+1)
