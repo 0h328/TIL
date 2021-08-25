@@ -11,6 +11,7 @@ def bfs(x: int, y: int):
 
     while dq:
         x, y = dq.popleft()
+        print(mp)
         for i in range(4):
             nx = x + dx[i]
             ny = y + dy[i]
