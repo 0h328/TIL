@@ -6,14 +6,15 @@ def dfs(row):
     if row == n:
         if min_val > res:
             min_val = res
+    else:
+        for i in range(n):
+            if visited[i] == 0 and res + l[row][i] <= min_val:
+                visited[i] = 1
+                res += l[row][i]
+                dfs(row+1)
+                visited[i] = 0
+                res -= l[row][i]
 
-    for i in range(n):
-        if visited[i] == 0 and res + l[row][i] <= min_val:
-            visited[i] = 1
-            res += l[row][i]
-            dfs(row+1)
-            visited[i] = 0
-            res -= l[row][i]
 
 
 t = int(input())
