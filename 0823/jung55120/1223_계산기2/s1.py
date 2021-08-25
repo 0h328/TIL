@@ -5,16 +5,19 @@
 import sys
 sys.stdin = open('input.txt')
 
-for tc in range(1,11):
+for tc in range(1, 11):
     N = input()
     data = input() # 중위 표현식
+    print(data)
     stack = []
-    my_str = ''
+    my_str = '' # 후위 표현식을 넣을 빈 스트링
 
     for char in data:
         if char == '*':
             stack.append(char)
         elif char == '+':
+            # 빈 리스트인지
+            # 만약 '*'이 있다면?
             while stack:
                 my_str += stack.pop()
             stack.append(char)
@@ -24,16 +27,18 @@ for tc in range(1,11):
     while stack:  # stack에 남아있는 것들 모두 추가
         my_str += stack.pop()
 
+    print(my_str)
+
     for char in my_str:
         if char == '*':
             num1 = stack.pop()
             num2 = stack.pop()
-            stack.append(num1*num2)
+            stack.append(num1 * num2)
 
         elif char == '+':
             num1 = stack.pop()
             num2 = stack.pop()
-            stack.append(num1+num2)
+            stack.append(num1 + num2)
 
         else:
             stack.append(int(char))
