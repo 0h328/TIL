@@ -2,7 +2,6 @@ import sys
 
 sys.stdin = open('input.txt')
 
-
 def permutation(idx):
     global min_data, msum  # 최소값을 저장할 공간과 전체 합을 저장할 공간을 글로벌로 불러오기
 

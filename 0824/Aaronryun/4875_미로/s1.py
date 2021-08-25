@@ -5,7 +5,6 @@ sys.stdin = open('input.txt')
 def check(y, x):
     return 0 <= y < N and 0 <= x < N
 
-
 def DFS(y, x):
     stack = [(y, x)]
     visit = []
@@ -29,7 +28,6 @@ def DFS(y, x):
 
 for test in range(1, 1 + int(input())):
     N = int(input())
-
     data = [list(map(int, input())) for _ in range(N)]
 
     dx = [1, -1, 0, 0]
