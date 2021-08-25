@@ -23,6 +23,7 @@ for tc in range(1, T+1):
     N = int(input())
     temp = list(map(int, input().split()))
     data = [[idx+1, val] for idx, val in enumerate(temp)]   # 딕셔너리의 경우 인덱스로 접근 불가하기에 이중 리스트로 구현
+    # , start = 1로 하면 idx + 1로 안 해도 됨
 
     ans = winner_check(data)[0][0]
     print('#{} {}'.format(tc, ans))
