@@ -36,8 +36,9 @@ def winner(numbers):
     if len(numbers) == 1:
         return numbers[0]
 
-    if len(numbers) == 2:
-        return compare_cards(numbers[0], numbers[1])
+    # 킹륜기: 놀랍게도 이 부분은 필요가 없다.
+    # if len(numbers) == 2:
+    #     return compare_cards(numbers[0], numbers[1])
 
     n = len(numbers)
     start = 0
@@ -52,5 +53,6 @@ for tc in range(1, T + 1):
     N = int(input())
     tmp = list(map(int, input().split()))
     cards = list(enumerate(tmp, start=1))
+    # print(cards)
     win = winner(cards)
     print('#{} {}'.format(tc, win[0]))
