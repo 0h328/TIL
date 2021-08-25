@@ -8,8 +8,11 @@ results = []
 
 def powerset(idx):
     if idx > 0:
-        if sum(sel) == 10:
+        value = sum(sel)
+        if value == 10:
             print([i for i in sel if i != 0])
+        if value > 10 or value + sum(arr[max(sel)-1:]) < 10:
+            return
         if idx == N:
             return
 

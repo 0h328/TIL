@@ -34,6 +34,7 @@ for test in range(1,11):
     while stack: # 남은 스택에 있는거 다 더한다
         answer += stack.pop()
 
+    print(answer)
 
     result = []
     for i in answer: # 숫자는 다 더하고 *일때는 뽑아서 곱하고 +일떄는 뽑아서 더하고
