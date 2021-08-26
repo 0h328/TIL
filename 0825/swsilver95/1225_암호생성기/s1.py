@@ -5,6 +5,7 @@ sys.stdin = open('input.txt')
 for _ in range(1, 11):
     tc = int(input())
     numbers = deque(list(map(int, input().split())))
+    # print(numbers)
     N = 8
     i = 1
     while True:
