@@ -17,14 +17,14 @@ def is_full():
     """
     Queue가 포화상태인지 확인
     """
-    pass
+    return rear == len(Q) - 1
 
 # isEmpty
 def is_empty():
     """
     Queue가 공백상태인지 확인
     """
-    pass
+    return front == rear
 
 # enQueue
 def enqueue(item):
@@ -32,7 +32,13 @@ def enqueue(item):
     Queue의 뒤쪽(rear 다음)에 원소를 삽입
     - rear를 뒤쪽으로 옮기고 (rear + 1)그 자리에 원소를 삽입
     """
-	pass
+    global rear
+    # Queue가 찼는지 여부를 확인
+    if is_full():
+        print('Queue is full!')
+    else:
+        rear += 1
+        Q[rear] = item
 
 # deQueue
 def dequeue():
@@ -40,7 +46,12 @@ def dequeue():
     Queue의 앞쪽(front)에서 원소를 삭제하고 반환
     - front를 뒤쪽으로 옮기고(front + 1) 그 자리에 있는 원소를 반환하며 삭제
     """
-	pass
+    global front
+    if is_empty():
+        print('Queue is empty!')
+    else:
+        front += 1
+        return Q.pop()
 
 # Qpeek
 def Qpeek():
@@ -50,7 +61,11 @@ def Qpeek():
     - 이때 중요한 것은 dequeue와 다르게 front의 값 자체를 '변경'하지 않는다는 점
      - front += 1은  front + 1과 다름
     """
-	pass
+    global front
+    if is_empty():
+        print('Queue is empty!')
+    else:
+        return Q[front+1]
 
 
 #1. Queue 초기화 상태 확인

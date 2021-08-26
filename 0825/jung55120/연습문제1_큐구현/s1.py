@@ -6,12 +6,21 @@
 """
 
 #1. Queue 생성 (리스트)
+Q = []
 
 #2. Queue에 데이터를 삽입
+Q.append(1)
+Q.append(2)
+Q.append(3)
+print(Q)
 
 #3. Queue에 삽입한 데이터를 출력(First-In-First-Out)
+print(Q.pop(0))
+print(Q.pop(0))
+print(Q.pop(0))
 
-
+if Q:
+    print(Q.pop(0))
 """
 문제1-2. 기본 Queue 구현 - 기본 구현 (내장 모듈 활용)
  - 세 개의 데이터 1, 2, 3을 차례로 큐에 삽입
