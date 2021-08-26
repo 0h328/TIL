@@ -6,8 +6,9 @@ import pathlib, sys
 
 sys.stdin = open(str(pathlib.Path(__file__).parent.absolute()) + "/input.txt")
 
-def bfs(x:int, y: int):
 
+def bfs(x: int, y: int):
+    pass
 
 
 test_case = int(input())
