@@ -17,8 +17,9 @@ temp = list(map(int, input().split()))
 
 # Graph 초기화
 # graph = {}
-# for i in range(1, len(temp), 2):
-#     graph.update()... 어떻게함
+# for i in range(1, V+1):
+#     graph[i] = []
+#     graph.append()
 
 # 방문 표시 초기화
 

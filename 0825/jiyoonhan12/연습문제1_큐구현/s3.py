@@ -57,9 +57,8 @@ def dequeue():
         print('Queue is Empty!')
     else:
         front += 1
-        popped = Q[front]
-        return popped
-
+        # return Q[front]
+        return Q.pop(0)
 # Qpeek
 def Qpeek():
     """
