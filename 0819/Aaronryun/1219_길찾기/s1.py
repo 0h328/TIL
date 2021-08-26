@@ -22,7 +22,7 @@ def DFS(graph, start):
 for test in range(1, 11):
     number, total = map(int, input().split())
     data = list(map(int, input().split()))
-
+    print(data)
     graph = {x: [] for x in range(100)}
     for i in range(0, len(data), 2):
         graph[data[i]].append(data[i + 1])
