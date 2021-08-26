@@ -5,13 +5,24 @@
   (1, 2, 3을 차례대로 출력)
 """
 from collections import deque
+import queue
 #1. Queue 생성
-queue = deque()
+# queue = deque()
+Q = queue.Queue()
 #2. Queue에 데이터를 삽입
-queue.append(1)
-queue.append(2)
-queue.append(3)
+# queue.append(1)
+# queue.append(2)
+# queue.append(3)
+Q.put(1)
+Q.put(2)
+Q.put(3)
+print(Q.empty())
+print(Q.qsize())
 #3. Queue에 삽입한 데이터를 출력(First-In-First-Out)
-print(queue.popleft())
-print(queue.popleft())
-print(queue.popleft())
+# print(queue.popleft())
+# print(queue.popleft())
+# print(queue.popleft())
+print(Q.get())
+print(Q.get())
+print(Q.get())
+
