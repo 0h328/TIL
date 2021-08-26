@@ -6,7 +6,17 @@
 """
 
 #1. Queue 생성 (리스트)
-
+Q = []
 #2. Queue에 데이터를 삽입
-
+Q.append(1)
+Q.append(2)
+Q.append(3)
+print(Q)
 #3. Queue에 삽입한 데이터를 출력(First-In-First-Out)
+print(Q.pop(0))
+print(Q.pop(0))
+print(Q.pop(0))
+
+if Q:
+    print(Q.pop(0))
+
