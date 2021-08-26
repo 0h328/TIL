@@ -5,6 +5,10 @@ def solve(row):
     global part_sum, min_v
     if part_sum > min_v: # 가지치기
         return
+
+    if row == N: # 마지막 행에 도착한 경우
+        min_v = min(part_sum, min_v)  # 최솟값으로 교환
+
     for i in range(N):               # 행은 동일하게 열을 모두 읽어냄
         if visited[i] == 0:     # 방문하지 않은 경우
             visited[i] = 1     # 방문체크
@@ -14,17 +18,13 @@ def solve(row):
             visited[i] = 0      # 방문 x
             part_sum -= word[row][i]  # 부분합에 추가한 것 제외
 
-    if row == N: # 마지막 행에 도착한 경우
-        if part_sum < min_v:  # 부분합이 최소보다 작은 경우 교환
-            min_v = part_sum
-
 for tc in range(int(input())):
     N = int(input())
     word = [list(map(int, input().split())) for _ in range(N)]
     # print(word)
     visited = [0] * N
     part_sum = 0
-    min_v = 99999
+    min_v = 9999999
     solve(0)
     print('#{} {}'.format(tc+1, min_v))
 

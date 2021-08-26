@@ -32,4 +32,3 @@ for test in range(T):
 
     dfs(r, c)
     print('#{} {}'.format(test+1, result))
-

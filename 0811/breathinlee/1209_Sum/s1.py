@@ -6,6 +6,8 @@ for tc in range(10):
     arr = [list(map(int, input().split())) for _ in range(100)]
 
     max_sum = 0
+    cross_sum = 0
+    o_cross_sum = 0
 
     for i in range(100):            # 각 행들의 합 고려하기 위해
         max_val = 0
@@ -22,15 +24,7 @@ for tc in range(10):
                 max_sum = max_val
 
     for i in range(100):            # 대각선의 합 고려하기 위해
-        max_val = 0
-        max_val += arr[i][i]
-        if max_sum < max_val:
-            max_sum = max_val
+        cross_sum += arr[i][i]
+        o_cross_sum += arr[i][99 - i]
 
-    for i in range(100):             # / 대각선(opposite diagonal)의 합 고려하기 위해
-        max_val = 0
-        max_val += arr[i][99-i]
-        if max_sum < max_val:
-            max_sum = max_val
-
-    print('#{} {}'.format(T, max_sum))
+    print('#{} {}'.format(T, max(max_sum, cross_sum, o_cross_sum)))

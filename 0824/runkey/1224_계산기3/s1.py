@@ -23,7 +23,7 @@ for tc in range(1, 11):                         # 10개의 테스트 케이스
                 num += stack.pop()              # num에 stack값을 추가
             stack.append(char)                  # stack에 현재 문자 추가
         elif char == ")":                       # 해당 문자가 )이면
-            while stack and stack[-1] != "(":   # stack이 비거나 top이 (일 때 까지
+            while stack[-1] != "(":   # stack이 비거나 top이 (일 때 까지
                 num += stack.pop()              # num에 stack값을 추가
             stack.pop()                         # ( 내보내기
         else:                                   # 숫자이면

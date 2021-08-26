@@ -17,7 +17,7 @@ def bfs(l, l2, l3):
                 if -1 < nx < n and -1 < ny < n and visited[nx][ny] == 0:
                     if l[nx][ny] == 3:
                         res = 1
-                        visited[nx][ny] = 1
+                        # visited[nx][ny] = 1
                         return res
                     elif l[nx][ny] == 0:
                         visited[nx][ny] = 1

@@ -2,7 +2,7 @@ import sys
 sys.stdin = open("input.txt")
 
 N = int(input())                                      # 케이스의 개수 가져오기
-for tc in range(1, N + 1):                            #
+for tc in range(1, N + 1):
     num = int(input())                                # 카드 장수
     numbers = input()                                 # 카드에 적힌 숫자
     cnt_nums = [0] * 10                               # 숫자는 0 ~ 9까지 이므로 0 ~ 9 까지의 인덱스를 갖는 리스트 생성

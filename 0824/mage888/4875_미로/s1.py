@@ -15,6 +15,7 @@ def dfs(r, c):
             ans = 1
             return
 
+
 T = int(input())
 for tc in range(1, T+1):
     N = int(input())
@@ -27,10 +28,7 @@ for tc in range(1, T+1):
             if maze[r][c] == 2:
                 dfs(r, c)
 
-
     print('#{} {}'.format(tc, ans))
-
-
 
 
 

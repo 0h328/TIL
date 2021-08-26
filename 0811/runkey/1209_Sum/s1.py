@@ -4,7 +4,7 @@ sys.stdin = open("input.txt")
 for _ in range(10): #총 테스트 케이스
     t = input()
     result_list = []
-    for _ in range(100): # 10줄의 입력
+    for _ in range(100): # 100줄의 입력
         result_list.append(list(map(int, input().split())))
     diagonal_sum = 0
     reverse_diagonal_sum = 0
