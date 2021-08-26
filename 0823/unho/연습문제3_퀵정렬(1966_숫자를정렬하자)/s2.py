@@ -18,7 +18,6 @@ def partition(arr, start, end):
     arr[start], arr[right] = arr[right], arr[start]
     return right
 
-
 def quick_sort(arr, start, end):
     if start < end:
         pivot = partition(arr, start, end)

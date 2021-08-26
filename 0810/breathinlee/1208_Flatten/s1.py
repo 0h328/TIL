@@ -23,9 +23,6 @@ for tc in range(1, 11):
     box_height = list(map(int, input().split()))
     for i in range(num):
         box_height[max_height()] -= 1
-        # box_height[box_height.index(max(box_height))] -= 1
         box_height[min_height()] += 1
-        # box_height[box_height.index(min(box_height))] -= 1
     height_difference = box_height[max_height()] - box_height[min_height()]
-    # height_difference = box_height[box_height.index(max(box_height))] - box_height[box_height.index(min(box_height))]
     print('#{} {}'.format(tc, height_difference))

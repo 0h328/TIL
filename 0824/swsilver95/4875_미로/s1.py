@@ -6,6 +6,7 @@ T = int(input())
 dx = [-1, 1, 0, 0]  # 상하좌우
 dy = [0, 0, -1, 1]
 
+
 def dfs(x, y):
     global N
     global result

@@ -15,10 +15,12 @@ def dfs(x: int, y: int):
     for i in range(n):
         if not visited[i]:
             temp += mp[x + 1][i]
+
             if temp < ans:  # 여전히 최소값보다 작을 경우
                 visited[i] = 1
                 dfs(x + 1, i)
                 visited[i] = 0  # 이전 값으로 복귀
+
             temp -= mp[x + 1][i]  # 이전 값으로 복귀
 
 
