@@ -35,3 +35,20 @@ visited = [0] * (V+1)
 
 # bfs 탐색 시작
 bfs(1)
+
+def bfs(s, V)
+    q = [0] * V
+    front = -1
+    rear = -1
+    visited = [0] * (V+1)
+    rear += 1
+    g[rear] = s
+    visited[s] = 1
+    while front != rear:
+        front += 1
+        t = q[front]
+        for i in range(1, V+1):
+            if G[t][i] == 1 and visited[i] == 0:
+                rear += 1
+                g[rear] = i
+                visited[i] = visited[t] + 1
