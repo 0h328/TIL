@@ -5,14 +5,17 @@
 def bfs(v):
     queue = [v]
     visited[v] = 1
+    max_val = 0
 
     while queue:
         cur = queue.pop(0)
-        print('방문 정점: {}, 방문 체크: {}'.format(cur, visited))
         for w in G[cur]:
             if not visited[w]:
                 queue.append(w)
                 visited[w] = visited[cur] + 1
+                if visited[w] > max_val:
+                    max_val = visited[w]
+    print(max_val)
 
 
 import sys
@@ -31,11 +34,3 @@ for i in range(E):
 visited = [0 for _ in range(V+1)]
 # bfs 탐색 시작
 bfs(1)
-
-min_val = visited[0]
-ans = 0
-for i in range(len(visited)):
-    if visited[i] > min_val:
-        ans = i
-
-print(ans)

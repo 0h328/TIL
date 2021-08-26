@@ -17,9 +17,10 @@ class Queue:
         """
         Queue에 비어있는지 여부를 True / False로 반환
         """
-        if len(self.queue):
-            return False
-        return True
+        # if len(self.queue):
+        #     return False
+        # return True
+        return self.queue == []
 
     def enqueue(self, item):
         """
