@@ -19,6 +19,8 @@ for t in range(1, 11):
     temp = (min(numbers) // 15) - 1 # 똑같은 숫자 빼줘도 되는 거 15 기준
     for num in numbers:
         new_numbers.append(num - (temp * 15))
+    # print(new_numbers)
     cycle(new_numbers)
+
     print('#{} '.format(t), end='')
     print(*new_numbers)
