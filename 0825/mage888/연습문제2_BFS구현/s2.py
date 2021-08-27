@@ -12,7 +12,7 @@ def bfs(v):
         for i in G[t]:
             if not visited[i]:
                 q.append(i)
-                visited[i] = visited[t] + 1
+                visited[i] = visited[t] + 1 # 시작점부터 해당 인덱스 지점까지의 거리?
 
 import sys
 sys.stdin = open('input.txt')

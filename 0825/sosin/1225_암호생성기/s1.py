@@ -13,10 +13,10 @@ def sol(q):
             
 for T in range(1, 11):
     input()
-    result = 0
     arr = list(map(int, input().split()))
-    print('#{}'.format(T), end=' ')
-    print(*sol(deque(arr)))
+    for i in range(8):
+        arr[i]%=120
+    print('#{}'.format(T), *sol(deque(arr)))
 
 #1 6 2 2 9 4 1 3 0 
 #2 9 7 9 5 4 3 8 0 

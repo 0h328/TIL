@@ -19,7 +19,6 @@ for tc in range(1, 11):
         cnt += 1
         my_list.append(number)
 
-        # print('#{}'.format(tc + 1), end=' ')
     print('#{}'.format(tc), end=' ')
     print(*my_list)
 

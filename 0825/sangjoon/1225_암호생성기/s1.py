@@ -1,10 +1,9 @@
 # 문제 푼 시간
 # 풀이법: Count 사용
 import pathlib, sys
+from collections import deque
 
 sys.stdin = open(str(pathlib.Path(__file__).parent.absolute()) + "/input.txt")
-
-from collections import deque
 
 test_case = 10
 
@@ -14,7 +13,8 @@ for test in range(1, test_case + 1):
 
     dq = deque(pw)
     hs = [i for i in range(1, 6)]
-    idx = 0
+    idx = 1
+
     while dq:
         e = dq.popleft()
         tmp = e - hs[idx % 5]
