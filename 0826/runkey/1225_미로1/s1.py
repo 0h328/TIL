@@ -56,7 +56,7 @@ for tc in range(1, 2):             # 테스트 케이스
                 result = 1                  # result = 1
 
             else:                           # 종료되지 않을 경우
-                for i in range(len(temp_rc)):   # temp_rc 범위만큼 반복
+                for i in range(len(temp_rc)):   # temp_rc 범위만큼 반복, 미로가 회전 변경되기에 기존 값들도 좌표를 변경함
                     if (maze[r + 1][c] == '1') and (maze[r][c + 1] == '0' or maze[r][c + 1] == "2"): # 오른쪽에 벽이 있고
                         pass                                                                        # 앞에 길이 있는 경우
                     elif (maze[r + 1][c] == '0') and (maze[r + 1][c - 1] == '1'): # 세,네갈래길, 오른쪽 뒤에 벽이 있는 경우
@@ -87,19 +87,20 @@ for tc in range(1, 2):             # 테스트 케이스
             # print("({}, {})".format(r, c))    # 바뀐 r, c 값
         temp_rc.append((r, c))
         # print(temp_rc)
-        for a in range(16):             # 미로 출력
-            for b in range(16):
-                # if a == r and b == c:
-                if (a, b) == (r, c):
-                    print('\033[30m' '\033[47m' + str(maze[a][b]) + '\033[00m', end=' ')
-                elif (a, b) in temp_rc:
-                    print('\033[31m' '\033[43m' + str(maze[a][b]) + '\033[00m', end=' ')
-                else:
-                    print(maze[a][b], end=' ')
-            print()
-        print()
 
-        if maze[r][c] == '3':       # 현재 미로의 (r, c) 좌표의 값이 3일 경우 즉시 종료
-            break
+        # for a in range(16):             # 미로 출력
+        #     for b in range(16):
+        #         # if a == r and b == c:
+        #         if (a, b) == (r, c):
+        #             print('\033[30m' '\033[47m' + str(maze[a][b]) + '\033[00m', end=' ')
+        #         elif (a, b) in temp_rc:
+        #             print('\033[31m' '\033[43m' + str(maze[a][b]) + '\033[00m', end=' ')
+        #         else:
+        #             print(maze[a][b], end=' ')
+        #     print()
+        # print()
+        #
+        # if maze[r][c] == '3':       # 현재 미로의 (r, c) 좌표의 값이 3일 경우 즉시 종료
+        #     break
 
     print(" #{} {}".format(tc, result))  # 테스트 케이스 번호와 길이 존재하는지 결과 출력
