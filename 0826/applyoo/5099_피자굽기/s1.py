@@ -1,7 +1,6 @@
 import sys
 sys.stdin = open('input.txt')
 
-
 T = int(input())
 for test in range(T):
     N, M = map(int, input().split())
@@ -10,7 +9,7 @@ for test in range(T):
     fire = [[0, 0] for _ in range(N)]
     idx, state, cnt = 0, 0, 0
 
-    while cnt < M:
+    while cnt < M-1:
         if fire[idx][0] > 0:
             fire[idx][0] //= 2
         if fire[idx][0] == 0:
@@ -19,8 +18,6 @@ for test in range(T):
                 state += 1
             else:
                 cnt += 1
-                if cnt == M - 1:
-                    break
                 if state < M:
                     fire[idx] = [arr[state], state+1]
                     state += 1
