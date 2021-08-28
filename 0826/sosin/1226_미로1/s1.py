@@ -2,7 +2,6 @@ import sys
 sys.stdin = open('input.txt')
 
 from collections import deque
-
 dr = [0,0,-1,1]
 dc = [1,-1,0,0]
 for T in range(1, 11):
