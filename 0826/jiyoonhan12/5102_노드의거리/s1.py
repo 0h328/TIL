@@ -13,6 +13,8 @@ def bfs(S):
             if graph[t][i] == 1 and not visited[i]:
                 queue.append(i)
                 visited[i] = visited[t] + 1
+                if i == G: # G 방문하면 바로 끝나도록 조건 걸기 0.12693s (이전 0.14422s)
+                    break
 
 
 T = int(input())
@@ -26,9 +28,7 @@ for t in range(1, T+1):
         graph[v2][v1] = 1
 
     S, G = map(int, input().split())
-
     visited = [0] * (V+1)
-
     bfs(S)
 
     if visited[G]: # n번째 턴에 방문했다면 지나온 노드 수는 n-1

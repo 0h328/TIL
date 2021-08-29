@@ -1,6 +1,30 @@
 import sys
 sys.stdin = open('input.txt')
 
+def quicksort(arr):
+    #Base Case
+    if len(arr) <= 1:
+        return arr
+
+    pivot = arr[0]
+    less = []
+    more = []
+    equal = []
+
+    for e in arr:
+        if e > pivot:
+            more.append(e)
+        elif e < pivot:
+            less.append(e)
+        elif e == pivot:
+            equal.append(e)
+
+    return quicksort(less) + equal + quicksort(more)
+
+
+
+
+'''
 def quicksort(x):
     #Base Case
     if len(x) <= 1:
@@ -20,7 +44,7 @@ def quicksort(x):
             equal.append(e)
 
     return quicksort(less) + equal + quicksort(more)
-
+'''
 
 
 '''
