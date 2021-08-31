@@ -14,15 +14,15 @@ for T in range(int(input())):
     S, G = map(int, input().split())
     visitied = [0]*(V+1)
 
-    q = deque([(S, 1)])
+    q = deque([S])
     while q:
-        v, cnt = q.popleft()
-        visitied[v] = cnt
+        v = q.popleft()
         for next_v in graph[v]:
             if not visitied[next_v]:
-                q.append((next_v, cnt+1))
+                visitied[next_v]=visitied[v]+1
+                q.append(next_v)
 
-    ans = visitied[G]-1 if visitied[G] else visitied[G]
+    ans = visitied[G]
     print('#{} {}'.format((T+1), ans))
 
 #1 2
