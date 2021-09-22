@@ -8,16 +8,17 @@ sys.stdin = open('input.txt')
 def dfs(r, c):
     global ans
     for i in range(4):                         # 각 idx 마다 4방 체크, 갈 수 있는곳 확인
-        nr, nc = r + dr[i], c + dc[i]            # potential 이동위치 배정
+        nr, nc = r + dr[i], c + dc[i]          # potential 이동위치 배정
 
         if 0 <= nr < N and 0 <= nc < N:        # 탐색 범위 미로 내로 지정
             if arr[nr][nc] == 3:               # 이동하고 탈출구 발견하면 바로 끝
                 ans = 1
-                return
-                # return 1      # 왜 이건 안될까?
-            if not arr[nr][nc] and not v[nr][nc]:  # 통로가 있고, 아직 방문 안했으면,
+                return                         # 값 반환 목적x 정답 찾았으니 해당 함수 끝내라
+                # return 1      # 왜 이건 안될까?     # 최종함수기준으로 봤을때, 리턴값을 못 받아서
+            elif arr[nr][nc] == 0 and v[nr][nc] == 0:  # 통로가 있고, 아직 방문 안했으면,
                 v[nr][nc] = 1                          # 방문체크 하고
-                dfs(nr, nc)                            # 탐색하러 ㄱ
+                dfs(nr, nc)                            # deep하게 탐색하러 ㄱ
+
 
 for tc in range(1, int(input())+1):
 
