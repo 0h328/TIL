@@ -1,6 +1,7 @@
 import sys
 sys.stdin = open('input.txt')
 
+# 소요 시간: 2시간 40분
 # thought process:
 # 인풋리스트A 가져오고
 # 인풋 리스트안에 숫자들 카운트할 리스트B 만들고
@@ -11,6 +12,13 @@ sys.stdin = open('input.txt')
 # 숫자를 한개 넣을 공간을 만들어줌
 # 해당 위치에 숫자를 삽입
 
+# 문제:
+# 단순히 로직이 이해가 안됨. 손으로 일일히 그려봐도 안됨.
+
+# 해결:
+# 일단은 process를 외우는 방향으로 생각.
+# 하다보면 언젠가는 이해가 될거다.
+
 # A = 인풋 리스트 생성
 A = list(map(int, input().split(', ')))
 # B = 카운트 리스트 생성
@@ -18,17 +26,17 @@ B = [0 for _ in range(len(A))]  # or B = [0] * len(A)
 
 for i in A:                             # 카운트 리스트에 카운트 값 저장
     B[i] += 1
-print(B)
+print(*B)
 
 for i in range(len(B)-1):               # 카운트 리스트에 카운트들 누적합 저장
     B[i+1] += B[i]
-print(B)
+print(*B)
 
 ans = [0 for _ in range(len(A))]        # 정렬된 리스트를 넣기위한 새로운 리스트
 for i in reversed(A):                   # 인풋 리스트 역순으로 진행
     ans[B[i]-1] = i                     # 인덱스로 계산하니까 -1
     B[i] -= 1                           # 입력값에 중복을 방지하기 위해 -1
-print(ans)
+print(*ans)
 
 
 

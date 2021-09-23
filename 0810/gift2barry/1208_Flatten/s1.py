@@ -1,9 +1,11 @@
-#총 소요시간 66:15
-
 import sys
 sys.stdin = open('input.txt')
 
-# 치트키1
+# 총 소요시간 66:15
+# thought process:
+# 덤프 횟수동안, block 정렬하고 가장 앞에값 +1, 가장 뒤에값-1 반복
+# 덤프 횟수 소진하면 남은 리스트에서 (max - min) = 정답
+
 def init():
     # Test 케이스 횟수 10회
     T = 10
