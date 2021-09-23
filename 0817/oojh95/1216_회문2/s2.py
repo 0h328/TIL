@@ -22,7 +22,7 @@ def palindrome(words):
 
 for _ in range(10):
     T = input()
-    words = [list(input()) for _ in range(100)]
+    words = [list(input()) for i in range(100)]
     result = palindrome(words)
     print('#{} {}'.format(T, result))
 

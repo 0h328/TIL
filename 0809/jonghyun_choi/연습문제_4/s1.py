@@ -13,8 +13,8 @@ for num in range(N):
     l_index = 0
     tri = run = 0
     while l_index < 10:
-        if card_count[l_index] >= 3:
-            card_count[l_index] -= 3
+        if card_count[l_index] >= 3:   # 무조건 tri를 먼저 찾아야 한다.
+            card_count[l_index] -= 3   # run을 먼저 찾기 위해 위와 아래의 조건문을 바꾸는 순간 에러가 발생한다.
             tri += 1
             continue
         if card_count[l_index] >= 1 and card_count[l_index+1] >= 1 and card_count[l_index+2] >= 1:

@@ -20,9 +20,6 @@ def find(x,y):
                 return 1
     return 0
 
-
-
-
 for i in range(10):
     maze = []
     tc = int(input())

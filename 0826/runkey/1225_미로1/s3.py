@@ -108,12 +108,9 @@ for tc in range(1, 2):             # 테스트 케이스
                     print('\033[31m' '\033[43m' + str(temp2[a][b]) + '\033[00m', end=' ')
                 else:
                     print(temp2[a][b], end=' ')
-            time.sleep(0.01)
             print()
         print()
-        time.sleep(0.01)
-        print()
-
+        time.sleep(0.2)
         if maze[r][c] == '3':       # 현재 미로의 (r, c) 좌표의 값이 3일 경우 즉시 종료
             break
 
