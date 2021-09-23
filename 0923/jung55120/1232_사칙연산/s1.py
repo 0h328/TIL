@@ -1,6 +1,7 @@
 import sys
 sys.stdin = open('input.txt')
-
+# 식까지는 만들었고, stack으로 풀어보고 싶었는데 해결이 안됐다..
+# 어떻게 해야할까? 고민해보자.
 def in_order(num):                     # inorder(중위순회) 함수 만들기
     global str_num
     if num <= N:                      # 만약 num이 N보다 작을 때
