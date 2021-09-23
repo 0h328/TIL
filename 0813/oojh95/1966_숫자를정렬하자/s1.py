@@ -28,6 +28,7 @@ def countingsort(arr):
 
     for i in range(n):
         result[cnt[arr[i]] - 1] = arr[i]
+        cnt[arr[i]] -= 1
 
     return result
 

@@ -6,7 +6,7 @@ for _ in range(10):
     words = [list(input()) for _ in range(100)]
 
     result = 1
-    for l in range(2, 100):
+    for l in range(2, 101):
         for i in range(100):
             for j in range(100 - l + 1):
                 for k in range(l // 2):
