@@ -14,7 +14,6 @@ def in_order(node):
 
 for T in range(10):
     N = int(input())
-    graph = {}
     graph = {i : input().split() for i in range(N)}
     print('#{} {}'.format((T+1), in_order(0)))
 
