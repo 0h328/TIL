@@ -110,8 +110,8 @@ for tc in range(1, 2):             # 테스트 케이스
                     print(temp2[a][b], end=' ')
             print()
         print()
-        time.sleep(0.2)
+        time.sleep(0.16)
         if maze[r][c] == '3':       # 현재 미로의 (r, c) 좌표의 값이 3일 경우 즉시 종료
             break
 
-    print(" #{} {}".format(tc, result))  # 테스트 케이스 번호와 길이 존재하는지 결과 출력
+    # print(" #{} {}".format(tc, result))  # 테스트 케이스 번호와 길이 존재하는지 결과 출력

@@ -2,7 +2,7 @@ import sys
 sys.stdin = open('input.txt')
 
 import copy
-
+import time
 # feat. 우수법
 # -90도 회전
 '''
@@ -88,19 +88,20 @@ for tc in range(1, 2):             # 테스트 케이스
         temp_rc.append((r, c))
         # print(temp_rc)
 
-        # for a in range(16):             # 미로 출력
-        #     for b in range(16):
-        #         # if a == r and b == c:
-        #         if (a, b) == (r, c):
-        #             print('\033[30m' '\033[47m' + str(maze[a][b]) + '\033[00m', end=' ')
-        #         elif (a, b) in temp_rc:
-        #             print('\033[31m' '\033[43m' + str(maze[a][b]) + '\033[00m', end=' ')
-        #         else:
-        #             print(maze[a][b], end=' ')
-        #     print()
-        # print()
-        #
-        # if maze[r][c] == '3':       # 현재 미로의 (r, c) 좌표의 값이 3일 경우 즉시 종료
-        #     break
+        for a in range(16):             # 미로 출력
+            for b in range(16):
+                # if a == r and b == c:
+                if (a, b) == (r, c):
+                    print('\033[30m' '\033[47m' + str(maze[a][b]) + '\033[00m', end=' ')
+                elif (a, b) in temp_rc:
+                    print('\033[31m' '\033[43m' + str(maze[a][b]) + '\033[00m', end=' ')
+                else:
+                    print(maze[a][b], end=' ')
+            print()
+        time.sleep(0.2)
+        print()
 
-    print(" #{} {}".format(tc, result))  # 테스트 케이스 번호와 길이 존재하는지 결과 출력
+        if maze[r][c] == '3':       # 현재 미로의 (r, c) 좌표의 값이 3일 경우 즉시 종료
+            break
+
+    # print(" #{} {}".format(tc, result))  # 테스트 케이스 번호와 길이 존재하는지 결과 출력

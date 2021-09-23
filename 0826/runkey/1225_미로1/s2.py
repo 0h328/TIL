@@ -33,5 +33,5 @@ for tc in range(1, 11):
                 for a in range(16):
                     for b in range(16):
                         maze[a][b] = temp[16 - 1 - b][a]
-            temp = copy.deepcopy(maze)  # 2 4 ==> 0 2
+            temp = copy.deepcopy(maze)
     print(" #{} {}".format(tc, result))
