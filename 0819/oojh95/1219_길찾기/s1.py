@@ -1,6 +1,7 @@
 import sys
 sys.stdin = open('input.txt')
 def dfs(v):
+
     if not visited[v]:  # 방문하지 않았다면 방문 체크
         visited[v] = 1
 
