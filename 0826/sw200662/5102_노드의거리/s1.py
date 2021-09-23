@@ -24,6 +24,7 @@ for i in range(T):
         A,B = map(int,input().split())
         list_node[A].append(B)
         list_node[B].append(A)
+    print(list_node)
     S,G = map(int,input().split())
     find(S,0)
     if ans == 5555:
