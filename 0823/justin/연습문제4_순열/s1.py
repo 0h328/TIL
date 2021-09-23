@@ -15,4 +15,4 @@ def permutation(idx):  # idx는 sel의 자리를 결정하는 것 -> 3(N)이 된
             check[i] = 1        # 해당 원소를 사용했다고 체크
             permutation(idx+1)  # 다음 확인
             check[i] = 0        # 다음 반복문을 위한 원상 복구
-permutation(0)
+permutation(0) 

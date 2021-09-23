@@ -23,7 +23,7 @@ def Maze(map_list):
     while stack:
         now = stack[-1]  # 현재위치 = 마지막 스택 값
         for i in range(4):
-            row, col = now[0] + dr[i], now[1] + dc[i]
+            row, col = now[0] + dr[i], now[1] + dc[i]  # 새로 움직였다고 가정했을 때 좌표(row, col)
             if map_list[row][col] == 3:
                 return visited[now[0]][now[1]] - 1
             if map_list[row][col] == 0 and visited[row][col] == 0:
@@ -40,5 +40,5 @@ T = int(input())
 
 for t in range(1, T + 1):
     N = int(input())
-    map_list = [[1] * (N + 2)] + [[1] + list(map(int, list(input()))) + [1] for _ in range(N)] + [[1] * (N + 2)]
+    map_list = [[1] * (N + 2)] + [[1] + list(map(int, input())) + [1] for _ in range(N)] + [[1] * (N + 2)]
     print('#{} {}'.format(t, Maze(map_list)))
