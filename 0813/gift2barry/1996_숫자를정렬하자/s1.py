@@ -1,6 +1,10 @@
 import sys
 sys.stdin = open('input.txt')
 
+# 버블 정렬
+# 소요시간: 37분 34초
+# 하나씩 바꾸어나가면서 한 턴 끝나면 맨 뒤에 인덱스 무시하고 다시 시작
+# 첫 위치에 도달하면 끝
 T = int(input())
 
 for tc in range(1, 2):
@@ -8,10 +12,6 @@ for tc in range(1, 2):
     N = int(input())
     arr = list(map(int, input().split()))
 
-    # 버블 정렬
-    # 소요시간: 37분 34초
-    # 하나씩 바꾸어나가면서 한 턴 끝나면 맨 뒤에 인덱스 무시하고 다시 시작
-    # 첫 위치에 도달하면 끝
     for i in range(len(arr)-1):
         j = 0
         while N-1 > j:
