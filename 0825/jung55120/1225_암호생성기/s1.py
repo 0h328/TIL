@@ -8,7 +8,7 @@ for tc in range(1, 11):
     result = True
     cnt = 1
 
-    while result:
+    while result:                # result가 True일 때까지
         number = my_list.pop(0)
         number -= cnt
         if cnt == 6:

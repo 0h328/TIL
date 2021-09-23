@@ -21,8 +21,7 @@ def bfs(x, y):
             if 0 <= nx < N and 0 <= ny < N:
                 if not visited[nx][ny]:
                     if maze[nx][ny] == 3:
-                        visited[nx][ny] = visited[a][b] + 1
-                        return visited[nx][ny] - 2
+                        return visited[a][b] - 1
                     elif maze[nx][ny] != 1:
                         q.append((nx, ny))
                         visited[nx][ny] = visited[a][b] + 1

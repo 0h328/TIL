@@ -1,7 +1,6 @@
 import sys
 sys.stdin = open('input.txt')
 
-# 패작2
 # thought process:
 # 앞&뒤 두개 인덱스가 현재 인덱스보다 작을때
 # 네개의 인덱스값중에 가장 큰 값을 찾아서
@@ -10,6 +9,10 @@ sys.stdin = open('input.txt')
 
 # 문제점:
 # 답은 맞게 나오는데, input.txt 에서 전체 값들 불러오질 못함
+
+# 파해법:
+# 동기에게 질문.
+# map 함수와 split 함수를 사용하여, 띄어쓰기를 기준으로 input.txt 의 동일한 줄에 위치한 모든 숫자를 불러옴
 
 
 def init():

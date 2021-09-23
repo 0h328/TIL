@@ -8,6 +8,7 @@ def bfs(x, y):
 
     while bfs_list:
         x, y = bfs_list.popleft()
+
         if (x, y) == (end_x, end_y):
             return DP[x][y] - 1
 

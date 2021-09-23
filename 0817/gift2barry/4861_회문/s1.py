@@ -7,21 +7,6 @@ sys.stdin = open('input.txt')
 # 아니라면 전체 문자열에서 인덱스 한칸 전진한 뒤 반복
 # 세로 가로 둘 다 적용해서 해보자 while 문 이용하여 try
 
-# T = int(input())
-# for tc in range(1, T+1):
-#
-#     N, M = map(int, input().split())
-#
-#     # 행열 회문 찾기
-#     for _ in range(N):
-#         arr = input()
-#         # palin =                        # 회문 저장할 리스트
-#         for i in range(N-M):
-#             if arr[i:M+i] == arr[i:M+i][::-1]:
-#                 print(arr[i:M+i])
-
-# 기솔님 코드 참조해라
-
 # 수민님 코드 참조
 T = int(input())
 for tc in range(1, T+1):

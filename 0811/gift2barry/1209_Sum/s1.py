@@ -1,6 +1,7 @@
 import sys
 sys.stdin = open('input2.txt')
 
+# 소요시간 58분
 # thought process:
 # 가로줄 합
 # 세로줄 합

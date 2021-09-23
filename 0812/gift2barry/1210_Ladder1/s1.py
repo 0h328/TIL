@@ -1,10 +1,13 @@
 import sys
 sys.stdin = open('input.txt')
 
+
+# 소요시간 55분
 # 문제점:
 # 4번째 tc 는 오답, 5번째 tc는 IndexError
 # 예상 원인:
 # 좌 우측 벽에 닿을때 if 문에 인덱스에러
+# for 조건문을 while로 코드의 로직을 직관적으로 바꾸어 해결
 
 for tc in range(1, 11):
 
@@ -22,9 +25,8 @@ for tc in range(1, 11):
 
     while x > 0:                        # 정답지점 찾기 (맨 윗줄 도착 전 까지 올라감)
 
-        x -= 1                                      # 첫 스타트 이동, 이후 좌,우가 0 이면 위로 이동
-# 조건문 앞에서부터 순차적
-# 앞이 False면 뒤에 검사x..!!
+        x -= 1                                     # 첫 스타트 이동, 이후 좌,우가 0 이면 위로 이동
+
         if y > 0 and ladder[x][y-1] == left:       # 왼쪽칸이 있고, 1이면
             while y > 0 and ladder[x][y-1] == left:   # 사다리를 벗어나거나, 0 이 나올때 까지
                 y -= 1
@@ -35,6 +37,10 @@ for tc in range(1, 11):
 
     ans = y                             # 맨 윗줄 도착 시, 열(출발지) 반환
     print('#{} {}'.format(tc, ans))
+
+
+
+
 
 # if ladder[x][y-1] == left or ladder[x][y+1] == right:   # 좌 or 우 에 길이 있으면
 #     while ladder[x][y-1] == left and y > 0:   # 좌측이 1 이고 사다리 안에 있을때 계속 좌측이동
@@ -75,9 +81,6 @@ for tc in range(1, 11):
 #                 while
 #
 #             elif ladder[99 - i][col_idx + 1] == 1:  # 우측에 길이 있으면
-#
-#
-#
 #
 #
 #     def go_left():
