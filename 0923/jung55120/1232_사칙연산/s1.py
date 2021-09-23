@@ -1,17 +1,32 @@
 import sys
 sys.stdin = open('input.txt')
-V = int(input())
-E = V - 1
 
-tree = [list(for [0] in range(3)) for _ in range(V+1)]
-temp = list(map(int, input().split()))
+def in_order(num):                     # inorder(중위순회) 함수 만들기
+    global str_num
+    if num <= N:                      # 만약 num이 N보다 작을 때
+        if node_list[num] in ('+', '-', '*', '/'):
+            str_num += '('
+            in_order(num*2)                # 재귀로 들어가기...
+            str_num += node_list[num]
+            in_order(num * 2 + 1)  # 오른쪽 있나 체크
+            str_num += ')'
+        else:
+            in_order(num*2)                # 재귀로 들어가기...
+            str_num += node_list[num]
+            in_order(num * 2 + 1)  # 오른쪽 있나 체크
+    return str_num
+
+for tc in range(1, 11):
+    N = int(input())
+    node_list = [0 for _ in range(N+1)]         # index를 맞춰서 사용하고 싶어서 N + 1 해줌
+
+    for i in range(N):
+        node = list(input().split())
+        node_list[i+1] = node[1]
+    # print(node_list)
+    str_num = ''
+    print(in_order(1))                        # 중위함수 1부터 시작
+    eqn = list(in_order(1))
 
 
-cnt = 0
-for i in range(E):
-    parent, child = temp[i*2], temp[i*2+1]
-    if not tree[parent][0]:
-        tree[parent][0] = child
-    else:
-        tree[parent][1] = child
-    tree[parent][2] = parent
+
