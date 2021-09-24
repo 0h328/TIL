@@ -12,15 +12,15 @@ def in_order(v):
 
 for t in range(1, 11):
     N = int(input())
-    temp = [input().split() for _ in range(N)]
     left = [0] * (N+1)
     right = [0] * (N+1)
     word = ''
 
+    temp = [input().split() for _ in range(N)]
     for idx, char, *child in temp:
-        if child:
-            left[int(idx)] = int(child[0])
-            if len(child) == 2:
+        if child: # 자식 있으면
+            left[int(idx)] = int(child[0]) # 왼쪽자식
+            if len(child) == 2: # 자식 2명이상이면
                 right[int(idx)] = int(child[1])
 
     in_order(1)

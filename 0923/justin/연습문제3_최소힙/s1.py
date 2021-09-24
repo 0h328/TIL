@@ -67,7 +67,7 @@ heap = [0] * (N+1)             # 크기 설정 (+1은 인덱스를 노드 번호
 #1. heap push 연산
 for i in range(N):
     heap_push(nums[i])         # 인덱스 0번에 해당하는 노드부터 heap_push 연산 수행
-print(*heap)                   # 0 2 3 5 7 4 6
+# print(*heap)                   # 0 2 3 5 7 4 6
 
 #2. heap pop 연산
 for i in range(N):             # 삭제 - 루트 노드

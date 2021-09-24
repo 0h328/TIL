@@ -9,27 +9,27 @@
 # 좌측자식 노드 => 부모노드 => 우측자식노드 순으로
 # ans 단어들 ans 에 저장
 
-
+#
 import sys
 sys.stdin = open('input.txt')
 
 
 def in_order(v):
     global ans
-    if v * 2 <= l:
+    if v * 2 <= N:
         in_order(v * 2)
-    ans += t[v]
-    if v * 2 + 1 <= l:
+    ans += tree[v]
+    if v * 2 + 1 <= N:
         in_order(v * 2 + 1)
 
 
 for tc in range(1, 10+1):
 
-    l = int(input())
-    t = [0] * (l + 1)
+    N = int(input())
+    tree = [0] * (N + 1)  # tree
     ans = ''
-    for i in range(l):
+    for i in range(N):
         var = input().split()
-        t[int(var[0])] = var[1]
+        tree[int(var[0])] = var[1]
     in_order(1)
     print('#{} {}'.format(tc, ans))
