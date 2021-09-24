@@ -10,7 +10,6 @@ for tc in range(1, T + 1):
 
     heapq.heapify(heap)
     heap = [0] + heap
-    # print(heap)
 
     answer = 0
     while N > 0:
