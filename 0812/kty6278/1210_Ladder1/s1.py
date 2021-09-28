@@ -4,7 +4,7 @@ sys.stdin = open('input.txt')
 for _ in range(10):
     t = int(input())
     ladder = [list(map(int, input().split())) for _ in range(100)]
-    # print(ladder)
+    print(ladder)
 
 
     for i in range(100):
