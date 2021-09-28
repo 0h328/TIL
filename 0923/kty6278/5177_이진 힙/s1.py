@@ -24,14 +24,21 @@ for tc in range(int(input())):
     child = 1
     for no in node:
         tree.append(no)
+        print(tree)
         heapify_sort(child) # root 는 1
         child += 1
 
-    #print(node)
+    print(node)
     #heapq.heapify(node)                      # 부모 노드 < 자식 노드 자동으로 정렬 최소힙 만족
     #print(node)
-
     #print(tree)
     cnt = 0
     solve(n)
     print('#{} {}'.format(tc+1, cnt))
+
+    [2, 3, 5, 7, 4, 6]
+    # 1 7
+    [1, 3, 4, 16, 23, 12]
+    # 2 5
+    [11, 14, 18, 40, 57, 45, 63, 52]
+    # 3 65
