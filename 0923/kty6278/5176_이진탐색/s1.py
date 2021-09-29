@@ -6,6 +6,7 @@ def solve(root):
     if root <= n:
         solve(root*2)                                      # 왼쪽 실행
         tree[root] = cnt
+        # print(tree)
         cnt += 1
         solve(root*2 + 1)                                  # 오른쪽 실행
 

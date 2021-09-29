@@ -4,7 +4,7 @@ def solve(word):
     result = []
     for i in range(len(word)):
         result.append(word[i - 1])
-    return "".join(result)
+    return ''.join(result)
 
 
 import sys

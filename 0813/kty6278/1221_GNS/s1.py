@@ -24,7 +24,7 @@ for tc in range(T):
             if new_list[k] == num_list[l]:
                 final_list.append(number_list[l])
     print('#{}'.format(tc + 1))
-    print(" ".join(final_list))
+    print(' '.join(final_list))
 
 
 
