@@ -23,9 +23,9 @@ for tc in range(1, T+1):
     for v in arr:
         heap_push(v)
 
-    ans = -q[idx]
+    ans = 0
     while idx:
-        ans += q[idx]
         idx //= 2
+        ans += q[idx]
 
     print('#{0} {1}'.format(tc, ans))
