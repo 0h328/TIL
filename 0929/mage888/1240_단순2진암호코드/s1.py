@@ -56,7 +56,7 @@ for tc in range(1, T+1):
     even_num = 0
     ans = 0
     for i in range(len(num_list)):
-        if i%2:
+        if i % 2:
             odd_num += num_list[i]*3
         else:
             even_num += num_list[i]
