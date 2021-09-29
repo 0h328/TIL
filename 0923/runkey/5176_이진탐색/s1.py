@@ -15,7 +15,7 @@ cnt = 0
 start = 2
 x = 1
 flag = 0
-for i in range(1, 10000):
+for i in range(1, 100):
     if i % square == 0:
         square *= 2
         if i != 2:
@@ -30,7 +30,6 @@ for i in range(1, 10000):
     if flag != 1:
         cnt += 1
     root_list.append(cnt)
-
 
 
 
@@ -58,4 +57,4 @@ for t in range(1, tc + 1):
     makeTree(1)
     result = tree[N//2]
 
-    print("#{} {} {}".format(t, root_list[N], result))
+    print("#{} {} {}".format(t, tree[1], result))
