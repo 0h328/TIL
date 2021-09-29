@@ -4,7 +4,7 @@ import heapq
 sys.stdin = open('input.txt')
 
 
-# 이건 왜 테스트케이스 3개가 틀리게 나오는지 모르겠음
+# 이건 왜 테스트케이스 3개가 틀리게 나오는지 모르겠음 (heap 리스트 앞에 [0] 붙여주면 됨)
 T = int(input())
 
 for t in range(1, T + 1):
@@ -16,6 +16,7 @@ for t in range(1, T + 1):
     for num in nums:
         heapq.heappush(heap, num)
 
+    # heap 리스트 앞에 [0] 붙여줘야 됨
     result = 0
 
     while N:  # 가장 마지막 노드 번호
