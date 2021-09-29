@@ -4,6 +4,7 @@ sys.stdin = open('input.txt')
 def calculate(i):
     if len(tree[i]) == 2:
         return int(tree[i][1])
+
     a = calculate(int(tree[i][2]))
     b = calculate(int(tree[i][3]))
     if tree[i][1] == '+':
