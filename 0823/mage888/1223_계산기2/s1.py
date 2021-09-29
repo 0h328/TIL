@@ -15,9 +15,8 @@ for tc in range(1, T+1):
             stack.append(char)
         elif char == '*' and stack:
             if stack[-1] == '*':
-                while stack[-1] == '*':
-                    postfix.append(stack[-1])
-                    stack.pop()
+                while stack[-1] != '*':
+                    postfix.append(stack.pop())
                     if not stack:
                         break
                 stack.append(char)
@@ -27,9 +26,8 @@ for tc in range(1, T+1):
             stack.append(char)
         elif char == '+' and stack:
             if stack[-1] == '*' or stack[-1] == '+':
-                while stack[-1] == '*' or stack[-1] == '+':
-                    postfix.append(stack[-1])
-                    stack.pop()
+                while stack[-1] != '*' or stack[-1] != '+':
+                    postfix.append(stack.pop())
                     if not stack:
                         break
                 stack.append(char)

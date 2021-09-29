@@ -28,7 +28,7 @@ sys.stdin = open('input.txt')
 T = 10
 for tc in range(1, T+1):
     n = int(input())
-    l = [list(map(int,input().split())) for _ in range(100)]
+    l = [list(map(int, input().split())) for _ in range(100)]
 
     goal = 0
     for c in range(100):

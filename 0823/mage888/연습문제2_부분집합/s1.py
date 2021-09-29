@@ -7,11 +7,11 @@ sel = [0] * N     # 해당 요소를 선택 / 선택하지 않음을 표현하�
 
 def powerset(idx):
     if idx == N:
-        # print(sel)
-        for i in range(N):
-            if sel[i]:
-                print(arr[i], end=' ')
-        print()
+        print(sel)
+        # for i in range(N):
+        #     if sel[i]:
+        #         print(arr[i], end=' ')
+        # print()
     else:
         sel[idx] = 1
         powerset(idx+1) # 재귀 호출 3까지 가면 마지막으로 부른곳은 여기므로 여기로 돌아감

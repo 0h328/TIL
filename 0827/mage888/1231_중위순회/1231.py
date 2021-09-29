@@ -16,7 +16,7 @@
 import sys
 sys.stdin = open('input.txt')
 
-def in_order(s: int):
+def in_order(s):
     if s <= N:
         in_order(2*s)
         print('{}'.format(word[s]), end='')
@@ -30,6 +30,7 @@ for tc in range(1, T+1):
     for i in range(N):
         data = input().split()
         word[i+1] = data[1]
+    print(word)
 
     print('#{}'.format(tc), end=' ')
     in_order(1)
