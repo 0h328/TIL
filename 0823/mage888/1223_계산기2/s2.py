@@ -8,6 +8,7 @@ for tc in range(1, T + 1):
     stack = []
     postfix = []
 
+    # 중위 표기법 -> 후위 표기법
     for char in data:
         if char == '*':
             stack.append(char)
@@ -24,6 +25,7 @@ for tc in range(1, T + 1):
         while stack:
             postfix.append(stack.pop())
 
+    # 후위 표기법 -> 계산
     for char in postfix:
         if char == '*':
             a = stack.pop()

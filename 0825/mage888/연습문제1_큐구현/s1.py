@@ -28,13 +28,22 @@ print(Queue.pop(0))
 
 #1. Queue 생성
 from collections import deque
+# import queue
 
 Queue = deque()
-
+# Q = queue.Queue()
 #2. Queue에 데이터를 삽입
 Queue.append(1)
 Queue.append(2)
 Queue.append(3)
+# Q.put(1)
+# Q.put(2)
+# Q.put(3)
+# print(Q.empty())
+# print(Q.qsize())
+# print(Q.get())
+# print(Q.get())
+# print(Q.get())
 
 #3. Queue에 삽입한 데이터를 출력(First-In-First-Out)
 

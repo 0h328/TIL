@@ -4,15 +4,12 @@ sys.stdin = open('input.txt')
 T = int(input())
 
 for tc in range(1, T+1):
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
+    N, M = map(int, input().split())
+    data = list(map(int, input().split()))
 
-    result = 0
-    a_list = []
+    temp = []
 
-    for i in range(n-m+1):
-        a_list.append(sum(a[i:m+i]))
+    for i in range(N-M+1):
+        temp.append(sum(data[i:M+i]))
 
-    result = max(a_list) - min(a_list)
-
-    print('#{} {}'.format(tc, result))
+    print('#{} {}'.format(tc, max(temp)-min(temp)))
