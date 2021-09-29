@@ -6,6 +6,9 @@ t = int(input())
 for idx in range(1, t+1):
     n = int(input())
     tree = list(map(int, input().split()))
+
+    # heapq.heapify(tree)
+
     heap = []
     for i in tree:
         heapq.heappush(heap, i)
