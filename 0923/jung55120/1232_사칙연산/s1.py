@@ -27,7 +27,7 @@ for tc in range(1, 11):
     # print(node_list)
     str_num = ''
     print(in_order(1))                        # 중위함수 1부터 시작
-    eqn = list(in_order(1))
-
+    # print(str_num)
+    # print(eval(str_num))
 
 

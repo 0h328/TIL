@@ -30,7 +30,7 @@ print(temp)
 
 # Graph 초기화
 G = [[0 for _ in range(V+1)] for _ in range(V+1)]
-# print(G)
+print(G)
 # print(DataFrame(G))
 
 # 인접 행렬

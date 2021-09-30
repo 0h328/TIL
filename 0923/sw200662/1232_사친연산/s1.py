@@ -43,9 +43,11 @@ def in_order(node):
 
     if len(WORD[node]) == 4:
         in_order(int(WORD[node][2]))
+        # 중위
         cnt += 1
         ans.append(WORD[node][1])
         in_order(int(WORD[node][3]))
+        # > 계산
         cal(cnt)
     else:
         cnt += 1

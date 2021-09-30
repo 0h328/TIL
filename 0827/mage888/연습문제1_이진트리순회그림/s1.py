@@ -6,8 +6,9 @@
 # tree와 graph의 차이점
 # tree는 싸이클이 없다.
 def pre_order(n):
+    global cnt
     if n:
-        print(n, end=' ')
+        cnt += 1 # print(n, end=' ')
         pre_order(left[n])
         pre_order(right[n])
 
@@ -27,6 +28,7 @@ E = V-1
 # 부모를 인덱스로 자식 번호 저장
 left = [0] * (V+1)  # 부모의 왼쪽 자식 저장 (인덱스 번호 맞추기)
 right = [0] * (V+1) # 부모의 오른쪽 자식 저장 (인덱스 번호 맞추기)
+par = [0] * (V+1)
 
 # 각각의 노드를 번호에 따라 입력
 for i in range(E):
@@ -36,5 +38,21 @@ for i in range(E):
         left[p] = c
     else:
         right[p] = c
+    par[c] = p      # 조상을 찾는데 사용
 
-pre_order(1)
+
+# c = 6               # 조상찾기
+# while par[c]:       # 부모가 유효하면
+#     print(par[c])
+#     c = par[c]
+
+# 부모가 없으면 루트임.
+# root = 1
+# while par[root]:    # 루트로 추정한 정점이 부모가 있으면
+#     root += 1
+
+
+cnt = 0
+pre_order(3)    # 시작점 1
+print(cnt)      # 3을 루트로하는 서브트리의 정점 개수
+print(cnt-1)    # 3의 자손의 개수

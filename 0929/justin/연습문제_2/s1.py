@@ -46,7 +46,7 @@
 def Bbit_print(i):
     output = ''
     for j in range(7, -1, -1):
-        if i & (1 << j):
+        if i & (1 << j):  # i의 j 번째 비트가 1인지 아닌지 확인한닷!
             output += '1'
         else:
             output += '0'

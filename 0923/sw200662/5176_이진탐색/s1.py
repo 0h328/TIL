@@ -1,5 +1,4 @@
 def find_num(node):
-    global tree
     global cnt
 
     if node <= N:
