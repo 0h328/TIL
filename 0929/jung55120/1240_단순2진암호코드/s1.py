@@ -26,18 +26,21 @@ for tc in range(1, T+1):
             if code[i][j] == 1:
                 ans = code[i][j-55:j+1]
                 break
+    print(ans)
     amho_list = []
     for j in range(0, 8):
         amho_str = ''
         for k in range(0, 7):
             amho_str += str(ans[7*j+k])
         amho_list.append(amho_str)
+    print(amho_list)
     number = ''
     for l in amho_list:
         if l in amho:
             number += str(amho[l])
         else:
             print('#{} {}'.format(tc, 0))
+    print(number)
     number = list(map(int, number))
     sum_num = 0
     for i in range(len(number)):
