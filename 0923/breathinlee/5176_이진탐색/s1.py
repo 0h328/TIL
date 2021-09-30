@@ -13,7 +13,7 @@ T = int(input())
 for tc in range(1, T+1):
     N = int(input())
     tree = [[0] * 3 for _ in range(N+1)]
-    in_order_list = []
+    in_order_list = [0]
     for i in range(N+1):
         tree[i][0] = i
         if N % 2:
@@ -28,9 +28,10 @@ for tc in range(1, T+1):
 
 
     in_order(1)
-
-    a = in_order_list.index(1) + 1
-    b = in_order_list.index(N//2) + 1
+    # print(tree)
+    # print(in_order_list)
+    a = in_order_list.index(1)
+    b = in_order_list.index(N//2)
     print('#{} {} {}'.format(tc, a, b))
 
 

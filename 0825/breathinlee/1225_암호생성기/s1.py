@@ -19,6 +19,12 @@ for tc in range(10):
     print('#{}'.format(N), end=' ')
     print(*arr)
 
+
+
+
+
+
+
     # while True:
     #     i %= 5
     #     value = arr.pop(0) - decrease[i]

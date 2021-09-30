@@ -14,7 +14,7 @@ def bfs(S, G):
                 return visited[t]
             if visited[i] == 0:                      # 방문하지 않았다면
                 q.append(i)                          # q에 추가시키고
-                visited[i] = visited[t] + 1          # 방문처리
+                visited[i] = visited[t] + 1          # t로부터 한 칸 더 왔음을 표시(t에 인접했음)
     return 0
 
 
@@ -27,6 +27,6 @@ for tc in range(1, T+1):
         u, v = map(int, input().split())
         adjList[u].append(v)
         adjList[v].append(u)
-    S, G = map(int, input().split())                            # S : 출발노드, G : 도착노드
+    S, G = map(int, input().split())                 # S : 출발노드, G : 도착노드
 
     print('#{} {}'.format(tc, bfs(S, G)))
