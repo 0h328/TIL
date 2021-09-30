@@ -17,6 +17,7 @@ for i in range(10):
     for j in range(i*7, i*7+7, 1):
         # arr[j] -> 0 or 1
         n = n * 2 + arr[j]
+
     result.append(n)
 print(*result)
 
