@@ -11,11 +11,10 @@ p = ['0001101', # 0
      ]
 
 def find_start(N, M):
-    start = -1
     for i in range(N): # 패턴의 시작?
-        for j in range(M - 56 + 1): # M - 56 마지막으로 암호패턴이 시작될 수 있는 위치
+        for j in range(M - 1, -1, -1): # M - 56 마지막으로 암호패턴이 시작될 수 있는 위치
             for k in range(10):
-                if p[k] == arr[i][j:j + 7]: # 첫 암호패턴을 찾으면
+                if arr[i][j] == '1':
                     return (i, j)
 
 def f(N, M):
@@ -23,12 +22,13 @@ def f(N, M):
     pwd = []
     for _ in range(8):      # 8개의 암호숫자 찾기
         for k in range(10):
-            if p[k] == arr[i][j:j + 7]:
+            if p[k] == arr[i][j-6:j+1]:
                 pwd.append(k)   #p의 인덱스가 암호숫자
-                j += 7
+                j -= 7
+
     # 유효한 암호인지 확인
     ans = 0
-    if ((pwd[0] + pwd[2] + pwd[4] + pwd[6]) * 3 + pwd[1] + pwd[3] + pwd[5] + pwd[7]) % 10 == 0:
+    if ((pwd[7] + pwd[5] + pwd[3] + pwd[1]) * 3 + pwd[6] + pwd[4] + pwd[2] + pwd[0]) % 10 == 0:
         ans = sum(pwd)
     return ans
 
