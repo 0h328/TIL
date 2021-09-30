@@ -5,8 +5,8 @@ sys.stdin = open('input.txt')
 # 부모 노드의 값 < 자식 노드의 값
 # 마지막 노드의 조상 노드에 저장된 정수의 합 출력
 
+# 다시(테스트케이스 3개만 통과..)
 
-"""
 T = int(input())
 for tc in range(1, T+1):
     N = int(input())
@@ -19,4 +19,3 @@ for tc in range(1, T+1):
         ans += my_heap[N-1]
 
     print('#{} {}'.format(tc, ans))
-"""
