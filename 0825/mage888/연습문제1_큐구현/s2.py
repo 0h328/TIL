@@ -21,6 +21,7 @@ class Queue:
             return True
 
         return False
+        # return self.queue == []
 
     def enqueue(self, data):
         """

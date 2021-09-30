@@ -10,10 +10,10 @@ for T in range(int(input())):
     for i, d in enumerate(data):
         i+=1
         graph[i] = d
-        parent = i//2
-        while parent:
-            if graph[parent] > graph[i]:
-                graph[parent], graph[i] = graph[i], graph[parent]
+        parent = i
+        while parent//2:
+            if graph[parent//2] > graph[parent]:
+                graph[parent], graph[parent//2] = graph[parent//2], graph[parent]
             parent//=2
 
     next_node = N//2

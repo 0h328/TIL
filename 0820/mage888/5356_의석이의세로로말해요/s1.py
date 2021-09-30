@@ -3,8 +3,8 @@ sys.stdin = open('input.txt')
 
 T = int(input())
 for tc in range(1, T+1):
-    a = [''.join(input().split()) for _ in range(5)]
-    # print(a)
+    a = [input() for _ in range(5)]
+    print(a)
 
     length_a = []
     for i in range(len(a)):

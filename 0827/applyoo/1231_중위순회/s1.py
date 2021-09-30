@@ -14,7 +14,7 @@ for test in range(10):
     N = int(input())
     a = [input().split() for _ in range(N)]
     le = [0] * (N+1)  # 왼쪽 자식 노드 번호
-    ri = [0] * (N+1)  # 오른쪽 자식 노스 번호
+    ri = [0] * (N+1)  # 오른쪽 자식 노드 번호
     ans = ''
 
     for p, v, *c in a:

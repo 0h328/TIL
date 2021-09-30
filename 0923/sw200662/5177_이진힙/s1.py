@@ -7,7 +7,6 @@ def sort(k):
             tree[k], tree[k//2] = tree[k//2], tree[k]
         k = k//2
 
-
 def plus(b):
     global cnt
     cnt += 1
@@ -20,6 +19,7 @@ def sum_ans(c):
         ans += tree[c//2]
         c = c//2
     return ans
+
 T = int(input())
 for tc in range(T):
     N = int(input())

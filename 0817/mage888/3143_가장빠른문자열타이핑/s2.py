@@ -19,3 +19,5 @@ for tc in range(1, T+1):
         j += 1
     if j == M:
         cnt += 1
+
+    print(cnt)

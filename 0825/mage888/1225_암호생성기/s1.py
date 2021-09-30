@@ -1,5 +1,6 @@
 import sys
 sys.stdin = open('input.txt')
+from collections import deque
 
 T = 10
 for tc in range(1, T+1):
@@ -13,6 +14,5 @@ for tc in range(1, T+1):
         if k:                           # k가 0이 아닌, 1~5감소만 해야하므로
             pw.append(pw.pop(0)-k)
 
-    if pw[-1] < 0:                      # pw의 마지막 idx가 음수가 되면
-        pw[-1] = 0                      # 0으로 유지
+    pw[-1] = 0                          # 0으로 유지
     print('#{} {}'.format(tc, ' '.join(map(str, pw))))
