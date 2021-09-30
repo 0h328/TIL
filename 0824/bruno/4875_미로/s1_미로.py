@@ -16,17 +16,16 @@ sys.stdin = open('input.txt')
 T = int(input())
 for tc in range(1, T+1):
     N = int(input())
-    maze = [list(input()) for _ in range(N)]
+    maze = [list(map(int, list(input()))) for _ in range(N)]
     visited = [[0] * N for _ in range(N)]
     result = 0
     dr = [0, 1, 0, -1]
     dc = [1, 0, -1, 0]
-    result = 0
+
     for r in range(N):
         for c in range(N):
             if maze[r][c] == 2:
-                yi, xi = r, c
+                start_r, start_c = r, c
+                DFS(start_r, start_c)
 
-
-    DFS(yi, xi)
     print('#{} {}'.format(tc, result))

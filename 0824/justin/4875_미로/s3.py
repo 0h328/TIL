@@ -16,6 +16,7 @@ T = int(input())
 for tc in range(1, T+1):
     N = int(input())
     data = [list(map(int, list(input()))) for _ in range(N)]
+
     visited = [[0] * N for _ in range(N)]
     dr = [-1, 1, 0, 0]
     dc = [0, 0, -1, 1]
