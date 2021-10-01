@@ -18,6 +18,7 @@ def find_idx(nums, i):
 
 
 
+
 T = int(input())
 
 for tc in range(1, T + 1):
@@ -36,23 +37,10 @@ for tc in range(1, T + 1):
             max_idx, min_idx = find_idx(nums, 1)
         # 가장 큰 숫자를 첫째자리로 보내기
         nums[max_idx], nums[0] = nums[0], nums[max_idx]
-    max_num = max(nums)
-    max_cnt = 0
-    for num in nums:
-        if num == max_num:
-            max_cnt += 1
-    max_idx_list = []
 
     if K >= 2:
-        if max_cnt >= 2:
-            for s in range(len(nums)):
-                if nums[s] == max_N[s]:
-                    continue
-                max_idx, min_idx = find_idx(nums, s)
-                nums[min_idx], nums[max_idx] = nums[max_idx], nums[min_idx]
-                cnt += 1
-                if cnt == K:
-                    break
+
+
         for s in range(len(nums)):
             if nums[s] == max_N[s]:
                 continue

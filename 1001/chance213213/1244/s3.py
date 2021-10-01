@@ -16,6 +16,18 @@ def find_idx(nums, i):
             min_idx = idx
     return max_idx, min_idx
 
+def find_idx2(nums,j):
+    maxi = -1
+    mini = 11
+    for idx in range(j):
+        if nums[idx] >= maxi:
+            max_idx = idx
+    for idx in range(j-1, -1, -1):
+        if nums[idx] <= mini:
+            mini = nums[idx]
+            min_idx = idx
+
+    return max_idx, min_idx
 
 
 T = int(input())
@@ -53,6 +65,20 @@ for tc in range(1, T + 1):
                 cnt += 1
                 if cnt == K:
                     break
+            # for j in range(len(nums)-1, -1, -1):
+            #     max_idx, min_idx = find_idx2(nums, j)
+            # for idx in range(len(nums)):
+            #     if nums[idx] == max_num:
+            #         max_idx_list.append(idx)
+            # my_min = 11
+            # for idx in range(len(max_idx_list)-1, -1, -1):
+            #     for i in range(idx+1, -1, -1):
+            #         if nums[i] <= my_min:
+            #             my_min = nums[i]
+            #             min_idx = i
+            #
+
+
         for s in range(len(nums)):
             if nums[s] == max_N[s]:
                 continue
