@@ -13,9 +13,16 @@
 
 #1. swap
 def perm_swap(n, k):
-    pass
+    if k == n:
+        print(*nums)
+    else:
+        for i in range(k, n):
+            nums[i], nums[k] = nums[k], nums[i]
+            perm_swap(n, k+1)
+            nums[i], nums[k] = nums[k], nums[i]
 
-# nums = [1, 2, 3]
+nums = [1, 2, 3]
+perm_swap(3, 0)
 
 #2. visited
 def perm_visited(n, d, per):
@@ -28,10 +35,10 @@ def perm_visited(n, d, per):
                 perm_visited(n, d+1, per+ [nums[i]])
                 used[i] = False
 
-nums = [1, 2, 3]
+# nums = [1, 2, 3]
 used = [False for _ in range(len(nums))]
 
-print(perm_visited(3, 0, []))
+# print(perm_visited(3, 0, []))
 
 """
 1 2 3

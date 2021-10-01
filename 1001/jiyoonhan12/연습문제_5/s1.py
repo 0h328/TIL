@@ -4,7 +4,7 @@
 5-1) {-1, 3, -9, 6, 7, -6, 1, 5, 4, -2} 의 모든 부분 집합 구하기
 """
 
-def powerset(idx, N):
+def powerset(N):
     for i in range((1 << N)):
         for j in range(N):
             if i & (1 << j):
@@ -13,7 +13,7 @@ def powerset(idx, N):
 
 nums = [-1, 3, -9, 6, 7, -6, 1, 5, 4, -2]
 N = len(nums)
-powerset(0, N)
+powerset(N)
 
 """
 -1 3 -9 6 7 -6 1 5 4 -2 

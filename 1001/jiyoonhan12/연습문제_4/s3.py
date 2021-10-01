@@ -6,20 +6,16 @@
 """
 
 def perm(n, k, m): 		# n: 숫자를 결정 할 자리 인덱스, k: 순열의 길이, m: 주어진 숫자의 개수
-    if n == d:
-        print(*)
-    # (n, d, per):
-    # if d == n:
-    #     print(*per)
-    # else:
-    #     for i in range(len(nums)):
-    #         if not used[i]:
-    #             used[i] = True
-    #             perm_visited(n, d + 1, per + [nums[i]])
-    #             used[i] = False
+    if k == n:
+        print(*nums[:3])
+    else:
+        for i in range(n, m):
+            nums[i], nums[n] = nums[n], nums[i]
+            perm(n+1, k, m)
+            nums[i], nums[n] = nums[n], nums[i]
 
 nums = [1, 2, 3, 4, 5]
-used = [False for _ in range(len(nums))]
+perm(0, 3, 5)
 
 """
 1 2 3 
