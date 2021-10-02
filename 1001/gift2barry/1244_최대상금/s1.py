@@ -1,7 +1,10 @@
 import sys
 sys.stdin = open('input.txt')
 
+import math
+import time
 
+# 21.10.01
 # thought process: 현재 24분 11초
 
 # 어떤 문제를 풀어야 하는가?
@@ -28,3 +31,45 @@ sys.stdin = open('input.txt')
 # # 스왑이 하나 남아있을때 스왑으로 인해 전체 크기가 현재 전체 크기 보다 낮아진다면 실행 x
 # # 만약 더이상 바꿀게 없는데 스왑 횟수가 남아있다면, 같은 숫자를 찾아 스왑
 # # 같은 숫자가 없다면, 일단은 스왑
+
+
+# 21.10.02
+# 영후님 코드 해석:
+start = time.time()
+T = int(input())
+for tc in range(1, T + 1):                          # 테스트 케이스를 돈다
+    num, s = input().split()                        # num : 주어진 숫자 / s : 바꾸어야 하는 횟수
+    numbers = set([num])                            # 주어진 숫자를 set() 데이터 타입으로 변환 : {'123'}
+    for _ in range(int(s)):                         # 바꾸어야 하는 횟수 만큼 같은 작업을 반복
+        num_switch = set()                          # 자리바꾼 숫자값들을 저장할 set() 변수 선언. set()인 이유는, 중복값들을 없애기 위함
+        for number in numbers:                          # number : '123'
+            number = list(number)                       # number : ['1', '2', '3'] 으로 변환
+            for i in range(len(num) - 1):                           # 주어진 숫자의 길이의 -1 만큼만 반복, 이유는 항상 뒤에 비교할 인덱스가 필요하기 때문
+                for j in range(i + 1, len(num)):                    # i는 바꿀 앞의 숫자, j는 뒤에 숫자임으로 i의 뒷 인덱스번호를 기점으로 마지막 인덱스 까지 반복하며
+                    if number[i] < number[j]:      # <c.1>
+                        number[i], number[j] = number[j], number[i]         # 무지성으로 앞 뒤 인덱스 바꾸기
+                        num_switch.add(''.join(number))                     # 바뀐 숫자 num_switch 세트안에 저장
+                        number[i], number[j] = number[j], number[i]         # 바뀐 인덱스 원상복귀
+        numbers = num_switch                            # 조합을 다 해보고 나서 numbers안에 추출된 모든 자리바꾼 숫자 값들을 number에 할당
+    if numbers:
+        print('#{} {}'.format(tc, max(numbers)))            # 모든 자리바꾼 숫자 값들 중 가장 큰 숫자를 출력
+    else:
+        print('#{} {}'.format(tc, num))             # <c.2>
+end = time.time()
+print('time taken: {} sec'.format(end-start))
+
+
+# 개선점:
+# 1. 무지성으로 위치 swap에 대한 궁금증:
+#   => 뒤에있는 원소값이 더 작으면 안 바꿔도 되지 않을까? 왜냐하면, 작은 원소를 앞으로 위치시키는 행위 == 문제의 의도에서 어긋난다.
+#   => 추가로 원소값이 동일하면 바꿔줘야하지 않을까?  <c.1>
+#   => 왜냐하면, 777770 와같은 중복되는 원소값들도 탐색이 동작할 수 있게하기 위함.
+#   => 하지만 원소값이 더 작은경우에만 바꾸는 구조로도 변경 가능하다. 다만 이 경우에는 탐색을 돌지 못한 경우에 원래 주어진 값을 반환하도록 추가 코드가 필요. <c.2>
+#   => 결과 연산 시간 약 56% 단축
+
+# 배운점:
+# 1. 중복값을 자연스럽게 없애기 위해 세트 타입 변환을 활용
+# 2. dfs 를 활용하지 않고도 순열탐색을 구현가능, 하지만 가독성 저하
+# 3. 자리바꿈 문제들은 같은 원소값들이어도 인덱스 위치에 따라 총 값이 다르기 때문에 조합이 아닌 순열 로직을 활용
+# 4. .add() 함수로 set() 변수안에 원소추가 가능하고, append와는 다르게 맨 앞자리에 위치하게 된다
+# 5. 앞으로는 1시간 투자해도 막히는 문제는 동기들 코드 가져와서 해석한 후, 작성자에게 직접 해석 내용을 체크 받고, 궁금점 등 도 물어보며.. 이렇게라도 코딩 경험치를 쌓자. 서럽지만 이렇게라도.
