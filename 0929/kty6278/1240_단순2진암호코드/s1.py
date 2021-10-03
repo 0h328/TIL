@@ -21,7 +21,7 @@ for tc in range(int(input())):
         for j in range(i, i-56, -7):
             bite_num.append(bite[j-6:j+1])
     bite_num = bite_num[::-1]
-    #print(bite_num)  ['0111011', '0110001', '0111011', '0110001', '0110001', '0001101', '0010011', '0111011']
+    # print(bite_num)  ['0111011', '0110001', '0111011', '0110001', '0110001', '0001101', '0010011', '0111011']
     for i in range(8): # 값이 8개
         for j in range(10):
             if bite_num[i] == num[j]:
@@ -31,4 +31,4 @@ for tc in range(int(input())):
         total = sum(bite_num)
     else:
         total = 0
-    print(total)
+    print('#{} {}'.format(tc+1, total))
