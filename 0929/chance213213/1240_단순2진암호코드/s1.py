@@ -52,9 +52,9 @@ for tc in range(1,T+1):
         x = code[arr[pos_i][pos_j-6]][arr[pos_i][pos_j-5]][arr[pos_i][pos_j-4]][arr[pos_i][pos_j-3]][arr[pos_i][pos_j-2]][arr[pos_i][pos_j-1]][arr[pos_i][pos_j]]
         ans.append(x)
         pos_j -= 7
-
+    print(ans)
     ans = ans[::-1]
-
+    print(ans)
     output = 0
     for i in range(0, 4):
         output += 3 * ans[2*i]
@@ -66,3 +66,8 @@ for tc in range(1,T+1):
     else:
         result = sum(ans)
     print('#{} {}'.format(tc, result))
+
+
+# is_break = False라는 변수 적어놓고
+# 안쪽 for문 안에서 if문 안에 True로 바꾸고
+# 바깥쪽 for문 안에서 if문 False? 되면 break 걸기
