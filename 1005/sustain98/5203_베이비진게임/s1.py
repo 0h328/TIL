@@ -28,4 +28,4 @@ for idx in range(1, t+1):
         if check(1):
             res = 2
             break
-    print('#{} {}'.format(idx, res % 3))
+    print('#{} {}'.format(idx, res))
