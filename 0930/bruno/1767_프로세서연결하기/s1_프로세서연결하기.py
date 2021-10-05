@@ -48,6 +48,6 @@ for tc in range(1, T+1):
         idx = x[0]
 
     visited = [[0]*N for _ in range(N)]
-        
+
 
     # 가장자리까지 도달 가능하다면 그 중 가장 짧은 거리 채택
