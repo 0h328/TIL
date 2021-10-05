@@ -18,10 +18,10 @@ def solution(swap):
         if answer < tmp:
             answer = tmp
         return
-    elif visited.get((swap, tuple(num_li))):    # backtracking
+    elif visited.get((swap%2, tuple(num_li))):    # backtracking
         return
 
-    visited[(swap, tuple(num_li))] = 1
+    visited[(swap%2, tuple(num_li))] = 1
     
     for e in combinations(range(N), 2):
         num_li[e[0]], num_li[e[1]] = num_li[e[1]], num_li[e[0]]
@@ -34,13 +34,13 @@ T = int(input())
 for tc in range(1, T+1):
     in_num, swap = map(int, input().split())
     num_li = deque()
-    while in_num:
+    while in_num:                               # 숫자들을 리스트에 넣기
         num_li.appendleft(in_num%10)
         in_num //= 10
     N = len(num_li)
 
     answer = 0
-    visited = {}
+    visited = {}                                # 방문 체크
 
     solution(swap)
 

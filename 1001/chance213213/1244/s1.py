@@ -43,7 +43,7 @@ for tc in range(1, T + 1):
             max_cnt += 1
     max_idx_list = []
 
-    if K >= 2:
+    if K >= 1:
         if max_cnt >= 2:
             for s in range(len(nums)):
                 if nums[s] == max_N[s]:
