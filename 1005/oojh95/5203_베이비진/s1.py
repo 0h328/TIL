@@ -13,19 +13,22 @@ for tc in range(1, T+1):
         b_arr[arr[i+1]] += 1
 
         if i >= 4:
+
+            for j in range(10):
+                if b_arr[j] >= 3:
+                    result = 2
+                    break
+                if j <= 7 and b_arr[j] and b_arr[j+1] and b_arr[j+2]:
+                    result = 2
+                    break
             for j in range(10):
                 if a_arr[j] >= 3:
                     result = 1
-                if j <= 7 and a_arr[j] and a_arr[j+1] and a_arr[j+2]:
-                    result = 1
-                if b_arr[j] >= 3:
-                    result += 2
-                if j <= 7 and b_arr[j] and b_arr[j+1] and b_arr[j+2]:
-                    result += 2
-                if result != 0:
                     break
+                if j <= 7 and a_arr[j] and a_arr[j + 1] and a_arr[j + 2]:
+                    result = 1
+                    break
+
         if result != 0:
             break
-    if result > 2:
-        result = 0
     print('#{} {}'.format(tc, result))
