@@ -1,8 +1,6 @@
 import sys
 sys.stdin = open('input.txt')
 
-from itertools import permutations
-
 def find_sol(s, first):
     if not s:
         return False
