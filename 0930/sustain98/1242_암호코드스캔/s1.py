@@ -9,8 +9,7 @@ val = {'0001101': 0, '0011001': 1, '0010011': 2,
        }
 
 def find_code():
-    for i in range(n):
-        line = input().strip('0')
+    for line in codes:
         if line:
             line = '0' + line
             bin_line = ''
@@ -23,6 +22,7 @@ def find_code():
             i = 3
             start = last_idx - 1
             j = start
+            print(bin_line)
             while i > -1:
                 if bin_line[j] != bin_line[j - 1]:
                     count[i] = start - j + 1
@@ -30,32 +30,29 @@ def find_code():
                     start = j-1
                 j -= 1
             ratio = sum(count) // 7
+
             if last_idx >= 8*7*ratio:
                 bin_line = bin_line[last_idx % 56:]
             else:
-                bin_line = '0'*(8*7*ratio) + bin_line
-
+                bin_line = ('0'*(8*7*ratio - len(bin_line)) + bin_line)
+            print(ratio, bin_line, len(bin_line))
             line = ''
-
-            if ratio > 1:
-                line = ''
-                for k in range(len(bin_line)-1, -1, -1*ratio):
-                    # print(k)
-                    line = bin_line[k] + line
-                bin_line = line
-
-            print(bin_line)
+            for k in range(0, 56*ratio, ratio):
+                line += bin_line[k]
+            print(line)
             l = []
             for j in range(8):
-                l.append(val[bin_line[j * 7:(j+1) * 7]])
-            print(l)
+                l.append(val[line[j * 7:(j+1) * 7]])
+            print(l, sum(l) + (l[7] + l[5] + l[3] + l[1]) * 2)
             if (sum(l) + (l[7] + l[5] + l[3] + l[1]) * 2) % 10 == 0:
-                for _ in range(i+1, n):
-                    input()
                 return sum(l)
     return 0
 
 for idx in range(1, t+1):
     n, m = map(int, input().split())
+    codes = set()
+    for _ in range(n):
+        codes |= set(input().replace('0', '').split())
+    print(codes)
     res = find_code()
     print('#{} {}'.format(idx, res))
