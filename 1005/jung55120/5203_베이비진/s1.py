@@ -1,3 +1,5 @@
+# 이건 안풀림 --> 다시 풀기 (s2.py)
+
 import sys
 sys.stdin = open('input.txt')
 

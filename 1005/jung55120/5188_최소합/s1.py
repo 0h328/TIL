@@ -1,3 +1,6 @@
+# 문제 풀이 시간 : 1시간
+# 해결 : yes!
+
 import sys
 sys.stdin = open('input.txt')
 
@@ -7,15 +10,16 @@ dy = [0, 1]
 def dfs(x, y):
     global result, start
 
-    if result < start: # 현재 결과값보다 더 크면 의미가 없으니까 '통과' 시켜버리려고 넣은거
-        return
+    if result < start:        # 현재 결과값보다 더 크면 의미가 없으니까 '통과' 시켜버리려고 넣은거
+        return                # 하지만 이 부분은 확실히 이해하지 못했음
+
 
     if x == N-1 and y == N-1: # x, y가 마지막에 도착했을 때
         if start < result:
             result = start
         return
 
-    for i in range(2): # 우, 하 두 방향으로 반복문 돌리기
+    for i in range(2):        # 우, 하 두 방향으로 반복문 돌리기
         nx = x + dx[i]
         ny = y + dy[i]
 
