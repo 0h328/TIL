@@ -11,7 +11,7 @@ for t in range(1, T+1):
     for _ in range(times):
         while case:
             l = list(case.pop())                # 맨 앞에서부터 하나씩 뽑아서 다 바꿀 거임
-            for i in range(len(nums)):
+            for i in range(len(nums)-1):
                 for j in range(i+1, len(nums)):
                     l[i], l[j] = l[j], l[i]
                     temp.add(''.join(l))
