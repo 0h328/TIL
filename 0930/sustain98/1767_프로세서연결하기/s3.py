@@ -57,7 +57,7 @@ for idx in range(1, t+1):
             for new_visit, new_count in cores_visit[core_idx]:
                 if not (new_visit & visited):
                     q.append((core_idx + 1, visited | new_visit, cnt + new_count, connected_core + 1))
-            q.append((core_idx + 1, visited.copy(), cnt,  connected_core))
+            q.append((core_idx + 1, visited, cnt,  connected_core))
 
     print('#{} {}'.format(idx, res))
 
