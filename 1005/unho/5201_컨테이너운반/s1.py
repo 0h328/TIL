@@ -6,8 +6,8 @@ T = int(input())
 
 for tc in range(1, T+1):
     N, M = map(int, input().split())
-    container = sorted(list(map(int, input().split())))     # 내림차순 정렬
-    truck = sorted(list(map(int, input().split())))         # 내림차순 정렬
+    container = sorted(list(map(int, input().split())))     # 정렬
+    truck = sorted(list(map(int, input().split())))         # 정렬
     answer = 0
 
     while container and truck:              # 두개다 남아있을때까지
