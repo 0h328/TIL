@@ -21,19 +21,17 @@ for tc in range(1, T+1):
     card = list(map(int, input().split()))
     p1 = []
     p2 = []
-    cnt1 = [0] * 10
-    cnt2 = [0] * 10
-    winner = 0
+    cnt1 = [0] * 10     # p1의 카운팅정렬
+    cnt2 = [0] * 10     # p2의 카운팅정렬
+    winner = 0      # 승자
     while card:
-        p1.append(card.pop(0))
-        # [9, 5, 5, 1, 4, 2]
+        p1.append(card.pop(0))  # [9, 5, 5, 1, 4, 2]
         cnt1[p1[-1]] += 1
         # triplet이나 run있는지 체크
         if chk_triplet(cnt1) or chk_run(cnt1):
             winner = 1
             break
-        p2.append(card.pop(0))
-        # [9, 6, 6, 1, 2, 1]
+        p2.append(card.pop(0))  # [9, 6, 6, 1, 2, 1]
         cnt2[p2[-1]] += 1
         # triplet이나 run있는지 체크
         if chk_triplet(cnt2) or chk_run(cnt2):
