@@ -2,23 +2,52 @@
 연습문제 5. 부분 집합의 합 구현
 
 5-2) {-1, 3, -9, 6, 7, -6, 1, 5, 4, -2}의 모든 부분 집합 중 원소의 합이 0이 되는 부분집합 구하기
-"""
+# """
+import pprint
+# 원소의 합이 0이 되는 부분집합 중복없이 추출
+# 문제없이 출력.
 
-def powerset(n, k):  # n: 원소의 개수, k: 현재 depth (ans에 넣은 원소 개수)
+# def powerset(k):
+#     if k == N:
+#         return
+#     else:
+#         ans.append(tmp[k])
+#         powerset(k+1)
+#         if sum(ans) == 0:
+#             print(ans)
+#         ans.pop()
+#         powerset(k+1)
+#
+# nums = [-1, 3, -9, 6, 7, -6, 1, 5, 4, -2]
+# tmp = sorted(nums)
+# N = len(nums)
+# ans = []
+# powerset(0)
 
-    ans.append(nums[k-1])
-    powerset(n-1, k-1)  # 하나 더 깊게 들어가면서 다음 원소 삽입
-    powerset(n-1, k)    # 하나 더 깊게 안들어가고 다음 원소 삽입
 
-
-
+# # 모든 부분집합 중 원소의 합이 0 이 되는 순열 추출
+# 아직 미해결.. 언제쯤 해결될지 모르겠음
+def powerset(n, k):  # n: 원소를 채울 리스트 길이, m: 주어진 원소의 개수, k: 현재 depth (ans에 넣은 원소 개수)
+    if n == k:
+        return
+    else:
+        for i in range(n):
+            if check[i] == 0:
+                check[i] = 1
+                ans[k] = nums[i]
+                if sum(ans) == 0:
+                    tmp.append(ans)
+                powerset(n, k+1)
+                check[i] = 0
 
 cnt_subset = 0
 nums = [-1, 3, -9, 6, 7, -6, 1, 5, 4, -2]
 N = len(nums)
-check = [0 for _ in range(N)]  # 원소의 포함여부 저장 -> 0 혹은 1
-ans = []
-powerset(10, N)
+check = [0 for _ in range(N)]   # 원소의 포함여부 저장 -> 0 혹은 1
+ans = [0] * N                   # 저장될
+tmp = []
+powerset(N, 0)
+pprint.pprint(tmp)
 
 """
 1: -1 3 -9 6 7 -6 

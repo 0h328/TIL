@@ -1,7 +1,7 @@
 import sys
 sys.stdin = open('input.txt')
 
-# s2.py
+# s2-1.py
 # 배열 (고정크기)
 
 SIZE = 5             # 크기가 5인 배열을 생성하기 위한 변수 초기화

@@ -1,4 +1,4 @@
-# 테스트 케이스 9개만 맞았다. 이유가 뭘까?
+# 테스트 케이스 9개만 맞았다. 이유가 뭘까? -> 해결했다!!!!! 2시간 동안 고민함..
 
 import sys
 sys.stdin = open('input.txt')
@@ -20,8 +20,6 @@ for tc in range(1, T+1):
                 if player2[j] >= 1 and player2[j+1] >= 1 and player2[j+2] >= 1:
                     result.append(2)
                     break
-                # if result > 0:
-                #     break
             for k in range(10):
                 if player1[k] == 3:
                     result.append(1)
@@ -37,7 +35,3 @@ for tc in range(1, T+1):
         print('#{} {}'.format(tc, 1))
     else:
         print('#{} {}'.format(tc, 2))
-        # if result >= 3:
-        #     print('#{} {}'.format(tc, 0))
-        # else:
-        #     print('#{} {}'.format(tc, result))
