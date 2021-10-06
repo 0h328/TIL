@@ -14,7 +14,7 @@ T = int(input())
 for t in range(1, T + 1):
     N, M = map(int, input().split())  # N: 컨테이너 수, M : 트럭 수
     containers = sorted(list(map(int, input().split())), reverse=True)  # 컨테이너 당 무게(내림차순)
-    trucks = sorted(list(map(int, input().split())))  # 트럭 당 적재 용량(오름차순)
+    trucks = sorted(list(map(int, input().split())))  # 트럭 당 적재 용량(오름차순) 내림차순도 가능 왜냐하면 가장 큰 화물보다 더 큰 화물은 없어서 쓸필요 없음
     used = [0] * M
     max_sum = 0
 
