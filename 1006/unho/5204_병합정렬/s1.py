@@ -22,7 +22,6 @@ def merge(left, right):
         else:                                               # 왼쪽이 크면 오른쪽을 먼저 넣고
             sorted_list.append(right[R])                    # 왼쪽을 먼저 넣고
             R += 1                                          # 오른쪽 인덱스 증가
-
                                         # 위에서 증가 시킨 인덱스 -> 이 값이 먼저 찼다는 말은 값이 더 작아서 먼저 sorted_list에 추가되었다는 의미
         if R == len(right):             # 오른쪽 인덱스의 범위가 배열 크기를 넘어가면 (오른쪽 요소의 정렬이 끝나 왼쪽이 남았다는 말)
             sorted_list += left[L:]     # 왼쪽의 나머지 것을 모두 뒤에 붙이고(해당하는 요소는 적어도 현재 sorted_list에 있는 요소 보다는 클 것)
