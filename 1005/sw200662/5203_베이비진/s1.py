@@ -31,6 +31,8 @@ for tc in range(1, T + 1):
     player_2 = []
     player_1_win = 0
     player_2_win = 0
+
+
     for i in range(len(card_list)):
         if player_1_win == 1 or player_2_win == 1:
             break
@@ -45,6 +47,8 @@ for tc in range(1, T + 1):
                 test_baby_gin(player_1)
             else:
                 test_baby_gin(player_2)
+
+
     if player_1_win == 0 and player_2_win == 0:
         print('#{} {}'.format(tc,0))
     elif player_1_win == 1:
