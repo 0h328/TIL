@@ -8,6 +8,7 @@ for idx in range(1, t+1):
     t_list = list(map(int, input().split()))
     w_list.sort(reverse=True)
     t_list.sort(reverse=True)
+
     w_idx, t_idx = 0, 0
     res = 0
     while t_idx < m and w_idx < n:
