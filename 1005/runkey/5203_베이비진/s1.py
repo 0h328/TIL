@@ -6,6 +6,8 @@ def run2(p):
     for i in range(1, len(p)):
         if p[i] - p[i - 1] == 1:
             flag += 1
+        elif p[i] - p[i - 1] == 0:  # 1, 2, 2, 3
+            continue
         else:
             flag = 0
 
@@ -50,14 +52,9 @@ for t in range(1, tc + 1):
         cnt += 1
         if p1_run or p1_tri:
             result = 1
-
+            break
         elif p2_run or p2_tri:
             result = 2
-
-        if result == 1 or result == 2:
             break
-
-    if result != 1 and result != 2:
-        result = 0
 
     print("#{} {}".format(t, result))
