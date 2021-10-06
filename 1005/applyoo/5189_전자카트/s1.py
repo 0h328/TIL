@@ -4,14 +4,15 @@ sys.stdin = open('input.txt')
 
 def dfs(idx, c):
     global res
-
+    if c >= res:
+        return
     if len(v) == N:
         if res > c + arr[idx][0]:
             res = c + arr[idx][0]
         return
 
     for i in range(N):
-        if i != idx and i not in v:
+        if i not in v:
             v.add(i)
             dfs(i, c+arr[idx][i])
             v.remove(i)
