@@ -1,16 +1,14 @@
 import sys
-
 sys.stdin = open('input.txt')
-
 
 def merge_sort(a):
     if len(a) <= 1:
         return a
     mid_idx = len(a)//2
-    left_array = a[:mid_idx]
-    right_array = a[mid_idx:]
+    left_array = merge_sort(a[:mid_idx])
+    right_array = merge_sort(a[mid_idx:])
 
-    return merge(merge_sort(left_array), merge_sort(right_array))
+    return merge(left_array, right_array)
 
 
 def merge(left, right):
@@ -29,14 +27,10 @@ def merge(left, right):
             right_index += 1
 
     if left_index == len(left):
-        while right_index < len(right):
-            result.append(right[right_index])
-            right_index += 1
+        result += right[right_index:]
 
     if right_index == len(right):
-        while left_index < len(left):
-            result.append(left[left_index])
-            left_index += 1
+        result += left[left_index:]
 
     return result
 
