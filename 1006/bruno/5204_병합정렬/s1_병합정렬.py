@@ -13,26 +13,26 @@ def partition(lst):
 
 def merge(left, right):
     global cnt
-    result = [0] * (len(left)+len(right))
+    result = [0] * (len(left) + len(right))
     i = 0
     left_i = right_i = 0
     if left[-1] > right[-1]:
         cnt += 1
-    while left_i < len(left) or right_i < len(right):
-        if left_i < len(left) and right_i < len(right):
-            if left[left_i] <= right[right_i]:
-                result[i] = left[left_i]
+    while left_i < len(left) or right_i < len(right):   # 하나라도 순회 남았으면 계속 반복
+        if left_i < len(left) and right_i < len(right): # 둘 다 남았을 때
+            if left[left_i] <= right[right_i]:  # 왼쪽이 작으면
+                result[i] = left[left_i]        # 왼쪽 수 추가
                 i += 1
                 left_i += 1
-            else:
-                result[i] = right[right_i]
+            else:   # 오른쪽이 작으면
+                result[i] = right[right_i]  # 오른쪽 수 추가
                 i += 1
                 right_i += 1
-        elif left_i < len(left):
+        elif left_i < len(left):    # 왼쪽만 남은 경우
             result[i] = left[left_i]
             i += 1
             left_i += 1
-        elif right_i < len(right):
+        elif right_i < len(right):  # 오른쪽만 남은 경우
             result[i] = right[right_i]
             i += 1
             right_i += 1
