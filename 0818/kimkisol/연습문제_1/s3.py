@@ -1,7 +1,7 @@
 import sys
 sys.stdin = open('input.txt')
 
-# s2.py
+# s2-1.py
 # 클래스로 stack 구현
 
 class Stack:
