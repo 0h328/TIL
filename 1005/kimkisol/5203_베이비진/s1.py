@@ -10,20 +10,16 @@ sys.stdin = open('input.txt')
 5. 무승부인 경우 0을 출력
 '''
 
-
-def is_babygin():
-    pass
-
 T = int(input())
 
 for t in range(1, T + 1):
     cards = list(map(int, input().split()))
-    cards_set = [[0] * 10 for _ in range(3)]
+    cards_set = [[0]] + [[0] * 10 for _ in range(2)]
     result = 0
 
     for i in range(12):
         card = cards[i]
-        player = 2 if i % 2 else 1
+        player = 2 if i % 2 else 1  # player(1, 2) 정해줌
         cards_set[player][card] += 1
         # triplet 인 경우
         if cards_set[player][card] == 3:

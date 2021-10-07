@@ -1,11 +1,13 @@
 import sys
 sys.stdin = open('input.txt')
+import math
 
 def check_babygin(cards):
     card_list = sorted(cards)
     for i in range(len(card_list)-2):
         temp = card_list[i:i+3]
         avg = sum(temp)/3
+        # print(math.isclose(avg, int(avg)))
         if [avg-1, avg, avg+1]==temp or [avg]*3==temp:
             return True
 
