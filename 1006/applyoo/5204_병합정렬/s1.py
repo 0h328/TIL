@@ -40,6 +40,6 @@ for tc in range(1, T + 1):
     cnt = 0
     arr = split(arr)
 
-    ans.append('#{0} {1} {2}'.format(tc, arr[N // 2], cnt))
+    ans.append('#{0} {1} {2}'.format(tc, arr[N//2], cnt))
 
 print(*ans, sep='\n')
