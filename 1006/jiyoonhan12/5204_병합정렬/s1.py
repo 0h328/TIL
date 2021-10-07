@@ -4,7 +4,7 @@ sys.stdin = open('input.txt')
 def merge(left, right):
     global cnt
 
-    if left[len(left)-1] > right[len(right)-1]:
+    if left[-1] > right[-1]:
         cnt += 1
 
     if len(left) == 0:
