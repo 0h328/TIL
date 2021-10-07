@@ -54,5 +54,5 @@ for test in range(1, 1 + int(input())):
     cnt = 0
 
     data = merge_sort(data)
-    answer = data[N // 2] # 가운뎃 값값
-   print('#{} {} {}'.format(test, answer, cnt))
+    answer = data[N // 2] # 가운뎃 값
+    print('#{} {} {}'.format(test, answer, cnt))
