@@ -1,5 +1,8 @@
 import sys
+<<<<<<< HEAD
 from collections import deque
+=======
+>>>>>>> 0f3d00a6e1043fba483b14d316abf1af9418f6a3
 sys.stdin = open('input.txt')
 
 T = int(input())

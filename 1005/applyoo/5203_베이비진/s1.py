@@ -21,11 +21,10 @@ for tc in range(1, T + 1):
         p1[arr[i]] += 1
         p2[arr[i+1]] += 1
 
-        w1, w2 = iswin(p1), iswin(p2)
-        if w1:
+        if iswin(p1):
             ans.append('#{0} {1}'.format(tc, 1))
             break
-        elif w2:
+        elif iswin(p2):
             ans.append('#{0} {1}'.format(tc, 2))
             break
     else:

@@ -5,7 +5,7 @@ for T in range(int(input())):
     result = 0
     N = int(input())
     schedules = [list(map(int, input().split()))+[1] for _ in range(N)]
-    schedules = sorted(schedules, key=lambda i : (i[0], i[1]))
+    schedules = sorted(schedules, key=lambda i : i[1])
     i = 0
     while i < N-1:
         next_i = N

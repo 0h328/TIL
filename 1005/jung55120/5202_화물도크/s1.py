@@ -16,8 +16,8 @@ for tc in range(1, T+1):
     cnt = 1
     compare = trucks.pop(0)
 
-    while trucks:
-        if trucks[0][0] < compare[1]:
+    while trucks:                       # 트럭이 있는 동안
+        if trucks[0][0] < compare[1]:   # 트럭 내의 첫번째 값(시작할 시간)과 비교할 값의 두번째 값(끝난 시간)
             trucks.pop(0)
         else:
             cnt += 1
