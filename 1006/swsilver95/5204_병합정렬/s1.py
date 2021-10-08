@@ -14,11 +14,13 @@ def merge_sort(arr):
     left = merge_sort(arr[:mid])
     right = merge_sort(arr[mid:])
 
+    # 왼쪽의 끝값이 오른쪽의 끝값보다 클 경우 카운트 +1
     if left[-1] > right[-1]:
         cnt += 1
 
     merged_arr = []
     L = R = 0
+    # 왼쪽 오른쪽을 하나로 합치면서 작은 순서대로 투입
     while L < len(left) and R < len(right):
         if left[L] < right[R]:
             merged_arr.append(left[L])
@@ -26,6 +28,7 @@ def merge_sort(arr):
         else:
             merged_arr.append(right[R])
             R += 1
+    # while 문이 끝났을 때, 남은 것이 있으면 merged_arr에 합쳐주는 과정
     merged_arr += left[L:]
     merged_arr += right[R:]
     return merged_arr
