@@ -9,7 +9,7 @@ def dfs(idx, p):
     if idx == N:
         if answer < p:
             answer = p
-            return
+        return
 
     if answer >= p:
         return
