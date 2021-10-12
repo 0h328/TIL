@@ -1,24 +1,30 @@
 import sys
 sys.stdin = open('input.txt')
 
-def find_sol(r, ans, selected):
+def find_sol(r, ans):
     global result
     if r == N:
         result = ans
         return
 
     for k in range(N):
-        if k not in selected and result < ans*matrix[r][k]:
-            find_sol(r+1, ans*matrix[r][k], selected+[k])
+        if not selected[k] and result < ans*matrix[r][k]:
+            selected[k] = 1
+            find_sol(r+1, ans*matrix[r][k])
+            selected[k] = 0
     return
 
 for T in range(int(input())):
     result = 0
     N = int(input())
     matrix = [list(map(lambda i : int(i)/100, input().split())) for _ in range(N)]
+    selected = [0]*N
+
     for i, t in enumerate(matrix[0]):
-        find_sol(1, t, [i])
-    
+        selected[i] = 1
+        find_sol(1, t)
+        selected[i] = 0
+
     print('#{} {:.6f}'.format((T+1), result*100))
 
 #1 49.654560
