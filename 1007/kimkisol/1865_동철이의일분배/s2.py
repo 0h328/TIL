@@ -6,7 +6,7 @@ sys.stdin = open('input.txt')
 def find_max_probability(idx, temp_p):
     global max_p
 
-    if temp_p <= max_p:
+    if temp_p <= max_p:  # 곱할게 소수점이므로 뒤에꺼가 아무리 큰 소수점이어도 곱하면 더 작아질 수밖에없음
         return
     if idx == N:
         if temp_p > max_p:

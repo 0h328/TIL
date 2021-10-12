@@ -1,5 +1,6 @@
 import sys
 sys.stdin = open('input.txt', 'r')
+# sys.setrecursionlimit(3000)
 
 T = int(input())
 
@@ -33,3 +34,4 @@ for tc in range(1, T + 1):
 
     tmp.sort(key=lambda x: (-x[1], x[0]))
     print('#{} {} {}'.format(tc, tmp[0][0], tmp[0][1]))
+

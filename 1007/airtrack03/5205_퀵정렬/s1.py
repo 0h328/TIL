@@ -7,6 +7,7 @@ T = int(input())
 def quick_sort(data, left, right):
     if left < right:
         pivot = partition(data, left, right)
+        # pivot = lomuto_p(data, left, right)
         quick_sort(data, left, pivot-1)
         quick_sort(data, pivot+1, right)
 
@@ -24,6 +25,19 @@ def partition(data, left, right):
     data[left], data[r_idx] = data[r_idx], data[left]
 
     return r_idx
+
+def lomuto_p(data, l, r):
+    pivot = data[r]
+    i = l - 1
+
+    for j in range(l, r):
+        if data[j] <= pivot:
+            i += 1
+            data[i], data[j] = data[j], data[i]
+
+    data[i+1], data[r] = data[r], data[i+1]
+    return i+1
+
 
 for tc in range(1, T+1):
     N = int(input())

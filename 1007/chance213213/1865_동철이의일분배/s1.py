@@ -1,24 +1,26 @@
 import sys
 sys.stdin = open('input.txt')
 
-def check(j):
-    global total, visited, result
-    if j == N:
+def check(i):
+    global total, result
+    if i == N:
+        if total > result:
+            result = total
         return
-    if total > result:
-        result = total
+    # if total > result:
+    #     result = total
 
-    for i in range(N):
-        if not visited[i][j]:#값이 없을 때? 맞지?
-            visited[i][j] = 1
-            if percents[i][j] != 0:
+    for j in range(N):
+        if visited[j] == 0:#값이 없을 때? 맞지?, i는 그 행을 썼는지로 해야겠다.
+            visited[j] = 1
+            if percents[i][j] != 0: #division 때문에 넣어줌
                 total *= percents[i][j]
-            check(j+1)
+                temp += str(i)
+            check(i+1)
             if percents[i][j] != 0:
                 total /= percents[i][j]
-            visited[i][j] = 0
+            visited[j] = 0
 
-    return total
 
 
 
@@ -35,6 +37,9 @@ for tc in range(1, T+1):
 
     #이제 최대 확률을 구해야 함, i, j 하나씩 다 관찰하면 되려나?
     total = 1
-    visited = [[0] * N for _ in range(N)]
+    visited = [0] * N
     result = -1
+    temp_chr = tuple()
+    temp = dict()
     check(0)
+    print(result)
