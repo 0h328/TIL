@@ -1,5 +1,6 @@
 # runtimeerror가 난다 17개 맞다고 함
 # 이젠 그냥 오답이라고 함 53개 맞았다고 함 열받는당 히히
+# 해결!!!!!
 
 import sys
 sys.stdin = open('input.txt')
@@ -17,7 +18,13 @@ def dfs(v, cnt):
     for i in range(N):           # 반복문은 N번만큼 돌릴 것
         if i not in visited:     # 방문 체크하는 visited에 i값이 들어있지 않을 때만
             visited.append(i)    # visited에 i값을 넣어줄 것임
+            # cnt *= percent[v][i]/100 # 넣고 그 위치에 해당하는 값을 cnt에 더해줄 것임
             dfs(v+1, cnt*percent[v][i]/100)             # 반복을 위해 dfs에 v+1을 넣어줌(제품1 체크 후 제품2...)
+            visited.pop()        # 확인 끝나고 나오면 visited에서 마지막 값을 빼줌
+            # if cnt > 0:
+            #     cnt /= percent[v][i] / 100
+            # else:
+            #     cnt = 1
 
 
 T = int(input())
@@ -27,6 +34,7 @@ for tc in range(1, T+1):
     visited = []
     result = 0
     cnt = 1
+    # print(percent)
     dfs(0, 1)
 
     print('#{} {:.6f}'.format(tc, result*100))
