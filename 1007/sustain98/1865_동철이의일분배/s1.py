@@ -17,7 +17,7 @@ def dfs(row, percent):
 t = int(input())
 for idx in range(1, t+1):
     n = int(input())
-    p = [list(map(lambda x : float(x)/100, input().split())) for _ in range(n)]
+    p = [list(map(lambda x: float(x)/100, input().split())) for _ in range(n)]
     visited = [0] * n
     res = 0
     dfs(0, 1)
