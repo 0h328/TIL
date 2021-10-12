@@ -3,17 +3,15 @@ sys.stdin = open('input.txt')
 
 
 def dfs(cur, cnt):
-    # print(cur, cnt)
     global res
     if cnt >= res:
         return
 
     if cur >= len(A):
-        res = min(res, cnt)
+        res = cnt
         return
 
     for i in range(A[cur], 0, -1):
-        # print('#', i, A[cur])
         dfs(cur+i, cnt+1)
 
 
