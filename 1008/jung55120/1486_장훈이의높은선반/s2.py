@@ -1,12 +1,16 @@
+# 성렬님 코드 참고
+
 import sys
 sys.stdin = open('input.txt')
 
 def dfs(idx, total):
     global min_height
-    if B <= total < min_height:
-        min_height = total    # 가지치기 생각해보기
+    if total >= min_height:
+        return
 
     if idx == N:
+        if B <= total < min_height:
+            min_height = total  # 가지치기 생각해보기
         return
 
     dfs(idx+1, total)
