@@ -12,7 +12,7 @@ for tc in range(1, T+1):
 
     for num in li:
         a |= a << num
-    
+         
     idx = 0
     while True:
         if a & 1 << (B + idx):
