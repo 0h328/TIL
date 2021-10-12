@@ -8,6 +8,7 @@ for i in range(num):
     money = int(input())
     for j in divide:
         cnt.append(money // j)
-        money = money - (j * (money // j))
+        money = money - (j * (money // j)) # money = money % i
 
     print('#{0} \n{1}'.format(i + 1, ' '.join(map(str, cnt))))
+    # print(*cnt)
