@@ -11,6 +11,9 @@ dc = [0, 0, -1, 1]
 
 def dfs(r, c, length):
     global answer
+
+    visited[r][c] = True
+
     if answer < length:
         answer = length
 
@@ -24,13 +27,15 @@ def dfs(r, c, length):
 
 for tc in range(1, T + 1):
     N = int(input())
+    visited = [[False] * N for _ in range(N)]
     room = [list(map(int, input().split())) for _ in range(N)]
     tmp = []
     for row in range(N):
         for col in range(N):
-            answer = 0
-            dfs(row, col, 1)
-            tmp.append((room[row][col], answer))
+            if not visited[row][col]:
+                answer = 0
+                dfs(row, col, 1)
+                tmp.append((room[row][col], answer))
 
     tmp.sort(key=lambda x: (-x[1], x[0]))
     print('#{} {} {}'.format(tc, tmp[0][0], tmp[0][1]))
