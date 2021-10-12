@@ -3,24 +3,20 @@ sys.stdin = open('input.txt')
 
 def check(i):
     global total, result
-    if i == N:
-        if total > result:
-            result = total
+    if total <= result:
         return
-    # if total > result:
-    #     result = total
+    if i == N and total > result:
+        result = total
+        return
 
-    for j in range(N):
-        if visited[j] == 0:#값이 없을 때? 맞지?, i는 그 행을 썼는지로 해야겠다.
-            visited[j] = 1
-            if percents[i][j] != 0: #division 때문에 넣어줌
-                total *= percents[i][j]
-                temp += str(i)
-            check(i+1)
-            if percents[i][j] != 0:
-                total /= percents[i][j]
-            visited[j] = 0
-
+    else:
+        for j in range(N):
+            if visited[j] == 0 and percents[i][j] != 0:#값이 없을 때? 맞지?, i는 그 행을 썼는지로 해야겠다.
+                total *= percents[i][j]/100
+                visited[j] = 1
+                check(i+1)
+                total /= percents[i][j]/100
+                visited[j] = 0
 
 
 
@@ -39,7 +35,7 @@ for tc in range(1, T+1):
     total = 1
     visited = [0] * N
     result = -1
-    temp_chr = tuple()
+    temp_chr = ''
     temp = dict()
     check(0)
-    print(result)
+    print('#{} {:.6f}'.format(tc, result*100))
