@@ -6,13 +6,14 @@ sys.stdin = open('input.txt')
 
 dx = [1, 1, -1, -1]
 dy = [1, -1, -1, 1]
+
 def dfs(x, y, way):
     global result
     if way == 4 and x == first_x and y == first_y:
         if len(visited) > result:
             result = len(visited)
 
-    while way < 3:
+    while way < 4:
         nx = dx[way] + x
         ny = dy[way] + y
 
