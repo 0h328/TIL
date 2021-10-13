@@ -2,34 +2,40 @@ import sys
 sys.stdin = open('input.txt')
 
 
-def dfs(r, c, k, cnt):
-    global max_cnt
-    r = r + dr[k]
-    c = c + dc[k]
-    visited[r][c] = 1
-    if r == sr and c == sc:
-        if cnt > max_cnt:
-            max_cnt = cnt
-        return
-    if r < 0 or r >= N or c < 0 or c >= N or visited[r][c]:
-        return
+def solve(row, col, dir):
+    global result
+    if dir == 3 and (row == starti and col == startj):
+        if len(dessert_list) > result:
+            result = len(dessert_list)
 
+    nr = row + dr[dir % 4]
+    nc = col + dc[dir % 4]
 
+    if 0 <= nr < n and 0 <= nc < n:
+        if dessert[nr][nc] not in dessert_list:
+            dessert_list.append(dessert[nr][nc])
+            solve(nr, nc, dir)
+    dir += 1
+    nr = row + dr[dir % 4]
+    nc = col + dc[dir % 4]
 
+    if 0 <= nr < n and 0 <= nc < n:
+        if dessert[nr][nc] not in dessert_list:
+            dessert_list.append(dessert[nr][nc])
+            solve(nr, nc, dir)
 
+    if dessert_list:
+        dessert_list.pop()
 
-
-T = int(input())
-for t in range(1, T+1):
-    N = int(input())
-    cafe = [list(map(int, input().split())) for _ in range(N)]
-    print(cafe)
-    # [[9, 8, 9, 8], [4, 6, 9, 4], [8, 7, 7, 8], [4, 5, 3, 5]]
-    dr = [1, 1, -1, -1]     # 5시, 7시, 11시, 1시 방향
-    dc = [1, -1, -1, 1]
-    max_cnt = -1
-    visited = [[0] * N for _ in range(N)]
-    for r in range(N):
-        for c in range(N):
-            sr, sc = r, c
-            dfs(r, c, 0, 1)
+for tc in range(1, int(input())+1):
+    n = int(input())
+    dessert = [list(map(int, input().split())) for _ in range(n)]
+    dr = [-1, 1, 1, -1]
+    dc = [1, 1, -1, -1]
+    result = -1
+    for i in range(1, n-1):
+        for j in range(n-2):
+            dessert_list = []
+            starti, startj = i, j
+            solve(i, j, 0)
+    print('#{} {}'.format(tc, result))
