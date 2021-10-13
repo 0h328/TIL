@@ -34,8 +34,8 @@ for t in range(1, T+1):
     stack, path = [], set()
     ans = -1
 
-    for i in range(N):
-        for j in range(N):
+    for i in range(N-2):
+        for j in range(1, N-1):
             start = (i, j)
             dfs(i, j, (1, 1))
 
