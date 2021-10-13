@@ -4,6 +4,10 @@ sys.stdin = open('input.txt')
 
 def solve(row, col, dir):
     global result
+    if dir == 2:
+        if len(dessert_list) * 2 <= result:
+            return
+
     if dir == 3 and (row == starti and col == startj):
         if len(dessert_list) > result:
             result = len(dessert_list)
@@ -15,18 +19,10 @@ def solve(row, col, dir):
         if dessert[nrow][ncol] not in dessert_list:
             dessert_list.append(dessert[nrow][ncol])
             solve(nrow, ncol, dir) # 계속 같은 방향으로 진행 시켜주고
-    # 방향에 값이 없으면 방향 바꿔준다
-    dir += 1
-    nrow = row + drow[dir % 4]
-    ncol = col + dcol[dir % 4]
+            solve(nrow, ncol, dir + 1) # 방향 전환
+            if dessert_list:
+                dessert_list.pop()
 
-    if 0 <= nrow < n and 0 <= ncol < n:
-        if dessert[nrow][ncol] not in dessert_list:
-            dessert_list.append(dessert[nrow][ncol])
-            solve(nrow, ncol, dir) # 계속 같은 방향으로 진행 시켜주고
-
-    if dessert_list:
-        dessert_list.pop()
 
 for tc in range(int(input())):
     n = int(input())
@@ -39,4 +35,4 @@ for tc in range(int(input())):
             dessert_list = []
             starti, startj = i, j # 시작 값을 비교하기 위해서
             solve(i, j, 0)
-    print(result)
+    print('#{} {}'.format(tc+1, result))
