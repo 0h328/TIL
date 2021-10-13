@@ -1,103 +1,66 @@
-# 08/25 Queue
+# 10/13 그래프
 
-| No.       | Title          | Directory           |
-| --------- | -------------- | ------------------- |
-| 연습문제1 | 큐 구현        | `연습문제1_큐구현`  |
-| 연습문제2 | BFS 구현       | `연습문제2_BFS구현` |
-| 연습문제3 | 마이쭈 시뮬레이션      | `연습문제3_마이쭈` |
-| 1225      | 암호생성기(HW) | `1225_암호생성기`   |
+| No.  | Title       | Directory         |
+| ---- | ----------- | ----------------- |
+| | Stack 직접 구현 (복습) | `연습문제_1` |
+| | Queue 직접 구현 (복습) | `연습문제_2` |
+| | DFS 구현 (복습) | `연습문제_3` |
+| | BFS 구현 (복습) | `연습문제_4` |
+| | Disjoint Set (`연습문제5` 폴더 내부를 복사해서 사용) | `연습문제_5` |
+| | MST (Prim) (`연습문제6` 폴더를 내부 복사해서 사용) | `연습문제_6` |
+| | MST (Kruskal) (`연습문제7` 폴더 내부 복사해서 사용) | `연습문제_7` |
+| | Dijkstra (`연습문제8` 폴더 내부 복사해서 사용) | `연습문제_8` |
+| 2814 | 최장경로(HW) | `2814_최장경로` |
 
 
 
-## 연습문제1
+## 연습문제_1
 
 ```python
 """
-문제1-1. 기본 Queue 구현 - 기본 구현 (가변)
- - 세 개의 데이터 1, 2, 3을 차례로 큐에 삽입
- - 큐에서 세 개의 데이터를 차례로 꺼내어 출력
-  (1, 2, 3을 차례대로 출력)
+연습 문제1. 고정 배열로 Stack 구현
 """
+SIZE = 5             # 크기가 5인 배열을 생성하기 위한 변수 초기화
+top = -1             # top의 기본값
+stack = [0] * SIZE   # 5 크기의 배열 생성
 
-#1. Queue 생성 (리스트)
+def push(item):
+    global top, stack
+    pass
 
-#2. Queue에 데이터를 삽입
+def pop():
+    global top, stack
+    pass
 
-#3. Queue에 삽입한 데이터를 출력(First-In-First-Out)1
+print(stack)      # [0, 0, 0, 0, 0]
+push(1)
+push(2)
+push(3)
+push(4)
+push(5)
+push(6)           # Stack is Full!
+print(stack)      # [1, 2, 3, 4, 5]
+
+item = pop()
+print(item) # 5
+item = pop()
+print(item) # 4
+item = pop()
+print(item) # 3
+item = pop()
+print(item) # 2
+item = pop()
+print(item) # 1
+item = pop()
+print(item) # Stack is Empty!
 ```
 
+
+
+## 연습문제_2
 ```python
 """
-문제1-2. 기본 Queue 구현 - 기본 구현 (내장 모듈 활용)
- - 세 개의 데이터 1, 2, 3을 차례로 큐에 삽입
- - 큐에서 세 개의 데이터를 차례로 꺼내어 출력
-  (1, 2, 3을 차례대로 출력)
-"""
-
-#1. Queue 생성
-
-#2. Queue에 데이터를 삽입
-
-#3. Queue에 삽입한 데이터를 출력(First-In-First-Out)
-```
-
-```python
-"""
-문제2. 기본 Queue 구현 - 클래스 구현 (가변)
- - 세 개의 데이터 1, 2, 3을 차례로 큐에 삽입
- - 큐에서 세 개의 데이터를 차례로 꺼내어 출력
-  (1, 2, 3을 차례대로 출력)
-"""
-
-class Queue:
-    def __init__(self):
-        """
-        인스턴스 생성 시에 새로운 Queue 생성
-        """
-        pass
-
-    def is_empty(self):
-        """
-        Queue에 비어있는지 여부를 True / False로 반환
-        """
-        pass
-
-    def enqueue(self):
-        """
-        Queue에 원소 삽입
-        """
-        pass 
-    
-    def dequeue(self):
-        """
-        Queue에서 원소 삭제 후 반환
-        """
-        pass
-    
-    def size(self):
-        """
-        Queue의 길이 반환
-        """
-        pass
-
-
-#1. Queue 인스턴스 생성
-
-#2. Queue가 비었는지 확인
-
-#3. 1, 2, 3 원소를 Queue 삽입
-
-#4. 원소가 정상적으로 삽입되었는지 확인 / 사이즈 확인 / 비었는지 여부 확인
-
-#5. Queue에서 원소 삭제 후 반환 & 원소 확인 / 사이즈 확인
-```
-
-```python
-"""
-문제3. 고정 배열 크기의 Queue 구현
- - 세 개의 데이터 1, 2, 3을 차례로 큐에 삽입
- - 큐에서 세 개의 데이터를 차례로 꺼내어 출력
-  (1, 2, 3을 차례대로 출력)
+연습 문제2. 고정 배열로 Queue 구현
 """
 
 # Queue의 사이즈 지정
@@ -224,18 +187,49 @@ front, rear = -1, -1
 
 
 
-## 연습문제2
-
+## 연습문제_3
 ```python
 # input.txt
 
 7 8
 1 2 1 3 2 4 2 5 4 6 5 6 6 7 3 7
 ```
-
 ```python
 """
-1. bfs - 인접 행렬 구현
+연습 문제3. DFS 구현 (인접 행렬/인접 리스트/인접 딕셔너리)
+"""
+
+def dfs(v):
+    pass
+
+
+import sys
+sys.stdin = open('input.txt')
+
+# V(ertex), E(dge)
+
+# 간선 정보 초기화
+
+# Graph 초기화
+
+# 방문 표시 초기화
+
+# dfs 탐색 시작
+dfs(1)
+```
+
+
+
+## 연습문제_4
+```python
+# input.txt
+
+7 8
+1 2 1 3 2 4 2 5 4 6 5 6 6 7 3 7
+```
+```python
+"""
+연습 문제4. BFS 구현 (인접 행렬/인접 리스트/인접 딕셔너리)
 """
 
 def bfs(v):
@@ -257,75 +251,50 @@ sys.stdin = open('input.txt')
 bfs(1)
 ```
 
-```python
-"""
-2. bfs - 인접 리스트 구현
-"""
-
-def bfs(v):
-    pass
 
 
-import sys
-sys.stdin = open('input.txt')
+## 연습문제_5
 
-# V(ertex), E(dge)
-
-# 간선 정보 초기화
-
-# Graph 초기화
-
-# 방문 표시 초기화
-
-# bfs 탐색 시작
-bfs(1)
-```
+`연습문제5~8` 폴더 내부에 있는 자료를 확인해주세요.
 
 ```python
 """
-3. bfs - 인접 딕셔너리 구현
+연습문제 5. 
 """
-
-def bfs(v):
-    pass
-
-
-import sys
-sys.stdin = open('input.txt')
-
-# V(ertex), E(dge)
-
-# 간선 정보 초기화
-
-# Graph 초기화
-
-# 방문 표시 초기화
-
-# bfs 탐색 시작
-bfs(1)
 ```
+
+
+
+## 연습문제_6
+
+`연습문제5~8` 폴더 내부에 있는 자료를 확인해주세요.
 
 ```python
 """
-4. bfs - 1번 노드에서 가장 멀리 떨어진 노드 찾기 (거리에 대한 정보 담아 놓기)
+연습문제 6. 
 """
-
-def bfs(v):
-    pass
-
-
-import sys
-sys.stdin = open('input.txt')
-
-# V(ertex), E(dge)
-
-# 간선 정보 초기화
-
-# Graph 초기화
-
-# 방문 표시 초기화
-
-# bfs 탐색 시작
-bfs(1)
 ```
 
+
+
+## 연습문제_7
+
+`연습문제5~8` 폴더 내부에 있는 자료를 확인해주세요.
+
+```python
+"""
+연습문제 7. 
+"""
+```
+
+
+
+## 연습문제_8
+
+`연습문제5~8` 폴더 내부에 있는 자료를 확인해주세요.
+
+```python
+"""
+연습문제 8. 
+"""
+```
