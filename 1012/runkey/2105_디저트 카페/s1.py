@@ -12,7 +12,7 @@ for t in range(1, tc + 1):
 
     N = int(input())
     N_list = [list(map(int, input().split())) for _ in range(N)]
-    for i in range(N):
-        for j in range(N):
-            
+    # for i in range(N):
+    #     for j in range(N):
+
     print("#{} {}".format(t, result))

@@ -9,12 +9,13 @@ sys.stdin = open('input.txt')
 
 dr = [-1, 1, 0, 0]
 dc = [0, 0, -1, 1]
+
 def dfs(r, c, n):
     for k in range(4):
         nr = r + dr[k]
         nc = c + dc[k]
 
-        if 0 <= nr < H and 0 <= nc < W:
+        # if 0 <= nr < H and 0 <= nc < W:
 
 
 tc = int(input())
