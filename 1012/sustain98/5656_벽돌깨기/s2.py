@@ -1,9 +1,7 @@
-# 실패(40/50)
+# 통과
 
 import sys
 sys.stdin = open('input.txt')
-from collections import deque
-
 
 def select_position(i, removed_cnt):
     global res
@@ -13,8 +11,9 @@ def select_position(i, removed_cnt):
         return
 
     for j in range(w):
-        if 0 in status[j]:
-            changed = remove_blocks(j)
+        k = find_block(j, lengths[j]-1, -1, 1)
+        if k > -1:
+            changed = remove_blocks(j, k)
             change_blocks(changed, 1)
             select_position(i + 1, removed_cnt + len(changed))
             change_blocks(changed, 0)
@@ -30,52 +29,53 @@ def find_block(col, s, e, order):
     return -1
 
 
-def remove_blocks(column_idx):
+def remove_blocks(column_idx, row_idx):
     global status
-    changed = set()
-    visited = [[0] * h for _ in range(w)]
-    q = deque([(column_idx, find_block(column_idx, lengths[column_idx]-1, -1, 1))])
-    changed.add((q[0][0], q[0][1]))
-    visited[q[0][0]][q[0][1]] = 1
+    changed = [(column_idx, row_idx)]
+    cnt, ch_idx = 1, 0
 
-    while q:
-        x, y = q.popleft()
+    while ch_idx < cnt:
+        x, y = changed[ch_idx][0], changed[ch_idx][1]
+        ch_idx += 1
+
         if l[x][y] == 1:
             continue
-        order = status[x][:y+1].count(0)
+
         # 가로
+        order = status[x][:y+1].count(0)
         for j in range(max(x - l[x][y] + 1, 0), min(w, x + l[x][y])):
             if j == x:
                 continue
             k = find_block(j, 0, lengths[j], order)
-            if k != -1 and visited[j][k] == 0:
-                visited[j][k] = 1
-                changed.add((j, k))
-                q.append((j, k))
+            if k != -1 and (j, k) not in changed:
+                cnt += 1
+                changed.append((j, k))
         # 세로
         c = 1
         for k in range(y - 1, -1, -1):
-            if status[x][k] == 0 and visited[x][k] == 0:
+            if status[x][k] == 0:
                 c += 1
-                visited[x][k] = 1
-                changed.add((x, k))
-                q.append((x, k))
+                if (x, k) not in changed:
+                    cnt += 1
+                    changed.append((x, k))
                 if c == l[x][y]:
                     break
         c = 1
         for k in range(y + 1, lengths[x]):
-            if status[x][k] == 0 and visited[x][k] == 0:
+            if status[x][k] == 0:
                 c += 1
-                visited[x][k] = 1
-                changed.add((x, k))
-                q.append((x, k))
+                if (x, k) not in changed:
+                    cnt += 1
+                    changed.append((x, k))
                 if c == l[x][y]:
                     break
     return changed
 
+
 def change_blocks(changed_list, val):
     for i, j in changed_list:
         status[i][j] = val
+
 
 t = int(input())
 for idx in range(1, t+1):
