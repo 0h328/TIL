@@ -2,20 +2,21 @@ import sys
 sys.stdin = open('input.txt')
 
 from collections import deque
+import copy
 
 dr = [0,0,-1,1]
 dc = [1,-1,0,0]
 
 def shoot_ball(n, cblock):
     global result
-    if n > N:
-        result = min(result, sum_block(cblock))# 남은 블록 합계
+    if n >= N:
+        result = min(result, sum_block(cblock)) # 남은 블록 합계
         return
 
     for i in range(W):
         shoot_ball(n+1, remove_block(cblock, i))
 
-import copy
+
 def remove_block(blocks, pos):
     new_blocks = copy.deepcopy(blocks)
     for i, row in enumerate(new_blocks):
@@ -33,18 +34,23 @@ def remove_block(blocks, pos):
                 nr = r+dr[k] * nb
                 nc = c+dc[k] * nb
                 if 0<=nr<H and 0<=nc<W and new_blocks[nr][nc]:
-                    q.append((nr, nc))
+                    if (nr, nc) not in q:
+                        q.append((nr, nc))
 
-    # 위에있는 블록 내려오기
-    col_idx = [0]*W
-    
-    for row in new_blocks:
-        for i, r in enumerate(row):
-            if r == 0:
-                cols[col_idx[i]]=r
-                col_idx[i]+=1
-    print(*cols, sep='\n')
-    return cols
+    return buck_down(new_blocks)
+
+def buck_down(new_blocks):
+    # 위에있는 블록 내리기
+    update_block = [[0]*W for _ in range(H)]
+    for w in range(W):
+        temp = []
+        for h in range(H):
+            if new_blocks[h][w]:
+                temp.append(new_blocks[h][w])
+        for i in range(len(temp)):
+            update_block[H-len(temp)+i][w] = temp[i]
+
+    return update_block
 
 def sum_block(blocks):
     return sum([W - b.count(0) for b in blocks])
@@ -52,7 +58,7 @@ def sum_block(blocks):
 for T in range(int(input())):
     result = 1e9
     N, W, H = map(int, input().split())
-    # 위에서만 떨어뜨릴 수 있음
+
     blocks = [list(map(int, input().split())) for _ in range(H)]
     shoot_ball(0, blocks)
     

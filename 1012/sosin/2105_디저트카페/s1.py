@@ -1,5 +1,6 @@
 import sys
 sys.stdin = open('input.txt')
+
 def bfs(u,v,k,cnt):
     global stop, max_cnt
     if k == 3 and (u,v) == stop:
@@ -25,14 +26,15 @@ for T in range(int(input())):
     dx = [1,1,-1,-1]
     dy = [1,-1,-1,1]
     queue = []
-    for i in range(N):
-        for j in range(1, N - 1):
+    for i in range(N-1):
+        for j in range(1, N-1):
             stop = (i,j)
             queue.append(area[i][j])
             bfs(i+1,j+1,0,1)
             queue.remove(area[i][j])
 
     print('#{} {}'.format((T+1), max_cnt))
+
 #1 6
 #2 -1
 #3 4
