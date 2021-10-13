@@ -22,7 +22,6 @@ def dfs(cnt, buck):
         return
 
     for a in range(W):
-        check = 0
         for b in range(H):
             if buck[b][a] == 0:
                 continue
@@ -50,8 +49,7 @@ def dfs(cnt, buck):
                             temp.append(buck[e][d])
                     for j in range(len(temp)):
                         buck_down[H-len(temp)+j][d] = temp[j]
-                check = 1
-            if check == 1:
+
                 dfs(cnt+1,buck_down)
                 buck = first
                 break
