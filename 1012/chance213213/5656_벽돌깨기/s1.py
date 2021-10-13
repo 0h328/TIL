@@ -1,4 +1,5 @@
 import sys
+import copy
 sys.stdin = open('input.txt')
 
 di = [0, -1, 0, 1] #우, 하, 좌, 상
@@ -24,12 +25,6 @@ def bomb(i, j, cnt):
     stack.pop(0)
 
 
-
-
-
-
-
-
 T = int(input())
 
 for tc in range(1, T+1):
@@ -38,7 +33,8 @@ for tc in range(1, T+1):
 
     cnt = 0
     temp_blocks = [[-10 for _ in range(W)] for _ in range(H)]
-
+    temp = copy.deepcopy(blocks)
+    print(temp)
     print(temp_blocks)
     # for i in range(H):
     #     for j in range(W):

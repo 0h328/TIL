@@ -1,7 +1,7 @@
 def quicksort(x):
     if len(x) <= 1:
         return x
-
+#이렇게 해도 되낭,.? 다시봤는데 퀵정렬 아닌거 같은뎅
     pivot = x[len(x) // 2]
     less = []
     more = []
