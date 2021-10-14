@@ -4,11 +4,13 @@ sys.stdin = open('input.txt')
 def dfs(pos, cnt):
     global result
     visited[pos] = 1
+
     for g in graph[pos]:
         if visited[g]:
             result = max(result, cnt)
         else:
             dfs(g, cnt+1)
+
     visited[pos] = 0
 
 for T in range(int(input())):
