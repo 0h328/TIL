@@ -8,7 +8,7 @@ def dfs(v: int, cnt: int, visited: set):
     for c in tr[v]:
         if c not in visited:
             visited = visited | set([c])
-            dfs(c, cnt+1, visited)
+            dfs(c, cnt+1, visted)
             visited -= set([c])
 
     res[0] = max(res[0], cnt)
