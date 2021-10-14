@@ -17,7 +17,7 @@ for t in range(1, tc + 1):
     result = 0
     N, M = map(int, input().split())
     N_list = [[] * (N + 1) for _ in range(N + 1)]
-    for i in range(M):  # 인접 행렬
+    for i in range(M):  # 인접 리스트
         x, y = map(int, input().split())
         N_list[x].append(y)
         N_list[y].append(x)
