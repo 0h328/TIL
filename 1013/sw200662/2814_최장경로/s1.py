@@ -22,7 +22,7 @@ for tc in range(1, T + 1):
             visited_list[k] = 1
         cnt = 1
         while len(que) != 0:
-            cnt +=1
+            cnt += 1
             temp2 = que.pop()
             for z in Num_list[temp2]:
                 if visited_list[z] == 0:
