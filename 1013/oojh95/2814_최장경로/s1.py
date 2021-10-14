@@ -10,7 +10,7 @@ def dfs(n, length):
     for i in range(N+1):
         if arr[n][i] == 1 and not visited[i]:
             dfs(i, length+1)
-            visited[i] = 0
+
     visited[n] = 0
 
 T = int(input())
