@@ -15,7 +15,7 @@ T = int(input())
 for t in range(1, T+1):
     N, M = map(int, input().split())
     arr = [[0] * (N+1) for _ in range(N+1)]
-    visited = [0] * (N + 1)
+    visited = [0] * (N+1)
     edge = 0
 
     for _ in range(M):
