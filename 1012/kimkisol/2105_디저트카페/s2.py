@@ -13,15 +13,12 @@ def dfs(r, c, curr_cnt, direction, d_cnt):
         return
 
     for d in range(2):
-        new_d = (direction + d) % 4
+        new_d = direction + d
         nr, nc = r + dr[new_d], c + dc[new_d]
         if (nr, nc) == (i, j):
-            if curr_cnt == 2:
-                continue
-            else:
-                if curr_cnt > max_cnt:
-                    max_cnt = curr_cnt
-                return
+            if curr_cnt > max_cnt:
+                max_cnt = curr_cnt
+            return
         if 0 <= nr < N and 0 <= nc < N:
             num = arr[nr][nc]  # 디저트 종류
             if not arr_visited[nr][nc] and not type_visited[num] and num > 0:
