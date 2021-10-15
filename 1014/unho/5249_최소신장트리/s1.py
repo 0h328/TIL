@@ -1,39 +1,125 @@
 import sys
 import heapq
+from operator import itemgetter
 sys.stdin = open('input.txt')
 
+# prim default / prim heapq / kruskal
+# kruskal
+def find_set(x):
+    if x != s[x]:
+        s[x] = find_set(s[x])
+    return s[x]
 
-def prim():
+
+def union(a, b):
+    s[find_set(b)] = find_set(a)
+
+
+def kruskal():
     global ans
 
-    heap = []                       # 최소힙
-    heapq.heappush(heap, (0,0))     # 최소힙, 
-    
-    while heap:
-        w, v = heapq.heappop(heap)
-        if not visited[v]:
-            ans += w
-            visited[v] = 1
-            for w, weight in linked[v]:
-                if not visited[w]:
-                    heapq.heappush(heap, (weight, w))
-    return ans
+    edges_cnt = 0
+    idx = 0
 
+    while edges_cnt < V:
+        n1 = edges[idx][0]
+        n2 = edges[idx][1]
+
+        if find_set(n1) != find_set(n2):
+            union(n1, n2)
+            ans += edges[idx][2]
+            edges_cnt += 1
+
+        idx += 1
+    
 
 T = int(input())
 answer = []
 
 for tc in range(1, T+1):
     V, E = map(int, input().split())
-    linked = [[] for _ in range(V+1)]       # 인접 리스트
-    ans = 0                                 # 누적할 가중치
-    visited = [0] * (V+1)                   # 방문여부
+    edges = sorted([list(map(int, input().split())) for _ in range(E)], key=itemgetter(2))
+    s = [i for i in range(V+1)]
+    ans = 0
 
-    for i in range(E):                      # 연결관계 [연결된 노드, 가중치]
-        start, end, W = map(int, input().split())
-        linked[start].append([end, W])
-        linked[end].append([start, W])
+    kruskal()
+
+    answer.append('#{} {}'.format(tc, ans))
+
+print(*answer, sep='\n')
+
+
+# prim heapq
+'''
+def prim():
+    global ans
+    heap = [(0, 0)]
     
-    print(linked)
+    while heap:
+        w, v = heapq.heappop(heap)
+        if not visited[v]:
+            ans += w
+            visited[v] = 1
+            for weight, node in linked[v]:
+                if not visited[node]:
+                    heapq.heappush(heap, (weight, node))
+    return ans
 
-    print('#{} {}'.format(tc, prim()))
+T = int(input())
+answer = []
+
+for tc in range(1, T+1):
+    V, E = map(int, input().split())
+    linked = {}                         # link relations
+    ans = 0                             # accumulatesum
+    visited = [0] * (V+1)               # visited node
+
+    for _ in range(E):                      
+        n1, n2, w = map(int, input().split())
+        linked[n1] = linked.get(n1, []) + [(w, n2)]
+        linked[n2] = linked.get(n2, []) + [(w, n1)]
+
+    answer.append('#{} {}'.format(tc, prim()))
+
+print(*answer, sep='\n')
+'''
+
+
+# prim default
+""" 
+def prim():
+    for _ in range(V):
+        min_idx = -1
+        min_value = 1e10
+
+        for i in range(V+1):
+            if not visited[i] and sel_weight[i] < min_value:
+                min_idx = i
+                min_value = sel_weight[i]
+        visited[min_idx] = 1
+
+        for i in linked[min_idx]:
+            if not visited[i[0]] and i[1] < sel_weight[i[0]]:
+                sel_weight[i[0]] = i[1]
+
+    return sum(sel_weight)
+
+T = int(input())
+answer = []
+
+for tc in range(1, T+1):
+    V, E = map(int, input().split())
+    linked = {}                     # link relations
+    sel_weight = [1e10] * (V+1)
+    sel_weight[0] = 0               # start weight is 0 (start node - 0)     
+    visited = [0] * (V+1)           # visited node
+
+    for _ in range(E):              # none direction
+        n1, n2, w = map(int, input().split())
+        linked[n1] = linked.get(n1, []) + [(n2, w)]
+        linked[n2] = linked.get(n2, []) + [(n1, w)]
+        
+    answer.append('#{} {}'.format(tc, prim()))
+
+print(*answer, sep='\n')
+"""
