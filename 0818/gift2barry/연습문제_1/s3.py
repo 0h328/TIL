@@ -1,4 +1,4 @@
-# s3.py
+# s3-라이브.py
 # 클래스로 stack 구현
 
 class Stack:
