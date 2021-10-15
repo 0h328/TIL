@@ -1,10 +1,56 @@
 import sys
 import heapq
+from operator import itemgetter
 sys.stdin = open('input.txt')
 
 # prim default / prim heapq / kruskal
+# kruskal
+def find_set(x):
+    if x != s[x]:
+        s[x] = find_set(s[x])
+    return s[x]
+
+
+def union(a, b):
+    s[find_set(b)] = find_set(a)
+
+
+def kruskal():
+    global ans
+
+    edges_cnt = 0
+    idx = 0
+
+    while edges_cnt < V:
+        n1 = edges[idx][0]
+        n2 = edges[idx][1]
+
+        if find_set(n1) != find_set(n2):
+            union(n1, n2)
+            ans += edges[idx][2]
+            edges_cnt += 1
+
+        idx += 1
+    
+
+T = int(input())
+answer = []
+
+for tc in range(1, T+1):
+    V, E = map(int, input().split())
+    edges = sorted([list(map(int, input().split())) for _ in range(E)], key=itemgetter(2))
+    s = [i for i in range(V+1)]
+    ans = 0
+
+    kruskal()
+
+    answer.append('#{} {}'.format(tc, ans))
+
+print(*answer, sep='\n')
+
 
 # prim heapq
+'''
 def prim():
     global ans
     heap = [(0, 0)]
@@ -36,6 +82,7 @@ for tc in range(1, T+1):
     answer.append('#{} {}'.format(tc, prim()))
 
 print(*answer, sep='\n')
+'''
 
 
 # prim default
