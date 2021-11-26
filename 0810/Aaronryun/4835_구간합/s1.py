@@ -1,0 +1,44 @@
+import sys
+
+sys.stdin = open('input.txt')
+
+T = int(input())
+
+
+def BubbleSort(a):  # 버블정렬
+    for i in range(len(a) - 1, 0, -1):
+        for j in range(i):
+            if a[j] > a[j + 1]:
+                a[j], a[j + 1] = a[j + 1], a[j]
+    return a
+
+def counting(a):
+    cnt = [0]*(max(a)+1)
+    for i in a:
+        cnt[i] +=1
+
+    for i in range(1,len(cnt)):
+        cnt[i] += cnt[i-1]
+    my_sort = [0]*len(a)
+    for i in range(len(a)-1,0,-1):
+        my_sort[cnt[a[i]]-1]=a[i]
+        cnt[a[i]] -=1
+    return my_sort
+
+
+for test in range(T):
+    N, M = map(int, input().split())
+    data = list(map(int, input().split()))
+    result = []
+    for i in range(M - 1, len(data)):        # M-1 번째 인덱스 부터 하나씩 증가시키면서
+        msum = 0
+        for j in range(M):                   # 아래로 묶음 만큼 msum에 더한다.
+            msum += data[i - j]
+        result.append(msum)                  # 이값들로 리스트를 만든 후에
+
+    BubbleSort(result)  # 정렬하고
+    # counting(result)
+    # print(result)
+    answer = result[-1] - result[0]          # 가장 앞의 수와 뒤의 수를 뺀 차를
+
+    print('#{} {}'.format(test + 1, answer)) # 프린트

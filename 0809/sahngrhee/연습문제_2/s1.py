@@ -1,0 +1,19 @@
+import sys
+sys.stdin = open('input.txt')
+
+# 행 / 열의 길이 받기
+N, M = map(int, input().split())
+
+# 이차원 리스트 받기
+arr = [list(map(int, input().split())) for _ in range(N)]
+print(arr)
+
+#1. 행 우선순회
+for i in range(N):
+    for j in range(M):
+        print(arr[i][j])
+
+#2. 열 우선순회
+for j in range(M):
+    for i in range(N):
+        print(arr[i][j])
