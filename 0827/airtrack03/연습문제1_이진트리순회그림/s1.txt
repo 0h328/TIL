@@ -1,8 +1,0 @@
-전위 순회(pre-order)
-A - B - D - H - I - E - J - C - F - K - G - L - M
-
-중위 순회(in-order)
-H - D - I - B - J - E - A - C - F - K - L - G - M
-
-후위 순회(post-order)
-H - I - D - J - E - B - K - F - L - M - G - C - A

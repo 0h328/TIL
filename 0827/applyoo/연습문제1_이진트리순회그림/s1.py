@@ -1,6 +1,0 @@
-print('전위 순회')
-print('A B D H I E J C F K G L M')
-print('중위 순회')
-print('H D I B J E A F K C L G M')
-print('후위 순회')
-print('H I D J E B K F L M G C A')

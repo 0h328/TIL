@@ -1,1 +1,0 @@
-print({'aa':'bb'}.update({'cc', 'dd'}))

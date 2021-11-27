@@ -1,2 +1,0 @@
-abcde
-Reverse this strings
