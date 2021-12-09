@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e28259d5-526d-41d3-9b34-9ffdf463a253" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Dynamic-Programming/11053.py" beforeDir="false" afterPath="$PROJECT_DIR$/Dynamic-Programming/11053.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Math/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Math/input.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,7 +12,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>cnt</find>
+      <find>printList</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -19,18 +26,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/2563.py" />
-        <option value="$PROJECT_DIR$/input.txt" />
-        <option value="$PROJECT_DIR$/2527.py" />
-        <option value="$PROJECT_DIR$/다익스트라/1916.py" />
-        <option value="$PROJECT_DIR$/다익스트라/1261.py" />
-        <option value="$PROJECT_DIR$/다익스트라/1238.py" />
-        <option value="$PROJECT_DIR$/자료구조/10828.py" />
-        <option value="$PROJECT_DIR$/자료구조/10845.py" />
-        <option value="$PROJECT_DIR$/자료구조/10866.py" />
-        <option value="$PROJECT_DIR$/백트래킹/15649.py" />
-        <option value="$PROJECT_DIR$/백트래킹/15650.py" />
-        <option value="$PROJECT_DIR$/백트래킹/15651.py" />
         <option value="$PROJECT_DIR$/백트래킹/15654.py" />
         <option value="$PROJECT_DIR$/백트래킹/15655.py" />
         <option value="$PROJECT_DIR$/백트래킹/15656.py" />
@@ -70,6 +65,18 @@
         <option value="$PROJECT_DIR$/자료구조/10773.py" />
         <option value="$PROJECT_DIR$/Dynamic-Programming/input.txt" />
         <option value="$PROJECT_DIR$/Dynamic-Programming/11053.py" />
+        <option value="$PROJECT_DIR$/Data-Structure/input.txt" />
+        <option value="$PROJECT_DIR$/Data-Structure/1966.py" />
+        <option value="$PROJECT_DIR$/Math/2609.py" />
+        <option value="$PROJECT_DIR$/Math/3052.py" />
+        <option value="$PROJECT_DIR$/Math/2908.py" />
+        <option value="$PROJECT_DIR$/Math/11720.py" />
+        <option value="$PROJECT_DIR$/Math/11050.py" />
+        <option value="$PROJECT_DIR$/Math/10872.py" />
+        <option value="$PROJECT_DIR$/Math/2884.py" />
+        <option value="$PROJECT_DIR$/Math/14681.py" />
+        <option value="$PROJECT_DIR$/Math/2292.py" />
+        <option value="$PROJECT_DIR$/Math/input.txt" />
       </list>
     </option>
   </component>
@@ -95,7 +102,7 @@
             <path>
               <item name="baekjoon" type="b2602c69:ProjectViewProjectNode" />
               <item name="baekjoon" type="462c0819:PsiDirectoryNode" />
-              <item name="Dynamic-Programming" type="462c0819:PsiDirectoryNode" />
+              <item name="Math" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -120,8 +127,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.11053">
-    <configuration name="10773" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.2292">
+    <configuration name="10872" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="baekjoon" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -129,11 +136,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/자료구조" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Math" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/자료구조/10773.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math/10872.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -142,7 +149,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="11053" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="11050" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="baekjoon" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -150,11 +157,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Dynamic-Programming" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Math" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Dynamic-Programming/11053.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math/11050.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -163,7 +170,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="1932" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="14681" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="baekjoon" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -171,11 +178,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/다이나믹 프로그래밍" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Math" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/다이나믹 프로그래밍/1932.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math/14681.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -184,7 +191,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="9012" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="2292" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="baekjoon" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -192,11 +199,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/자료구조" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Math" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/자료구조/9012.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math/2292.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -205,7 +212,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="9461" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="2884" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="baekjoon" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -213,11 +220,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/다이나믹 프로그래밍" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Math" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/다이나믹 프로그래밍/9461.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math/2884.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -228,11 +235,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.11053" />
-        <item itemvalue="Python.10773" />
-        <item itemvalue="Python.9012" />
-        <item itemvalue="Python.1932" />
-        <item itemvalue="Python.9461" />
+        <item itemvalue="Python.2292" />
+        <item itemvalue="Python.14681" />
+        <item itemvalue="Python.2884" />
+        <item itemvalue="Python.10872" />
+        <item itemvalue="Python.11050" />
       </list>
     </recent_temporary>
   </component>
@@ -357,33 +364,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/백트래킹/15665.py" />
-    <entry file="file://$PROJECT_DIR$/백트래킹/15663.py" />
-    <entry file="file://$PROJECT_DIR$/백트래킹/15666.py" />
-    <entry file="file://$PROJECT_DIR$/백트래킹/input.txt" />
-    <entry file="file://$USER_HOME$/Downloads/서울_2반_김영후 (5)/서울_2반_김영후/algo1_서울_2반_김영후.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-323">
-          <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/A형/test.py" />
-    <entry file="file://$PROJECT_DIR$/백트래킹/15650.py" />
-    <entry file="file://$PROJECT_DIR$/백트래킹/15651.py" />
-    <entry file="file://$PROJECT_DIR$/백트래킹/15652.py" />
-    <entry file="file://$PROJECT_DIR$/DFSBFS/11724.py" />
-    <entry file="file://$PROJECT_DIR$/DFSBFS/16953.py" />
-    <entry file="file://$PROJECT_DIR$/백트래킹/15649.py" />
-    <entry file="file://$PROJECT_DIR$/DFSBFS/1743.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python39/Lib/urllib/parse.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="863" selection-start-line="863" selection-end-line="863" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/트리/11725.py" />
     <entry file="file://$PROJECT_DIR$/트리/9934.py" />
     <entry file="file://$PROJECT_DIR$/트리/input.txt" />
     <entry file="file://$PROJECT_DIR$/백트래킹/9663.py" />
@@ -431,6 +411,112 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
           <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data-Structure/10866.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data-Structure/1966.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data-Structure/input.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Math/2609.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Math/3052.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="15" lean-forward="true" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Math/2908.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Math/10818.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Math/11653.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="7" selection-start-line="1" selection-end-line="2" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Math/11050.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Math/11720.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Math/10872.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" selection-start-line="3" selection-end-line="9" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Math/2884.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="18" column="11" lean-forward="true" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Math/14681.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" selection-start-line="3" selection-end-line="16" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Math/2292.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" selection-start-line="3" selection-end-line="11" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Math/input.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="2" lean-forward="true" selection-start-column="2" selection-end-column="2" />
         </state>
       </provider>
     </entry>
