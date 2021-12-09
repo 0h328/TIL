@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>선택자 심화</title>
+  <style>
+    /* p 요소의 형제 요소 중에 p 요소 뒤에 위치하는 span 요소를 모두 선택한다. */
+    p ~ span {
+      color: red;
+    }
+
+    /* p 요소의 형제 요소 중에 p 요소 바로(p뒤에 p가 나와야함) 뒤에 위치하는 p 요소를 선택 */
+    p + p {
+      color: darkorange;
+    }
+    
+    .title + ul {
+      color: blue
+    }
+  </style>
+</head>
+<body>
+  <!-- 어떻게 하면 '안녕하세요2'라는 글자의 색상을 darksalmon으로 만들 수 있을까요? -->
+  <p>
+    <span>안녕하세요</span>
+    <div>
+      <span>안녕하세요2</span>
+    </div>
+  </p>
+
+  <hr>
+  <span>이건 빨강이 아닙니다.</span>
+  <p>여기 문단이 있습니다.</p>
+  <b>그리고 코드도 있습니다.</b>
+  <span>이제 빨강입니다!</span>
+  <b>더 많은 코드가 있습니다.</b>
+  <span>이것도 빨강입니다!</span>
+
+  <p>0</p>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <div>4</div>
+  <p>4.5</p>
+  <p>5</p>
+  <div class="title">
+    <p>6</p>
+  </div>
+  <ul>
+    <li>리스트</li>
+    <li>리스트</li>
+    <li>리스트</li>
+  </ul>
+</body>
+</html>

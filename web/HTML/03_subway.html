@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subway 주문서</title>
+</head>
+<body>
+  <h1>Subway Form</h1>
+  <p>주문서를 작성하여 주십시오.</p>
+  <form action="#">
+    <!-- label의 for 속성은 input의 id 값과 일치시킨다. -->
+    <label for="name">이름: </label>
+    <!-- autofocus 
+      https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus
+    -->
+    <input type="text" placeholder="이름을 입력해주세요." id="name" autofocus> <br>
+    <label for="">날짜: </label>
+    <input type="date">
+
+    <h2>1. 샌드위치 선택</h2>
+    <!-- https://developer.mozilla.org/ko/docs/Web/HTML/Element/Input -->
+    <input type="radio" name="sandwich" value="1"> 에그마요 <br>
+    <input type="radio" name="sandwich" value="2"> 이탈리안 비엠티 <br>
+    <input type="radio" name="sandwich" value="3"> 터키 베이컨 아보카도
+    <hr>
+    <h2>2. 사이즈 선택</h2>
+    <!-- form validation -->
+    <input type="number" min="15" max="30" step="15">
+    <!-- <input type="text"> -->
+    <hr>
+
+    <h2>3. 빵 선택</h2>
+    <select name="bread" id="">
+      <option value="1">허니오트</option>
+      <option value="2">플랫브래드</option>
+      <option value="3" disabled>화이트</option>
+    </select>
+    <hr>
+
+    <h2>4. 야채/소스 선택</h2>
+    <input type="checkbox" name="sauce" value="1"> 토마토 <br>
+    <input type="checkbox" name="sauce" value="2"> 올리브 <br>
+    <input type="checkbox" name="sauce" value="3"> 할라피뇨 <br>
+    <input type="checkbox" name="sauce" value="4"> 피클 <br>
+    <input type="checkbox" name="sauce" value="5"> 핫 칠리 <br>
+    <input type="checkbox" name="sauce" value="6"> 바베큐 <br>
+    <input type="checkbox" name="sauce" value="7"> 콘 <br>
+
+    <input type="submit" value="주문">
+  </form>
+</body>
+</html>

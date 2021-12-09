@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Position</title>
+  <style>
+    div {
+      box-sizing: border-box;
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      line-height: 100px;
+      border: 1px solid black;
+    }
+
+    .parent {
+      position: relative;
+      width: 300px;
+      height: 300px;
+    }
+
+    .absolute {
+      position: absolute;
+      top: 100px;
+      background-color: crimson;
+    }
+
+    .relative {
+      position: relative;
+      top: 100px;
+      background-color: crimson;
+    }
+
+    .sibling {
+      width: 200px;
+      height: 100px;
+      background-color: deepskyblue;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <!-- absolute의 특성 살펴보기 -->
+    <div class="absolute">형</div>
+    <div class="sibling">동생</div>
+  </div>
+  <div class="parent">
+    <!-- relative의 특성 살펴보기 -->
+    <div class="relative">형</div>
+    <div class="sibling">동생</div>
+  </div>
+</body>
+</html>
