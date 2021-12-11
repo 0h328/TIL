@@ -1,37 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7eab6a9f-75a2-40a3-986c-a788904d4097" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../baekjoon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/DFS, BFS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../baekjoon/DFS, BFS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/Implementation/2442.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../baekjoon/Implementation/2442.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/Implementation/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../baekjoon/Implementation/input.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/Realization/10809.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/Realization/1152.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/Realization/11654.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/Realization/1259.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/Realization/2438.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/Realization/2439.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/Realization/2440.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/Realization/2441.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/Realization/2527.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/Realization/2562.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/Realization/2563.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/Realization/2669.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/Realization/2743.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/Realization/8958.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../baekjoon/Realization/input.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/programmers.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hash1.py" beforeDir="false" afterPath="$PROJECT_DIR$/hash1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/not_completed_participant.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Sorting/Kth_number.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Sorting/Max_number.py" beforeDir="false" />
-    </list>
+    <list default="true" id="7eab6a9f-75a2-40a3-986c-a788904d4097" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +22,7 @@
     </leaf>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -147,6 +117,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2065332" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
