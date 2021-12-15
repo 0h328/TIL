@@ -180,9 +180,33 @@ SELECT ANIMAL_TYPE, IFNULL(NAME, 'No name') AS NAME, SEX_UPON_INTAKE FROM ANIMAL
 
 ### JOIN
 
+- 두 테이블의 데이터를 일정한 조건에 의해 연결하여 마치 하나의 테이블처럼 만드는 것
+  - **INNER JOIN**과 **LEFT OUTER JOIN**이 많이 쓰임
+    - **LEFT OUTER JOIN**
+      - 왼쪽 테이블 기준으로 조건에 맞는 오른쪽 테이블의 데이터를 가져옴
+      - 없으면 NULL
+
+
+
 - 없어진 기록 찾기
+  - **SELECT** ``OUTS.ANIMAL_ID``, ``OUTS.NAME``
+    - 왼쪽 데이터를 기준으로 ANIMAL_ID와 NAME 데이터 조회
+  - **FROM** ``ANIMAL_OUTS OUTS`` **LEFT OUTER JOIN** ``ANIMAL_INS INS``
+    - 입양을 간 기록이 존재하므로, 존재하는 기록을 바탕으로 존재하지 않는 데이터를 조회하기 위함
+  - **ON** ``OUTS.ANIMAL_ID`` = ``INS.ANIMAL_ID``
+    - ANIMAL_ID를 기준으로 데이터 유무 차이를 판단함
+  - **WHERE** INS.ANIMAL_ID **is NULL**
+    - JOIN 이후에 왼쪽 테이블 기준으로 오른쪽 테이블의 데이터가 없으면 NULL이 표시되므로 is NULL 조건 사용
+  - **ORDER BY** OUTS.ANIMAL_ID
+    - ID 순으로 조회
 
 ```sql
+SELECT OUTS.ANIMAL_ID, OUTS.NAME
+FROM ANIMAL_OUTS OUTS 
+LEFT OUTER JOIN ANIMAL_INS INS
+ON OUTS.ANIMAL_ID = INS.ANIMAL_ID
+WHERE INS.ANIMAL_ID is NULL
+ORDER BY OUTS.ANIMAL_ID
 ```
 
 
