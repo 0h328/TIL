@@ -35,3 +35,32 @@ for _ in range(N):
 
 print(cnt)
 
+# 풀이2
+# N = int(input())
+# cnt = 0
+# for _ in range(N):
+#     word = input()
+#     seg = []
+#     for c in word:
+#         if c not in seg:
+#             seg.append(c)
+#         else:
+#             if seg[-1] != c:
+#                 break
+#     else:
+#         cnt += 1
+# print(cnt)
+
+# 풀이3
+# N = int(input())
+# result = N
+# for _ in range(N):
+#     word = input()
+#     for i in range(0, len(word)-1):
+#         if word[i] == word[i+1]:
+#             pass
+#         elif word[i] in word[i+1:]:
+#             result -= 1
+#             break
+#
+# print(result)
