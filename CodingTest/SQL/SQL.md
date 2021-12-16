@@ -185,6 +185,8 @@ SELECT ANIMAL_TYPE, IFNULL(NAME, 'No name') AS NAME, SEX_UPON_INTAKE FROM ANIMAL
     - **LEFT OUTER JOIN**
       - 왼쪽 테이블 기준으로 조건에 맞는 오른쪽 테이블의 데이터를 가져옴
       - 없으면 NULL
+  - **(LEFT) JOIN** vs **(LEFT) OUTER JOIN**
+    - 단일 **JOIN**은 빈 값은 안가져오고, **OUTER JOIN**은 빈 값까지 가져온다.
 
 
 
@@ -212,8 +214,29 @@ ORDER BY OUTS.ANIMAL_ID
 
 
 - 있었는데요 없었습니다
+  - **SELECT** ``OUTS.ANIMAL_ID``, ``OUTS.NAME``
+    - ANIMAL_ID, NAME 데이터 조회 (OUTS에서 가져오든 INS에서 가져오든 상관없음)
+  - **FROM** ``ANIMAL_OUTS OUTS`` **LEFT OUTER JOIN** ``ANIMAL_INS INS``
+    - 보호 시작일과 입양일을 연결해야하므로 (왼쪽에 INS가 들어가도 상관없음)
+  - **ON** ``OUTS.ANIMAL_ID`` = ``INS.ANIMAL_ID``
+    - ANIMAL_ID가 외래키이므로 기준이 됨
+  - **WHERE** ``OUTS.DATETIME`` < ``INS.DATETIME``
+    - 보호 시작일보다 입양일이 더 빠른 동물을 찾아야함
+  - **ORDER BY** ``INS.DATETIME``
+    - 보호 시작일이 빠른 순으로 조회
 
 ```sql
+SELECT OUTS.ANIMAL_ID, OUTS.NAME
+FROM ANIMAL_OUTS OUTS
+LEFT OUTER JOIN ANIMAL_INS INS
+ON OUTS.ANIMAL_ID = INS.ANIMAL_ID
+WHERE OUTS.DATETIME < INS.DATETIME
+ORDER BY INS.DATETIME
+
+# JOIN 미사용
+SELECT INS.ANIMAL_ID, INS.NAME FROM ANIMAL_INS INS, ANIMAL_OUTS OUTS
+WHERE INS.ANIMAL_ID = OUTS.ANIMAL_ID and INS.DATETIME > OUTS.DATETIME
+ORDER BY INS.DATETIME
 ```
 
 
