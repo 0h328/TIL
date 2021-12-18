@@ -242,8 +242,23 @@ ORDER BY INS.DATETIME
 
 
 - 오랜 기간 보호한 동물(1)
+  - **SELECT** ``INS.NAME``, ``INS.DATETIME``
+    - NAME, DATETIME 조회
+  - **FROM** ``ANIMAL_INS INS`` **LEFT OUTER JOIN** ``ANIMAL_OUTS OUTS``
+    - 보호소 기준으로 입양보낸 동물을 확인하여 입양 못간 동물 체크
+  - **ON** ``INS.ANIMAL_ID`` = ``OUTS.ANIMAL_ID``
+    - ANIMAL_ID가 외래키이므로 기준이 됨
+  - **WHERE** ``OUTS.ANIMAL_ID`` **is NULL**
+    - 보호소 기준으로 입양을 가지 못한 동물이면 NULL이므로 NULL 조건
+  - **ORDER BY** ``INS.DATETIME`` **LIMIT** 3;
+    - 보호 시작일 순으로 3마리 조회
 
 ```sql
+SELECT INS.NAME, INS.DATETIME
+FROM ANIMAL_INS INS LEFT OUTER JOIN ANIMAL_OUTS OUTS
+ON INS.ANIMAL_ID = OUTS.ANIMAL_ID
+WHERE OUTS.ANIMAL_ID IS NULL
+ORDER BY INS.DATETIME LIMIT 3;
 ```
 
 
