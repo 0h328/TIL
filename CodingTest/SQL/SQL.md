@@ -264,8 +264,23 @@ ORDER BY INS.DATETIME LIMIT 3;
 
 
 - 보호소에서 중성화한 동물
+  - **SELECT** ``INS.ANIMAL_ID``, ``INS_ANIMAL_TYPE``, ``INS.NAME``
+    - ANIMAL_ID, ANIMAL_TYPE, NAME 조회
+  - **FROM** ``ANIMAL_INS INS`` **LEFT OUTER JOIN** ``ANIMAL_OUTS OUTS``
+    - 보호소 기준으로 입양보낸 동물을 확인
+  - **ON** ``INS.ANIMAL_ID`` = ``OUTS.ANIMAL_ID``
+    - ANIMAL_ID가 외래키이므로 기준이 됨
+  - **WHERE** ``INS.SEX_UPON_INTAKE`` != ``OUTS.SEX_UPON_OUTCOME``
+    - SEX_UPON_INTAKE는 보호소에 들어올 당시 중성화 여부, SEX_UPON_OUTCOME은 보호소를 나갈 당시 중성화 여부를 알려준다.
+    - 보호소에 들어올 당시 중성화 여부 -> 보호소를 나갈 당시 중성화 여부 (첫번째)
+    - 보호소에 들어올 당시 중성화 되지 않은 경우 -> 보호소를 나갈 당시 중성화된 여부(두번째)
+    - 두번째를 찾아야 하므로 ``!=`` 혹은 ``NOT LIKE``를 사용하여 조건을 걸어준다.
 
 ```sql
+SELECT INS.ANIMAL_ID, INS.ANIMAL_TYPE, INS.NAME
+FROM ANIMAL_INS INS LEFT OUTER JOIN ANIMAL_OUTS OUTS
+ON INS.ANIMAL_ID = OUTS.ANIMAL_ID
+WHERE INS.SEX_UPON_INTAKE != OUTS.SEX_UPON_OUTCOME
 ```
 
 
@@ -275,8 +290,14 @@ ORDER BY INS.DATETIME LIMIT 3;
 ### String, Date
 
 - 루시와 엘라 찾기
+  - **WHERE** ``NAME`` **in** ``('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')``
+    - 이름이 Lucy, Ella, Pickle, Rogan, Sabrina, Mitty인 동물을 찾으므로 ``in``을 사용하면 여러값을 지정하여 검색할 수 있다.
 
 ```sql
+SELECT ANIMAL_ID, NAME, SEX_UPON_INTAKE
+FROM ANIMAL_INS
+WHERE NAME in ('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')
+ORDER BY ANIMAL_ID
 ```
 
 
