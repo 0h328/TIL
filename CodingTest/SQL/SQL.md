@@ -303,8 +303,14 @@ ORDER BY ANIMAL_ID
 
 
 - 이름에 el이 들어가는 동물 찾기
+  - **WHERE** ``ANIMAL_TYPE = 'Dog'`` **AND** ``NAME`` **LIKE** ``'%EL%'``
+    - 이름에 'EL'이 들어가고, 개를 찾음
 
 ```sql
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+WHERE ANIMAL_TYPE = 'Dog' AND NAME LIKE '%EL%'
+ORDER BY NAME
 ```
 
 
