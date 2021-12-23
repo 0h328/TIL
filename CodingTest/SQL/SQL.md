@@ -146,6 +146,11 @@ WHERE @HOUR < 23;
 
 ### IS NULL
 
+- **IFNULL** (컬럼, A)
+  - 컬럼이 Null 이면 A를 표시, Null이 아니면 컬럼의 값을 출력
+- **ISNULL** (컬럼, A)
+  - 컬럼이 Null 이면 A로 표시
+
 - 이름이 없는 동물의 아이디
 
 ```sql
@@ -289,6 +294,56 @@ WHERE INS.SEX_UPON_INTAKE != OUTS.SEX_UPON_OUTCOME
 
 ### String, Date
 
+- 조건문
+
+  - **CASE WHEN** ``조건문`` **THEN** ``참일때 값`` **ELSE** ``거짓일때 값`` **END** ``컬럼명``
+
+    - 예시) 테이블(TB)에서 성별(GENDER)이 01이면 남, 그게 아니면 여자
+
+    ```SQL
+    CASE WHEN GENDER = '01' THEN '남' ELSE '여' END AS 성별
+    ```
+
+    - 예시) SALARY(연봉)에 따른  성과 등급을 출력 (다중 CASE)
+
+    ```SQL
+    EMP_NO NAME SALARY
+    000001	김	5000
+    000002	이	5500
+    000003	박	6000
+    000004	최	4500
+    000005	정	4000
+    
+    # EMP_NO, NAME, SALARY, 성과를 나타내시오.
+    
+    SELECT EMP_NO, NAME, SALARY
+    	CASE
+    	WHEN SALARY >= 5500 THEN 'A'
+    	WHEN SALARY BETWEEN 5000 AND 5500 THEN 'B'
+    	WHEN SALARY BETWEEN 4500 AND 5000 THEN 'C'
+    	ELSE 'D'
+    	END AS 성과
+    FROM TB
+    ```
+
+  - **IF** ``조건문``, ``참일때 값``, ``거짓일때 값``
+
+    - 예시) 테이블에서 회원이 NULL인 경우는 X 표시, 맞으면 회원을 출력
+
+    ```sql
+    IF (ISNULL(MEMBER), 'X', MEMBER)
+    ```
+
+  - **IF** ``조건문`` **THEN** ``결과값`` **ELSIF** ``조건문`` **THEN** ``결과값`` **ELSE** ``결과값`` **ENDIF**
+
+    - 예시) 점수가 80점 이상이면 1급, 60점 이상이면 2급, 그 아래는 FAIL
+
+    ```sql
+    IF SCORE >= 80 THEN '1급' ELSIF SCORE >= 60 THEN '2급' ELSE 'FAIL' ENDIF
+    ```
+
+
+
 - 루시와 엘라 찾기
   - **WHERE** ``NAME`` **in** ``('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')``
     - 이름이 Lucy, Ella, Pickle, Rogan, Sabrina, Mitty인 동물을 찾으므로 ``in``을 사용하면 여러값을 지정하여 검색할 수 있다.
@@ -316,8 +371,15 @@ ORDER BY NAME
 
 
 - 중성화 여부 파악하기
+  - **IF** (``SEX_UPON_INTAKE`` **LIKE** ``'%Neutered%'`` **OR** ``SEX_UPON_INTAKE`` **LIKE** ``'%Spayed%'``, ``'O'``, ``'X'``) **AS** ``'중성화'``
+    - SEX_UPON_INTAKE가 'Neutered'이거나 'Spayed'면, 중성화이므로 'O' 아닌 경우에는 'X'를 '중성화' 컬럼에 표시
+    - 컬럼에 값으로 나타내야 하므로, FROM 앞에 IF를 써서 AS로 컬럼명 표시
 
 ```sql
+SELECT ANIMAL_ID, NAME, 
+IF (SEX_UPON_INTAKE LIKE '%Neutered%' OR SEX_UPON_INTAKE LIKE '%Spayed%', 'O', 'X') AS '중성화'
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID
 ```
 
 
