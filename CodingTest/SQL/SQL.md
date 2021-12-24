@@ -106,6 +106,11 @@ SELECT COUNT(DISTINCT NAME) AS count FROM ANIMAL_INS;
 
 ### GROUP BY
 
+- **SELECT** ``컬럼A``, ``컬럼B`` **FROM** ``테이블`` **GROUP BY** ``컬럼A``
+  - 그룹화하는 컬럼은 반드시 SELECT로 조회해야함.
+
+
+
 - 고양이와 개는 몇 마리 있을까
 
 ```sql
@@ -344,6 +349,23 @@ WHERE INS.SEX_UPON_INTAKE != OUTS.SEX_UPON_OUTCOME
 
 
 
+- 형 변환
+  - 날짜
+    - 오라클은 to_char, mysql은 date_format 사용.
+      - **DATE_FORMAT**(``컬럼``, ``format``) 형식으로 사용하고, ``format``에는 무조건 %를 붙인다.
+        - %Y = 4자리 연도(2016, 2017,..)
+        - %y = 2자리 연도(16, 17,..)
+        - %M = January, February,..
+        - %m = 00~12
+        - %D = 1st, 2nd,... ,31th
+        - %d = 01, 02,.. ,31
+        - **DATE_FORMAT**(``DATETIME``, ``%Y-%M-%D``)
+          - 2021-March-13th
+        - **DATE_FORMAT**(``DATETIME``, ``%y-%M-%D``)
+          - 21-03-13
+
+
+
 - 루시와 엘라 찾기
   - **WHERE** ``NAME`` **in** ``('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')``
     - 이름이 Lucy, Ella, Pickle, Rogan, Sabrina, Mitty인 동물을 찾으므로 ``in``을 사용하면 여러값을 지정하여 검색할 수 있다.
@@ -403,7 +425,12 @@ ORDER BY OUTS.DATETIME - INS.DATETIME DESC LIMIT 2;
 
 
 - DATETIME에서 DATE로 형 변환
+  - 날짜를 2018-01-22 형식으로 나타내야 하므로
+    - **DATE_FORMAT**(**DATETIME**, ``'%Y-%m-%d'``)
 
 ```sql
+SELECT ANIMAL_ID, NAME, DATE_FORMAT(DATETIME, '%Y-%m-%d') AS 날짜
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID
 ```
 
