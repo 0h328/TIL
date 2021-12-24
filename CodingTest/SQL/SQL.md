@@ -385,8 +385,19 @@ ORDER BY ANIMAL_ID
 
 
 - 오랜 기간 보호한 동물(2)
+  - ``ANIMAL_OUTS OUTS`` **LEFT OUTER JOIN** ``ANIMAL_INS INS``
+    - 입양간 정보를 기준으로 보호소에 있는 정보를 확인
+  - **ON** ``OUTS.ANIMAL_ID`` = ``INS.ANIMAL_ID``
+    - ANIMAL_ID가 외래키이므로 비교
+  - **ORDER BY** ``OUTS.DATETIME`` - ``INS.DATETIME`` **DESC** **LIMIT** ``2``; 
+    - 보호기간이 가장 긴(입양간 날짜-보호 시작일) 보호기간이 긴 순(DESC) 두 마리 조회(LIMIT 2)
+    - ORDER BY에 연산자 가능
 
 ```sql
+SELECT OUTS.ANIMAL_ID, OUTS.NAME
+FROM ANIMAL_OUTS OUTS LEFT OUTER JOIN ANIMAL_INS INS
+ON OUTS.ANIMAL_ID = INS.ANIMAL_ID
+ORDER BY OUTS.DATETIME - INS.DATETIME DESC LIMIT 2;
 ```
 
 
