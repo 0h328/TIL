@@ -13,7 +13,7 @@ def dfs(s):
 N = int(input())
 tree = [[] for _ in range(N+1)]
 v = [0] * (N+1)
-p = [0] * (N+1)p
+p = [0] * (N+1)
 for _ in range(N-1):
     n1, n2 = map(int, input().split())
     tree[n1].append(n2)
