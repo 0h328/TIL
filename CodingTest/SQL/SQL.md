@@ -1,4 +1,4 @@
-# programmers
+# Programmers
 
 ### SELECT
 
@@ -197,14 +197,36 @@ SELECT ANIMAL_TYPE, IFNULL(NAME, 'No name') AS NAME, SEX_UPON_INTAKE FROM ANIMAL
 ### JOIN
 
 - 두 테이블의 데이터를 일정한 조건에 의해 연결하여 마치 하나의 테이블처럼 만드는 것
-  - **INNER JOIN**과 **LEFT OUTER JOIN**이 많이 쓰임
+
+  - **INNER JOIN**과 **OUTER JOIN**이 많이 쓰임
+
+    - **INNER JOIN**
+      - 기준 테이블과 조인 테이블에 모두 데이터가 존재해야함
+      - **SELECT** ``컬럼`` **FROM** ``테이블A`` **INNER JOIN** ``테이블B`` **ON** ``조인될 조건`` (**WHERE** ``검색조건``)
     - **LEFT OUTER JOIN**
       - 왼쪽 테이블 기준으로 조건에 맞는 오른쪽 테이블의 데이터를 가져옴
-      - 없으면 NULL
+      - 없으면 NULL 표시
+    - **FULL OUTER JOIN**
+      - 두 테이블을 합쳐서 조회
+      - JOIN이 되면 해당 값을 표시하고, 안되면 NULL 표시
+
   - **(LEFT) JOIN** vs **(LEFT) OUTER JOIN**
     - 단일 **JOIN**은 빈 값은 안가져오고, **OUTER JOIN**은 빈 값까지 가져온다.
 
+  - 테이블 3개 조인
 
+    - 학생 테이블(StudentTable)과 동아리 테이블(StdClubTable), 동아리 방번호 테이블(ClubTable) 조인하기
+
+    ```sql
+    SELECT S.Name, Addr, C.Name, RoomNo
+    FROM StudentTable S
+    	INNER JOIN StdClubTable SC
+    	ON S.NAME = SC.StdName
+    		INNER JOIN ClubTable C
+    		ON SC.ClubName = C.Name
+    ```
+
+    
 
 - 없어진 기록 찾기
   - **SELECT** ``OUTS.ANIMAL_ID``, ``OUTS.NAME``
@@ -442,12 +464,112 @@ ORDER BY ANIMAL_ID
 
 
 
+### 종합 문제
+
+- 서브쿼리
+
+  - SQL문 안에 또 다른 SQL문이 있음
+
+  - 괄호를 감싸야 한다.
+
+  - 단일 행 또는 복수 행 비교 연산자와 함께 사용 가능
+
+  - ORDER BY 사용불가
+
+  - SELECT, FROM, WHERE, HAVING, ORDER BY, INSERT문의 VALUES, UPDATE문의 SET에서 사용 가능
+
+    - 단일 행 서브쿼리
+
+    ```sql
+    SELECT *
+    FROM PLAYER
+    WHERE TEAM_ID = (SELECT TEAM_ID FROM PLAYER WHERE PLAYER_NAME = 'KIM')
+    ORDER BY TEAM_NAME;
+    ```
+
+    - 다중 행 서브쿼리
+
+    ```sql
+    SELECT *
+    FROM PLAYER
+    WHERE TEAM_ID IN (SELECT TEAM_ID FROM PLAYER WHERE PLAYER_NAME = 'KIM')
+    ORDER BY TEAM_NAME;
+    ```
+
+    - 다중 컬럼 서브쿼리
+
+    ```sql
+    SELECT *
+    FROM PLAYER
+    WHERE (TEAM_ID, HEIGHT) IN (SELECT TEAM_ID FROM PLAYER WHERE PLAYER_NAME = 'KIM')
+    ORDER BY TEAM_ID, TEAM_NAME;
+    ```
+
+    - SELECT 서브쿼리
+
+    ```sql
+    SELECT 
+    	PLAYER_NAME, 
+    	HEIGHT, 
+    	(
+            SELECT AVG(HEIGHT) 
+            FROM PLAYER P 
+            WHERE P.TEAM_ID = X.TEAM_ID
+        ) 
+        	AS AVG_HEIGHT 
+    FROM PLAYER X
+    ```
+
+    
+
+- 우유와 요거트가 담긴 장바구니
+  - Milk와 Yogurt를 동시에 구입한 장바구니 출력
+  - **WHERE** ``NAME`` = ``'Milk' ``
+    **AND** ``CART_ID`` **IN** (**SELECT** **DISTINCT** ``CART_ID`` **FROM** ``CART_PRODUCTS`` **WHERE** ``NAME`` = ``'Yogurt'``)
+    - Milk를 사고, CART_ID가 (Yogurt를 구입한 CART_ID)와 일치하면 True
+    - 쿼리 각각의 데이터에 서브쿼리를 대입하므로 속도가 느림
+  - **FROM** (**SELECT** `CART_ID` **FROM** `CART_PRODUCTS` **WHERE** `NAME` = '`Milk`') `A`
+    **INNER JOIN** (**SELECT** `CART_ID` **FROM** `CART_PRODUCTS` **WHERE** `NAME` = '`Yogurt`') `B` (``A``랑 ``B``는 별칭임) 
+    **ON** ``A.CART_ID`` = `B.CART_ID`
+    - Yogurt를 산 CART_ID와 Milk를 산 CART_ID가 같은 CART_ID를 출력
+
+```sql
+# 서브쿼리
+SELECT DISTINCT CART_ID
+FROM CART_PRODUCTS
+WHERE NAME = 'Milk' 
+AND CART_ID IN (SELECT DISTINCT CART_ID FROM CART_PRODUCTS WHERE NAME = 'Yogurt')
+ORDER BY CART_ID;
+
+# JOIN
+SELECT DISTINCT A.CART_ID
+FROM (SELECT CART_ID FROM CART_PRODUCTS WHERE NAME = 'Milk') A
+INNER JOIN (SELECT CART_ID FROM CART_PRODUCTS WHERE NAME = 'Yogurt') B
+ON A.CART_ID = B.CART_ID;
+```
+
+
+
+- 헤비 유저가 소유한 장소
+  - 공간을 2개 이상 등록한 사람 찾아서 출력 (HOST_ID가 2개 이상 기록되어있는 테이블 확인)
+  - 중복된 값을 찾는 SQL문
+    - **SELECT** 컬럼 **FROM** 테이블 **GROUP BY** 컬럼 **HAVING** count(*) > 1
+  - **WHERE** `HOST_ID` **IN** (**SELECT** ``HOST_ID`` **FROM** ``PLACES`` **GROUP BY** ``HOST_ID`` **HAVING** ``COUNT(*)`` > ``1``)
+    - HOST_ID 그룹 중에 개수가 2개 이상인 HOST_ID를 찾고, WHERE문을 통해 HOST_ID가 들어있는지 확인
+
+```sql
+SELECT ID, NAME, HOST_ID
+FROM PLACES
+WHERE HOST_ID IN (SELECT HOST_ID FROM PLACES GROUP BY HOST_ID HAVING COUNT(*) > 1)
+ORDER BY ID;
+```
+
 
 
 # HackerRank
 
 - Weather Observation Station 2
-  - station 테이블 중 모든 컬럼의 *LAT_N\*과 \*LONG_W* 필드의 합을 구하는 문제
+  - station 테이블 중 모든 컬럼의 LAT_N과 LONG_W 필드의 합을 구하는 문제
   - 조건 ) 합을 구할 때 소수점이 3번째 자리에서 반올림을 해서 소수점이 2번째 자리까지 나오도록 출력
 
 ```sql
