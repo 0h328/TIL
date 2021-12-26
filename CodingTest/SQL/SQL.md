@@ -101,11 +101,7 @@ SELECT COUNT(*) AS COUNT FROM ANIMAL_INS;
 - 중복 제거하기
 
 ```sql
-SELECT COUNT(DISTINCT NAME) AS COUNT FROM ANIMAL_INS;
-
 SELECT COUNT(DISTINCT NAME) AS count FROM ANIMAL_INS WHERE NAME IS NOT NULL;
-
-SELECT COUNT(DISTINCT NAME) AS count FROM ANIMAL_INS;
 ```
 
 
@@ -235,9 +231,9 @@ SELECT ANIMAL_TYPE, IFNULL(NAME, 'No name') AS NAME, SEX_UPON_INTAKE FROM ANIMAL
     - 입양을 간 기록이 존재하므로, 존재하는 기록을 바탕으로 존재하지 않는 데이터를 조회하기 위함
   - **ON** ``OUTS.ANIMAL_ID`` = ``INS.ANIMAL_ID``
     - ANIMAL_ID를 기준으로 데이터 유무 차이를 판단함
-  - **WHERE** INS.ANIMAL_ID **is NULL**
+  - **WHERE** `INS.ANIMAL_ID` **is NULL**
     - JOIN 이후에 왼쪽 테이블 기준으로 오른쪽 테이블의 데이터가 없으면 NULL이 표시되므로 is NULL 조건 사용
-  - **ORDER BY** OUTS.ANIMAL_ID
+  - **ORDER BY** `OUTS.ANIMAL_ID`
     - ID 순으로 조회
 
 ```sql
@@ -389,7 +385,7 @@ WHERE INS.SEX_UPON_INTAKE != OUTS.SEX_UPON_OUTCOME
         - %d = 01, 02,.. ,31
         - **DATE_FORMAT**(``DATETIME``, ``%Y-%M-%D``)
           - 2021-March-13th
-        - **DATE_FORMAT**(``DATETIME``, ``%y-%M-%D``)
+        - **DATE_FORMAT**(``DATETIME``, ``%y-%m-%d``)
           - 21-03-13
 
 
@@ -648,7 +644,7 @@ LIMIT 1;
 - *
   - 0회 이상 나타나는 문자
   - ex) "a*"
-    - 'a'가 0번 이상 등장하는 문자열을 찾음 ()'b', 'a', 'aa' 등)
+    - 'a'가 0번 이상 등장하는 문자열을 찾음 ('b', 'a', 'aa' 등)
 - {m,n}
   - m회 이상 n회 이하 반복되는 문자
   - ex) "치{1,2}"
@@ -893,5 +889,81 @@ WHERE LAT_N = (SELECT MIN(LAT_N) FROM STATION WHERE LAT_N > 38.7780);
 ```sql
 SELECT ROUND(ABS(MAX(LAT_N) - MIN(LAT_N)) + ABS(MAX(LONG_W) - MIN(LONG_W)), 4)
 FROM STATION;
+```
+
+
+
+- Higher Than 75 Marks
+  - Students 테이블에서 Marks가 75가 넘는 사람의 이름을 이름의 마지막에서 3번째 문자 기준으로 오름차순 정렬하고, 두번째는 ID를 오름차순으로 정렬하여 나타내기
+  - 문자열 자르기
+    - RIGHT('문자열', 길이)
+      - RIGHT('abcde', 2) = 'de'
+    - LEFT('문자열', 길이)
+      - LEFT('abcde', 2) = 'ab'
+
+```sql
+SELECT Name 
+FROM STUDENTS 
+WHERE Marks > 75 
+ORDER BY RIGHT(Name, 3), ID;
+```
+
+
+
+- Population Census
+  - CITY 테이블과 COUNTRY 테이블을 이용해서 COUNTRY.CONTINENT가 'Asia'인 모든 CITY의 인구(POPULATION)의 합을 구하기
+  - CITY.COUNTRYCODE와 COUNTRY.CODE는 외래키
+  - JOIN하여 CONTINENT가 'Asia'인 것 찾아서 출력하면 끝
+
+```sql
+SELECT SUM(CITY.POPULATION)
+FROM CITY INNER JOIN COUNTRY
+ON CITY.COUNTRYCODE = COUNTRY.CODE
+WHERE COUNTRY.CONTINENT = 'Asia'
+```
+
+
+
+- African Cities
+  - CITY 테이블과 COUNTRY 테이블을 이용해서 COUNTRY.CONTINENT가 'Africa'인 모든 CITY의 이름을 출력
+  - CITY.COUNTRYCODE와 COUNTRY.CODE는 외래키
+  - JOIN하여 CONTINENT가 'Asia'인 것 찾아서 출력하면 끝
+
+```sql
+SELECT CITY.NAME
+FROM CITY INNER JOIN COUNTRY
+ON CITY.COUNTRYCODE = COUNTRY.CODE
+WHERE COUNTRY.CONTINENT = 'Africa'
+```
+
+
+
+- Average Population of Each Continent
+  - CITY 테이블과 COUNTRY 테이블을 이용해서 COUNTRY.CONTINENT마다 CITY.POPULATION의 평균을 가장 근접한 정수로 출력(소수점은 버리고 정수로만 출력)
+  - CONTINENT마다 CITY의 평균을 출력해야하므로 GROUP BY를 한다.
+  - FLOOR는 소수점 첫째 자리에서 버림하는 함수. 가장 근접한 정수를 찾는 것
+  - CEIL은 소수점 첫째 자리에서 올림하는 함수. 가장 근접한 큰 정수를 찾는 것
+
+```sql
+SELECT COUNTRY.CONTINENT, FLOOR(AVG(CITY.POPULATION))
+FROM CITY INNER JOIN COUNTRY
+ON CITY.COUNTRYCODE = COUNTRY.CODE
+GROUP BY COUNTRY.CONTINENT
+```
+
+
+
+- The Report
+  - Students 테이블과 Grades 테이블을 이용해서 Name, Grade, Marks를 출력하기
+  - Name은 Student의 이름이고, Grade가 8이상인 경우만 출력하고, 그렇지 않으면 NULL로 출력
+  - Students의 Marks는 Grade의 Min_Mark와 Max_Mark 사이로 찾아서 Grade를 판별
+  - Grade는 내림차순, Name과 Marks는 오름차순으로 정렬
+
+```sql
+SELECT IF(G.Grade > 7, S.Name, 'NULL'), G.Grade, S.Marks
+FROM Students AS S 
+INNER JOIN Grades AS G 
+ON S.Marks BETWEEN G.Min_Mark AND G.Max_Mark
+ORDER BY G.Grade DESC, S.Name, S.Marks 
 ```
 
