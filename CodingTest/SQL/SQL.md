@@ -1,8 +1,14 @@
-# Programmers
+# SQL
+
+[TOC]
+
+
+
+## Programmers
 
 ### SELECT
 
-- 모든 레코드 조회하기
+##### 모든 레코드 조회하기
 
 ```sql
 SELECT * FROM ANIMAL_INS ORDER BY ANIMAL_ID;
@@ -10,7 +16,7 @@ SELECT * FROM ANIMAL_INS ORDER BY ANIMAL_ID;
 
 
 
-- 역순 정렬하기
+##### 역순 정렬하기
 
 ```sql
 SELECT NAME, DATETIME FROM ANIMAL_INS ORDER BY ANIMAL_ID DESC;
@@ -18,7 +24,7 @@ SELECT NAME, DATETIME FROM ANIMAL_INS ORDER BY ANIMAL_ID DESC;
 
 
 
-- 아픈 동물 찾기
+##### 아픈 동물 찾기
 
 ```sql
 SELECT ANIMAL_ID, NAME FROM ANIMAL_INS WHERE INTAKE_CONDITION='Sick';
@@ -26,7 +32,7 @@ SELECT ANIMAL_ID, NAME FROM ANIMAL_INS WHERE INTAKE_CONDITION='Sick';
 
 
 
-- 어린 동물 찾기
+##### 어린 동물 찾기
 
 ```sql
 SELECT ANIMAL_ID, NAME FROM ANIMAL_INS WHERE INTAKE_CONDITION NOT IN('Aged') ORDER BY ANIMAL_ID;
@@ -36,7 +42,7 @@ SELECT ANIMAL_ID, NAME FROM ANIMAL_INS WHERE INTAKE_CONDITION != 'Aged' ORDER BY
 
 
 
-- 동물의 아이디와 이름
+##### 동물의 아이디와 이름
 
 ```sql
 SELECT ANIMAL_ID, NAME FROM ANIMAL_INS ORDER BY ANIMAL_ID;
@@ -44,7 +50,7 @@ SELECT ANIMAL_ID, NAME FROM ANIMAL_INS ORDER BY ANIMAL_ID;
 
 
 
-- 여러 기준으로 정렬하기
+##### 여러 기준으로 정렬하기
 
 ```sql
 SELECT ANIMAL_ID, NAME, DATETIME FROM ANIMAL_INS ORDER BY NAME, DATETIME DESC;
@@ -52,7 +58,7 @@ SELECT ANIMAL_ID, NAME, DATETIME FROM ANIMAL_INS ORDER BY NAME, DATETIME DESC;
 
 
 
-- 상위 n개 레코드
+##### 상위 n개 레코드
 
 ```sql
 SELECT NAME FROM ANIMAL_INS ORDER BY DATETIME ASC LIMIT 1;
@@ -70,7 +76,7 @@ SELECT NAME FROM ANIMAL_INS ORDER BY DATETIME ASC LIMIT 1;
 
 
 
-- 최댓값 구하기
+##### 최댓값 구하기
 
 ```sql
 SELECT DATETIME AS 시간 FROM ANIMAL_INS ORDER BY DATETIME DESC LIMIT 1;
@@ -80,7 +86,7 @@ SELECT MAX(DATETIME) AS 시간 FROM ANIMAL_INS;
 
 
 
-- 최솟값 구하기
+##### 최솟값 구하기
 
 ```sql
 SELECT DATETIME AS 시간 FROM ANIMAL_INS ORDER BY DATETIME LIMIT 1;
@@ -90,7 +96,7 @@ SELECT MIN(DATETIME) AS 시간 FROM ANIMAL_INS;
 
 
 
-- 동물 수 구하기
+##### 동물 수 구하기
 
 ```sql
 SELECT COUNT(*) AS COUNT FROM ANIMAL_INS;
@@ -98,7 +104,7 @@ SELECT COUNT(*) AS COUNT FROM ANIMAL_INS;
 
 
 
-- 중복 제거하기
+##### 중복 제거하기
 
 ```sql
 SELECT COUNT(DISTINCT NAME) AS count FROM ANIMAL_INS WHERE NAME IS NOT NULL;
@@ -113,7 +119,7 @@ SELECT COUNT(DISTINCT NAME) AS count FROM ANIMAL_INS WHERE NAME IS NOT NULL;
 
 
 
-- 고양이와 개는 몇 마리 있을까
+##### 고양이와 개는 몇 마리 있을까
 
 ```sql
 SELECT ANIMAL_TYPE, count(ANIMAL_TYPE) FROM ANIMAL_INS GROUP BY ANIMAL_TYPE ORDER BY ANIMAL_TYPE;
@@ -121,7 +127,7 @@ SELECT ANIMAL_TYPE, count(ANIMAL_TYPE) FROM ANIMAL_INS GROUP BY ANIMAL_TYPE ORDE
 
 
 
-- 동명 동물 수 찾기
+##### 동명 동물 수 찾기
 
 ```sql
 SELECT NAME, COUNT(NAME) AS COUNT FROM ANIMAL_INS GROUP BY NAME HAVING COUNT(NAME) >= 2 ORDER BY NAME;
@@ -129,7 +135,7 @@ SELECT NAME, COUNT(NAME) AS COUNT FROM ANIMAL_INS GROUP BY NAME HAVING COUNT(NAM
 
 
 
-- 입양 시각 구하기(1)
+##### 입양 시각 구하기(1)
 
 ```sql
 SELECT HOUR(DATETIME) AS HOUR, COUNT(DATETIME) AS COUNT FROM ANIMAL_OUTS GROUP BY HOUR HAVING HOUR BETWEEN 9 AND 19 ORDER BY HOUR(DATETIME);
@@ -137,7 +143,7 @@ SELECT HOUR(DATETIME) AS HOUR, COUNT(DATETIME) AS COUNT FROM ANIMAL_OUTS GROUP B
 
 
 
-- 입양 시각 구하기(2)
+##### 입양 시각 구하기(2)
 
 ```sql
 SET @HOUR = -1;
@@ -158,17 +164,8 @@ WHERE @HOUR < 23;
 - **ISNULL** (컬럼, A)
   - 컬럼이 Null 이면 A로 표시
 
-- 이름이 없는 동물의 아이디
 
-```sql
-SELECT ANIMAL_ID FROM ANIMAL_INS WHERE NAME IS NULL;
-
-SELECT ANIMAL_ID FROM ANIMAL_INS WHERE NAME IS NULL ORDER BY ANIMAL_ID;
-```
-
-
-
-- 이름이 있는 동물의 아이디
+##### 이름이 있는 동물의 아이디
 
 ```sql
 SELECT ANIMAL_ID FROM ANIMAL_INS WHERE NAME IS NOT NULL;
@@ -178,7 +175,7 @@ SELECT ANIMAL_ID FROM ANIMAL_INS WHERE NAME IS NOT NULL ORDER BY ANIMAL_ID;
 
 
 
-- NULL 처리하기
+##### NULL 처리하기
 
 ```sql
 SELECT ANIMAL_TYPE, IFNULL(NAME, 'No name'), SEX_UPON_INTAKE FROM ANIMAL_INS;
@@ -222,19 +219,21 @@ SELECT ANIMAL_TYPE, IFNULL(NAME, 'No name') AS NAME, SEX_UPON_INTAKE FROM ANIMAL
     		ON SC.ClubName = C.Name
     ```
 
-    
 
-- 없어진 기록 찾기
-  - **SELECT** ``OUTS.ANIMAL_ID``, ``OUTS.NAME``
-    - 왼쪽 데이터를 기준으로 ANIMAL_ID와 NAME 데이터 조회
-  - **FROM** ``ANIMAL_OUTS OUTS`` **LEFT OUTER JOIN** ``ANIMAL_INS INS``
-    - 입양을 간 기록이 존재하므로, 존재하는 기록을 바탕으로 존재하지 않는 데이터를 조회하기 위함
-  - **ON** ``OUTS.ANIMAL_ID`` = ``INS.ANIMAL_ID``
-    - ANIMAL_ID를 기준으로 데이터 유무 차이를 판단함
-  - **WHERE** `INS.ANIMAL_ID` **is NULL**
-    - JOIN 이후에 왼쪽 테이블 기준으로 오른쪽 테이블의 데이터가 없으면 NULL이 표시되므로 is NULL 조건 사용
-  - **ORDER BY** `OUTS.ANIMAL_ID`
-    - ID 순으로 조회
+
+
+##### 없어진 기록 찾기
+
+- **SELECT** ``OUTS.ANIMAL_ID``, ``OUTS.NAME``
+  - 왼쪽 데이터를 기준으로 ANIMAL_ID와 NAME 데이터 조회
+- **FROM** ``ANIMAL_OUTS OUTS`` **LEFT OUTER JOIN** ``ANIMAL_INS INS``
+  - 입양을 간 기록이 존재하므로, 존재하는 기록을 바탕으로 존재하지 않는 데이터를 조회하기 위함
+- **ON** ``OUTS.ANIMAL_ID`` = ``INS.ANIMAL_ID``
+  - ANIMAL_ID를 기준으로 데이터 유무 차이를 판단함
+- **WHERE** `INS.ANIMAL_ID` **is NULL**
+  - JOIN 이후에 왼쪽 테이블 기준으로 오른쪽 테이블의 데이터가 없으면 NULL이 표시되므로 is NULL 조건 사용
+- **ORDER BY** `OUTS.ANIMAL_ID`
+  - ID 순으로 조회
 
 ```sql
 SELECT OUTS.ANIMAL_ID, OUTS.NAME
@@ -247,17 +246,18 @@ ORDER BY OUTS.ANIMAL_ID
 
 
 
-- 있었는데요 없었습니다
-  - **SELECT** ``OUTS.ANIMAL_ID``, ``OUTS.NAME``
-    - ANIMAL_ID, NAME 데이터 조회 (OUTS에서 가져오든 INS에서 가져오든 상관없음)
-  - **FROM** ``ANIMAL_OUTS OUTS`` **LEFT OUTER JOIN** ``ANIMAL_INS INS``
-    - 보호 시작일과 입양일을 연결해야하므로 (왼쪽에 INS가 들어가도 상관없음)
-  - **ON** ``OUTS.ANIMAL_ID`` = ``INS.ANIMAL_ID``
-    - ANIMAL_ID가 외래키이므로 기준이 됨
-  - **WHERE** ``OUTS.DATETIME`` < ``INS.DATETIME``
-    - 보호 시작일보다 입양일이 더 빠른 동물을 찾아야함
-  - **ORDER BY** ``INS.DATETIME``
-    - 보호 시작일이 빠른 순으로 조회
+##### 있었는데요 없었습니다
+
+- **SELECT** ``OUTS.ANIMAL_ID``, ``OUTS.NAME``
+  - ANIMAL_ID, NAME 데이터 조회 (OUTS에서 가져오든 INS에서 가져오든 상관없음)
+- **FROM** ``ANIMAL_OUTS OUTS`` **LEFT OUTER JOIN** ``ANIMAL_INS INS``
+  - 보호 시작일과 입양일을 연결해야하므로 (왼쪽에 INS가 들어가도 상관없음)
+- **ON** ``OUTS.ANIMAL_ID`` = ``INS.ANIMAL_ID``
+  - ANIMAL_ID가 외래키이므로 기준이 됨
+- **WHERE** ``OUTS.DATETIME`` < ``INS.DATETIME``
+  - 보호 시작일보다 입양일이 더 빠른 동물을 찾아야함
+- **ORDER BY** ``INS.DATETIME``
+  - 보호 시작일이 빠른 순으로 조회
 
 ```sql
 SELECT OUTS.ANIMAL_ID, OUTS.NAME
@@ -275,17 +275,18 @@ ORDER BY INS.DATETIME
 
 
 
-- 오랜 기간 보호한 동물(1)
-  - **SELECT** ``INS.NAME``, ``INS.DATETIME``
-    - NAME, DATETIME 조회
-  - **FROM** ``ANIMAL_INS INS`` **LEFT OUTER JOIN** ``ANIMAL_OUTS OUTS``
-    - 보호소 기준으로 입양보낸 동물을 확인하여 입양 못간 동물 체크
-  - **ON** ``INS.ANIMAL_ID`` = ``OUTS.ANIMAL_ID``
-    - ANIMAL_ID가 외래키이므로 기준이 됨
-  - **WHERE** ``OUTS.ANIMAL_ID`` **is NULL**
-    - 보호소 기준으로 입양을 가지 못한 동물이면 NULL이므로 NULL 조건
-  - **ORDER BY** ``INS.DATETIME`` **LIMIT** 3;
-    - 보호 시작일 순으로 3마리 조회
+##### 오랜 기간 보호한 동물(1)
+
+- **SELECT** ``INS.NAME``, ``INS.DATETIME``
+  - NAME, DATETIME 조회
+- **FROM** ``ANIMAL_INS INS`` **LEFT OUTER JOIN** ``ANIMAL_OUTS OUTS``
+  - 보호소 기준으로 입양보낸 동물을 확인하여 입양 못간 동물 체크
+- **ON** ``INS.ANIMAL_ID`` = ``OUTS.ANIMAL_ID``
+  - ANIMAL_ID가 외래키이므로 기준이 됨
+- **WHERE** ``OUTS.ANIMAL_ID`` **is NULL**
+  - 보호소 기준으로 입양을 가지 못한 동물이면 NULL이므로 NULL 조건
+- **ORDER BY** ``INS.DATETIME`` **LIMIT** 3;
+  - 보호 시작일 순으로 3마리 조회
 
 ```sql
 SELECT INS.NAME, INS.DATETIME
@@ -297,18 +298,19 @@ ORDER BY INS.DATETIME LIMIT 3;
 
 
 
-- 보호소에서 중성화한 동물
-  - **SELECT** ``INS.ANIMAL_ID``, ``INS_ANIMAL_TYPE``, ``INS.NAME``
-    - ANIMAL_ID, ANIMAL_TYPE, NAME 조회
-  - **FROM** ``ANIMAL_INS INS`` **LEFT OUTER JOIN** ``ANIMAL_OUTS OUTS``
-    - 보호소 기준으로 입양보낸 동물을 확인
-  - **ON** ``INS.ANIMAL_ID`` = ``OUTS.ANIMAL_ID``
-    - ANIMAL_ID가 외래키이므로 기준이 됨
-  - **WHERE** ``INS.SEX_UPON_INTAKE`` != ``OUTS.SEX_UPON_OUTCOME``
-    - SEX_UPON_INTAKE는 보호소에 들어올 당시 중성화 여부, SEX_UPON_OUTCOME은 보호소를 나갈 당시 중성화 여부를 알려준다.
-    - 보호소에 들어올 당시 중성화 여부 -> 보호소를 나갈 당시 중성화 여부 (첫번째)
-    - 보호소에 들어올 당시 중성화 되지 않은 경우 -> 보호소를 나갈 당시 중성화된 여부(두번째)
-    - 두번째를 찾아야 하므로 ``!=`` 혹은 ``NOT LIKE``를 사용하여 조건을 걸어준다.
+##### 보호소에서 중성화한 동물
+
+- **SELECT** ``INS.ANIMAL_ID``, ``INS_ANIMAL_TYPE``, ``INS.NAME``
+  - ANIMAL_ID, ANIMAL_TYPE, NAME 조회
+- **FROM** ``ANIMAL_INS INS`` **LEFT OUTER JOIN** ``ANIMAL_OUTS OUTS``
+  - 보호소 기준으로 입양보낸 동물을 확인
+- **ON** ``INS.ANIMAL_ID`` = ``OUTS.ANIMAL_ID``
+  - ANIMAL_ID가 외래키이므로 기준이 됨
+- **WHERE** ``INS.SEX_UPON_INTAKE`` != ``OUTS.SEX_UPON_OUTCOME``
+  - SEX_UPON_INTAKE는 보호소에 들어올 당시 중성화 여부, SEX_UPON_OUTCOME은 보호소를 나갈 당시 중성화 여부를 알려준다.
+  - 보호소에 들어올 당시 중성화 여부 -> 보호소를 나갈 당시 중성화 여부 (첫번째)
+  - 보호소에 들어올 당시 중성화 되지 않은 경우 -> 보호소를 나갈 당시 중성화된 여부(두번째)
+  - 두번째를 찾아야 하므로 ``!=`` 혹은 ``NOT LIKE``를 사용하여 조건을 걸어준다.
 
 ```sql
 SELECT INS.ANIMAL_ID, INS.ANIMAL_TYPE, INS.NAME
@@ -390,9 +392,10 @@ WHERE INS.SEX_UPON_INTAKE != OUTS.SEX_UPON_OUTCOME
 
 
 
-- 루시와 엘라 찾기
-  - **WHERE** ``NAME`` **in** ``('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')``
-    - 이름이 Lucy, Ella, Pickle, Rogan, Sabrina, Mitty인 동물을 찾으므로 ``in``을 사용하면 여러값을 지정하여 검색할 수 있다.
+##### 루시와 엘라 찾기
+
+- **WHERE** ``NAME`` **in** ``('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')``
+  - 이름이 Lucy, Ella, Pickle, Rogan, Sabrina, Mitty인 동물을 찾으므로 ``in``을 사용하면 여러값을 지정하여 검색할 수 있다.
 
 ```sql
 SELECT ANIMAL_ID, NAME, SEX_UPON_INTAKE
@@ -403,9 +406,10 @@ ORDER BY ANIMAL_ID
 
 
 
-- 이름에 el이 들어가는 동물 찾기
-  - **WHERE** ``ANIMAL_TYPE = 'Dog'`` **AND** ``NAME`` **LIKE** ``'%EL%'``
-    - 이름에 'EL'이 들어가고, 개를 찾음
+##### 이름에 el이 들어가는 동물 찾기
+
+- **WHERE** ``ANIMAL_TYPE = 'Dog'`` **AND** ``NAME`` **LIKE** ``'%EL%'``
+  - 이름에 'EL'이 들어가고, 개를 찾음
 
 ```sql
 SELECT ANIMAL_ID, NAME
@@ -416,10 +420,11 @@ ORDER BY NAME
 
 
 
-- 중성화 여부 파악하기
-  - **IF** (``SEX_UPON_INTAKE`` **LIKE** ``'%Neutered%'`` **OR** ``SEX_UPON_INTAKE`` **LIKE** ``'%Spayed%'``, ``'O'``, ``'X'``) **AS** ``'중성화'``
-    - SEX_UPON_INTAKE가 'Neutered'이거나 'Spayed'면, 중성화이므로 'O' 아닌 경우에는 'X'를 '중성화' 컬럼에 표시
-    - 컬럼에 값으로 나타내야 하므로, FROM 앞에 IF를 써서 AS로 컬럼명 표시
+##### 중성화 여부 파악하기
+
+- **IF** (``SEX_UPON_INTAKE`` **LIKE** ``'%Neutered%'`` **OR** ``SEX_UPON_INTAKE`` **LIKE** ``'%Spayed%'``, ``'O'``, ``'X'``) **AS** ``'중성화'``
+  - SEX_UPON_INTAKE가 'Neutered'이거나 'Spayed'면, 중성화이므로 'O' 아닌 경우에는 'X'를 '중성화' 컬럼에 표시
+  - 컬럼에 값으로 나타내야 하므로, FROM 앞에 IF를 써서 AS로 컬럼명 표시
 
 ```sql
 SELECT ANIMAL_ID, NAME, 
@@ -430,14 +435,15 @@ ORDER BY ANIMAL_ID
 
 
 
-- 오랜 기간 보호한 동물(2)
-  - ``ANIMAL_OUTS OUTS`` **LEFT OUTER JOIN** ``ANIMAL_INS INS``
-    - 입양간 정보를 기준으로 보호소에 있는 정보를 확인
-  - **ON** ``OUTS.ANIMAL_ID`` = ``INS.ANIMAL_ID``
-    - ANIMAL_ID가 외래키이므로 비교
-  - **ORDER BY** ``OUTS.DATETIME`` - ``INS.DATETIME`` **DESC** **LIMIT** ``2``; 
-    - 보호기간이 가장 긴(입양간 날짜-보호 시작일) 보호기간이 긴 순(DESC) 두 마리 조회(LIMIT 2)
-    - ORDER BY에 연산자 가능
+##### 오랜 기간 보호한 동물(2)
+
+- ``ANIMAL_OUTS OUTS`` **LEFT OUTER JOIN** ``ANIMAL_INS INS``
+  - 입양간 정보를 기준으로 보호소에 있는 정보를 확인
+- **ON** ``OUTS.ANIMAL_ID`` = ``INS.ANIMAL_ID``
+  - ANIMAL_ID가 외래키이므로 비교
+- **ORDER BY** ``OUTS.DATETIME`` - ``INS.DATETIME`` **DESC** **LIMIT** ``2``; 
+  - 보호기간이 가장 긴(입양간 날짜-보호 시작일) 보호기간이 긴 순(DESC) 두 마리 조회(LIMIT 2)
+  - ORDER BY에 연산자 가능
 
 ```sql
 SELECT OUTS.ANIMAL_ID, OUTS.NAME
@@ -460,11 +466,13 @@ ORDER BY ANIMAL_ID
 
 
 
-### 종합 문제
+### 종합 문제(서브쿼리)
 
 - 서브쿼리
 
   - SQL문 안에 또 다른 SQL문이 있음
+
+  - 서브쿼리는 메인쿼리의 컬럼을 사용할 수 있지만, 반대는 안된다.
 
   - 괄호를 감싸야 한다.
 
@@ -474,60 +482,95 @@ ORDER BY ANIMAL_ID
 
   - SELECT, FROM, WHERE, HAVING, ORDER BY, INSERT문의 VALUES, UPDATE문의 SET에서 사용 가능
 
-    - 단일 행 서브쿼리
+    - 단일 행 서브쿼리 (=, >, >=, <, <=, <>)
 
     ```sql
+    # 서브쿼리 결과 건수가 반드시 1건 이하
     SELECT *
     FROM PLAYER
     WHERE TEAM_ID = (SELECT TEAM_ID FROM PLAYER WHERE PLAYER_NAME = 'KIM')
-    ORDER BY TEAM_NAME;
+    ORDER BY TEAM_NAME
     ```
-
-    - 다중 행 서브쿼리
-
+    
+    - 다중 행 서브쿼리 (IN, ALL, ANY, SOME, EXISTS)
+    
     ```sql
+    # 서브쿼리 결과 건수가 2건 이상
     SELECT *
     FROM PLAYER
     WHERE TEAM_ID IN (SELECT TEAM_ID FROM PLAYER WHERE PLAYER_NAME = 'KIM')
-    ORDER BY TEAM_NAME;
+    ORDER BY TEAM_NAME
     ```
 
     - 다중 컬럼 서브쿼리
-
+    
     ```sql
+    # 서브쿼리의 결과로 여러 개의 컬럼이 반환
     SELECT *
     FROM PLAYER
     WHERE (TEAM_ID, HEIGHT) IN (SELECT TEAM_ID FROM PLAYER WHERE PLAYER_NAME = 'KIM')
-    ORDER BY TEAM_ID, TEAM_NAME;
+    ORDER BY TEAM_ID, TEAM_NAME
     ```
-
-    - SELECT 서브쿼리
-
+    
+    - 연관 서브쿼리
+      - 서브쿼리 내에 메인쿼리 컬럼이 사용된 서브쿼리
+      - 메인쿼리를 먼저 실행 후 서브쿼리에 전달하고 서브쿼리에서 결과 추출 후 메인쿼리에 전달
+    
     ```sql
-    SELECT 
-    	PLAYER_NAME, 
-    	HEIGHT, 
-    	(
-            SELECT AVG(HEIGHT) 
-            FROM PLAYER P 
-            WHERE P.TEAM_ID = X.TEAM_ID
-        ) 
-        	AS AVG_HEIGHT 
-    FROM PLAYER X
+    SELECT T1.X, T1.Y, T1.Z
+    FROM A T1
+    WHERE T1.Y < (SELECT AVG(T2,Y)
+                 FROM A T2
+                 WHERE T1.X = T2.X
+                 AND T2.Y IS NOT NULL
+                 GROUP BY T2.X)
     ```
-
+    
+    - EXISTS 서브쿼리
+      - 항상 연관 서브쿼리로 사용하며, 조건을 만족하는 결과가 여러 건이라도, 1건만 찾으면 더 이상 검색하지 않는다.
+    
+    ```sql
+    SELECT T1.X, T1.Y, T1.Z
+      FROM A T1
+     WHERE EXISTS (SELECT 1
+                     FROM A T2
+                    WHERE T1.X = T2.X
+                      AND T2.Y BETWEEN '111' AND  '999');
+    ```
+    
+    - SELECT절 서브쿼리
+    
+    ```sql
+    SELECT X, Y, Z,
+           (SELECT AVG(X)   FROM A T2   WHERE T1.X = T2.X) X_AVG
+      FROM A T1;
+    ```
+    
+    - FROM절 서브쿼리
+    
+    ```sql
+    SELECT A.Y, B.I, B.J
+      FROM A,
+           (SELECT X, I, J FROM B WHERE K = '2019') B
+     WHERE A.X = B.X;
+    ```
+    
     
 
-- 우유와 요거트가 담긴 장바구니
-  - Milk와 Yogurt를 동시에 구입한 장바구니 출력
-  - **WHERE** ``NAME`` = ``'Milk' ``
-    **AND** ``CART_ID`` **IN** (**SELECT** **DISTINCT** ``CART_ID`` **FROM** ``CART_PRODUCTS`` **WHERE** ``NAME`` = ``'Yogurt'``)
-    - Milk를 사고, CART_ID가 (Yogurt를 구입한 CART_ID)와 일치하면 True
-    - 쿼리 각각의 데이터에 서브쿼리를 대입하므로 속도가 느림
-  - **FROM** (**SELECT** `CART_ID` **FROM** `CART_PRODUCTS` **WHERE** `NAME` = '`Milk`') `A`
-    **INNER JOIN** (**SELECT** `CART_ID` **FROM** `CART_PRODUCTS` **WHERE** `NAME` = '`Yogurt`') `B` (``A``랑 ``B``는 별칭임) 
-    **ON** ``A.CART_ID`` = `B.CART_ID`
-    - Yogurt를 산 CART_ID와 Milk를 산 CART_ID가 같은 CART_ID를 출력
+
+
+
+##### 우유와 요거트가 담긴 장바구니
+
+- Milk와 Yogurt를 동시에 구입한 장바구니 출력
+- **WHERE** ``NAME`` = ``'Milk' ``
+  **AND** ``CART_ID`` **IN** (**SELECT** **DISTINCT** ``CART_ID`` **FROM** ``CART_PRODUCTS`` **WHERE** ``NAME`` = ``'Yogurt'``)
+  - Milk를 사고, CART_ID가 (Yogurt를 구입한 CART_ID)와 일치하면 True
+  - 쿼리 각각의 데이터에 서브쿼리를 대입하므로 속도가 느림
+- **FROM** (**SELECT** `CART_ID` **FROM** `CART_PRODUCTS` **WHERE** `NAME` = '`Milk`') `A`
+  **INNER JOIN** (**SELECT** `CART_ID` **FROM** `CART_PRODUCTS` **WHERE** `NAME` = '`Yogurt`') `B` (``A``랑 ``B``는 별칭임) 
+  **ON** ``A.CART_ID`` = `B.CART_ID`
+  - Yogurt를 산 CART_ID와 Milk를 산 CART_ID가 같은 CART_ID를 출력
 
 ```sql
 # 서브쿼리
@@ -546,12 +589,13 @@ ON A.CART_ID = B.CART_ID;
 
 
 
-- 헤비 유저가 소유한 장소
-  - 공간을 2개 이상 등록한 사람 찾아서 출력 (HOST_ID가 2개 이상 기록되어있는 테이블 확인)
-  - 중복된 값을 찾는 SQL문
-    - **SELECT** 컬럼 **FROM** 테이블 **GROUP BY** 컬럼 **HAVING** count(*) > 1
-  - **WHERE** `HOST_ID` **IN** (**SELECT** ``HOST_ID`` **FROM** ``PLACES`` **GROUP BY** ``HOST_ID`` **HAVING** ``COUNT(*)`` > ``1``)
-    - HOST_ID 그룹 중에 개수가 2개 이상인 HOST_ID를 찾고, WHERE문을 통해 HOST_ID가 들어있는지 확인
+##### 헤비 유저가 소유한 장소
+
+- 공간을 2개 이상 등록한 사람 찾아서 출력 (HOST_ID가 2개 이상 기록되어있는 테이블 확인)
+- 중복된 값을 찾는 SQL문
+  - **SELECT** 컬럼 **FROM** 테이블 **GROUP BY** 컬럼 **HAVING** count(*) > 1
+- **WHERE** `HOST_ID` **IN** (**SELECT** ``HOST_ID`` **FROM** ``PLACES`` **GROUP BY** ``HOST_ID`` **HAVING** ``COUNT(*)`` > ``1``)
+  - HOST_ID 그룹 중에 개수가 2개 이상인 HOST_ID를 찾고, WHERE문을 통해 HOST_ID가 들어있는지 확인
 
 ```sql
 SELECT ID, NAME, HOST_ID
@@ -562,11 +606,12 @@ ORDER BY ID;
 
 
 
-# HackerRank
+## HackerRank
 
-- Weather Observation Station 2
-  - station 테이블 중 모든 컬럼의 LAT_N과 LONG_W 필드의 합을 구하는 문제
-  - 조건 ) 합을 구할 때 소수점이 3번째 자리에서 반올림을 해서 소수점이 2번째 자리까지 나오도록 출력
+##### Weather Observation Station 2
+
+- station 테이블 중 모든 컬럼의 LAT_N과 LONG_W 필드의 합을 구하는 문제
+- 조건 ) 합을 구할 때 소수점이 3번째 자리에서 반올림을 해서 소수점이 2번째 자리까지 나오도록 출력
 
 ```sql
 SELECT ROUND(SUM(LAT_N), 2), ROUND(SUM(LONG_W), 2)
@@ -575,10 +620,11 @@ FROM STATION;
 
 
 
-- Weather Observation Station 3
-  - station 테이블 중 city의 이름을 출력
-  - 조건 ) id가 **짝수**인 city 명만을 출력 ``MOD(컬럼, 2) = 0``, 홀수면 ``MOD(컬럼, 2) = 1``
-  - 조건 2 ) city의 이름을 중복 없이 구하기
+##### Weather Observation Station 3
+
+- station 테이블 중 city의 이름을 출력
+- 조건 ) id가 **짝수**인 city 명만을 출력 ``MOD(컬럼, 2) = 0``, 홀수면 ``MOD(컬럼, 2) = 1``
+- 조건 2 ) city의 이름을 중복 없이 구하기
 
 ```sql
 SELECT DISTINCT CITY FROM STATION WHERE MOD(ID, 2) = 0;
@@ -586,9 +632,10 @@ SELECT DISTINCT CITY FROM STATION WHERE MOD(ID, 2) = 0;
 
 
 
-- Weather Observation Station 4
-  - station 테이블 중 city의 개수를 출력
-  - 조건 ) 개수를 출력할 때 모든 city의 개수와 중복을 제거한 city의 개수를 빼기
+##### Weather Observation Station 4
+
+- station 테이블 중 city의 개수를 출력
+- 조건 ) 개수를 출력할 때 모든 city의 개수와 중복을 제거한 city의 개수를 빼기
 
 ```sql
 SELECT COUNT(CITY) - COUNT(DISTINCT CITY) FROM STATION;
@@ -596,10 +643,11 @@ SELECT COUNT(CITY) - COUNT(DISTINCT CITY) FROM STATION;
 
 
 
-- Weather Observation Station 5
-  - station 테이블 중 도시의 이름과 도시의 이름의 길이를 출력하는데, 도시의 이름의 길이가 가장 짧은 도시의 이름과, 가장 긴 이름의 도시를 출력
-  - 만약 가장 짧은 도시의 이름이나, 가장 긴 이름의 도시가 복수로 있는 경우에는 알파벳 순서 중 가장 앞에 있는 것을 출력
-  - 쿼리를 2개로 분리해준다.
+##### Weather Observation Station 5
+
+- station 테이블 중 도시의 이름과 도시의 이름의 길이를 출력하는데, 도시의 이름의 길이가 가장 짧은 도시의 이름과, 가장 긴 이름의 도시를 출력
+- 만약 가장 짧은 도시의 이름이나, 가장 긴 이름의 도시가 복수로 있는 경우에는 알파벳 순서 중 가장 앞에 있는 것을 출력
+- 쿼리를 2개로 분리해준다.
 
 ```sql
 SELECT CITY, LENGTH(CITY) as name_length
@@ -701,11 +749,13 @@ LIMIT 1;
   -- OR data REGEXP ('^[:digit:]$');
   ```
 
-  
 
-- Weather Observation Station 6
-  - station 테이블 중 도시의 이름 중에서 모음(a, e, i, o, u)으로 시작하는 도시를 쿼리 하는 문제
-  - LIKE를 사용해서 모음으로 시작하는 도시의 이름을 쿼리
+
+
+##### Weather Observation Station 6
+
+- station 테이블 중 도시의 이름 중에서 모음(a, e, i, o, u)으로 시작하는 도시를 쿼리 하는 문제
+- LIKE를 사용해서 모음으로 시작하는 도시의 이름을 쿼리
 
 ```sql
 # 풀이1
@@ -726,9 +776,10 @@ WHERE CITY REGEXP '^[aeiou]'
 
 
 
-- Weather Observation Station 7
-  - station 테이블 중 도시의 이름 중에서 모음(a, e, i, o, u)으로 끝나는 도시를 쿼리 하는 문제
-  - 정규식을 사용해서 풀이
+##### Weather Observation Station 7
+
+- station 테이블 중 도시의 이름 중에서 모음(a, e, i, o, u)으로 끝나는 도시를 쿼리 하는 문제
+- 정규식을 사용해서 풀이
 
 ```sql
 SELECT DISTINCT CITY 
@@ -738,12 +789,13 @@ WHERE CITY REGEXP '[aeiou]$';
 
 
 
-- Weather Observation Station 8
-  - station 테이블 중 도시의 이름 중에서 모음(a, e, i, o, u)으로 시작하면서, 모음으로 끝나는 도시를 쿼리 하는 문제
-  - 정규식을 사용해서 풀이
-  - .는 가운데 무슨 글자든지 상관없이 하나임
-  - *은 앞의 글자가 0개 이상있는 경우 (%)
-  - .*는 어떠한 글자든지 (0개 이상)
+##### Weather Observation Station 8
+
+- station 테이블 중 도시의 이름 중에서 모음(a, e, i, o, u)으로 시작하면서, 모음으로 끝나는 도시를 쿼리 하는 문제
+- 정규식을 사용해서 풀이
+- .는 가운데 무슨 글자든지 상관없이 하나임
+- *은 앞의 글자가 0개 이상있는 경우 (%)
+- .*는 어떠한 글자든지 (0개 이상)
 
 ```sql
 SELECT DISTINCT CITY
@@ -753,9 +805,10 @@ WHERE CITY REGEXP '^[aeiou].*[aeiou]$';
 
 
 
-- Weather Observation Station 9
-  - station 테이블 중 도시의 이름 중에서 모음(a, e, i, o, u)으로 시작하지 않는 도시의 이름을 쿼리 하는 문제
-  - 정규식을 사용해서 풀이
+##### Weather Observation Station 9
+
+- station 테이블 중 도시의 이름 중에서 모음(a, e, i, o, u)으로 시작하지 않는 도시의 이름을 쿼리 하는 문제
+- 정규식을 사용해서 풀이
 
 ```sql
 SELECT DISTINCT CITY 
@@ -765,9 +818,10 @@ WHERE CITY REGEXP '^[^aeiou]';
 
 
 
-- Weather Observation Station 10
-  - station 테이블 중 도시의 이름 중에서 모음(a, e, i, o, u)으로 끝나지 않는 도시의 이름을 쿼리 하는 문제
-  - 정규식을 사용해서 풀이
+##### Weather Observation Station 10
+
+- station 테이블 중 도시의 이름 중에서 모음(a, e, i, o, u)으로 끝나지 않는 도시의 이름을 쿼리 하는 문제
+- 정규식을 사용해서 풀이
 
 ```sql
 SELECT DISTINCT CITY
@@ -777,9 +831,10 @@ WHERE CITY REGEXP '[^aeiou]$';
 
 
 
-- Weather Observation Station 11
-  - station 테이블 중 도시의 이름 중에서 모음(a, e, i, o, u)으로 시작하지 않거나 모음으로 끝나지 않는 도시의 이름을 쿼리 하는 문제
-  - 정규식을 사용해서 풀이
+##### Weather Observation Station 11
+
+- station 테이블 중 도시의 이름 중에서 모음(a, e, i, o, u)으로 시작하지 않거나 모음으로 끝나지 않는 도시의 이름을 쿼리 하는 문제
+- 정규식을 사용해서 풀이
 
 ```sql
 SELECT DISTINCT CITY
@@ -789,9 +844,10 @@ WHERE CITY REGEXP '^[^aeiou]|[^aeiou]$';
 
 
 
-- Weather Observation Station 12
-  - station 테이블 중 도시의 이름 중에서 모음(a, e, i, o, u)으로 시작하지 않고 모음으로 끝나지 않는 도시의 이름을 쿼리 하는 문제
-  - 정규식을 사용해서 풀이
+##### Weather Observation Station 12
+
+- station 테이블 중 도시의 이름 중에서 모음(a, e, i, o, u)으로 시작하지 않고 모음으로 끝나지 않는 도시의 이름을 쿼리 하는 문제
+- 정규식을 사용해서 풀이
 
 ```sql
 SELECT DISTINCT CITY
@@ -801,10 +857,11 @@ WHERE CITY REGEXP '^[^aeiou].*[^aeiou]$';
 
 
 
-- Weather Observation Station 13
-  - station 테이블 중 lat_n 칼럼의 모든 합을 구하는데 아래의 조건을 만족한 칼럼에서만 합을 구함
-  - 또한 합을 구한 뒤에 소수점 4자리까지만 출력되도록 버림(TRUNCATE)을 해서 쿼리 하는 문제
-  - lat_n이 38.7880보다 크고, 137.2345보다 작은 경우
+##### Weather Observation Station 13
+
+- station 테이블 중 lat_n 칼럼의 모든 합을 구하는데 아래의 조건을 만족한 칼럼에서만 합을 구함
+- 또한 합을 구한 뒤에 소수점 4자리까지만 출력되도록 버림(TRUNCATE)을 해서 쿼리 하는 문제
+- lat_n이 38.7880보다 크고, 137.2345보다 작은 경우
 
 ```sql
 SELECT TRUNCATE(SUM(LAT_N), 4) FROM STATION WHERE LAT_N BETWEEN 38.7880 AND 137.2345;
@@ -812,10 +869,11 @@ SELECT TRUNCATE(SUM(LAT_N), 4) FROM STATION WHERE LAT_N BETWEEN 38.7880 AND 137.
 
 
 
-- Weather Observation Station 14
-  - station 테이블 중 lat_n 칼럼 중 가장 큰 수를 출력
-  - lat_n이 137.2345보다 작은 숫자 중에서 가장 큰 수
-  - 구한 수에서 소수점 4자리까지만 출력되도록 버림(TRUNCATE)
+##### Weather Observation Station 14
+
+- station 테이블 중 lat_n 칼럼 중 가장 큰 수를 출력
+- lat_n이 137.2345보다 작은 숫자 중에서 가장 큰 수
+- 구한 수에서 소수점 4자리까지만 출력되도록 버림(TRUNCATE)
 
 ```sql
 SELECT TRUNCATE(MAX(LAT_N), 4)
@@ -825,10 +883,11 @@ WHERE LAT_N < 137.2345;
 
 
 
-- Weather Observation Station 15
-  - station 테이블 중 특정 조건에 만족하는 long_w를 구하는 문제
-  - lat_n이 137.2345보다 작은 숫자 중에서 가장 큰 수(largest) -> 내림차순(큰 수부터), LIMIT 1
-  - 구한 숫자 중에서 소수점 4개까지만 출력 되게 버림을 해야 한다.
+##### Weather Observation Station 15
+
+- station 테이블 중 특정 조건에 만족하는 long_w를 구하는 문제
+- lat_n이 137.2345보다 작은 숫자 중에서 가장 큰 수(largest) -> 내림차순(큰 수부터), LIMIT 1
+- 구한 숫자 중에서 소수점 4개까지만 출력 되게 버림을 해야 한다.
 
 ```sql
 SELECT ROUND(LONG_W, 4)
@@ -840,9 +899,10 @@ LIMIT 1;
 
 
 
-- Weather Observation Station 16
-  - station 테이블에서 lat_n 컬럼 중 조건을 만족하는 컬럼 중 가장 작은 수를 출력하는 쿼리문을 작성하는 문제
-  - lat_n이 38.7780보다 크고, 구한 숫자 중에서 소수점 4개 까지만 출력 되게 반올림을 해야 한다.
+##### Weather Observation Station 16
+
+- station 테이블에서 lat_n 컬럼 중 조건을 만족하는 컬럼 중 가장 작은 수를 출력하는 쿼리문을 작성하는 문제
+- lat_n이 38.7780보다 크고, 구한 숫자 중에서 소수점 4개 까지만 출력 되게 반올림을 해야 한다.
 
 ```sql
 # 풀이1
@@ -860,9 +920,10 @@ WHERE LAT_N > 38.7780;
 
 
 
-- Weather Observation Station 17
-  - station 테이블에서 long_w 칼럼 중 조건을 만족하는 칼럼을 쿼리 하는 문제
-  - lat_n이 38.7780보다 큰 수 중에 lat_n이 가장 작은 컬럼의 long_w를 소수점 4자리까지 출력
+##### Weather Observation Station 17
+
+- station 테이블에서 long_w 칼럼 중 조건을 만족하는 칼럼을 쿼리 하는 문제
+- lat_n이 38.7780보다 큰 수 중에 lat_n이 가장 작은 컬럼의 long_w를 소수점 4자리까지 출력
 
 ```sql
 # 풀이1
@@ -880,11 +941,12 @@ WHERE LAT_N = (SELECT MIN(LAT_N) FROM STATION WHERE LAT_N > 38.7780);
 
 
 
-- Weather Observation Station 18
-  - a = lat_n의 최솟값, b = long_w의 최솟값, c = lat_n의 최댓값, d = long_w의 최댓값
-  - 맨하탄 거리 공식 = | a - c | + | b - d |
-  - 소수점 4자리까지만 출력
-  - MIN, MAX, ABS, ROUND 사용
+##### Weather Observation Station 18
+
+- a = lat_n의 최솟값, b = long_w의 최솟값, c = lat_n의 최댓값, d = long_w의 최댓값
+- 맨하탄 거리 공식 = | a - c | + | b - d |
+- 소수점 4자리까지만 출력
+- MIN, MAX, ABS, ROUND 사용
 
 ```sql
 SELECT ROUND(ABS(MAX(LAT_N) - MIN(LAT_N)) + ABS(MAX(LONG_W) - MIN(LONG_W)), 4)
@@ -893,13 +955,14 @@ FROM STATION;
 
 
 
-- Higher Than 75 Marks
-  - Students 테이블에서 Marks가 75가 넘는 사람의 이름을 이름의 마지막에서 3번째 문자 기준으로 오름차순 정렬하고, 두번째는 ID를 오름차순으로 정렬하여 나타내기
-  - 문자열 자르기
-    - RIGHT('문자열', 길이)
-      - RIGHT('abcde', 2) = 'de'
-    - LEFT('문자열', 길이)
-      - LEFT('abcde', 2) = 'ab'
+##### Higher Than 75 Marks
+
+- Students 테이블에서 Marks가 75가 넘는 사람의 이름을 이름의 마지막에서 3번째 문자 기준으로 오름차순 정렬하고, 두번째는 ID를 오름차순으로 정렬하여 나타내기
+- 문자열 자르기
+  - RIGHT('문자열', 길이)
+    - RIGHT('abcde', 2) = 'de'
+  - LEFT('문자열', 길이)
+    - LEFT('abcde', 2) = 'ab'
 
 ```sql
 SELECT Name 
@@ -910,10 +973,11 @@ ORDER BY RIGHT(Name, 3), ID;
 
 
 
-- Population Census
-  - CITY 테이블과 COUNTRY 테이블을 이용해서 COUNTRY.CONTINENT가 'Asia'인 모든 CITY의 인구(POPULATION)의 합을 구하기
-  - CITY.COUNTRYCODE와 COUNTRY.CODE는 외래키
-  - JOIN하여 CONTINENT가 'Asia'인 것 찾아서 출력하면 끝
+##### Population Census
+
+- CITY 테이블과 COUNTRY 테이블을 이용해서 COUNTRY.CONTINENT가 'Asia'인 모든 CITY의 인구(POPULATION)의 합을 구하기
+- CITY.COUNTRYCODE와 COUNTRY.CODE는 외래키
+- JOIN하여 CONTINENT가 'Asia'인 것 찾아서 출력하면 끝
 
 ```sql
 SELECT SUM(CITY.POPULATION)
@@ -924,10 +988,11 @@ WHERE COUNTRY.CONTINENT = 'Asia'
 
 
 
-- African Cities
-  - CITY 테이블과 COUNTRY 테이블을 이용해서 COUNTRY.CONTINENT가 'Africa'인 모든 CITY의 이름을 출력
-  - CITY.COUNTRYCODE와 COUNTRY.CODE는 외래키
-  - JOIN하여 CONTINENT가 'Asia'인 것 찾아서 출력하면 끝
+##### African Cities
+
+- CITY 테이블과 COUNTRY 테이블을 이용해서 COUNTRY.CONTINENT가 'Africa'인 모든 CITY의 이름을 출력
+- CITY.COUNTRYCODE와 COUNTRY.CODE는 외래키
+- JOIN하여 CONTINENT가 'Asia'인 것 찾아서 출력하면 끝
 
 ```sql
 SELECT CITY.NAME
@@ -938,11 +1003,12 @@ WHERE COUNTRY.CONTINENT = 'Africa'
 
 
 
-- Average Population of Each Continent
-  - CITY 테이블과 COUNTRY 테이블을 이용해서 COUNTRY.CONTINENT마다 CITY.POPULATION의 평균을 가장 근접한 정수로 출력(소수점은 버리고 정수로만 출력)
-  - CONTINENT마다 CITY의 평균을 출력해야하므로 GROUP BY를 한다.
-  - FLOOR는 소수점 첫째 자리에서 버림하는 함수. 가장 근접한 정수를 찾는 것
-  - CEIL은 소수점 첫째 자리에서 올림하는 함수. 가장 근접한 큰 정수를 찾는 것
+##### Average Population of Each Continent
+
+- CITY 테이블과 COUNTRY 테이블을 이용해서 COUNTRY.CONTINENT마다 CITY.POPULATION의 평균을 가장 근접한 정수로 출력(소수점은 버리고 정수로만 출력)
+- CONTINENT마다 CITY의 평균을 출력해야하므로 GROUP BY를 한다.
+- FLOOR는 소수점 첫째 자리에서 버림하는 함수. 가장 근접한 정수를 찾는 것
+- CEIL은 소수점 첫째 자리에서 올림하는 함수. 가장 근접한 큰 정수를 찾는 것
 
 ```sql
 SELECT COUNTRY.CONTINENT, FLOOR(AVG(CITY.POPULATION))
@@ -953,11 +1019,12 @@ GROUP BY COUNTRY.CONTINENT
 
 
 
-- The Report
-  - Students 테이블과 Grades 테이블을 이용해서 Name, Grade, Marks를 출력하기
-  - Name은 Student의 이름이고, Grade가 8이상인 경우만 출력하고, 그렇지 않으면 NULL로 출력
-  - Students의 Marks는 Grade의 Min_Mark와 Max_Mark 사이로 찾아서 Grade를 판별
-  - Grade는 내림차순, Name과 Marks는 오름차순으로 정렬
+##### The Report
+
+- Students 테이블과 Grades 테이블을 이용해서 Name, Grade, Marks를 출력하기
+- Name은 Student의 이름이고, Grade가 8이상인 경우만 출력하고, 그렇지 않으면 NULL로 출력
+- Students의 Marks는 Grade의 Min_Mark와 Max_Mark 사이로 찾아서 Grade를 판별
+- Grade는 내림차순, Name과 Marks는 오름차순으로 정렬
 
 ```sql
 SELECT IF(G.Grade > 7, S.Name, 'NULL'), G.Grade, S.Marks
@@ -965,5 +1032,54 @@ FROM Students AS S
 INNER JOIN Grades AS G 
 ON S.Marks BETWEEN G.Min_Mark AND G.Max_Mark
 ORDER BY G.Grade DESC, S.Name, S.Marks 
+```
+
+
+
+##### Top Competitors
+
+- 문제 : 코테 제출자 중 2개 이상의 challenge에서 full score를 받은 hackers들의 id와 name을 challenge 개수를 기준으로 정렬하고 full score를 받은 hackers들의 challenge 개수가 동일하다면, hacker_id를 기준으로 오름차순 정렬
+- full score는 Submissions(S)의 score와 Difficulty(D)의 score가 일치해야함.
+- Hackers(H) 테이블, Difficulty(D) 테이블, Challenges(C) 테이블, Submissions(S) 테이블을 JOIN
+- S의 score와 D의 score를 비교하려면 먼저 C테이블과 challenge_id로 JOIN을 맺는다.
+- C테이블은 D테이블과 difficulty_level을 통해 JOIN을 맺는다.
+- 그리고 S테이블은 H테이블과 hacker_id를 통해 JOIN을 맺는다.
+- 조인을 잘해야한다!!
+
+```sql
+SELECT H.hacker_id, H.name
+FROM Submissions S
+    INNER JOIN Challenges C ON S.challenge_id = C.challenge_id
+    INNER JOIN Difficulty D ON C.difficulty_level = D.difficulty_level
+    INNER JOIN Hackers H ON S.hacker_id = H.hacker_id
+WHERE S.score = D.score	# S(제출) score와 D(난이도) score가 동일하다면 full score
+GROUP BY H.hacker_id, H.name	# hacker_id와 name을 묶는다.
+HAVING COUNT(S.challenge_id) > 1	# 제출한 challenge 개수를 세고, 2개 이상만 추출 
+ORDER BY COUNT(S.challenge_id) DESC, H.hacker_id;	# challenge 개수를 기준으로 내림차순 정렬, 동일하면 hacker_id 기준 오름차순 정렬
+```
+
+
+
+##### Ollivander's Inventory
+
+- 문제 : non_evil(is_evil=0)이면서, 높은 Power와 Age를 가진 지팡이를 사기 위해 필요한 최소한의 gold galleons(coins_needed)를 구하고, 정렬은 power 기준으로 내림차순 정렬하고, 동일 power가 있다면 age를 기준으로 내림차순하여 id, age, coins_needed, power 출력하기
+- JOIN + 서브쿼리 문제(연관 서브쿼리)
+- Wands 테이블과 Wands_Property 테이블을 code를 통해 JOIN한다.
+- non_evil(is_evil=0)이어야 하고, coins_needed의 최소치를 구해야 하므로 WHERE 절에 서브쿼리를 사용한다.
+- 서브쿼리에서 다시 Wands 테이블과 Wands_Property 테이블을 code를 통해 JOIN하고, 별칭은 메인쿼리 JOIN과 다르게 한다.
+- 서브쿼리의 WHERE 또한, non_evil(is_evil=0)이어야 하고, 메인쿼리에서 JOIN한 power, age와 서브쿼리로 JOIN한 power, age를 각각 같게 한다.
+
+```sql
+SELECT W.id, P.age, W.coins_needed, W.power
+FROM Wands W 
+INNER JOIN Wands_Property P ON W.code = P.code
+WHERE P.is_evil = 0 
+AND W.coins_needed = (SELECT MIN(coins_needed) 
+                      FROM Wands W1
+                     INNER JOIN Wands_Property P1 ON W1.code = P1.code
+                     WHERE P1.is_evil = 0
+                     AND W1.power = W.power
+                     AND P1.age = P.age)
+ORDER BY W.power DESC, P.age DESC
 ```
 
