@@ -4,7 +4,8 @@ sys.stdin = open('input.txt')
 input = sys.stdin.readline
 sys.setrecursionlimit(10**6)
 
-풀이1
+
+# 풀이1
 def dfs(i):
     global cnt
     v[i] = 1    # 출발한 곳 부터 방문 체크
