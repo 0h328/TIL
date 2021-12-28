@@ -1038,7 +1038,7 @@ ORDER BY G.Grade DESC, S.Name, S.Marks
 
 ##### Top Competitors
 
-- 문제 : 코테 제출자 중 2개 이상의 challenge에서 full score를 받은 hackers들의 id와 name을 challenge 개수를 기준으로 정렬하고 full score를 받은 hackers들의 challenge 개수가 동일하다면, hacker_id를 기준으로 오름차순 정렬
+- 문제 : 코테 제출자 중 2개 이상의 challenge에서 full score를 받은 hackers들의 id와 name을 challenge 개수를 기준으로 정렬하고 full score를 받은 hackers들의 challenge 개수가 동일하다면, hacker_id를 기준으로 오름차순 정렬해라.
 - full score는 Submissions(S)의 score와 Difficulty(D)의 score가 일치해야함.
 - Hackers(H) 테이블, Difficulty(D) 테이블, Challenges(C) 테이블, Submissions(S) 테이블을 JOIN
 - S의 score와 D의 score를 비교하려면 먼저 C테이블과 challenge_id로 JOIN을 맺는다.
@@ -1062,7 +1062,7 @@ ORDER BY COUNT(S.challenge_id) DESC, H.hacker_id;	# challenge 개수를 기준�
 
 ##### Ollivander's Inventory
 
-- 문제 : non_evil(is_evil=0)이면서, 높은 Power와 Age를 가진 지팡이를 사기 위해 필요한 최소한의 gold galleons(coins_needed)를 구하고, 정렬은 power 기준으로 내림차순 정렬하고, 동일 power가 있다면 age를 기준으로 내림차순하여 id, age, coins_needed, power 출력하기
+- 문제 : non_evil(is_evil=0)이면서, 높은 Power와 Age를 가진 지팡이를 사기 위해 필요한 최소한의 gold galleons(coins_needed)를 구하고, 정렬은 power 기준으로 내림차순 정렬하고, 동일 power가 있다면 age를 기준으로 내림차순하여 id, age, coins_needed, power 출력해라.
 - JOIN + 서브쿼리 문제(연관 서브쿼리)
 - Wands 테이블과 Wands_Property 테이블을 code를 통해 JOIN한다.
 - non_evil(is_evil=0)이어야 하고, coins_needed의 최소치를 구해야 하므로 WHERE 절에 서브쿼리를 사용한다.
@@ -1081,5 +1081,31 @@ AND W.coins_needed = (SELECT MIN(coins_needed)
                      AND W1.power = W.power
                      AND P1.age = P.age)
 ORDER BY W.power DESC, P.age DESC
+```
+
+
+
+##### Contest Leaderboard
+
+- hacker의 total score란, 그 hacker가 푼 모든 문제들에 대한 score의 최댓값의 합을 의미한다. 이 때 hacker_id, name, total_score를 출력하는데 1차정렬 기준은 total_score를 내림차순, 2차정렬 기준은 hacker_id 오름차순으로 정렬해라. (단, 결과값에서 total score가 0인 데이터들은 제외)
+- 문제(challenge_id)
+- (**SELECT** ``hacker_id``, ``challenge_id``, ``MAX(score)`` **AS** ``max_score`` **FROM** ``Submissions`` **GROUP BY** ``hacker_id``, ``challenge_id``) ``sub1``
+  - hacker_id가 풀은 challenge_id 중 가장 높은 score를 찾기 위해 만든 서브쿼리를 그룹핑(2단계-제일 내부)
+- (**SELECT** ``sub1.hacker_id``, ``SUM(max_score)`` **AS** ``total_score`` **FROM**  sub1 **GROUP BY** ``sub1.hacker_id`` **HAVING** ``total_score`` != ``0`` ) ``sub2``
+  - 가장 높은 score들로 total_score를 만들기 위해 hacker_id 기준으로 만든 서브쿼리를 그룹핑(1단계) (단, total_score가 0인 것은 제외)
+- (**SELECT** ``H.hacker_id``, ``H.name``, ``sub2.total_score``) **FROM** ``sub2`` **INNER JOIN** ``Hackers`` ``H`` **ON** ``sub2.hacker_id`` = ``H.hacker_id`` **ORDER BY** ``sub2.total_score`` **DESC**, ``H.hacker_id``
+  - hacker_id, name, total_score를 나타내기 위해 Hackers 테이블과 sub2 테이블을 JOIN시키고, 정렬기준에 따라 출력시켜준다.
+- 먼저 구해야하는 것을 유도해서 구하고, 그다음 과정을 구하고 하는식으로 서브쿼리를 통해 직관적으로 풀면 된다.
+
+```sql
+SELECT H.hacker_id, H.name, sub2.total_score
+FROM (SELECT sub1.hacker_id, SUM(max_score) AS total_score
+     FROM (SELECT hacker_id, challenge_id, MAX(score) AS max_score
+            FROM Submissions
+            GROUP BY hacker_id, challenge_id) sub1
+    GROUP BY sub1.hacker_id
+    HAVING total_score != 0) sub2
+INNER JOIN Hackers H ON sub2.hacker_id = H.hacker_id
+ORDER BY sub2.total_score DESC, H.hacker_id
 ```
 
