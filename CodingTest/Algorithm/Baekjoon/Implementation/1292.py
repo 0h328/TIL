@@ -5,6 +5,7 @@ A, B = map(int, input().split())
 
 seq = []
 
+# 풀이1
 num = 1                         # 수열은 1부터 시작
 while seq.count(num) <= num:    # 수열에 넣을 수가 리스트 안에 수의 개수랑 같아질때까지
     if seq.count(num) != num:   # 수열에 넣을 수의 개수가 수랑 같지 않으면
@@ -16,3 +17,10 @@ while seq.count(num) <= num:    # 수열에 넣을 수가 리스트 안에 수�
         break                   # 종료
 
 print(sum(seq[A-1:B]))
+
+# 풀이2
+# for i in range(46):
+#     for _ in range(i):
+#         seq.append(i)
+#
+# print(sum(seq[A-1:B]))
