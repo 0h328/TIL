@@ -6,8 +6,8 @@ arr = list(map(int, input().split()))
 
 # 풀이1
 tmp = []
-for i in range(N-1, -1, -1):
-    tmp.insert(arr[i], i)   # .insert(idx, 값)
+for i in range(N, 0, -1):
+    tmp.insert(arr[i-1], i)   # .insert(idx, 값)
 
 print(tmp)
 
