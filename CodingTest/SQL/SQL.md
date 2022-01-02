@@ -1137,6 +1137,7 @@ ORDER BY W.power DESC, P.age DESC
 - 먼저 구해야하는 것을 유도해서 구하고, 그다음 과정을 구하고 하는식으로 서브쿼리를 통해 직관적으로 풀면 된다.
 
 ```sql
+# 풀이1
 SELECT H.hacker_id, H.name, sub2.total_score
 FROM (SELECT sub1.hacker_id, SUM(max_score) AS total_score
      FROM (SELECT hacker_id, challenge_id, MAX(score) AS max_score
@@ -1146,5 +1147,17 @@ FROM (SELECT sub1.hacker_id, SUM(max_score) AS total_score
     HAVING total_score != 0) sub2
 INNER JOIN Hackers H ON sub2.hacker_id = H.hacker_id
 ORDER BY sub2.total_score DESC, H.hacker_id
+
+# 풀이2
+SELECT sub1.hacker_id, H.name, SUM(sub1.MAX_Score) AS total_score
+FROM 
+	(SELECT hacker_id, challenge_id, MAX(score) AS MAX_score
+    FROM submissions
+    GROUP BY hacker_id, challenge_id) sub1
+INNER JOIN Hackers H 
+ON sub1.hacker_id = H.hacker_id
+GROUP BY sub1.hacker_id, H.name
+HAVING total_score > 0
+ORDER BY total_score DESC, sub1.hacker_id
 ```
 
