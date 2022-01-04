@@ -32,37 +32,32 @@ dc = [0, 0, 1, -1]
 bfs(0, 0)
 print(v[-1][-1])
 
-# def dfs(r, c, cnt):
-#     global max_cnt
-
-#     v[r][c] = 1
-
-#     if max_cnt <= cnt:
-#         return
-
-#     if r == N - 1 and c == M - 1:
-#         if cnt < max_cnt:
-#             max_cnt = cnt
-#             return
-
-#     for i in range(4):
-#         nr = r + dr[i]
-#         nc = c + dc[i]
-
-#         if 0 <= nr < N and 0 <= nc < M and arr[nr][nc] and not v[nr][nc]:
-#             dfs(nr, nc, cnt+1)
-#             v[nr][nc] = 0
-
-
-
-# N, M = map(int, input().split())
-# arr = [list(map(int, input())) for _ in range(N)]
-# v = [[0 for _ in range(M)] for _ in range(N)]
-
-# max_cnt = 10001
-
+# from collections import deque
+#
+# # 4방 탐색
 # dr = [1, 0, -1, 0]
-# dc = [0, -1, 0, 1]
-
-# dfs(0, 0, 1)
-# print(max_cnt)
+# dc = [0, 1, 0, -1]
+#
+# def bfs(x, y):
+#
+#     q = deque()
+#     q.append((x, y))                        # 출발 위치 큐에 저장
+#
+#     while q:
+#         r, c = q.popleft()                  # 출발 위치 꺼내서 탐색
+#
+#         for i in range(4):
+#             nr = r + dr[i]
+#             nc = c + dc[i]
+#
+#             if 0 <= nr < N and 0 <= nc < M and arr[nr][nc] == 1:    # 배열 범위 안, 1인 곳만 이동
+#                 q.append((nr, nc))          # 다음 위치 큐에 저장
+#                 arr[nr][nc] += arr[r][c]    # 이동한 곳을 누적합
+#
+# N, M = map(int, input().split())
+# arr = []
+# for _ in range(N):
+#     arr.append(list(map(int, input())))
+#
+# bfs(0, 0)                                                           # 0, 0 시작
+# print(arr[-1][-1])

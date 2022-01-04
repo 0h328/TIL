@@ -22,5 +22,5 @@ while q:
         if 0 <= move <= 100000 and v[move] == -1:   # 시간초과 조건 & 미방문 조건
             q.append(move)
             v[move] = v[s] + 1  # 다음 이동하는 곳으로 +1초
-            
+
 print(v[K])
