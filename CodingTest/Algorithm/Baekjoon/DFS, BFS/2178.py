@@ -1,6 +1,7 @@
 # 미로탐색
 from collections import deque
 
+
 import sys
 sys.stdin = open('input.txt')
 
@@ -30,6 +31,7 @@ dr = [1, -1, 0, 0]
 dc = [0, 0, 1, -1]
 
 bfs(0, 0)
+print(v)
 print(v[-1][-1])
 
 # from collections import deque
