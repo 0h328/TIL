@@ -1161,3 +1161,30 @@ HAVING total_score > 0
 ORDER BY total_score DESC, sub1.hacker_id
 ```
 
+
+
+##### Top Earners
+
+- 주어진 테이블의 salary 컬럼과 months 컬럼을 곱한 새로운 컬럼인 earnings를 생성하고 earnings의 가장 높은 값과 그 높은 값을 갖는 직원들의 명수(count)를 출력시켜라.
+- **SELECT** ``(salary*months)`` **AS** ``earnings``, **COUNT**(*)
+  - salary 컬럼과 months 컬럼을 곱한 컬럼인 earnings의 가장 높은 값과, 직원들의 명수를 출력
+  - WHERE절에서는 earnings 처럼 새롭게 정의된 컬럼에 대해 조건을 달 수 없지만, GROUP BY는 가능하다.
+- **HAVING** ``earnings`` = (**SELECT MAX**(``salary*months``) **FROM** ``Employee``)
+  - earnings가 가장 높은 값을 갖게 하기 위해 서브쿼리로 MAX함수를 써서 값을 구한다.
+  - GROUP BY가 선행으로 등장해야 사용할 수 있는 HAVING절
+  - 특정 컬럼을 기준으로 그룹핑 했을 때, 추가적인 조건을 달아 필터링 해주는 효과가 있음.
+
+```sql
+# HAVING절에 서브쿼리
+SELECT (salary*months) AS earnings, count(*)
+FROM Employee
+GROUP BY earnings
+HAVING earnings = (SELECT MAX(salary*months) FROM Employee)	# GROUP BY로 이어진 HAVING절에는 새로 정의한 earnings 조건 가능
+
+# WHERE절에 서브쿼리
+SELECT (salary*months) AS earnings, count(*)
+FROM Employee
+WHERE (salary*months) = (SELECT MAX(salary*months) FROM Employee)	# WHERE절에는 새로 정의한 earnings 조건 불가능
+GROUP BY earnings
+```
+
