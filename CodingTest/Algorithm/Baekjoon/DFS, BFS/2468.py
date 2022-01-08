@@ -19,7 +19,7 @@ def bfs(x, y, h):
             nc = c + dc[i]
 
             if 0 <= nr < N and 0 <= nc < N:
-                if arr[nr][nc] >= h and not v[nr][nc]:  # h보다 높아야 안전영역, 낮으면 물에 잠김
+                if arr[nr][nc] > h and not v[nr][nc]:  # h보다 높아야 안전영역, 낮으면 물에 잠김
                     q.append((nr, nc))
                     v[nr][nc] = 1
 
@@ -43,7 +43,7 @@ for h in range(min_h, max_h+1):     # 범위는 최저 높이 ~ 최고 높이로
     cnt = 0                         # 안전영역 체크 돌고올때마다 카운트 초기화
     for i in range(N):
         for j in range(N):
-            if arr[i][j] >= h and not v[i][j]:  # 물에 잠기지 않는 조건 + 방문하지 않은 경우
+            if arr[i][j] > h and not v[i][j]:  # 물에 잠기지 않는 조건 + 방문하지 않은 경우
                 bfs(i, j, h)        # 높이도 매개변수로 추가해주면 시간 감소?
                 cnt += 1
 
