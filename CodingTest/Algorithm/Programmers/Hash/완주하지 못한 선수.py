@@ -1,3 +1,4 @@
+# 완주하지 못한 선수 Level1
 from collections import Counter
 
 def solution(participant, completion):
