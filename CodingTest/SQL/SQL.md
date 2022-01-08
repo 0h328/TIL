@@ -1,6 +1,13 @@
 # SQL
 
+### ❗ SQL 쿼리 실행 순서
+
+- FROM - WHERE - GROUP BY - HAVING - SELECT - ORDER BY
+  - https://myjamong.tistory.com/172 (참고 : ctrl+클릭)
+
 [TOC]
+
+
 
 
 
@@ -116,6 +123,9 @@ SELECT COUNT(DISTINCT NAME) AS count FROM ANIMAL_INS WHERE NAME IS NOT NULL;
 
 - **SELECT** ``컬럼A``, ``컬럼B`` **FROM** ``테이블`` **GROUP BY** ``컬럼A``
   - 그룹화하는 컬럼은 반드시 SELECT로 조회해야함.
+- **DISTINCT**와의 차이는?
+  - DISTINCT는 그룹핑 작업만하고, GROUP BY는 그룹핑+정렬 작업을 한다.
+  - DISTINCT는 정렬하지 않으므로, GROUP BY보다 실행 속도가 빠르다. (성능이 빠름)
 
 
 
@@ -421,7 +431,7 @@ ORDER BY ANIMAL_ID
         - %Y = 4자리 연도(2016, 2017,..)
         - %y = 2자리 연도(16, 17,..)
         - %M = January, February,..
-        - %m = 00~12
+        - %m = 01~12
         - %D = 1st, 2nd,... ,31th
         - %d = 01, 02,.. ,31
         - **DATE_FORMAT**(``DATETIME``, ``%Y-%M-%D``)
@@ -493,9 +503,10 @@ ORDER BY OUTS.DATETIME - INS.DATETIME DESC LIMIT 2;
 
 
 
-- DATETIME에서 DATE로 형 변환
-  - 날짜를 2018-01-22 형식으로 나타내야 하므로
-    - **DATE_FORMAT**(**DATETIME**, ``'%Y-%m-%d'``)
+##### DATETIME에서 DATE로 형 변환
+
+- 날짜를 2018-01-22 형식으로 나타내야 하므로
+  - **DATE_FORMAT**(**DATETIME**, ``'%Y-%m-%d'``)
 
 ```sql
 SELECT ANIMAL_ID, NAME, DATE_FORMAT(DATETIME, '%Y-%m-%d') AS 날짜
@@ -617,13 +628,27 @@ SELECT DISTINCT CART_ID
 FROM CART_PRODUCTS
 WHERE NAME = 'Milk' 
 AND CART_ID IN (SELECT DISTINCT CART_ID FROM CART_PRODUCTS WHERE NAME = 'Yogurt')
-ORDER BY CART_ID;
+ORDER BY CART_ID
 
-# JOIN
+# JOIN1
 SELECT DISTINCT A.CART_ID
 FROM (SELECT CART_ID FROM CART_PRODUCTS WHERE NAME = 'Milk') A
 INNER JOIN (SELECT CART_ID FROM CART_PRODUCTS WHERE NAME = 'Yogurt') B
-ON A.CART_ID = B.CART_ID;
+ON A.CART_ID = B.CART_ID
+
+# JOIN2
+SELECT DISTINCT A.CART_ID
+FROM CART_PRODUCTS AS A INNER JOIN CART_PRODUCTS AS b
+ON A.CART_ID = B.CART_ID
+WHERE A.NAME = 'Milk' AND B.NAME = 'Yogurt'
+ORDER BY CART_ID
+
+# GROUP BY + HAVING
+SELECT CART_ID
+FROM CART_PRODUCTS
+WHERE NAME IN ('Milk','Yogurt')
+GROUP BY CART_ID
+HAVING COUNT(DISTINCT NAME) = 2
 ```
 
 

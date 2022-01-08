@@ -12,7 +12,7 @@ for case in cases:                  # 모든 조합을 돌면서
     if sum(case) == M:              # case합이 M과 같으면
         print(M)                    # M을 출력
         exit()                      # 프로그램 강제 종료
-    elif sum(case) <= M:            # case합이 M을 넘지 않으면서
+    elif sum(case) < M:             # case합이 M을 넘지 않으면서
         if M - sum(case) < diff:    # M과 case의 합의 차가 diff보다 작으면
             diff = M - sum(case)    # diff를 M - sum(case)로 갱신
 
