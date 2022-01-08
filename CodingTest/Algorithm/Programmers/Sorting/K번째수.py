@@ -1,3 +1,4 @@
+# K번째수 Level1
 def solution(array, commands):
     answer = []
     cut_array = []

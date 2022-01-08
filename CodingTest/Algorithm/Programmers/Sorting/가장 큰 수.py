@@ -1,3 +1,4 @@
+# 가장 큰 수 Level2
 def solution(numbers):
     str_numbers = [str(number) for number in numbers]
     str_numbers.sort(key=lambda x: x * 3, reverse=True)
