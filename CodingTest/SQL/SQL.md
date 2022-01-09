@@ -1019,6 +1019,45 @@ FROM STATION;
 
 
 
+##### Weather Observation Station 19
+
+- 유클리트 거리 공식 = ((b-a)^2 + (d-c)^2)^(1/2)
+- 소수점 4자리까지만 출력
+- POW는 제곱 함수
+  - POW(2, 3) = 2의 3제곱은 8
+- SQRT는 루트 함수
+
+```sql
+SELECT ROUND(SQRT(POW((MAX(LAT_N) - MIN(LAT_N)), 2) + POW((MAX(LONG_W) - MIN(LONG_W)), 2)), 4)
+FROM STATION
+```
+
+
+
+##### Type of Triangle
+
+- 삼각형이 되는 조건 구하기
+- 양 변의 길이가 모두 같으면 Equilateral 
+  - A=B=C
+- 두 변의 길이가 같으면 Isosceles
+  - A=B or B=C or A=C
+- 양 변의 길이가 모두 다르면 Scalene
+  - A != B and B != C and C != A
+- 삼각형 조건이 불가능하면 Not A Triangle
+  - A >= B+C or B >= A+C or C >= A+B
+- **WHEN** ``A>=B+C`` **OR** ``B>=A+C`` **OR** ``C>=A+B`` **THEN** ``'Not A Triangle'``
+  - 2번째에 써야하는 이유 : B=C이면서 B+C <= A인 경우를 먼저 걸러야 하기 때문
+
+```sql
+SELECT CASE WHEN A=B AND B=C THEN 'Equilateral' 
+            WHEN A>=B+C OR B>=A+C OR C>=A+B THEN 'Not A Triangle'	
+            WHEN A=B OR A=C OR B=C THEN 'Isosceles' 
+            ELSE 'Scalene' END
+FROM TRIANGLES
+```
+
+
+
 ##### Higher Than 75 Marks
 
 - Students 테이블에서 Marks가 75가 넘는 사람의 이름을 이름의 마지막에서 3번째 문자 기준으로 오름차순 정렬하고, 두번째는 ID를 오름차순으로 정렬하여 나타내기
@@ -1033,6 +1072,53 @@ SELECT Name
 FROM STUDENTS 
 WHERE Marks > 75 
 ORDER BY RIGHT(Name, 3), ID;
+```
+
+
+
+##### The Blunder
+
+- Samantha가 직원의 월급을 키보드에 0을 빼고 입력했는데, Samantha는 기존 직원의 월급 평균과 자신이 입력한 월급 평균의 차이를 구하고 싶음
+- replace를 이용하여 문자열 삭제 혹은 변경 가능
+  - replace('컬럼명', 'A', 'B')
+    - 컬럼 내 A 문자를 B로 바꾼다.
+  - replace('컬럼명', 'A', '')
+    - 컬럼 내 A를 모두 제거한다.
+- **REPLACE**(``Salary``, ``0``, ``''``)
+  - 0을 빼고 입력하였으니, 자신이 입력한 월급은 0을 공백('')으로 바꾼다.
+- **CEIL**
+  - 소숫점 첫째자리에서 올림처리
+
+```sql
+SELECT CEIL(AVG(Salary) - AVG(REPLACE(Salary, 0, '')))
+FROM EMPLOYEES
+```
+
+
+
+##### Top Earners
+
+- 주어진 테이블의 salary 컬럼과 months 컬럼을 곱한 새로운 컬럼인 earnings를 생성하고 earnings의 가장 높은 값과 그 높은 값을 갖는 직원들의 명수(count)를 출력시켜라.
+- **SELECT** ``(salary*months)`` **AS** ``earnings``, **COUNT**(*)
+  - salary 컬럼과 months 컬럼을 곱한 컬럼인 earnings의 가장 높은 값과, 직원들의 명수를 출력
+  - WHERE절에서는 earnings 처럼 새롭게 정의된 컬럼에 대해 조건을 달 수 없지만, GROUP BY는 가능하다.
+- **HAVING** ``earnings`` = (**SELECT MAX**(``salary*months``) **FROM** ``Employee``)
+  - earnings가 가장 높은 값을 갖게 하기 위해 서브쿼리로 MAX함수를 써서 값을 구한다.
+  - GROUP BY가 선행으로 등장해야 사용할 수 있는 HAVING절
+  - 특정 컬럼을 기준으로 그룹핑 했을 때, 추가적인 조건을 달아 필터링 해주는 효과가 있음.
+
+```sql
+# HAVING절에 서브쿼리
+SELECT (salary*months) AS earnings, count(*)
+FROM Employee
+GROUP BY earnings
+HAVING earnings = (SELECT MAX(salary*months) FROM Employee)	# GROUP BY로 이어진 HAVING절에는 새로 정의한 earnings 조건 가능
+
+# WHERE절에 서브쿼리
+SELECT (salary*months) AS earnings, count(*)
+FROM Employee
+WHERE (salary*months) = (SELECT MAX(salary*months) FROM Employee)	# WHERE절에는 새로 정의한 earnings 조건 불가능
+GROUP BY earnings
 ```
 
 
@@ -1187,29 +1273,4 @@ ORDER BY total_score DESC, sub1.hacker_id
 ```
 
 
-
-##### Top Earners
-
-- 주어진 테이블의 salary 컬럼과 months 컬럼을 곱한 새로운 컬럼인 earnings를 생성하고 earnings의 가장 높은 값과 그 높은 값을 갖는 직원들의 명수(count)를 출력시켜라.
-- **SELECT** ``(salary*months)`` **AS** ``earnings``, **COUNT**(*)
-  - salary 컬럼과 months 컬럼을 곱한 컬럼인 earnings의 가장 높은 값과, 직원들의 명수를 출력
-  - WHERE절에서는 earnings 처럼 새롭게 정의된 컬럼에 대해 조건을 달 수 없지만, GROUP BY는 가능하다.
-- **HAVING** ``earnings`` = (**SELECT MAX**(``salary*months``) **FROM** ``Employee``)
-  - earnings가 가장 높은 값을 갖게 하기 위해 서브쿼리로 MAX함수를 써서 값을 구한다.
-  - GROUP BY가 선행으로 등장해야 사용할 수 있는 HAVING절
-  - 특정 컬럼을 기준으로 그룹핑 했을 때, 추가적인 조건을 달아 필터링 해주는 효과가 있음.
-
-```sql
-# HAVING절에 서브쿼리
-SELECT (salary*months) AS earnings, count(*)
-FROM Employee
-GROUP BY earnings
-HAVING earnings = (SELECT MAX(salary*months) FROM Employee)	# GROUP BY로 이어진 HAVING절에는 새로 정의한 earnings 조건 가능
-
-# WHERE절에 서브쿼리
-SELECT (salary*months) AS earnings, count(*)
-FROM Employee
-WHERE (salary*months) = (SELECT MAX(salary*months) FROM Employee)	# WHERE절에는 새로 정의한 earnings 조건 불가능
-GROUP BY earnings
-```
 
