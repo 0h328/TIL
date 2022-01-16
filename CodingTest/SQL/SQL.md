@@ -428,12 +428,30 @@ ORDER BY ANIMAL_ID
   - 날짜
     - 오라클은 to_char, mysql은 date_format 사용.
       - **DATE_FORMAT**(``컬럼``, ``format``) 형식으로 사용하고, ``format``에는 무조건 %를 붙인다.
-        - %Y = 4자리 연도(2016, 2017,..)
-        - %y = 2자리 연도(16, 17,..)
-        - %M = January, February,..
-        - %m = 01~12
-        - %D = 1st, 2nd,... ,31th
-        - %d = 01, 02,.. ,31
+        - %Y = Year 4자리 연도(2016, 2017,..)
+        - %y = Year 2자리 연도(16, 17,..)
+        - %M = Month (January, February,.. ,December)
+        - %m = Month (01~12)
+        - %b = Month (Jan, Feb,.. ,Dec)
+        - %D = Day (1st, 2nd,... ,31th)
+        - %d = Day (00, 01,.. ,31)
+        - %e = Day (0, 1,.. ,31)
+        - %W = Sunday, Monday,.. ,Saturday
+        - %w = 0, 1,.. ,6 (0=Sunday, 6=Saturday)
+        - %a = Sun, Mon,.. ,Sat
+        - %H = Hour (00, 01,.. ,23)
+        - %h = Hour (01, 02,.. ,12)
+        - %k = Hour (0, 1,.. ,23)
+          - 24시간 형식. 10보다 작을 경우 한자리
+        - %l = Hour (1, 2,.. ,12)
+          - 12시간 형식. 10보다 작을 경우 한자리
+        - %i = Minute (00, 01,.. ,30)
+        - %S = Seconds (00, 01,.. ,59)
+        - %T = Time, 24-hour (hh:mm:ss)
+          - 시:분:초
+        - %r = Time (hh:mm:ss AM|PM)
+          - 시:분:초 오전/오후
+        - %p = AM/PM
         - **DATE_FORMAT**(``DATETIME``, ``%Y-%M-%D``)
           - 2021-March-13th
         - **DATE_FORMAT**(``DATETIME``, ``%y-%m-%d``)
@@ -846,6 +864,15 @@ WHERE CITY REGEXP '^[aeiou]'
 - 정규식을 사용해서 풀이
 
 ```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE (CITY LIKE '%A'
+       OR CITY LIKE '%E'
+       OR CITY LIKE '%I'
+       OR CITY LIKE '%O'
+       OR CITY LIKE '%U'
+);
+
 SELECT DISTINCT CITY 
 FROM STATION
 WHERE CITY REGEXP '[aeiou]$';
@@ -875,9 +902,17 @@ WHERE CITY REGEXP '^[aeiou].*[aeiou]$';
 - 정규식을 사용해서 풀이
 
 ```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE LEFT(CITY, 1) NOT IN ('a', 'e', 'i', 'o', 'u')
+
 SELECT DISTINCT CITY 
 FROM STATION    
-WHERE CITY REGEXP '^[^aeiou]';
+WHERE CITY REGEXP '^[^aeiou]'
+
+SELECT DISTINCT CITY 
+FROM STATION    
+WHERE CITY NOT REGEXP '^[aeiou]'
 ```
 
 
@@ -888,6 +923,10 @@ WHERE CITY REGEXP '^[^aeiou]';
 - 정규식을 사용해서 풀이
 
 ```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE RIGHT(CITY, 1) NOT IN ('a', 'e', 'i', 'o', 'u')
+
 SELECT DISTINCT CITY
 FROM STATION
 WHERE CITY REGEXP '[^aeiou]$';
@@ -901,6 +940,11 @@ WHERE CITY REGEXP '[^aeiou]$';
 - 정규식을 사용해서 풀이
 
 ```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE LEFT(CITY, 1) NOT IN ('a', 'e', 'i', 'o', 'u')
+OR RIGHT(CITY, 1) NOT IN ('a', 'e', 'i', 'o', 'u')
+
 SELECT DISTINCT CITY
 FROM STATION
 WHERE CITY REGEXP '^[^aeiou]|[^aeiou]$';
@@ -1031,6 +1075,23 @@ FROM STATION;
 SELECT ROUND(SQRT(POW((MAX(LAT_N) - MIN(LAT_N)), 2) + POW((MAX(LONG_W) - MIN(LONG_W)), 2)), 4)
 FROM STATION
 ```
+
+
+
+##### Weather Observation Station 20
+
+- LAT_N 컬럼의 중앙값 찾고, 반올림해서 소수점 4자리까지 나타내기
+- LAT_N보다 큰 데이터의 개수와 LAT_N보다 작은 데이터의 개수가 같은 S.LAT_N이 중앙값임을 조건으로 구현
+
+```sql
+SELECT ROUND(LAT_N, 4)
+FROM STATION S
+WHERE (SELECT COUNT(LAT_N) FROM STATION WHERE S.LAT_N < LAT_N)
+		= 
+	(SELECT COUNT(LAT_N) FROM STATION WHERE S.LAT_N > LAT_N)
+```
+
+
 
 
 
@@ -1165,6 +1226,37 @@ SELECT COUNTRY.CONTINENT, FLOOR(AVG(CITY.POPULATION))
 FROM CITY INNER JOIN COUNTRY
 ON CITY.COUNTRYCODE = COUNTRY.CODE
 GROUP BY COUNTRY.CONTINENT
+```
+
+
+
+##### Binary Tree Nodes
+
+- 각 노드가 어떤 노드를 가리키는지 노드번호(N)와 어떤 노드인지 명시하고, 노드번호(N)를 기준으로 오름차순 정렬하기
+- 맨 아래 노드(가장 마지막 노드)면 Leaf, 맨 위 노드(첫 노드)면 Root, 그 외 부모노드는 Inner
+- CASE WHEN 혹은 IF문으로 특정 문자열 출력 가능
+- BST 테이블을 두개로 나눠서 BST b1의 P와 BST b2의 N을 같게 INNER JOIN 처리
+- WHERE로 b2.P가 null인 것은 Root, b2.P가 null이 아닌 것(N과 P가 같은 것)은 Inner로 처리하고 ELSE는 Leaf
+
+```sql
+# CASE WHEN 사용
+SELECT N, CASE WHEN N IN (SELECT DISTINCT b2.N
+                         FROM BST b1 INNER JOIN BST b2
+                         ON b1.P = b2.N
+                         WHERE b2.P is NULL) THEN 'Root'
+                WHEN N IN (SELECT DISTINCT b2.N
+                          FROM BST b1 INNER JOIN BST b2
+                          ON b1.P = b2.N
+                          WHERE b2.P is NOT NULL) THEN 'Inner'
+                ELSE 'Leaf'
+                END
+FROM BST
+ORDER BY N
+
+# IF사용
+SELECT N, IF(P IS NULL, 'Root', IF(N IN (SELECT P FROM BST), 'Inner', 'Leaf'))
+FROM BST
+ORDER BY N
 ```
 
 
