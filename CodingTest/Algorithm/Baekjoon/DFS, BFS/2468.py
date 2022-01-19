@@ -1,3 +1,4 @@
+# BFS
 from collections import deque
 import sys
 sys.stdin = open('input.txt')
@@ -51,3 +52,43 @@ for h in range(min_h, max_h+1):     # 범위는 최저 높이 ~ 최고 높이로
         max_zone = cnt
 
 print(max_zone)
+
+
+# DFS
+# import sys
+# sys.setrecursionlimit(100000)
+#
+# dr = [1, 0, -1, 0]
+# dc = [0, 1, 0, -1]
+#
+# def dfs(r, c):
+#     v[r][c] = 1
+#
+#     for i in range(4):
+#         nr = r + dr[i]
+#         nc = c + dc[i]
+#
+#         if 0 <= nr < N and 0 <= nc < N:
+#             if arr[nr][nc] >= h and not v[nr][nc]:    # h보다 높아야 안전영역, 방문하지 않은 곳만 체크
+#                 v[nr][nc] = 1
+#                 dfs(nr, nc)
+#
+# N = int(sys.stdin.readline())
+# arr = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
+#
+#
+# min_h = min(map(min, arr))    # 배열의 최저 높이
+# max_h = max(map(max, arr))    # 배열의 최고 높이
+# res = 0
+#
+# for h in range(min_h, max_h+1):
+#     cnt = 0
+#     v = [[0] * N for _ in range(N)]
+#     for i in range(N):
+#         for j in range(N):
+#             if arr[i][j] >= h and not v[i][j]:
+#                 dfs(i, j)
+#                 cnt += 1
+#     res = max(res, cnt)
+#
+# print(res)
