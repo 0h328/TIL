@@ -1,3 +1,4 @@
+# BFS 풀이
 from collections import deque
 import sys
 sys.stdin = open('input.txt')
@@ -98,3 +99,52 @@ for i in range(N):
             cl_bl += 1  # B색상 +1
 
 print(not_cl_bl, cl_bl)
+
+
+# DFS 풀이
+# import sys
+# sys.stdin = open('input.txt')
+# sys.setrecursionlimit(10000)
+#
+# dr = [1, 0, -1, 0]
+# dc = [0, 1, 0, -1]
+#
+# def dfs(r, c):
+#     v[r][c] = 1
+#
+#     for i in range(4):
+#         nr = r + dr[i]
+#         nc = c + dc[i]
+#
+#         if 0 <= nr < N and 0 <= nc < N:
+#             if arr[r][c] == arr[nr][nc] and not v[nr][nc]:    # 현 위치와 다음 위치가 같은 경우에만
+#                 v[nr][nc] = 1
+#                 dfs(nr, nc)
+#
+#
+# N = int(sys.stdin.readline())
+# arr = [list(sys.stdin.readline().rstrip()) for _ in range(N)]
+# v = [[0] * N for _ in range(N)]
+#
+# ab_cnt = 0
+# n_cnt = 0
+#
+# for i in range(N):
+#     for j in range(N):
+#         if not v[i][j]:
+#             dfs(i, j)
+#             n_cnt += 1
+#
+# for i in range(N):
+#     for j in range(N):
+#         if arr[i][j] == 'R':
+#             arr[i][j] = 'G'
+#
+# v = [[0] * N for _ in range(N)]
+# for i in range(N):
+#     for j in range(N):
+#         if not v[i][j]:
+#             dfs(i, j)
+#             ab_cnt += 1
+#
+# print(n_cnt, ab_cnt)
