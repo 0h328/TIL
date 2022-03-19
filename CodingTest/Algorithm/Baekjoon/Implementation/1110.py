@@ -1,18 +1,13 @@
 import sys
 sys.stdin = open('input.txt')
 
-N = int(input())
-tmp = N
+arr = [list(input()) for _ in range(8)]
+
 cnt = 0
-
-while True:
-    a = tmp // 10
-    b = tmp % 10
-    c = (a+b) % 10
-    tmp = (b*10)+c
-    cnt += 1
-
-    if tmp == N:
-        break
+for i in range(8):
+    for j in range(8):
+        if i % 2 == 0 and j % 2 == 0 or i % 2 and j % 2:
+            if arr[i][j] == 'F':
+                cnt += 1
 
 print(cnt)
