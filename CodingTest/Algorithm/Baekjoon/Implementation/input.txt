@@ -1,4 +1,5 @@
-3 4
-c..c
-..c.
-....
+4
+DOG
+GOD
+GOOD
+DOLL
