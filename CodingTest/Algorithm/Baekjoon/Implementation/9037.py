@@ -12,7 +12,7 @@ for _ in range(T):
             if candy[i] % 2:        # 사탕 개수가 홀수면
                 candy[i] += 1       # 한개 추가
             d[i] = candy[i] // 2    # 절반을 옆에줌.
-
+        print(d)
         if len(set(candy)) == 1:    # 모든 사탕의 개수가 동일하다면 set[7, 7, 7] = {7}
             print(rotate_cnt)       # 순환 횟수 출력
             break
