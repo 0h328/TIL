@@ -12,6 +12,13 @@
 
 
 
+###### ✏ 예시) gitlab > s06-final / BloomBloom 프로젝트를 github으로 옮기고 싶다면
+
+- $ git clone --bare https://lab.ssafy.com/s06-final/S06P31A202.git
+- $ git push --mirror  https://github.com/0h328/BLOOM-BLOOM.git
+
+
+
 ## git pull 에러 해결
 
 에러명 : git pull 에러 해결방법 (Your local changes to the following files would be overwritten by merge )
