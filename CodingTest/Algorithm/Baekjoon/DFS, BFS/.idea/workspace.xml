@@ -3,11 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="7d3dbdda-82a9-4c39-9d36-0df387fe168c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dynamic-Programming/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Dynamic-Programming/input.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/5585.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Greedy/5585.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programmers/DFS, BFS/타겟넘버.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Programmers/DFS, BFS/타겟넘버.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programmers/Hash/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Programmers/Hash/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Programmers/Practice/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Programmers/Practice/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Programmers/Practice/내적.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Programmers/Practice/내적.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Programmers/Sorting/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Programmers/Sorting/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Programmers/Sorting/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Programmers/Sorting/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SQL/SQL.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SQL/SQL.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +19,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
@@ -48,7 +51,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -60,6 +62,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -209,7 +212,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1780822" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1780822" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -400,16 +403,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/1260.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
-          <folding>
-            <element signature="e#11#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2667.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -461,6 +454,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1260.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#11#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2583.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
         </state>
       </provider>
     </entry>
