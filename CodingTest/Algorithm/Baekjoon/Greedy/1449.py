@@ -14,5 +14,5 @@ for i in range(N):
         start = s[i]
         end = s[i] + L
         cnt += 1
-        
+
 print(cnt)
