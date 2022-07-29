@@ -8,5 +8,5 @@ while True:
     if ans % F == 0:
         break
     ans += 1
-    
+
 print(str(ans)[-2:])
